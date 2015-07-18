@@ -15,12 +15,12 @@ public class ConnectionManager{
 				Class.forName("com.mysql.jdbc.Driver").newInstance();//sun.jdbc.odbc.JdbcOdbcDriver");
 				if(dbaccess.equals("MYSQL")){
 					//TODO: Replace hardcoding with properties parameters
-					con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306","root","sa");
+					con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/BOOKINGDB","root","sa");
 				}
 				
 				try {
 					con.createStatement().executeQuery(
-							"Select count(*) from `core`.`TEMP`");//TODO: Replace with table
+							"Select count(*) from `INTYMT`");//TODO: Replace with table
 				} catch (Exception e) {
 					e.printStackTrace();
 					try {
