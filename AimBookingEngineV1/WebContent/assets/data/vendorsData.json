@@ -1,0 +1,148 @@
+{
+    "results": [
+        {
+            "DSPNM": "Dr.Dinesh Sharma",
+            "QUALIFICATION" : "MBBS",
+            "INSTITUTE" : "Ramaya Medical College",
+            "AREA" : "Jayanagar",
+            "CITY" : "Bangalore",
+            "PIC_DATA" : [
+                     {
+                       "IMGURL" : "Picture1.jpg"
+                     },
+                     {
+                       "IMGURL" : "Picture2.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture3.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture4.jpg"
+                     }
+            ],
+            "DISTANCE_AWAY" : "1.6",
+            "RECOMMEND" : "14"
+        },
+        {
+            "DSPNM": "Dr.Balakrishanan",
+            "QUALIFICATION" : "BDS",
+            "INSTITUTE" : "BMS",
+            "AREA" : "Shastrinagar",
+            "CITY" : "Hyderabad",
+            "PIC_DATA" : [
+                     {
+                       "IMGURL" : "Picture1.jpg"
+                     },
+                     {
+                       "IMGURL" : "Picture2.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture3.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture4.jpg"
+                     }
+            ],
+            "DISTANCE_AWAY" : "2.5",
+            "RECOMMEND" : "7"
+            
+        },
+        {
+            "DSPNM": "Dr.Krisna Murthy",
+            "QUALIFICATION" : "BDS, BDS",
+            "INSTITUTE" : "JNVU",
+            "AREA" : "Shastrinagar",
+            "CITY" : "Hyderabad",
+            "PIC_DATA" : [
+                     {
+                       "IMGURL" : "Picture1.jpg"
+                     },
+                     {
+                       "IMGURL" : "Picture2.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture3.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture4.jpg"
+                     }
+            ],
+            "DISTANCE_AWAY" : "1.1",
+            "RECOMMEND" : "9"
+            
+        },
+        {
+            "DSPNM": "Dr.Rakesh Gupta",
+            "QUALIFICATION" : "BDS",
+            "INSTITUTE" : "RGMC",
+            "AREA" : "Shastrinagar",
+            "CITY" : "Hyderabad",
+            "PIC_DATA" : [
+                     {
+                       "IMGURL" : "Picture1.jpg"
+                     },
+                     {
+                       "IMGURL" : "Picture2.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture3.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture4.jpg"
+                     }
+            ],
+            "DISTANCE_AWAY" : "1.8",
+            "RECOMMEND" : "8"
+            
+        },
+        {
+            "DSPNM": "Dr.Ganesh",
+            "QUALIFICATION" : "BDS",
+            "INSTITUTE" : "BMS",
+            "AREA" : "Shastrinagar",
+            "CITY" : "Hyderabad",
+            "PIC_DATA" : [
+                     {
+                       "IMGURL" : "Picture1.jpg"
+                     },
+                     {
+                       "IMGURL" : "Picture2.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture3.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture4.jpg"
+                     }
+            ],
+            "DISTANCE_AWAY" : "3.8",
+            "RECOMMEND" : "1"
+            
+        },
+        {
+            "DSPNM": "Dr.Ram Mohan",
+            "QUALIFICATION" : "BDS",
+            "INSTITUTE" : "BMS",
+            "AREA" : "Shastrinagar",
+            "CITY" : "Hyderabad",
+            "PIC_DATA" : [
+                     {
+                       "IMGURL" : "Picture1.jpg"
+                     },
+                     {
+                       "IMGURL" : "Picture2.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture3.jpeg"
+                     },
+                     {
+                       "IMGURL" : "Picture4.jpg"
+                     }
+            ],
+            "DISTANCE_AWAY" : "4.8",
+            "RECOMMEND" : "3"
+            
+        }
+        
+      ]
+}

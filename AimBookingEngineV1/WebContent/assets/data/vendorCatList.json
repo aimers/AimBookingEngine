@@ -1,0 +1,45 @@
+{
+    "results": [
+        {
+            "ENTCATID": 1,
+            "SNAME" : "Dentist",
+            "SICON" : "Medical_icons-24-64.png"
+        },
+                {
+            "ENTCATID": 2,
+            "SNAME" : "Homeopath",
+            "SICON" : "Medical_icons-24-64.png"
+        },
+                {
+            "ENTCATID": 3,
+            "SNAME" : "Neurologist",
+            "SICON" : "Medical_icons-24-64.png"
+        },
+                {
+            "ENTCATID": 4,
+            "SNAME" : "Surgeon",
+            "SICON" : "Medical_icons-24-64.png"
+        },
+                {
+            "ENTCATID": 5,
+            "SNAME" : "Coroners",
+            "SICON" : "Medical_icons-24-64.png"
+        },
+                {
+            "ENTCATID": 6,
+            "SNAME" : "Urology",
+            "SICON" : "Medical_icons-24-64.png"
+        },
+                {
+            "ENTCATID": 7,
+            "SNAME" : "Radiology",
+            "SICON" : "Medical_icons-24-64.png"
+        },
+                {
+            "ENTCATID": 8,
+            "SNAME" : "Pediatrics",
+            "SICON" : "Medical_icons-24-64.png"
+        }       
+        
+      ]
+}

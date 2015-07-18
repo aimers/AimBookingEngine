@@ -1,0 +1,51 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="sap.ui.medApp.view.VendorListDetail"
+	xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page class="mainPage" id="mainPage" showHeader="false">
+		<content>
+			<List items="{/vendorsList}" id="VendorsList" class="VendorsList" 
+			  headerText="8 results found" select="handleDetailNav" mode="SingleSelectMaster">
+				<items>
+					<CustomListItem type="Inactive">
+						<VBox width="100%" class="vendorItems">
+							<HBox width="100%" >
+								<VBox width="49%">
+									<VBox justifyContent="Center" class="vendorAddress">
+										<Label text="{DSPNM}" />
+									</VBox>
+									<HBox alignItems="Center" class="vendorAddress">
+										<Text text="{QUALIFICATION} , {INSTITUTE}" />
+									</HBox>
+									<HBox alignItems="Center" class="vendorAddress">
+										<Text text="{AREA} , {CITY}" />
+									</HBox>
+									<HBox alignItems="Center" items="{PIC_DATA}" class="imgLabelBox">
+										<Image width="70%" src="assets/img/{path:'IMGURL'}" />
+									</HBox>
+								</VBox>
+								<VBox width="49%">
+									<HBox width="100%">
+										<HBox width="50%" alignItems="Center" class="vendorRecommend"
+											justifyContent="End">
+											<Image src="assets/img/ecommerce_86-32.png" width="70%" />
+											<Text text="{RECOMMEND} Recommendations" />
+										</HBox>
+										<HBox width="50%" alignItems="Center" class="vendorRecommend"
+											justifyContent="End">
+											<Image src="assets/img/Location-Pointer.png" width="70%" />
+											<Text text="{DISTANCE_AWAY} KMs away" />
+										</HBox>
+									</HBox>
+									<VBox alignItems="End">
+										<Button text="{i18n>BOOK_APPOINTMENT}" class="buttonDesign"
+											press="handleBookAppointment" />
+									</VBox>
+								</VBox>
+							</HBox>
+						</VBox>
+					</CustomListItem>
+				</items>
+			</List>
+		</content>
+	</Page>
+</core:View>

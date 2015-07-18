@@ -1,0 +1,77 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="sap.ui.medApp.view.VendorDetail" xmlns:l="sap.ui.layout" xmlns:vbm="sap.ui.vbm"
+	
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page class="mainPage" id="mainPage" showHeader="false">
+		<content>
+			<List items="{/vendorsDetail}" id="VendorsList" class="VendorsList"
+				select="handleDetailNav">
+				<items>
+					<CustomListItem type="Inactive">
+						<VBox width="100%" class="vendorItems">
+							<HBox width="100%">
+								<VBox width="49%">
+									<VBox justifyContent="Center" class="vendorAddress">
+										<Label text="{DSPNM}" />
+									</VBox>
+									<HBox alignItems="Center" class="vendorAddress">
+										<Text text="{QUALIFICATION} , {INSTITUTE}" />
+									</HBox>
+									<HBox alignItems="Center" class="vendorAddress">
+										<Text text="{AREA} , {CITY}" />
+									</HBox>
+									<HBox alignItems="Center" items="{PIC_DATA}" class="imgLabelBox">
+										<Image width="70%" src="assets/img/{path:'IMGURL'}" />
+									</HBox>
+								</VBox>
+								<VBox width="49%">
+									<HBox width="100%">
+										<HBox width="50%" alignItems="Center" class="vendorRecommend"
+											justifyContent="End">
+											<Image src="assets/img/ecommerce_86-32.png" width="70%" />
+											<Text text="{RECOMMEND} Recommendations" />
+										</HBox>
+										<HBox width="50%" alignItems="Center" class="vendorRecommend"
+											justifyContent="End">
+											<Image src="assets/img/Location-Pointer.png" width="70%" />
+											<Text text="{DISTANCE_AWAY} KMs away" />
+										</HBox>
+									</HBox>
+									<HBox justifyContent="End">
+										<Label text="{i18n>AVAILABLE_DAY} :" />
+										<HBox items="{DAYS_AVAILABLE}" width="40%"
+											justifyContent="End">
+											<Text text="{path:'DAY', formatter:'.getDayName'}"></Text>
+										</HBox>
+									</HBox>
+									<HBox justifyContent="End">
+										<Label text="{i18n>AVAILABLE_TIME} :" />
+										<HBox items="{TIME_AVAILABLE}" width="40%"
+											justifyContent="End">
+											<Text text="{path:'TIME'}"></Text>
+										</HBox>
+									</HBox>
+								</VBox>
+							</HBox>
+							<VBox width="100%" alignItems="Center">
+								<!-- <vbm:AnalyticMap id="vbi" width="100%" height="100%"
+									regionClick="onRegionClick" regionContextMenu="onRegionContextMenu">
+									<vbm:regions>
+										<vbm:Region code="EU" color="rgba(184,225,245,1.0)" />
+										<vbm:Region code="NA" color="rgba(5,71,102,1.0)" />
+										<vbm:Region code="OC" color="rgba(0,125,192,1.0)" />
+									</vbm:regions>
+								</vbm:AnalyticMap>-->
+								<Image  src="assets/img/map.png" width="80%"/>
+							</VBox>
+							<VBox width="100%" height="100%" alignItems="End">
+								<Button text="{i18n>BOOK_APPOINTMENT}" class="buttonDesign"
+											press="handleBookAppointment" />
+							</VBox>
+						</VBox>
+					</CustomListItem>
+				</items>
+			</List>
+		</content>
+	</Page>
+</core:View>

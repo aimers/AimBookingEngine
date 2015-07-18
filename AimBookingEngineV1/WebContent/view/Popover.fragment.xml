@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:c="sap.ui.commons">
+	<ResponsivePopover showHeader="false" class="sapUiPopupWithPaddingNew"
+		placement="Top">
+		<content>
+			<VBox class="popupContent">
+				<VBox class="popupContentInner">
+					<Link text="Settings" />
+					<Link text="Help"></Link>
+				</VBox>
+				<VBox class="popupContentInner">
+					<DateTimeInput type="Date" id="dateTimeInput" />
+					<Link text="Filter 1" />
+					<Link text="Filter 2" />
+					<Link text="Filter 3" />
+					<Link text="Filter 4" />
+				</VBox>
+				<VBox class="popupContentInner">
+					<Link text="EID" />
+					<Link text="LUMIRA" />
+					<Link text="TABLEAU" />
+				</VBox>
+			</VBox>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>
