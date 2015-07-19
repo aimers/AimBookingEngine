@@ -19,18 +19,152 @@ public class VendorCommand extends aimCommand {
 	public Object execute(HashMap myInfo, ConnectionManager dbcon) {
 		// TODO Auto-generated method stub
 		//STEP 1: get subaction info from myInfo // TODO
-
+		String aimAction = (String) myInfo.get("AimAction");
 		//STEP 2: goto respective methods base on subaction // TODO
-		JSONArray vendorList 			= (JSONArray) getVendorCategoryList(myInfo, dbcon);
-		JSONArray vendorCharacteristics = (JSONArray) getVendorCharacteristics(myInfo, dbcon);
-
-		//STEP 3: return the combined result
-		return formResultEntities(vendorList, vendorCharacteristics);
-
+		if(aimAction.equals("getVendorCategory")){
+			return getVendorCategory(myInfo, dbcon);
+		}else if(aimAction.equals("getVendorData")){
+			return getVendorData(myInfo, dbcon);
+		}
+		return new JSONObject();
 
 	}
 
-	private Object formResultEntities(JSONArray vendorList, JSONArray vendorCharacteristics) {
+	private Object getVendorData(HashMap myInfo, ConnectionManager dbcon) {
+		JSONArray vendorHeaderList 			= (JSONArray) getVendorHeaderList(myInfo, dbcon);
+		JSONArray vendorCharacteristics 	= (JSONArray) getVendorCharacteristics(myInfo, dbcon);
+
+		//STEP 3: return the combined result
+		return formVendorDataResultEntities(vendorHeaderList, vendorCharacteristics);
+	}
+
+	private Object formVendorDataResultEntities(JSONArray vendorHeaderList, JSONArray vendorCharacteristics) {
+		JSONArray charValues = new JSONArray();
+
+		for(int vIndex=0;vIndex<vendorHeaderList.length();vIndex++){
+			try{
+				charValues = new JSONArray();
+				((JSONObject)vendorHeaderList.get(vIndex)).put("Characteristics", charValues);
+				for(int cIndex=0;cIndex<vendorCharacteristics.length();cIndex++){
+
+					if(
+							((JSONObject)vendorHeaderList.get(vIndex)).get("usrid") 
+							== 
+							((JSONObject)vendorCharacteristics.get(cIndex)).get("usrid") 
+							){
+						JSONObject vendorChars = ((JSONObject)vendorCharacteristics.get(cIndex));
+						charValues.put(vendorChars);
+
+					}else{
+						charValues = new JSONArray();
+					}
+
+				}
+			}catch(Exception ex){
+
+			}
+		}
+
+		return vendorHeaderList;
+	}
+
+	private JSONArray getVendorCharacteristics(HashMap myInfo, ConnectionManager dbcon) {
+		// TODO Auto-generated method stub
+		JSONArray vendorCharachterisitcs = new JSONArray();
+		return vendorCharachterisitcs;
+	}
+
+	private JSONArray getVendorHeaderList(HashMap myInfo, ConnectionManager dbcon) {
+		// TODO: Add skip/top
+		ResultSet rs=null;
+		try{
+			if(dbcon == null){
+				try{
+					dbcon.Connect("MYSQL");
+				}
+				catch(Exception ex){
+					System.out.println(""+ex);
+				}
+			}
+			System.out.println(
+					" SELECT `usrmt`.`USRID`, "+
+							" `usrmt`.`URCOD`, "+
+							" `usrmt`.`PRFIX`, "+
+							" `usrmt`.`TITLE`, "+
+							" `usrmt`.`FRNAM`, "+
+							" `usrmt`.`LTNAM`, "+
+							" `usrmt`.`URDOB`, "+
+							" `usrmt`.`GENDR`, "+
+							" `usrmt`.`DSPNM`, "+
+							" `ADDMT`.`STRET`, "+
+							" `ADDMT`.`LNDMK`, "+
+							" `ADDMT`.`LOCLT`, "+
+							" `ADDMT`.`CTYID`, "+
+							" `ADDMT`.`PINCD`, "+
+							" `ADDMT`.`LONGT`, "+
+							" `ADDMT`.`LATIT` "+
+							" FROM `BOOKINGDB`.`usrmt` "+ 
+							"  left outer join "+
+							" `BOOKINGDB`.`UETMP` "+
+							"  on "+
+							" `usrmt`.`USRID` = `UETMP`.`USRID` "+
+							" left outer join "+
+							" `BOOKINGDB`.`UADMP` "+
+							" on "+
+							" `usrmt`.`USRID` = `UADMP`.`USRID` "+
+							" left outer join "+
+							" `BOOKINGDB`.`ADDMT` "+
+							" on "+
+							" `ADDMT`.`ADRID` = `UADMP`.`ADRID` "+
+					" where `UETMP`.ACTIV = 1 and `UETMP`.UTYID = 2 ");
+			rs=dbcon.stm.executeQuery(
+					" SELECT `usrmt`.`USRID`, "+
+							" `usrmt`.`URCOD`, "+
+							" `usrmt`.`PRFIX`, "+
+							" `usrmt`.`TITLE`, "+
+							" `usrmt`.`FRNAM`, "+
+							" `usrmt`.`LTNAM`, "+
+							" `usrmt`.`URDOB`, "+
+							" `usrmt`.`GENDR`, "+
+							" `usrmt`.`DSPNM`, "+
+							" `ADDMT`.`STRET`, "+
+							" `ADDMT`.`LNDMK`, "+
+							" `ADDMT`.`LOCLT`, "+
+							" `ADDMT`.`CTYID`, "+
+							" `ADDMT`.`PINCD`, "+
+							" `ADDMT`.`LONGT`, "+
+							" `ADDMT`.`LATIT` "+
+							" FROM `BOOKINGDB`.`usrmt` "+ 
+							"  left outer join "+
+							" `BOOKINGDB`.`UETMP` "+
+							"  on "+
+							" `usrmt`.`USRID` = `UETMP`.`USRID` "+
+							" left outer join "+
+							" `BOOKINGDB`.`UADMP` "+
+							" on "+
+							" `usrmt`.`USRID` = `UADMP`.`USRID` "+
+							" left outer join "+
+							" `BOOKINGDB`.`ADDMT` "+
+							" on "+
+							" `ADDMT`.`ADRID` = `UADMP`.`ADRID` "+
+					" where `UETMP`.ACTIV = 1 and `UETMP`.UTYID = 2 ");
+			return Convertor.convertToJSON(rs);
+		}
+		catch(Exception ex){
+			System.out.println("Error from RHOD "+ex +"==dbcon=="+dbcon);
+			return null;
+		}
+	}
+
+	private Object getVendorCategory(HashMap myInfo, ConnectionManager dbcon) {
+		JSONArray vendorCategoryList 			= (JSONArray) getVendorCategoryList(myInfo, dbcon);
+		JSONArray vendorCharacteristics 		= (JSONArray) getVendorCategoryCharacteristics(myInfo, dbcon);
+
+		//STEP 3: return the combined result
+		return formVendorCategoryResultEntities(vendorCategoryList, vendorCharacteristics);
+	}
+
+	private Object formVendorCategoryResultEntities(JSONArray vendorList, JSONArray vendorCharacteristics) {
 		JSONArray charValues = new JSONArray();
 
 		for(int vIndex=0;vIndex<vendorList.length();vIndex++){
@@ -60,7 +194,7 @@ public class VendorCommand extends aimCommand {
 		return vendorList;
 	}
 
-	private Object getVendorCharacteristics(HashMap myInfo, ConnectionManager dbcon) {
+	private Object getVendorCategoryCharacteristics(HashMap myInfo, ConnectionManager dbcon) {
 		ResultSet rs=null;
 		try{
 			if(dbcon == null){

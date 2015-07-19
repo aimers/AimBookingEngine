@@ -45,6 +45,7 @@ public class MasterServlet
 			*/
 			System.out.println("Aim--from post>>"+request.getParameter("AimAction"));
 			HashMap myInfo= new HashMap();
+			myInfo.put("AimAction", request.getParameter("AimAction"));
 			Enumeration cacheValues=request.getParameterNames();
 			String cache=null;
 			while( cacheValues.hasMoreElements() ){
