@@ -7,9 +7,10 @@ sap.ui.controller("sap.ui.medApp.view.VendorDetail", {
 	 * @memberOf EvidencePackage.app.BarGraph
 	 */ 
 	onInit : function() {
-		this.oModel = sap.ui.getCore().getModel();
+		this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+		this.oModel = new sap.ui.model.json.JSONModel();
 		this.loadListDetailFacade();
-		this.getView().setModel(this._vendorListServiceFacade.oModel);
+		this.getView().setModel(this.oModel);
 	},
 	loadListDetailFacade:function(facade){
 		this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(this.oModel);
@@ -54,5 +55,8 @@ sap.ui.controller("sap.ui.medApp.view.VendorDetail", {
 			}
 			
 		}
+	},
+	navToListPage : function(oEvent){
+		this._oRouter.navTo("VendorListDetail", {vendorId : "123"});
 	}
 });

@@ -9,6 +9,7 @@ evidencePackage.global.config.development = {
 			vendorDataList :"assets/data/vendorsData.json",
 			vendorDataDetail :"assets/data/vendorDetailData.json",
 			vendorCatList :"assets/data/vendorCatList.json",
+			vendorTileCatList : "assets/data/vendorCatTileList.json"
 		}
 };
 
@@ -17,7 +18,8 @@ evidencePackage.global.config.production = {
 		endPoints: {
 			vendorDataList :"assets/data/vendorsData.json",
 			vendorDataDetail :"assets/data/vendorDetailData.json",
-			vendorCatList :"assets/data/vendorCatList.json",
+			vendorCatList :"MasterServlet?AimAction=getVendorCategory&INTENT=1&UID=1",
+			vendorTileCatList : "assets/data/vendorCatTileList.json"
 		}
 };
 

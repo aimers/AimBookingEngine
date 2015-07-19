@@ -7,9 +7,9 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 	 * @memberOf EvidencePackage.app.BarGraph
 	 */ 
 	onInit : function() {
-		this.oModel = sap.ui.getCore().getModel();
+		this.oModel = new sap.ui.model.json.JSONModel();
 		this.loadListFacade();
-		this.getView().setModel(this._vendorListServiceFacade.oModel);
+		this.getView().setModel(this.oModel);
 		this.oIndexItem = -1;
 		this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 	},
@@ -48,7 +48,8 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 							         }),
 							         new sap.m.RadioButton({
 							        	 text : "Monthly",
-							        	 select : [oController.changeToOneMonth, oController]
+							        	 select : [oController.changeToOneMonth, oController],
+							        	 selected : true
 							         }),
 							         ]
 						})

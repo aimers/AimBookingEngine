@@ -1,146 +1,152 @@
 {
     "results": [
         {
-            "DSPNM": "Dr.Dinesh Sharma",
-            "QUALIFICATION" : "MBBS",
-            "INSTITUTE" : "Ramaya Medical College",
-            "AREA" : "Jayanagar",
-            "CITY" : "Bangalore",
+            "PRFIX": "Dr.",
+            "DSPNM": "Dinesh Sharma",
+            "UQNM" : "MBBS",
+            "CLNM" : "Ramaya Medical College",
+            "LOCLT" : "Jayanagar",
+            "CTYNM" : "Bangalore",
             "PIC_DATA" : [
                      {
-                       "IMGURL" : "Picture1.jpg"
+                       "USIMGURL" : "Picture1.jpg"
                      },
                      {
-                       "IMGURL" : "Picture2.jpeg"
+                       "USIMGURL" : "Picture2.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture3.jpeg"
+                       "USIMGURL" : "Picture3.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture4.jpg"
+                       "USIMGURL" : "Picture4.jpg"
                      }
             ],
-            "DISTANCE_AWAY" : "1.6",
-            "RECOMMEND" : "14"
+            "VUDV" : "1.6",
+            "RATIN" : "14"
         },
         {
-            "DSPNM": "Dr.Balakrishanan",
-            "QUALIFICATION" : "BDS",
-            "INSTITUTE" : "BMS",
-            "AREA" : "Shastrinagar",
-            "CITY" : "Hyderabad",
+            "PRFIX": "Dr.",
+            "DSPNM": "Balakrishanan",
+            "UQNM" : "BDS",
+            "CLNM" : "BMS",
+            "LOCLT" : "Shastrinagar",
+            "CTYNM" : "Hyderabad",
             "PIC_DATA" : [
                      {
-                       "IMGURL" : "Picture1.jpg"
+                       "USIMGURL" : "Picture1.jpg"
                      },
                      {
-                       "IMGURL" : "Picture2.jpeg"
+                       "USIMGURL" : "Picture2.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture3.jpeg"
+                       "USIMGURL" : "Picture3.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture4.jpg"
+                       "USIMGURL" : "Picture4.jpg"
                      }
             ],
-            "DISTANCE_AWAY" : "2.5",
-            "RECOMMEND" : "7"
+            "VUDV" : "2.5",
+            "RATIN" : "7"
             
         },
         {
-            "DSPNM": "Dr.Krisna Murthy",
-            "QUALIFICATION" : "BDS, BDS",
-            "INSTITUTE" : "JNVU",
-            "AREA" : "Shastrinagar",
-            "CITY" : "Hyderabad",
+            "PRFIX": "Dr.",
+            "DSPNM": "Krisna Murthy",
+            "UQNM" : "BDS, BDS",
+            "CLNM" : "JNVU",
+            "LOCLT" : "Shastrinagar",
+            "CTYNM" : "Hyderabad",
             "PIC_DATA" : [
                      {
-                       "IMGURL" : "Picture1.jpg"
+                       "USIMGURL" : "Picture1.jpg"
                      },
                      {
-                       "IMGURL" : "Picture2.jpeg"
+                       "USIMGURL" : "Picture2.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture3.jpeg"
+                       "USIMGURL" : "Picture3.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture4.jpg"
+                       "USIMGURL" : "Picture4.jpg"
                      }
             ],
-            "DISTANCE_AWAY" : "1.1",
-            "RECOMMEND" : "9"
+            "VUDV" : "1.1",
+            "RATIN" : "9"
             
         },
         {
-            "DSPNM": "Dr.Rakesh Gupta",
-            "QUALIFICATION" : "BDS",
-            "INSTITUTE" : "RGMC",
-            "AREA" : "Shastrinagar",
-            "CITY" : "Hyderabad",
+            "PRFIX": "Dr.",
+            "DSPNM": "Rakesh Gupta",
+            "UQNM" : "BDS",
+            "CLNM" : "RGMC",
+            "LOCLT" : "Shastrinagar",
+            "CTYNM" : "Hyderabad",
             "PIC_DATA" : [
                      {
-                       "IMGURL" : "Picture1.jpg"
+                       "USIMGURL" : "Picture1.jpg"
                      },
                      {
-                       "IMGURL" : "Picture2.jpeg"
+                       "USIMGURL" : "Picture2.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture3.jpeg"
+                       "USIMGURL" : "Picture3.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture4.jpg"
+                       "USIMGURL" : "Picture4.jpg"
                      }
             ],
-            "DISTANCE_AWAY" : "1.8",
-            "RECOMMEND" : "8"
+            "VUDV" : "1.8",
+            "RATIN" : "8"
             
         },
         {
-            "DSPNM": "Dr.Ganesh",
-            "QUALIFICATION" : "BDS",
-            "INSTITUTE" : "BMS",
-            "AREA" : "Shastrinagar",
-            "CITY" : "Hyderabad",
+            "PRFIX": "Dr.",
+            "DSPNM": "Ganesh",
+            "UQNM" : "BDS",
+            "CLNM" : "BMS",
+            "LOCLT" : "Shastrinagar",
+            "CTYNM" : "Hyderabad",
             "PIC_DATA" : [
                      {
-                       "IMGURL" : "Picture1.jpg"
+                       "USIMGURL" : "Picture1.jpg"
                      },
                      {
-                       "IMGURL" : "Picture2.jpeg"
+                       "USIMGURL" : "Picture2.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture3.jpeg"
+                       "USIMGURL" : "Picture3.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture4.jpg"
+                       "USIMGURL" : "Picture4.jpg"
                      }
             ],
-            "DISTANCE_AWAY" : "3.8",
-            "RECOMMEND" : "1"
+            "VUDV" : "3.8",
+            "RATIN" : "1"
             
         },
         {
-            "DSPNM": "Dr.Ram Mohan",
-            "QUALIFICATION" : "BDS",
-            "INSTITUTE" : "BMS",
-            "AREA" : "Shastrinagar",
-            "CITY" : "Hyderabad",
+            "PRFIX": "Dr.",
+            "DSPNM": "Ram Mohan",
+            "UQNM" : "BDS",
+            "CLNM" : "BMS",
+            "LOCLT" : "Shastrinagar",
+            "CTYNM" : "Hyderabad",
             "PIC_DATA" : [
                      {
-                       "IMGURL" : "Picture1.jpg"
+                       "USIMGURL" : "Picture1.jpg"
                      },
                      {
-                       "IMGURL" : "Picture2.jpeg"
+                       "USIMGURL" : "Picture2.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture3.jpeg"
+                       "USIMGURL" : "Picture3.jpeg"
                      },
                      {
-                       "IMGURL" : "Picture4.jpg"
+                       "USIMGURL" : "Picture4.jpg"
                      }
             ],
-            "DISTANCE_AWAY" : "4.8",
-            "RECOMMEND" : "3"
+            "VUDV" : "4.8",
+            "RATIN" : "3"
             
         }
         
