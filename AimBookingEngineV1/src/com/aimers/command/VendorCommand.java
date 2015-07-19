@@ -45,13 +45,6 @@ public class VendorCommand extends aimCommand {
 							((JSONObject)vendorCharacteristics.get(cIndex)).get("entid") 
 							){
 						JSONObject vendorChars = ((JSONObject)vendorCharacteristics.get(cIndex));
-						//						Iterator vendorKeys = vendorChars.keys();
-						//						
-						//						while(vendorKeys.hasNext()){
-						//							String charKey = (String) vendorKeys.next();
-						//							((JSONObject)vendorList.get(vIndex)).put(charKey , vendorChars.get(charKey));
-						//							
-						//						}
 						charValues.put(vendorChars);
 
 					}else{
