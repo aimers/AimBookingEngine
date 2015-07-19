@@ -17,7 +17,6 @@ public class ConnectionManager{
 					//TODO: Replace hardcoding with properties parameters
 					con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/BOOKINGDB","root","sa");
 				}
-				
 				try {
 					con.createStatement().executeQuery(
 							"Select count(*) from `INTYMT`");//TODO: Replace with table
