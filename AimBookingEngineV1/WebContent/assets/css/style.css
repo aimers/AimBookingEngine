@@ -6,6 +6,16 @@
 	.homeContent {
 		width: 60%;
 	}
+	.homeTileIcons {
+		width: 3rem;
+		height: 3rem;
+	}
+	.inputLocation .sapMInputBaseInner{
+	    width:20rem;
+	}
+	.homeTileText {
+	    font-size:0.875rem;
+	}
 }
 
 @media only screen and (max-width: 640px) {
@@ -16,8 +26,21 @@
 	.homeContent {
 		width: 100%;
 	}
+	.homeTileIcons {
+		width: 2rem;
+		height: 2rem;
+	}
+	.homeTileText {
+	    font-size:0.675rem;
+	}
+	.inputLocation .sapMInputBaseInner{
+	    width:12rem;
+	}
 }
-
+.spaceAround {
+	padding-top:2rem;
+	padding-bottom:1rem;
+}
 .mainShell .sapMShellCentralBox {
 	width: 1200px;
 }
@@ -48,8 +71,8 @@
 }
 
 .sapMInputBaseInner:not (.sapMInputBaseReadonlyInner ):not (.sapMInputBaseStateInner
-	):focus, .sapMInputBaseInner:not (.sapMInputBaseReadonlyInner ):not (.sapMInputBaseStateInner
-	):not (.sapMInputBaseDisabledInner ):hover {
+	 ):focus, .sapMInputBaseInner:not (.sapMInputBaseReadonlyInner ):not (.sapMInputBaseStateInner
+	 ):not (.sapMInputBaseDisabledInner ):hover {
 	border-color: #1abc9c;
 }
 

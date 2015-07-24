@@ -39,6 +39,11 @@
             "ENTID": 8,
             "DESCR" : "Ayurveda",
             "SICON" : "aurveda.png"
+        },
+                {
+            "ENTID": 9,
+            "DESCR" : "Ayurveda",
+            "SICON" : "aurveda.png"
         }       
         
       ]
