@@ -243,8 +243,6 @@ public class VendorCommand extends aimCommand {
 						JSONObject vendorChars = ((JSONObject)vendorCharacteristics.get(cIndex));
 						charValues.put(vendorChars);
 
-					}else{
-						charValues = new JSONArray();
 					}
 
 				}
@@ -341,8 +339,8 @@ public class VendorCommand extends aimCommand {
 					+"   `ENTMT`.`CHNBY`"
 					+" FROM `BOOKINGDB`.`ENTMT` where ENTID in ("
 					+"		SELECT  ENTID FROM BOOKINGDB.IENMP where USRID = "+
-					userid + " and INTID = "+ intent+" and ACTIV = 1 order by ENTID"
-					+" )");
+					userid + " and INTID = "+ intent+" and ACTIV = 1"
+					+" ) order by ENTID");
 			rs=dbcon.stm.executeQuery("SELECT `ENTMT`.`ENTID`,"
 					+"  `ENTMT`.`DESCR`,"
 					+"    `ENTMT`.`ACTIV`,"
@@ -352,8 +350,8 @@ public class VendorCommand extends aimCommand {
 					+"   `ENTMT`.`CHNBY`"
 					+" FROM `BOOKINGDB`.`ENTMT` where ENTID in ("
 					+"		SELECT  ENTID FROM BOOKINGDB.IENMP where USRID = "+
-					userid + " and INTID = "+ intent+" and ACTIV = 1 order by ENTID"
-					+" )");
+					userid + " and INTID = "+ intent+" and ACTIV = 1 "
+					+" ) order by ENTID");
 			return Convertor.convertToJSON(rs);
 
 		}

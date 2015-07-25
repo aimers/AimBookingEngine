@@ -15,7 +15,7 @@ public class ConnectionManager{
 				Class.forName("com.mysql.jdbc.Driver").newInstance();//sun.jdbc.odbc.JdbcOdbcDriver");
 				if(dbaccess.equals("MYSQL")){
 					//TODO: Replace hardcoding with properties parameters
-					con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/BOOKINGDB","root","sa");
+					con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/bookingdb","root","sa");
 				}
 				try {
 					con.createStatement().executeQuery(
