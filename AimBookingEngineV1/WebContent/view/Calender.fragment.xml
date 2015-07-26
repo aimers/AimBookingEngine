@@ -1,0 +1,31 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:c="sap.ui.commons" xmlns:me="sap.me">
+	<Page showHeader="false" class="bookingBox">
+	  <subHeader>
+	    <Bar>
+	      <contentMiddle>
+	        <HBox width="98%">
+	          <HBox width="50%" justifyContent="Start">
+	            <Label text="Select Date"></Label>
+	          </HBox>
+	          <HBox width="50%" justifyContent="End">
+	            <RadioButton text="Weekly" select="changeToOneWeek"/>
+	            <RadioButton text="Monthly" select="changeToOneMonth"/>
+	          </HBox>
+	        </HBox>
+	      </contentMiddle>
+	    </Bar>
+	  </subHeader>
+	  <content>
+	    <me:Calendar singleRow="false" tapOnDate="changeToOneWeek">
+	    </me:Calendar>
+	  </content>
+	  <footer>
+	    <Bar>
+	      <contentRight>
+	        <Button text="Cancel" press="handleCancelBooking"/>
+	      </contentRight>
+	    </Bar>
+	  </footer>
+	</Page>
+</core:FragmentDefinition>

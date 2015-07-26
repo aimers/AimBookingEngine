@@ -12,6 +12,7 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 		this.getView().setModel(this.oModel);
 		this.oIndexItem = -1;
 		this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+		//this._oRouter.attachRoutePatternMatched(this._handleRouteMatched, this);
 	},
 	loadListFacade:function(facade){
 		this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(this.oModel);
@@ -32,43 +33,13 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 		}
 		this.oIndexItem = buttonId.slice(-1);
 		this.oItemSelected = this.getView().byId("VendorsList").getItems()[this.oIndexItem].getContent();
-		this.oBookingBox = new sap.m.Page(
-				{
-					
-					showHeader: false,
-					subHeader :  new sap.m.Bar({
-						contentMiddle : new sap.m.Label({text:"Select Date"}),
-						contentRight : new sap.m.HBox({
-							width: "88%",
-							justifyContent : "Center",
-							items : [
-							         new sap.m.RadioButton({
-							        	 text : "Weekly",
-							        	 select : [oController.changeToOneWeek, oController]
-							         }),
-							         new sap.m.RadioButton({
-							        	 text : "Monthly",
-							        	 select : [oController.changeToOneMonth, oController],
-							        	 selected : true
-							         }),
-							         ]
-						})
-					}),
-					height: "300px",
-					title : "Select Date",
-					footer : new sap.m.Bar({
-						contentRight : new sap.m.Button({
-							text : "Cancel",
-							press : [oController.handleCancelBooking, oController]
-						})
-					}),
-					content : new sap.me.Calendar( {
-						singleRow : false,		    		
-						tapOnDate :  [oController.changeToOneWeek, oController],
-					}),
-				}		
-		).addStyleClass("bookingBox");
+		this.loadVendorCalendorTime();
+		this.oBookingBox = sap.ui.xmlfragment("sap.ui.medApp.view.Calender", this);
 		this.oItemSelected[0].addItem(this.oBookingBox);
+	},
+	loadVendorCalendorTime : function(){
+		this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(this.oModel);
+		this._vendorListServiceFacade.getRecords(null, null, "/vendorsAvailableTime", "vendorsAvailableTime" , "");
 	},
 	handleCancelBooking : function(){
 		this.oItemSelected[0].removeItem(this.oItemSelected[0].getItems()[1]);
@@ -78,16 +49,28 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 		this._oRouter.navTo("_VendorDetail", { vendorId : "123", vendorDetailId : "123"});
 	},
 	changeToOneWeek: function () {
-        var oCalendar = this.oBookingBox.getContent()[0];
-        oCalendar.setMonthsPerRow(1);
-        oCalendar.setWeeksPerRow(1);
-        oCalendar.setSingleRow(true);
-    },
-    changeToOneMonth: function () {
-    	var oCalendar = this.oBookingBox.getContent()[0];
-        oCalendar.setSingleRow(false);
-        oCalendar.setMonthsToDisplay(1);
-        oCalendar.setWeeksPerRow(1);
-        oCalendar.setMonthsPerRow(1);
-    },
+		var oCalendar = this.oBookingBox.getContent()[0];
+		oCalendar.setMonthsPerRow(1);
+		oCalendar.setWeeksPerRow(1);
+		oCalendar.setSingleRow(true);
+	},
+	changeToOneMonth: function () {
+		var oCalendar = this.oBookingBox.getContent()[0];
+		oCalendar.setSingleRow(false);
+		oCalendar.setMonthsToDisplay(1);
+		oCalendar.setWeeksPerRow(1);
+		oCalendar.setMonthsPerRow(1);
+	},
+	handleSelectDialogPress: function (oEvent) {
+		if (! this._oDialog) {
+			this._oDialog = sap.ui.xmlfragment("sap.ui.medApp.view.Popover", this);
+			//this._oDialog.setModel(this.getView().getModel());
+		}
+		// toggle compact style
+		//jQuery.sap.syncStyleClass("sapUiSizeCompact", this.getView(), this._oDialog);
+		this._oDialog.open();
+	},
+	HandleCloseDialog : function(){
+		this._oDialog.close();
+	}
 });

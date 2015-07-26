@@ -10,9 +10,7 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
 		//getting Router
 		this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 		this.router = sap.ui.core.UIComponent.getRouterFor(this);
-		this.oModel = new sap.ui.model.json.JSONModel();
-		this.loadListCategory();
-		this.loadListTileCategory();
+		this.oModel = sap.ui.medApp.global.util.getMainModel();
 		this.getView().setModel(this.oModel);
 	},
 	loadListCategory:function(facade){
@@ -34,35 +32,24 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
 
 	},
 	handleSelectionChange: function(oEvent) {
-		var changedItem = oEvent.getParameter("changedItem");
-		var isSelected = oEvent.getParameter("selected");
-
-		var state = "Selected";
-		if (!isSelected) {
-			state = "Deselected";
-		}
-
-		sap.m.MessageToast.show("Event 'selectionChange': " + state + " '" + changedItem.getText() + "'", {
-			width: "auto"
-		});
-	},
-
-	handleSelectionFinish: function(oEvent) {
 		var selectedItems = oEvent.getParameter("selectedItems");
-		var messageText = "Event 'selectionFinished': [";
-
 		for (var i = 0; i < selectedItems.length; i++) {
 			messageText += "'" + selectedItems[i].getText() + "'";
 			if (i != selectedItems.length-1) {
 				messageText += ",";
 			}
 		}
+	},
 
-		messageText += "]";
-
-		sap.m.MessageToast.show(messageText, {
-			width: "auto"
-		});
+	handleSearchVendor: function() {
+		
+		var selectedItems = oEvent.getParameter("selectedItems");
+		for (var i = 0; i < selectedItems.length; i++) {
+			messageText += "'" + selectedItems[i].getText() + "'";
+			if (i != selectedItems.length-1) {
+				messageText += ",";
+			}
+		}
 	}
 
 	/**
