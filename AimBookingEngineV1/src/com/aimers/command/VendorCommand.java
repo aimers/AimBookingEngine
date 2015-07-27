@@ -241,7 +241,7 @@ public class VendorCommand extends aimCommand {
 							if(tSlot.get("start").equals(bSlot.get("bostm")+"")
 									&& 	
 									tSlot.get("end").equals(bSlot.get("boetm")+"")){
-								tSlot.put("Status",  bSlot.get("status")+"");
+								tSlot.put("Status",  bSlot.get("stats")+"");
 							}
 						}
 
@@ -297,7 +297,7 @@ public class VendorCommand extends aimCommand {
 					" `vrumt`.`RULID` = `rulmt`.`RULID`  "+
 					" where `rulmt`.`ACTIV` = 1 and `vrumt`.`ACTIV` = 1  and "
 					+ " `VRUMT`.`ETYID` in (\""
-					+entid+"\") ";
+					+etyid+"\") ";
 			
 			if(!etcid.equals("null")){
 				query += " and `VRUMT`.`ETCID` in (\""+etcid+"\") ";
@@ -524,7 +524,7 @@ public class VendorCommand extends aimCommand {
 							" on  `USRMT`.`USRID` = `VEMPT`.`USRID`   "+
 					" where `UETMP`.ACTIV = 1 and `UETMP`.UTYID = 2 and "
 					+ " `VEMPT`.`ETYID` in (\""
-					+entid+"\") ";
+					+etyid+"\") ";
 					
 					if(!etcid.equals("null")){
 						query += " and `VEMPT`.`ETCID` in (\""+etcid+"\") ";
@@ -560,7 +560,6 @@ public class VendorCommand extends aimCommand {
 				charValues = new JSONArray();
 				((JSONObject)vendorList.get(vIndex)).put("Characteristics", charValues);
 				for(int cIndex=0;cIndex<vendorCharacteristics.length();cIndex++){
-
 					if(
 							((JSONObject)vendorList.get(vIndex)).get("entid") 
 							== 
