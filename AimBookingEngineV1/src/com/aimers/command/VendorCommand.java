@@ -153,9 +153,41 @@ public class VendorCommand extends aimCommand {
 	}
 
 	private JSONArray getVendorCharacteristics(HashMap myInfo, ConnectionManager dbcon) {
-		// TODO Auto-generated method stub
-		JSONArray vendorCharachterisitcs = new JSONArray();
-		return vendorCharachterisitcs;
+		ResultSet rs=null;
+		try{
+			if(dbcon == null){
+				try{
+					dbcon.Connect("MYSQL");
+				}
+				catch(Exception ex){
+					System.out.println(""+ex);
+				}
+			}
+			System.out.println("SELECT `UCHMT`.`USRID`, `CHRMT`.`CHRID`, `UCHMT`.`CHRID`, "
+					+ "`UCHMT`.`VALUE`,  "
+					+ "`CHRMT`.`DESCR`, `CHRMT`.`REGXT`, `CHRMT`.`MDTEXT`,  "
+					 + "`CHRMT`.`LNTXT`, `CHRMT`.`SRTXT`  "
+					 + " FROM `BOOKINGDB`.`UCHMT`    "    
+					 + " left outer join      " 
+					 + " `BOOKINGDB`.`CHRMT`  "       
+					 + " on 	   "
+					 + "  `UCHMT`.`CHRID` = `CHRMT`.`CHRID`  ");
+			rs=dbcon.stm.executeQuery("SELECT `UCHMT`.`USRID`, `CHRMT`.`CHRID`, `UCHMT`.`CHRID`, "
+					+ "`UCHMT`.`VALUE`,  "
+					+ "`CHRMT`.`DESCR`, `CHRMT`.`REGXT`, `CHRMT`.`MDTEXT`,  "
+					 + "`CHRMT`.`LNTXT`, `CHRMT`.`SRTXT`  "
+					 + " FROM `BOOKINGDB`.`UCHMT`    "    
+					 + " left outer join      " 
+					 + " `BOOKINGDB`.`CHRMT`  "       
+					 + " on 	   "
+					 + "  `UCHMT`.`CHRID` = `CHRMT`.`CHRID`  ");
+			return Convertor.convertToJSON(rs);
+
+		}
+		catch(Exception ex){
+			System.out.println("Error from RHOD "+ex +"==dbcon=="+dbcon);
+			return null;
+		}
 	}
 
 	private JSONArray getVendorHeaderList(HashMap myInfo, ConnectionManager dbcon) {
