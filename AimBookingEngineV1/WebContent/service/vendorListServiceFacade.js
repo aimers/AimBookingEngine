@@ -36,6 +36,13 @@
 					return oData.results;
 				};
 			}
+			if(fnPath =="vendorTileCatList"){
+
+				sServicePath = encodeURI(evidencePackage.global.config.endPoint.vendorTileCatList);
+				extractListVendor = function(oData) {
+					return oData.results;
+				};
+			}
 			var _fnSuccess = function(){
 			};
 			this._get(sServicePath, sModelPath,undefined, _fnSuccess, fnError, extractListVendor);

@@ -1,44 +1,36 @@
 {
     "results": [
         {
-            "ENTCATID": 1,
-            "SNAME" : "Dentist",
-            "SICON" : "Medical_icons-24-64.png"
+            "ENTID": 1,
+            "DESCR" : "Dentist"
         },
                 {
-            "ENTCATID": 2,
-            "SNAME" : "Homeopath",
-            "SICON" : "Medical_icons-24-64.png"
+            "ENTID": 2,
+            "DESCR" : "Homeopath"
         },
                 {
-            "ENTCATID": 3,
-            "SNAME" : "Neurologist",
-            "SICON" : "Medical_icons-24-64.png"
+            "ENTID": 3,
+            "DESCR" : "Neurologist"
         },
                 {
-            "ENTCATID": 4,
-            "SNAME" : "Surgeon",
-            "SICON" : "Medical_icons-24-64.png"
+            "ENTID": 4,
+            "DESCR" : "Surgeon"
         },
                 {
-            "ENTCATID": 5,
-            "SNAME" : "Coroners",
-            "SICON" : "Medical_icons-24-64.png"
+            "ENTID": 5,
+            "DESCR" : "Coroners"
         },
                 {
-            "ENTCATID": 6,
-            "SNAME" : "Urology",
-            "SICON" : "Medical_icons-24-64.png"
+            "ENTID": 6,
+            "DESCR" : "Urology"
         },
                 {
-            "ENTCATID": 7,
-            "SNAME" : "Radiology",
-            "SICON" : "Medical_icons-24-64.png"
+            "ENTID": 7,
+            "DESCR" : "Radiology"
         },
                 {
-            "ENTCATID": 8,
-            "SNAME" : "Pediatrics",
-            "SICON" : "Medical_icons-24-64.png"
+            "ENTID": 8,
+            "DESCR" : "Pediatrics"
         }       
         
       ]

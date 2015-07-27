@@ -11,16 +11,16 @@
 							<HBox width="100%" >
 								<VBox width="49%">
 									<VBox justifyContent="Center" class="vendorAddress">
-										<Label text="{DSPNM}" />
+										<Label text="{PRFIX}{DSPNM}" />
 									</VBox>
 									<HBox alignItems="Center" class="vendorAddress">
-										<Text text="{QUALIFICATION} , {INSTITUTE}" />
+										<Text text="{UQNM} , {CLNM}" />
 									</HBox>
 									<HBox alignItems="Center" class="vendorAddress">
-										<Text text="{AREA} , {CITY}" />
+										<Text text="{LOCLT} , {CTYNM}" />
 									</HBox>
 									<HBox alignItems="Center" items="{PIC_DATA}" class="imgLabelBox">
-										<Image width="70%" src="assets/img/{path:'IMGURL'}" />
+										<Image width="70%" src="assets/img/{path:'USIMGURL'}" />
 									</HBox>
 								</VBox>
 								<VBox width="49%">
@@ -28,12 +28,12 @@
 										<HBox width="50%" alignItems="Center" class="vendorRecommend"
 											justifyContent="End">
 											<Image src="assets/img/ecommerce_86-32.png" width="70%" />
-											<Text text="{RECOMMEND} Recommendations" />
+											<Text text="{RATIN} Recommendations" />
 										</HBox>
 										<HBox width="50%" alignItems="Center" class="vendorRecommend"
 											justifyContent="End">
 											<Image src="assets/img/Location-Pointer.png" width="70%" />
-											<Text text="{DISTANCE_AWAY} KMs away" />
+											<Text text="{VUDV} KMs away" />
 										</HBox>
 									</HBox>
 									<VBox alignItems="End">

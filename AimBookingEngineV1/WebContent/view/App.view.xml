@@ -1,24 +1,27 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" xmlns:u="sap.ui.unified" controllerName="sap.ui.medApp.view.App"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Shell id="myShell" appWidthLimited="true" class="mainShell" >
-		<app>
-			<VBox height="100%" width="100%">
-				<HBox width="100%" height="60px" justifyContent="Center">
-					<HBox alignItems="Center" class="mAppHeaderTitle" width="50%"
-						justifyContent="Start">
-						<Text class="spaceLeft" text="{i18n>HEADER_TITLE}" />
-					</HBox>
-					<HBox alignItems="Center" class="mAppHeaderTitle" width="50%"
-						justifyContent="End">
-							<Image class="spaceRight" src="assets/img/emblem-favorite.png" />
-							<Image class="spaceRight" src="assets/img/history-add.png" />
-							<Link class="spaceRight" text="{i18n>LOGIN}" press="handleLogin"/>
-					</HBox>
-				</HBox>
-				<VBox id="appControl" width="100%" height="90%">
-				</VBox>
-			</VBox>
-		</app>
-	</Shell>
+	<u:Shell id="myShell" class="mainShell"
+		icon="assets/img/logo.png">
+		<u:headItems>
+			<u:ShellHeadItem tooltip="Home" icon="sap-icon://home"
+				press="handelHomeBtn" />
+		</u:headItems>
+		<u:headEndItems>
+			<u:ShellHeadItem icon="sap-icon://favorite" tooltip="Logoff"
+				press="handleLogoffPress" />
+		</u:headEndItems>
+		<u:headEndItems>
+			<u:ShellHeadItem icon="sap-icon://customer-history"
+				tooltip="Logoff" press="handleLogoffPress" />
+		</u:headEndItems>
+		<u:headEndItems>
+			<u:ShellHeadItem icon="sap-icon://log" tooltip="Logoff"
+				press="handleLogoffPress" />
+		</u:headEndItems>
+		<u:user>
+			<u:ShellHeadUserItem image="sap-icon://person-placeholder"
+				username="{/fullName}" press="handleUserItemPressed" />
+		</u:user>
+	</u:Shell>
 </core:View>

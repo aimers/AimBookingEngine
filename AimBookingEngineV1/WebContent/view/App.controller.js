@@ -6,12 +6,11 @@ sap.ui.controller("sap.ui.medApp.view.App", {
 		 * For getting user information
 		 */
 		var oModel = new sap.ui.model.json.JSONModel();
-		//oModel.loadData("/sap/bc/ui2/start_up");
-		console.log(oModel);
-		if(!this.oLoadingDialog){
+
+		/*if(!this.oLoadingDialog){
 			this.oLoadingDialog = new sap.m.BusyDialog({text: "Please Wait Data is Loading..."});
 			console.log(this.oLoadingDialog);
-		}
+		}*/
 		this.fullWidthApp = new sap.m.App("idAppControl", {
 			defaultTransitionName: "slide"
 		});
@@ -29,7 +28,7 @@ sap.ui.controller("sap.ui.medApp.view.App", {
 
 	},
 	_handleRouteMatched: function(oEvent) {
-		this.getView().byId('appControl').removeAllItems();
+		this.getView().byId('myShell').removeAllContent();
 		var scope = oEvent.getParameter("config").name;
 		var fullWidthRoutes = [
 		                       "_homeTiles",
@@ -38,12 +37,11 @@ sap.ui.controller("sap.ui.medApp.view.App", {
 		var bIsFullWidthRoute = (jQuery.inArray(scope, fullWidthRoutes) >= 0);
 		var bIsHomeRoute = (scope === "_homeTiles");
 		var app = (bIsFullWidthRoute) ? this.fullWidthApp : this.splitApp;
-		this.getView().byId('appControl').addItem(app);
-		this.getView().byId('myShell').setAppWidthLimited(!bIsHomeRoute);
-
+		this.getView().byId('myShell').addContent(app);
+		//this.getView().byId('myShell').setAppWidthLimited(!bIsHomeRoute);
 	},  
 	onAfterRendering : function(){
-		this.feedBackLevel = "NA";
+
 	},
 	handelHomeBtn: function(evt){
 		this._oRouter.navTo('_homeTiles');
@@ -56,6 +54,4 @@ sap.ui.controller("sap.ui.medApp.view.App", {
 		var oService = new oDataService();
 		oService.handleLogout(this);
 	},
-
-
 });

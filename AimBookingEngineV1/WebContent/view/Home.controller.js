@@ -10,13 +10,19 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
 		//getting Router
 		this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 		this.router = sap.ui.core.UIComponent.getRouterFor(this);
-
+		this.oModel = new sap.ui.model.json.JSONModel();
 		this.loadListCategory();
-		this.getView().setModel(this._vendorListServiceFacade.oModel);
+		this.loadListTileCategory();
+		this.getView().setModel(this.oModel);
 	},
 	loadListCategory:function(facade){
 		this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(this.oModel);
 		this._vendorListServiceFacade.getRecords(null, null, "/vendorsCategory", "vendorCatList" , "");
+
+	},
+	loadListTileCategory:function(facade){
+		this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(this.oModel);
+		this._vendorListServiceFacade.getRecords(null, null, "/vendorsTileCategory", "vendorTileCatList" , "");
 
 	},
 	/*

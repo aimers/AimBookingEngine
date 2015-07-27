@@ -6,12 +6,12 @@
     sap.ui.base.Object.extend("sap.ui.medApp.service.BaseServiceFacade", /** @lends app.home.service.BaseServiceFacade */
     {
 
-        constructor : function() {
+        constructor : function(oModel) {
             // call parent constructor
             sap.ui.base.Object.apply(this, arguments);
 
             // Initialize the member attributes
-            this.oModel = new sap.ui.model.json.JSONModel();
+            this.oModel = oModel;
         },
 
         _setCSRFTokenToHeader : function(xhr) {
@@ -20,7 +20,7 @@
 
         _get : function(sServicePath, sModelPath,sMeasurePath, fnSuccess, fnError, fnGetData) {
             $.sap.log.debug("services.BaseServiceFacade->_get");
-            var oModel = this.oModel;
+            var _this = this;
             var _fnSuccess = function(oData) {
                 var oPostProcessedData = {};
                 if (fnGetData) {
@@ -28,9 +28,9 @@
                 } else {
                     oPostProcessedData = oData;
                 }
-                oModel.setProperty(sModelPath, oPostProcessedData);
+                _this.oModel.setProperty(sModelPath, oPostProcessedData);
                 if(sMeasurePath){
-                	  oModel.setProperty(sMeasurePath, oPostProcessedData[sMeasurePath.slice(1)]);
+                	_this.oModel.setProperty(sMeasurePath, oPostProcessedData[sMeasurePath.slice(1)]);
                 }
               
                 if (fnSuccess) {

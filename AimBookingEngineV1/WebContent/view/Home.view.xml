@@ -1,142 +1,145 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="sap.ui.medApp.view.Home"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page enableScrolling="false" showHeader="false" backgroundDesign="Solid">
-		<content>
-			<VBox width="100%" height="90%" alignItems="Center">
-				<VBox width="60%" height="100%" alignItems="Center">
-					<HBox justifyContent="Center" alignItems="End" width="100%"
-						height="15%">
-						<Image width="40px" height="40px" class="spaceLeft"
-							src="assets/img/location.png" />
-						<Input class="inputLocation" id="productInput" type="Text"
-							placeholder="Landmark, Locality , City .." showSuggestion="true"
-							suggestionRows="{/ProductCollection}">
-							<suggestionRows>
-								<ColumnListItem>
-									<cells>
-										<Label text="{Name}" />
-										<Label text="{ProductId}" />
-										<Label text="{SupplierName}" />
-										<Label text="{Price} {CurrencyCode}" />
-									</cells>
-								</ColumnListItem>
-							</suggestionRows>
-						</Input>
-					</HBox>
-					<HBox justifyContent="Center" alignItems="Center" width="100%"
-						height="10%">
-						<MultiComboBox class="inputLocation"
-							selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish"
-							width="500px" items="{path: '/vendorsCategory', sorter: { path: 'SNAME' }}">
-							<core:Item key="{ENTCATID}" text="{SNAME}" />
-						</MultiComboBox>
-						<Button class="buttonDesign" text="{i18n>SEARCH}" />
-					</HBox>
-					<VBox justifyContent="Center" alignItems="Center" class="homeContent"
-						height="65%">
-						<HBox width="100%" height="35%">
-							<VBox alignItems="Center" width="35%" height="100%"
-								justifyContent="Center">
-								<VBox width="100%" height="70%" justifyContent="Center" alignItems="Center">
-									<Image width="3rem" height="3rem" press="handleSearchKeyword"
-										src="assets/img/Medical_icons-24-64.png" />
-								</VBox>
-								<VBox width="100%" height="30%" alignItems="Center">
-									<Text text="Dentist" />
-								</VBox>
-							</VBox>
-							<VBox alignItems="Center" width="35%" height="100%"
-								justifyContent="Center">
-								<VBox width="100%" height="70%" justifyContent="Center" alignItems="Center">
-									<Image width="3rem" height="3rem"
-										src="assets/img/Medical_icons-24-64.png" />
-								</VBox>
-								<VBox width="100%" height="30%" alignItems="Center">
-									<Text text="Dentist" />
-								</VBox>
-							</VBox>
-							<VBox alignItems="Center" width="30%" height="100%"
-								justifyContent="Center">
-								<VBox width="100%" height="70%" justifyContent="Center" alignItems="Center">
-									<Image width="3rem" height="3rem"
-										src="assets/img/Medical_icons-24-64.png" />
-								</VBox>
-								<VBox width="100%" height="30%" alignItems="Center">
-									<Text text="Dentist" />
-								</VBox>
-							</VBox>
-						</HBox>
-						<HBox width="100%" height="35%">
-							<VBox alignItems="Center" width="35%" height="100%"
-								justifyContent="Center">
-								<VBox width="100%" height="70%" justifyContent="Center" alignItems="Center">
-									<Image width="3rem" height="3rem"
-										src="assets/img/Medical_icons-24-64.png" />
-								</VBox>
-								<VBox width="100%" height="30%" alignItems="Center">
-									<Text text="Dentist" />
-								</VBox>
-							</VBox>
-							<VBox alignItems="Center" width="35%" height="100%"
-								justifyContent="Center">
-								<VBox width="100%" height="70%" justifyContent="Center" alignItems="Center">
-									<Image width="3rem" height="3rem"
-										src="assets/img/Medical_icons-24-64.png" />
-								</VBox>
-								<VBox width="100%" height="30%" alignItems="Center">
-									<Text text="Dentist" />
-								</VBox>
-							</VBox>
-							<VBox alignItems="Center" width="30%" height="100%"
-								justifyContent="Center">
-								<VBox width="100%" height="70%" justifyContent="Center" alignItems="Center">
-									<Image width="3rem" height="3rem"
-										src="assets/img/Medical_icons-24-64.png" />
-								</VBox>
-								<VBox width="100%" height="30%" alignItems="Center">
-									<Text text="Dentist" />
-								</VBox>
-							</VBox>
-						</HBox>
-						<HBox width="100%" height="30%">
-							<VBox alignItems="Center" width="35%" height="100%"
-								justifyContent="Center">
-								<VBox width="100%" height="70%" justifyContent="Center" alignItems="Center">
-									<Image width="3rem" height="3rem"
-										src="assets/img/Medical_icons-24-64.png" />
-								</VBox>
-								<VBox width="100%" height="30%" alignItems="Center">
-									<Text text="Dentist" />
-								</VBox>
-							</VBox>
-							<VBox alignItems="Center" width="35%" height="100%"
-								justifyContent="Center">
-								<VBox width="100%" height="70%" justifyContent="Center" alignItems="Center">
-									<Image width="3rem" height="3rem"
-										src="assets/img/Medical_icons-24-64.png" />
-								</VBox>
-								<VBox width="100%" height="30%" alignItems="Center">
-									<Text text="Dentist" />
-								</VBox>
-							</VBox>
-							<VBox alignItems="Center" width="30%" height="100%"
-								justifyContent="Center">
-
-								<Text text="More" />
-							</VBox>
-						</HBox>
+	<VBox width="100%" height="100%" alignItems="Center">
+		<VBox width="60%" height="100%" alignItems="Center">
+			<HBox justifyContent="Center" alignItems="End" width="100%"
+				height="15%">
+				<Image width="40px" height="40px" class="spaceLeft"
+					src="assets/img/location.png" />
+				<Input class="inputLocation" id="productInput" type="Text"
+					placeholder="Landmark, Locality , City .." showSuggestion="true"
+					suggestionRows="{/ProductCollection}">
+					<suggestionRows>
+						<ColumnListItem>
+							<cells>
+								<Label text="{Name}" />
+								<Label text="{ProductId}" />
+								<Label text="{SupplierName}" />
+								<Label text="{Price} {CurrencyCode}" />
+							</cells>
+						</ColumnListItem>
+					</suggestionRows>
+				</Input>
+			</HBox>
+			<HBox justifyContent="Center" alignItems="Center" width="100%"
+				height="10%">
+				<MultiComboBox class="inputLocation" selectionChange="handleSelectionChange"
+					selectionFinish="handleSelectionFinish" width="500px"
+					items="{path: '/vendorsCategory', sorter: { path: 'DESCR' }}">
+					<core:Item key="{ENTID}" text="{DESCR}" />
+				</MultiComboBox>
+				<Button class="buttonDesign" text="{i18n>SEARCH}" />
+			</HBox>
+			<VBox justifyContent="Center" alignItems="Center" class="homeContent"
+				height="65%">
+				<HBox width="100%" height="35%">
+					<VBox alignItems="Center" width="35%" height="100%"
+						justifyContent="Center">
+						<VBox width="100%" height="70%" justifyContent="Center"
+							alignItems="Center">
+							<Image width="3rem" height="3rem" press="handleSearchKeyword"
+								src="assets/img/tiles/{/vendorsTileCategory/0/SICON}" />
+						</VBox>
+						<VBox width="100%" height="30%" alignItems="Center">
+							<Text text="{/vendorsTileCategory/0/DESCR}" />
+						</VBox>
 					</VBox>
-					<HBox justifyContent="Center" alignItems="Center" width="100%"
-						height="10%">
-						<Text text="Download App" />
-						<Text class="spaceLeft" text="|" />
-						<Image width="40px" height="40px" class="spaceLeft"
-							src="assets/img/1434895655_android.png" />
-					</HBox>
-				</VBox>
-			</VBox>
-		</content>
+					<VBox alignItems="Center" width="35%" height="100%"
+						justifyContent="Center">
+						<VBox width="100%" height="70%" justifyContent="Center"
+							alignItems="Center">
+							<Image width="3rem" height="3rem"
+								src="assets/img/tiles/{/vendorsTileCategory/1/SICON}" press="handleSearchKeyword" />
+						</VBox>
+						<VBox width="100%" height="30%" alignItems="Center">
+							<Text text="{/vendorsTileCategory/1/DESCR}" />
+						</VBox>
+					</VBox>
+					<VBox alignItems="Center" width="30%" height="100%"
+						justifyContent="Center">
+						<VBox width="100%" height="70%" justifyContent="Center"
+							alignItems="Center">
+							<Image width="3rem" height="3rem"
+								src="assets/img/tiles/{/vendorsTileCategory/2/SICON}" press="handleSearchKeyword" />
+						</VBox>
+						<VBox width="100%" height="30%" alignItems="Center">
+							<Text text="{/vendorsTileCategory/2/DESCR}" />
+						</VBox>
+					</VBox>
+				</HBox>
+				<HBox width="100%" height="35%">
+					<VBox alignItems="Center" width="35%" height="100%"
+						justifyContent="Center">
+						<VBox width="100%" height="70%" justifyContent="Center"
+							alignItems="Center">
+							<Image width="3rem" height="3rem"
+								src="assets/img/tiles/{/vendorsTileCategory/3/SICON}" press="handleSearchKeyword" />
+						</VBox>
+						<VBox width="100%" height="30%" alignItems="Center">
+							<Text text="{/vendorsTileCategory/3/DESCR}" />
+						</VBox>
+					</VBox>
+					<VBox alignItems="Center" width="35%" height="100%"
+						justifyContent="Center">
+						<VBox width="100%" height="70%" justifyContent="Center"
+							alignItems="Center">
+							<Image width="3rem" height="3rem"
+								src="assets/img/tiles/{/vendorsTileCategory/4/SICON}" press="handleSearchKeyword" />
+						</VBox>
+						<VBox width="100%" height="30%" alignItems="Center">
+							<Text text="{/vendorsTileCategory/4/DESCR}" />
+						</VBox>
+					</VBox>
+					<VBox alignItems="Center" width="30%" height="100%"
+						justifyContent="Center">
+						<VBox width="100%" height="70%" justifyContent="Center"
+							alignItems="Center">
+							<Image width="3rem" height="3rem"
+								src="assets/img/tiles/{/vendorsTileCategory/5/SICON}" press="handleSearchKeyword" />
+						</VBox>
+						<VBox width="100%" height="30%" alignItems="Center">
+							<Text text="{/vendorsTileCategory/5/DESCR}" />
+						</VBox>
+					</VBox>
+				</HBox>
+				<HBox width="100%" height="30%">
+					<VBox alignItems="Center" width="35%" height="100%"
+						justifyContent="Center">
+						<VBox width="100%" height="70%" justifyContent="Center"
+							alignItems="Center">
+							<Image width="3rem" height="3rem"
+								src="assets/img/tiles/{/vendorsTileCategory/6/SICON}" press="handleSearchKeyword" />
+						</VBox>
+						<VBox width="100%" height="30%" alignItems="Center">
+							<Text text="{/vendorsTileCategory/6/DESCR}" />
+						</VBox>
+					</VBox>
+					<VBox alignItems="Center" width="35%" height="100%"
+						justifyContent="Center">
+						<VBox width="100%" height="70%" justifyContent="Center"
+							alignItems="Center">
+							<Image width="3rem" height="3rem"
+								src="assets/img/tiles/{/vendorsTileCategory/7/SICON}" press="handleSearchKeyword" />
+						</VBox>
+						<VBox width="100%" height="30%" alignItems="Center">
+							<Text text="{/vendorsTileCategory/7/DESCR}" />
+						</VBox>
+					</VBox>
+					<VBox alignItems="Center" width="30%" height="100%"
+						justifyContent="Center">
 
-	</Page>
+						<Text text="More" />
+					</VBox>
+				</HBox>
+			</VBox>
+			<HBox justifyContent="Center" alignItems="Center" width="100%"
+				height="10%">
+				<Text text="Download App" />
+				<Text class="spaceLeft" text="|" />
+				<Image width="40px" height="40px" class="spaceLeft"
+					src="assets/img/1434895655_android.png" />
+			</HBox>
+		</VBox>
+	</VBox>
 </core:View>
