@@ -1,4 +1,3 @@
-
 -- MySQL dump 10.13  Distrib 5.6.24, for osx10.8 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bookingdb
