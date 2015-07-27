@@ -6,6 +6,16 @@
 	.homeContent {
 		width: 60%;
 	}
+	.homeTileIcons {
+		width: 3rem;
+		height: 3rem;
+	}
+	.inputLocation .sapMInputBaseInner{
+	    width:20rem;
+	}
+	.homeTileText {
+	    font-size:0.875rem;
+	}
 }
 
 @media only screen and (max-width: 640px) {
@@ -16,8 +26,21 @@
 	.homeContent {
 		width: 100%;
 	}
+	.homeTileIcons {
+		width: 2rem;
+		height: 2rem;
+	}
+	.homeTileText {
+	    font-size:0.675rem;
+	}
+	.inputLocation .sapMInputBaseInner{
+	    width:12rem;
+	}
 }
-
+.spaceAround {
+	padding-top:2rem;
+	padding-bottom:1rem;
+}
 .mainShell .sapMShellCentralBox {
 	width: 1200px;
 }
@@ -32,7 +55,10 @@
 	-webkit-box-shadow: inset 0 -0.0625em #dff2f3;
 	box-shadow: inset 0 -0.0625em #dff2f3;
 }
-
+.filterLabel.sapMLabel {
+	padding: 1rem 0 1rem 0.5rem;
+    font-weight:bold;
+}
 .sapMAppBG.sapMGlobalBackgroundImage {
 	background-color: #ffffff;
 }
@@ -48,8 +74,8 @@
 }
 
 .sapMInputBaseInner:not (.sapMInputBaseReadonlyInner ):not (.sapMInputBaseStateInner
-	):focus, .sapMInputBaseInner:not (.sapMInputBaseReadonlyInner ):not (.sapMInputBaseStateInner
-	):not (.sapMInputBaseDisabledInner ):hover {
+	 ):focus, .sapMInputBaseInner:not (.sapMInputBaseReadonlyInner ):not (.sapMInputBaseStateInner
+	 ):not (.sapMInputBaseDisabledInner ):hover {
 	border-color: #1abc9c;
 }
 
@@ -102,4 +128,14 @@
 .appointment {
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-bottom:10px;
+	border-bottom:3px solid #cccccc;
+}
+.weekDayFilter .sapMSegBBtn {
+    padding-left:0.20rem;
+    padding-right:0.20rem;	
+}
+.clinicImages {
+	max-width:500px;
+	min-width:200px;
 }

@@ -24,7 +24,7 @@ sap.ui.core.UIComponent.extend("sap.ui.medApp.Component", {
 			          {
 			        	  pattern : "searchList",
 			        	  name : "_searchVendors",
-			        	  view : "VendorList",
+			        	  view : "VendorFilter",
 			        	  viewLevel: 0,
 			        	  targetAggregation: "masterPages",
 			        	  targetControl : "idSplitAppControl",
@@ -65,6 +65,7 @@ sap.ui.core.UIComponent.extend("sap.ui.medApp.Component", {
 		// 1. some very generic requires
 		jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
 		jQuery.sap.require("sap.ui.core.routing.Router");
+	    jQuery.sap.require("sap.ui.medApp.global.util");
 
 		//1.a Loading MyRouter
 

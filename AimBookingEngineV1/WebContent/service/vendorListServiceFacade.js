@@ -17,28 +17,35 @@
 			var extractListVendor;
 			if(fnPath =="vendorDataList"){
 
-				sServicePath = encodeURI(evidencePackage.global.config.endPoint.vendorDataList+param);
+				sServicePath = encodeURI(medApp.global.config.endPoint.vendorDataList+param);
 				extractListVendor = function(oData) {
 					return oData.results;
 				};
 			}
 			if(fnPath =="vendorDataDetail"){
 
-				sServicePath = encodeURI(evidencePackage.global.config.endPoint.vendorDataDetail+param);
+				sServicePath = encodeURI(medApp.global.config.endPoint.vendorDataDetail+param);
 				extractListVendor = function(oData) {
 					return oData.results;
 				};
 			}
 			if(fnPath =="vendorCatList"){
 
-				sServicePath = encodeURI(evidencePackage.global.config.endPoint.vendorCatList);
+				sServicePath = encodeURI(medApp.global.config.endPoint.vendorCatList);
 				extractListVendor = function(oData) {
 					return oData.results;
 				};
 			}
 			if(fnPath =="vendorTileCatList"){
 
-				sServicePath = encodeURI(evidencePackage.global.config.endPoint.vendorTileCatList);
+				sServicePath = encodeURI(medApp.global.config.endPoint.vendorTileCatList);
+				extractListVendor = function(oData) {
+					return oData.results;
+				};
+			}
+			if(fnPath =="vendorsAvailableTime"){
+
+				sServicePath = encodeURI(medApp.global.config.endPoint.vendorAvailbleTime);
 				extractListVendor = function(oData) {
 					return oData.results;
 				};

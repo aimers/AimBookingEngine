@@ -1,9 +1,9 @@
-evidencePackage = {};
-evidencePackage.global = {};
-evidencePackage.global.config={};
-evidencePackage.global.config.applicationMode = false;
+medApp = {};
+medApp.global = {};
+medApp.global.config={};
+medApp.global.config.applicationMode = false;
 
-evidencePackage.global.config.development = {
+medApp.global.config.development = {
 		base : "",
 		endPoints: {
 			vendorDataList :"assets/data/vendorsData.json",
@@ -13,7 +13,7 @@ evidencePackage.global.config.development = {
 		}
 };
 
-evidencePackage.global.config.production = {
+medApp.global.config.production = {
 		base: "",
 		endPoints: {
 			vendorDataList :"assets/data/vendorsData.json",
@@ -23,11 +23,11 @@ evidencePackage.global.config.production = {
 		}
 };
 
-evidencePackage.global.config.endPoint = function() {
+medApp.global.config.endPoint = function() {
 	var obj = {};
-	var mode = evidencePackage.global.config.applicationMode ? "production" : "development";
-	for(var index in evidencePackage.global.config[mode]["endPoints"]) {
-		obj[index] = evidencePackage.global.config[mode]["base"] + evidencePackage.global.config[mode]["endPoints"][index];
+	var mode = medApp.global.config.applicationMode ? "production" : "development";
+	for(var index in medApp.global.config[mode]["endPoints"]) {
+		obj[index] = medApp.global.config[mode]["base"] + medApp.global.config[mode]["endPoints"][index];
 	}
 	return obj;
 }();

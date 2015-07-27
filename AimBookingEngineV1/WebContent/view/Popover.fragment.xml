@@ -1,26 +1,19 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:c="sap.ui.commons">
-	<ResponsivePopover showHeader="false" class="sapUiPopupWithPaddingNew"
-		placement="Top">
+	<Dialog  showHeader="false" width="700px">
 		<content>
-			<VBox class="popupContent">
-				<VBox class="popupContentInner">
-					<Link text="Settings" />
-					<Link text="Help"></Link>
-				</VBox>
-				<VBox class="popupContentInner">
-					<DateTimeInput type="Date" id="dateTimeInput" />
-					<Link text="Filter 1" />
-					<Link text="Filter 2" />
-					<Link text="Filter 3" />
-					<Link text="Filter 4" />
-				</VBox>
-				<VBox class="popupContentInner">
-					<Link text="EID" />
-					<Link text="LUMIRA" />
-					<Link text="TABLEAU" />
-				</VBox>
-			</VBox>
+		<Carousel class="sapUiContentPadding" width="70%">
+			<pages>
+				<Image src="assets/img/clinic1.jpg" class="clinicImages" densityAware="false"/>
+				<Image src="assets/img/clinic2.jpg" class="clinicImages"  densityAware="false"/>
+				<Image src="assets/img/clinic3.jpeg" class="clinicImages"  densityAware="false"/>
+				<Image src="assets/img/clinic4.jpg" class="clinicImages"  densityAware="false"/>
+			</pages>
+		</Carousel>
 		</content>
-	</ResponsivePopover>
+		<beginButton>
+		  <Button text="Close" press="HandleCloseDialog"></Button>
+		</beginButton>
+	</Dialog>
+   
 </core:FragmentDefinition>
