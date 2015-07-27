@@ -57,7 +57,58 @@ public class VendorCommand extends aimCommand {
 			JSONArray bookedslots	= getBookedSlots(dbcon, rulid, etyid, etcid, entid, stDate, enDate);
 			return markSlotStatus(timeslots,bookedslots);
 		}else{
-			return new JSONArray();
+			JSONArray ruleCharValues = getRuleChars(dbcon, userid, rulid, etyid, etcid, entid, stDate, enDate);
+			return ruleCharValues;
+			
+		}
+	}
+
+	private JSONArray getRuleChars(ConnectionManager dbcon, String userid, String rulid, String etyid, String etcid,
+			String entid, String stDate, String enDate) {
+
+		JSONArray ruleDetails = new JSONArray();
+		ResultSet rs=null;
+
+		String query = "SELECT `vgrdt`.`VGDID`, "+
+				" 	  `vgrdt`.`CHRID`, "+
+				"     `vgrdt`.`UTYID`, "+
+				"     `vgrdt`.`USRID`, "+
+				"     `vgrdt`.`ETCID`, "+
+				"     `vgrdt`.`ETYID`, "+
+				"     `vgrdt`.`ACTIV`, "+
+				"     `vgrdt`.`RULID`, "+
+				"     `vgrdt`.`ENTID` "+
+				"     FROM `bookingdb`.`vgrdt` where `vgrdt`.`USRID` = \""+userid+"\" and "
+						+" `vgrdt`.`ETYID` = \""+etyid+"\" ";
+
+		if(!etcid.equals("null")){
+			query += " and `vgrdt`.`ETCID` = \""+etcid+"\" ";
+			if(!entid.equals("null")){
+				query += " and `vgrdt`.`ENTID` = \""+entid+"\" ";
+			}
+		}
+
+		try{
+			if(dbcon == null){
+				try{
+					dbcon.Connect("MYSQL");
+				}
+				catch(Exception ex){
+					System.out.println(""+ex);
+				}
+			}
+			//TODO: ENTID must be checked against VEMP
+			System.out.println(query);
+			rs=dbcon.stm.executeQuery(query);
+			ruleDetails = Convertor.convertToJSON(rs);
+
+			return ruleDetails;
+		}
+
+
+		catch(Exception ex){
+			System.out.println("Error from VENDOR Rule Chars Command "+ex +"==dbcon=="+dbcon);
+			return ruleDetails;
 		}
 	}
 
@@ -217,6 +268,10 @@ public class VendorCommand extends aimCommand {
 	}
 
 	private JSONArray getVendorRules(HashMap myInfo, ConnectionManager dbcon) {
+		// TODO: Add skip/top
+		String etyid =  myInfo.get("etyid")+"";
+		String etcid =  myInfo.get("etcid")+"";
+		String entid =  myInfo.get("entid")+"";
 		ResultSet rs=null;
 		try{
 			if(dbcon == null){
@@ -227,8 +282,8 @@ public class VendorCommand extends aimCommand {
 					System.out.println(""+ex);
 				}
 			}
-			//TODO: ENTID must be checked against VEMP
-			System.out.println(" SELECT "+
+			
+			String query = " SELECT "+
 					" `vrumt`.`VRMID`, "+
 					" `vrumt`.`RULID`, "+
 					" `vrumt`.`USRID`, "+
@@ -237,32 +292,35 @@ public class VendorCommand extends aimCommand {
 					" `vrumt`.`ETYID`, "+
 					" `vrumt`.`ETCID`, "+
 					" `vrumt`.`ENTID` "+
-					" FROM `bookingdb`.`vrumt` left outer join `bookingdb`.`rulmt` on  "+
+					" FROM `bookingdb`.`vrumt` "+
+					" left outer join `bookingdb`.`rulmt` on  "+
 					" `vrumt`.`RULID` = `rulmt`.`RULID`  "+
-					" where `rulmt`.`ACTIV` = 1 and `vrumt`.`ACTIV` = 1 order by `vrumt`.`USRID` ");
-			rs=dbcon.stm.executeQuery(" SELECT "+
-					" `vrumt`.`VRMID`, "+
-					" `vrumt`.`RULID`, "+
-					" `vrumt`.`USRID`, "+
-					" `rulmt`.`RSTXT`, "+
-					" `rulmt`.`DESCR`, "+
-					" `vrumt`.`ETYID`, "+
-					" `vrumt`.`ETCID`, "+
-					" `vrumt`.`ENTID` "+
-					" FROM `bookingdb`.`vrumt` left outer join `bookingdb`.`rulmt` on  "+
-					" `vrumt`.`RULID` = `rulmt`.`RULID`  "+
-					" where `rulmt`.`ACTIV` = 1 and `vrumt`.`ACTIV` = 1 order by `vrumt`.`USRID` ");
+					" where `rulmt`.`ACTIV` = 1 and `vrumt`.`ACTIV` = 1  and "
+					+ " `VRUMT`.`ETYID` in (\""
+					+entid+"\") ";
+			
+			if(!etcid.equals("null")){
+				query += " and `VRUMT`.`ETCID` in (\""+etcid+"\") ";
+				if(!entid.equals("null")){
+					query += " and `VRUMT`.`ENTID` in (\""+entid+"\") ";
+				}
+			}
+			System.out.println(query);
+			rs=dbcon.stm.executeQuery(query);
 			return Convertor.convertToJSON(rs);
 
 		}
 		catch(Exception ex){
-			System.out.println("Error from VENDOR Command "+ex +"==dbcon=="+dbcon);
+			System.out.println("Error from VENDOR Rules Command "+ex +"==dbcon=="+dbcon);
 			return null;
 		}
 	}
 
 	private JSONArray getVendorAddressList(HashMap myInfo, ConnectionManager dbcon) {
 		// TODO: Add skip/top
+		String etyid =  myInfo.get("etyid")+"";
+		String etcid =  myInfo.get("etcid")+"";
+		String entid =  myInfo.get("entid")+"";
 		ResultSet rs=null;
 		try{
 			if(dbcon == null){
@@ -273,58 +331,48 @@ public class VendorCommand extends aimCommand {
 					System.out.println(""+ex);
 				}
 			}
-			System.out.println(
-					" SELECT `usrmt`.`USRID`, "+
-							" `UADMP`.`PRIMR`, "+
-							" `ADDMT`.`STRET`, "+
-							" `ADDMT`.`LNDMK`, "+
-							" `ADDMT`.`LOCLT`, "+
-							" `ADDMT`.`CTYID`, "+
-							" `ADDMT`.`PINCD`, "+
-							" `ADDMT`.`LONGT`, "+
-							" `ADDMT`.`LATIT` "+
-							" FROM `BOOKINGDB`.`usrmt` "+ 
-							"  left outer join "+
-							" `BOOKINGDB`.`UETMP` "+
-							"  on "+
-							" `usrmt`.`USRID` = `UETMP`.`USRID` "+
-							" left outer join "+
-							" `BOOKINGDB`.`UADMP` "+
-							" on "+
-							" `usrmt`.`USRID` = `UADMP`.`USRID` "+
-							" left outer join "+
-							" `BOOKINGDB`.`ADDMT` "+
-							" on "+
-							" `ADDMT`.`ADRID` = `UADMP`.`ADRID` "+
-					" where `UETMP`.ACTIV = 1 and `UETMP`.UTYID = 2 ");
-			rs=dbcon.stm.executeQuery(
-					" SELECT `usrmt`.`USRID`, "+
-							" `UADMP`.`PRIMR`, "+
-							" `ADDMT`.`STRET`, "+
-							" `ADDMT`.`LNDMK`, "+
-							" `ADDMT`.`LOCLT`, "+
-							" `ADDMT`.`CTYID`, "+
-							" `ADDMT`.`PINCD`, "+
-							" `ADDMT`.`LONGT`, "+
-							" `ADDMT`.`LATIT` "+
-							" FROM `BOOKINGDB`.`usrmt` "+ 
-							"  left outer join "+
-							" `BOOKINGDB`.`UETMP` "+
-							"  on "+
-							" `usrmt`.`USRID` = `UETMP`.`USRID` "+
-							" left outer join "+
-							" `BOOKINGDB`.`UADMP` "+
-							" on "+
-							" `usrmt`.`USRID` = `UADMP`.`USRID` "+
-							" left outer join "+
-							" `BOOKINGDB`.`ADDMT` "+
-							" on "+
-							" `ADDMT`.`ADRID` = `UADMP`.`ADRID` "+
-					" where `UETMP`.ACTIV = 1 and `UETMP`.UTYID = 2 ");
+			String query =
+			" SELECT `usrmt`.`USRID`, "+
+			" `UADMP`.`PRIMR`, "+
+			" `ADDMT`.`STRET`, "+
+			" `ADDMT`.`LNDMK`, "+
+			" `ADDMT`.`LOCLT`, "+
+			" `ADDMT`.`CTYID`, "+
+			" `ADDMT`.`PINCD`, "+
+			" `ADDMT`.`LONGT`, "+
+			" `ADDMT`.`LATIT` "+
+			" FROM `BOOKINGDB`.`usrmt` "+ 
+			"  left outer join "+
+			" `BOOKINGDB`.`UETMP` "+
+			"  on "+
+			" `usrmt`.`USRID` = `UETMP`.`USRID` "+
+			" left outer join "+
+			" `BOOKINGDB`.`UADMP` "+
+			" on "+
+			" `usrmt`.`USRID` = `UADMP`.`USRID` "+
+			" left outer join "+
+			" `BOOKINGDB`.`ADDMT` "+
+			" on "+
+			" `ADDMT`.`ADRID` = `UADMP`.`ADRID` "+
+			//" left outer join `BOOKINGDB`.`VEMPT`  "+
+			//" on  `usrmt`.`USRID` = `VEMPT`.`USRID`   "+
+			" where `UETMP`.ACTIV = 1 and `UETMP`.UTYID = 2 ";
+			//+ "and "
+			//		+ " `VEMPT`.`ETYID` in (\""
+			//		+entid+"\") ";
+			
+			/*if(!etcid.equals("null")){
+				query += " and `VEMPT`.`ETCID` in (\""+etcid+"\") ";
+				if(!entid.equals("null")){
+					query += " and `VEMPT`.`ENTID` in (\""+entid+"\") ";
+				}
+			}*/
+			System.out.println(query);
+			rs=dbcon.stm.executeQuery(query);
 			return Convertor.convertToJSON(rs);
 		}
 		catch(Exception ex){
-			System.out.println("Error from VENDOR Command "+ex +"==dbcon=="+dbcon);
+			System.out.println("Error from VENDOR Address Command "+ex +"==dbcon=="+dbcon);
 			return null;
 		}
 	}
@@ -392,6 +440,11 @@ public class VendorCommand extends aimCommand {
 	}
 
 	private JSONArray getVendorCharacteristics(HashMap myInfo, ConnectionManager dbcon) {
+		// TODO: Add skip/top
+		String etyid =  myInfo.get("etyid")+"";
+		String etcid =  myInfo.get("etcid")+"";
+		String entid =  myInfo.get("entid")+"";
+		
 		ResultSet rs=null;
 		try{
 			if(dbcon == null){
@@ -402,7 +455,7 @@ public class VendorCommand extends aimCommand {
 					System.out.println(""+ex);
 				}
 			}
-			System.out.println("SELECT `UCHMT`.`USRID`, `CHRMT`.`CHRID`, `UCHMT`.`CHRID`, "
+			String query = "SELECT `UCHMT`.`USRID`, `CHRMT`.`CHRID`, `UCHMT`.`CHRID`, "
 					+ "`UCHMT`.`VALUE`,  "
 					+ "`CHRMT`.`DESCR`, `CHRMT`.`REGXT`, `CHRMT`.`MDTEXT`,  "
 					+ "`CHRMT`.`LNTXT`, `CHRMT`.`SRTXT`  "
@@ -410,27 +463,34 @@ public class VendorCommand extends aimCommand {
 					+ " left outer join      " 
 					+ " `BOOKINGDB`.`CHRMT`  "       
 					+ " on 	   "
-					+ "  `UCHMT`.`CHRID` = `CHRMT`.`CHRID`  ");
-			rs=dbcon.stm.executeQuery("SELECT `UCHMT`.`USRID`, `CHRMT`.`CHRID`, `UCHMT`.`CHRID`, "
-					+ "`UCHMT`.`VALUE`,  "
-					+ "`CHRMT`.`DESCR`, `CHRMT`.`REGXT`, `CHRMT`.`MDTEXT`,  "
-					+ "`CHRMT`.`LNTXT`, `CHRMT`.`SRTXT`  "
-					+ " FROM `BOOKINGDB`.`UCHMT`    "    
-					+ " left outer join      " 
-					+ " `BOOKINGDB`.`CHRMT`  "       
-					+ " on 	   "
-					+ "  `UCHMT`.`CHRID` = `CHRMT`.`CHRID`  ");
+					+ "  `UCHMT`.`CHRID` = `CHRMT`.`CHRID`  ";
+					//+" left outer join `BOOKINGDB`.`VEMPT`  "
+					//+" on  `UCHMT`.`USRID` = `VEMPT`.`USRID`  where "
+					//+ " `VEMPT`.`ETYID` in (\""
+					//+entid+"\") ";
+			/*if(!etcid.equals("null")){
+				query += " and `VEMPT`.`ETCID` in (\""+etcid+"\") ";
+				if(!entid.equals("null")){
+					query += " and `VEMPT`.`ENTID` in (\""+entid+"\") ";
+				}
+			}*/
+			System.out.println(query);
+			rs=dbcon.stm.executeQuery(query);
 			return Convertor.convertToJSON(rs);
 
 		}
 		catch(Exception ex){
-			System.out.println("Error from VENDOR Command "+ex +"==dbcon=="+dbcon);
+			System.out.println("Error from VENDOR Char Command "+ex +"==dbcon=="+dbcon);
 			return null;
 		}
 	}
 
 	private JSONArray getVendorHeaderList(HashMap myInfo, ConnectionManager dbcon) {
 		// TODO: Add skip/top
+		String etyid =  myInfo.get("etyid")+"";
+		String etcid =  myInfo.get("etcid")+"";
+		String entid =  myInfo.get("entid")+"";
+		
 		ResultSet rs=null;
 		try{
 			if(dbcon == null){
@@ -441,7 +501,7 @@ public class VendorCommand extends aimCommand {
 					System.out.println(""+ex);
 				}
 			}
-			System.out.println(
+			String query = 
 					" SELECT `usrmt`.`USRID`, "+
 							" `usrmt`.`URCOD`, "+
 							" `usrmt`.`PRFIX`, "+
@@ -460,27 +520,22 @@ public class VendorCommand extends aimCommand {
 							" `BOOKINGDB`.`UADMP` "+
 							" on "+
 							" `usrmt`.`USRID` = `UADMP`.`USRID` "+
-					" where `UETMP`.ACTIV = 1 and `UETMP`.UTYID = 2 ");
-			rs=dbcon.stm.executeQuery(
-					" SELECT `usrmt`.`USRID`, "+
-							" `usrmt`.`URCOD`, "+
-							" `usrmt`.`PRFIX`, "+
-							" `usrmt`.`TITLE`, "+
-							" `usrmt`.`FRNAM`, "+
-							" `usrmt`.`LTNAM`, "+
-							" `usrmt`.`URDOB`, "+
-							" `usrmt`.`GENDR`, "+
-							" `usrmt`.`DSPNM` "+
-							" FROM `BOOKINGDB`.`usrmt` "+ 
-							"  left outer join "+
-							" `BOOKINGDB`.`UETMP` "+
-							"  on "+
-							" `usrmt`.`USRID` = `UETMP`.`USRID` "+
-							" left outer join "+
-							" `BOOKINGDB`.`UADMP` "+
-							" on "+
-							" `usrmt`.`USRID` = `UADMP`.`USRID` "+
-					" where `UETMP`.ACTIV = 1 and `UETMP`.UTYID = 2 ");
+							" left outer join `BOOKINGDB`.`VEMPT`  "+
+							" on  `USRMT`.`USRID` = `VEMPT`.`USRID`   "+
+					" where `UETMP`.ACTIV = 1 and `UETMP`.UTYID = 2 and "
+					+ " `VEMPT`.`ETYID` in (\""
+					+entid+"\") ";
+					
+					if(!etcid.equals("null")){
+						query += " and `VEMPT`.`ETCID` in (\""+etcid+"\") ";
+						if(!entid.equals("null")){
+							query += " and `VEMPT`.`ENTID` in (\""+entid+"\") ";
+						}
+					}			
+			
+			
+			System.out.println(query);
+			rs=dbcon.stm.executeQuery(query);
 			return Convertor.convertToJSON(rs);
 		}
 		catch(Exception ex){

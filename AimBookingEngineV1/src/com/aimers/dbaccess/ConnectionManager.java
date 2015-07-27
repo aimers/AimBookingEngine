@@ -19,7 +19,7 @@ public class ConnectionManager{
 				}
 				try {
 					con.createStatement().executeQuery(
-							"Select count(*) from `INTYMT`");//TODO: Replace with table
+							"Select count(*) from `VEMPT`");//TODO: Replace with table
 				} catch (Exception e) {
 					e.printStackTrace();
 					try {
