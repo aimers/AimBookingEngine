@@ -28,7 +28,7 @@ sap.ui.controller("sap.ui.medApp.view.VendorDetail", {
 		this.oIndexItem = -1;
 	},
 	handleDetailNav : function(oEvent){
-		this._oRouter.navTo("_vendorDetail", {vendorDetailId : "123"});
+		this._oRouter.myNavBack ();
 	},
 	getDayName : function(oValue){
 		if (oValue != null && oValue != undefined) {

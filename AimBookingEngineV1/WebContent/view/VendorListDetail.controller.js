@@ -33,9 +33,10 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 		}
 		this.oIndexItem = buttonId.slice(-1);
 		this.oItemSelected = this.getView().byId("VendorsList").getItems()[this.oIndexItem].getContent();
-		this.loadVendorCalendorTime();
+		
 		this.oBookingBox = sap.ui.xmlfragment("sap.ui.medApp.view.Calender", this);
 		this.oItemSelected[0].addItem(this.oBookingBox);
+		this.loadVendorCalendorTime();
 	},
 	loadVendorCalendorTime : function(){
 		this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(this.oModel);
@@ -53,6 +54,7 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 		oCalendar.setMonthsPerRow(1);
 		oCalendar.setWeeksPerRow(1);
 		oCalendar.setSingleRow(true);
+		this.oBookingBox.getContent()[1].setVisible(true);
 	},
 	changeToOneMonth: function () {
 		var oCalendar = this.oBookingBox.getContent()[0];
@@ -60,6 +62,7 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 		oCalendar.setMonthsToDisplay(1);
 		oCalendar.setWeeksPerRow(1);
 		oCalendar.setMonthsPerRow(1);
+		this.oBookingBox.getContent()[1].setVisible(false);
 	},
 	handleSelectDialogPress: function (oEvent) {
 		if (! this._oDialog) {
@@ -72,5 +75,68 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 	},
 	HandleCloseDialog : function(){
 		this._oDialog.close();
+	},
+	handleDayTime : function(oValue){
+		if (oValue != null && oValue != undefined) {
+			
+		}
+	},
+	groupTime : function(oGroup){
+
+		if (oGroup.key != null && oGroup.key != undefined) {
+			var hours = oGroup.key.split(":")[0];
+			if(hours <= 12) {
+				return new sap.m.GroupHeaderListItem( {
+				      title: "Morning",
+				      upperCase: false
+				    } );
+			}
+			if(hours > 12 && hours <=16) {
+				return new sap.m.GroupHeaderListItem( {
+				      title: "Afternoon",
+				      upperCase: false
+				    } );
+			}
+			if(hours > 16 && hours <20) {
+				return new sap.m.GroupHeaderListItem( {
+				      title: "Evening",
+				      upperCase: false
+				    } );
+			}
+			if(hours >  20 && hours <=23) {
+				return new sap.m.GroupHeaderListItem( {
+				      title: "Night",
+				      upperCase: false
+				    } );
+			}
+		}
+	},
+
+	getTimeAF : function(oValue){
+		if (oValue != null && oValue != undefined) {
+			var hours = oValue.split(":")[0];
+			if(hours < 16) {
+				return oValue;
+			}
+		}
+	},
+	getTimeEVE : function(oValue){
+		if (oValue != null && oValue != undefined) {
+			var hours = oValue.split(":")[0];
+			if(hours < 20) {
+				return oValue;
+			}
+		}
+	},
+	getTimeNIGHT : function(oValue){
+		if (oValue != null && oValue != undefined) {
+			var hours = oValue.split(":")[0];
+			if(hours > 20) {
+				return oValue;
+			}
+		}
+	},
+	handleBookingTime : function(oEvt) {
+		this._oRouter.navTo("_Signup");
 	}
 });

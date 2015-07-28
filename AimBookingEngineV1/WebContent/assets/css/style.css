@@ -139,3 +139,22 @@
 	max-width:500px;
 	min-width:200px;
 }
+.timeMorning {
+	background-color:#BDDEE6;
+	padding-bottom:10px;
+}
+.timeAfterNoon {
+	background-color:#F9F179;
+	padding-bottom:10px;
+}
+.timeEvening {
+	background-color:#EFCB7F;
+	padding-bottom:10px;
+}
+.timeNight {
+	background-color:#504747;
+	padding-bottom:10px;
+}
+.timeNight a{
+	color:white;
+}

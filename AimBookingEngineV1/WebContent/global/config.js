@@ -9,7 +9,8 @@ medApp.global.config.development = {
 			vendorDataList :"assets/data/vendorsData.json",
 			vendorDataDetail :"assets/data/vendorDetailData.json",
 			vendorCatList :"assets/data/vendorCatList.json",
-			vendorTileCatList : "assets/data/vendorCatTileList.json"
+			vendorTileCatList : "assets/data/vendorCatTileList.json",
+			vendorAvailbleTime : "assets/data/vendorTimeData.json"
 		}
 };
 
@@ -19,7 +20,8 @@ medApp.global.config.production = {
 			vendorDataList :"assets/data/vendorsData.json",
 			vendorDataDetail :"assets/data/vendorDetailData.json",
 			vendorCatList :"MasterServlet?AimAction=getVendorCategory&INTENT=1&UID=1",
-			vendorTileCatList : "assets/data/vendorCatTileList.json"
+			vendorTileCatList : "assets/data/vendorCatTileList.json",
+			vendorAvailbleTime : "assets/data/vendorTimeData.json"
 		}
 };
 
