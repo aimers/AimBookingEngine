@@ -32,7 +32,8 @@ sap.ui.controller("sap.ui.medApp.view.App", {
 		var scope = oEvent.getParameter("config").name;
 		var fullWidthRoutes = [
 		                       "_homeTiles",
-		                       "_loginPage"
+		                       "_loginPage",
+		                       "_Signup"
 		                       ];
 		var bIsFullWidthRoute = (jQuery.inArray(scope, fullWidthRoutes) >= 0);
 		var bIsHomeRoute = (scope === "_homeTiles");

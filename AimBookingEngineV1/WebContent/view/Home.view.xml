@@ -24,8 +24,8 @@
 			<HBox justifyContent="Center" alignItems="Center" width="100%"
 				>
 				<MultiComboBox class="inputLocation" selectionChange="handleSelectionChange"
-				    width="100%" items="{path: '/vendorsCategory', sorter: { path: 'DESCR' }}">
-					<core:Item key="{ENTID}" text="{DESCR}" />
+				    width="100%" items="{path: '/vendorsCategory', sorter: { path: 'descr' }}">
+					<core:Item key="{entid}" text="{descr}" />
 				</MultiComboBox>
 				<Button class="buttonDesign" text="{i18n>SEARCH}" press="handleSearchVendor"/>
 			</HBox>
@@ -35,8 +35,8 @@
 					<l:content>
 						<VBox alignItems="Center">
 							<Image press="handleSearchKeyword"
-								src="assets/img/tiles/{SICON}" densityAware="false" class="homeTileIcons"/>
-							<Text text="{DESCR}" class="homeTileText"/>
+								src="assets/img/tiles/{sicon}" densityAware="false" class="homeTileIcons"/>
+							<Text text="{descr}" class="homeTileText"/>
 							<layoutData>
 								<l:GridData span="L4 M4 S4" />
 							</layoutData>

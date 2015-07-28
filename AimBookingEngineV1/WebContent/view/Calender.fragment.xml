@@ -1,31 +1,71 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:c="sap.ui.commons" xmlns:me="sap.me">
 	<Page showHeader="false" class="bookingBox">
-	  <subHeader>
-	    <Bar>
-	      <contentMiddle>
-	        <HBox width="98%">
-	          <HBox width="50%" justifyContent="Start">
-	            <Label text="Select Date"></Label>
-	          </HBox>
-	          <HBox width="50%" justifyContent="End">
-	            <RadioButton text="Weekly" select="changeToOneWeek"/>
-	            <RadioButton text="Monthly" select="changeToOneMonth"/>
-	          </HBox>
-	        </HBox>
-	      </contentMiddle>
-	    </Bar>
-	  </subHeader>
-	  <content>
-	    <me:Calendar singleRow="false" tapOnDate="changeToOneWeek">
-	    </me:Calendar>
-	  </content>
-	  <footer>
-	    <Bar>
-	      <contentRight>
-	        <Button text="Cancel" press="handleCancelBooking"/>
-	      </contentRight>
-	    </Bar>
-	  </footer>
+		<subHeader>
+			<Bar>
+				<contentMiddle>
+					<HBox width="98%">
+						<HBox width="50%" justifyContent="Start">
+							<Label text="Select Date"></Label>
+						</HBox>
+						<HBox width="50%" justifyContent="End">
+							<RadioButton text="Weekly" select="changeToOneWeek" />
+							<RadioButton text="Monthly" select="changeToOneMonth"
+								selected="true" />
+						</HBox>
+					</HBox>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<content>
+			<me:Calendar singleRow="false" tapOnDate="changeToOneWeek">
+			</me:Calendar>
+			<HBox visible="false" alignItems="Start" justifyContent="SpaceAround">
+				<items>
+					<!--<VBox items="{/vendorsAvailableTime/TIMEDATA/MON}">
+						<VBox class="timeMorning">
+							<Link text="{path:'TIME', formatter:'.getTimeMorning'}" />
+						</VBox>
+						 <VBox class="timeAfterNoon">
+							<Link text="{path:'TIME', formatter:'.getTimeAF'}" />
+						</VBox>
+						<VBox class="timeEvening">
+							<Link text="{path:'TIME', formatter:'.getTimeEVE'}" />
+						</VBox>
+						<VBox class="timeNight">
+							<Link text="{path:'TIME', formatter:'.getTimeNIGHT'}" />
+						</VBox>
+					</VBox>-->
+					<List items="{path:'/vendorsAvailableTime/TIMEDATA/TUES', sorter: {path:'TIME',descending:false, group:true}, groupHeaderFactory: '.groupTime'}">
+						<StandardListItem title="{path:'TIME'}" press="handleBookingTime"/>
+					</List>
+					<VBox items="{/vendorsAvailableTime/TIMEDATA/TUES}">
+						<Link text="{TIME}" press="handleBookingTime"/>
+					</VBox>
+					<VBox items="{/vendorsAvailableTime/TIMEDATA/WED}">
+						<Link text="{TIME}" press="handleBookingTime"/>
+					</VBox>
+					<VBox items="{/vendorsAvailableTime/TIMEDATA/THUR}">
+						<Link text="{TIME}" press="handleBookingTime"/>
+					</VBox>
+					<VBox items="{/vendorsAvailableTime/TIMEDATA/FRI}">
+						<Link text="{TIME}" press="handleBookingTime"/>
+					</VBox>
+					<VBox items="{/vendorsAvailableTime/TIMEDATA/SAT}">
+						<Link text="{TIME}" press="handleBookingTime"/>
+					</VBox>
+					<VBox items="{/vendorsAvailableTime/TIMEDATA/SUN}">
+						<Link text="{TIME}" press="handleBookingTime"/>
+					</VBox>
+				</items>
+			</HBox>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="Cancel" press="handleCancelBooking" />
+				</contentRight>
+			</Bar>
+		</footer>
 	</Page>
 </core:FragmentDefinition>

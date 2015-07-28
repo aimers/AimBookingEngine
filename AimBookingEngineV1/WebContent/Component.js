@@ -22,6 +22,13 @@ sap.ui.core.UIComponent.extend("sap.ui.medApp.Component", {
 			        	  targetControl : "idAppControl", //Target Control Id
 			          },
 			          {
+			        	  pattern : "signup", //patern matching
+			        	  name : "_Signup", //router name
+			        	  view : "Signup", //View of the _DealsList Router
+			        	  targetAggregation: "pages", 
+			        	  targetControl : "idAppControl", //Target Control Id
+			          },
+			          {
 			        	  pattern : "searchList",
 			        	  name : "_searchVendors",
 			        	  view : "VendorFilter",

@@ -11,17 +11,33 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
 		this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 		this.router = sap.ui.core.UIComponent.getRouterFor(this);
 		this.oModel = sap.ui.medApp.global.util.getMainModel();
+		this._getTileIcons();
+		//this.oModel.setProperty("/vendorsTileCategory", this.oModel.getProperty("/vendorsCategory") );
 		this.getView().setModel(this.oModel);
 	},
-	loadListCategory:function(facade){
-		this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(this.oModel);
-		this._vendorListServiceFacade.getRecords(null, null, "/vendorsCategory", "vendorCatList" , "");
-
-	},
-	loadListTileCategory:function(facade){
-		this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(this.oModel);
-		this._vendorListServiceFacade.getRecords(null, null, "/vendorsTileCategory", "vendorTileCatList" , "");
-
+	_getTileIcons : function(){
+		var vendorData  = this.oModel.getProperty("/vendorsCategory");
+		for(var i = 0;i< vendorData.length;i++){
+			var flag = false;
+			if(vendorData[i].Characteristics.length){
+				for(var k = 0;k< vendorData[i].Characteristics.length;k++){
+					if(vendorData[i].Characteristics[k].chrid == 9 && vendorData[i].Characteristics[k].value == "1"){
+						flag = true
+					}
+				}
+				for(var k = 0;k< vendorData[i].Characteristics.length;k++){
+					if(vendorData[i].Characteristics[k].chrid == 10 && flag){
+						vendorData[i].sicon = vendorData[i].Characteristics[k].value;
+					}
+				}
+			}
+			else {
+				
+				vendorData.splice(i, 1);
+				--i;
+			}
+		}
+		this.oModel.setProperty("/vendorsTileCategory",vendorData );
 	},
 	/*
 	 * Handle Press Tile
@@ -42,7 +58,7 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
 	},
 
 	handleSearchVendor: function() {
-		
+
 		var selectedItems = oEvent.getParameter("selectedItems");
 		for (var i = 0; i < selectedItems.length; i++) {
 			messageText += "'" + selectedItems[i].getText() + "'";

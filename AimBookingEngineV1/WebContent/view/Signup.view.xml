@@ -1,0 +1,46 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="sap.ui.medApp.view.Signup"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page enableScrolling="false" showHeader="false" backgroundDesign="Solid">
+		<content>
+			<VBox width="100%" height="90%" alignItems="Center">
+				<VBox width="20%" height="90%">
+				   <HBox width="100%" height="20%" alignItems="Center" justifyContent="SpaceBetween">
+						<Label text="Sign Up Here" />
+						
+					</HBox>
+					<HBox width="100%" height="10%" alignItems="Center" justifyContent="SpaceBetween">
+						<Label text="Email" />
+						<Input />
+					</HBox>
+					<HBox width="100%" height="10%" alignItems="Center" justifyContent="SpaceBetween">
+						<Label text="Passowrd" />
+						<Input />
+					</HBox>
+					<HBox width="100%" height="10%" alignItems="Center" justifyContent="SpaceBetween">
+						<Label text="Confirm Passowrd" />
+						<Input />
+					</HBox>
+					<HBox width="100%" height="10%" alignItems="Center" justifyContent="Center">
+						<Button text="Sign Up" class="buttonDesign"/>
+					</HBox>
+					<HBox width="100%" height="15%" alignItems="Center" justifyContent="Center">
+						<Button text="Login" class="buttonDesign"></Button>
+						<Button text="Forgot" class="buttonDesign"></Button>
+					</HBox>
+					<HBox width="100%" height="10%" alignItems="Center" justifyContent="Center">
+						<Text text="Or Login through below sites"/>
+					</HBox>
+					<HBox width="100%" height="10%" alignItems="Center" justifyContent="Center">
+						<VBox alignItems="Center">
+						  <Image src="assets/img/twitter.png" />
+						</VBox>
+						<VBox alignItems="Center">
+						   <Image src="assets/img/facebook.png" />
+						</VBox>
+					</HBox>
+				</VBox>
+			</VBox>
+		</content>
+	</Page>
+</core:View>

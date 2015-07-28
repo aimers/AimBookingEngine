@@ -1,8 +1,8 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" controllerName="sap.ui.medApp.view.VendorDetail" xmlns:l="sap.ui.layout" xmlns:vbm="sap.ui.vbm"
-	
-	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page class="mainPage" id="mainPage" showNavButton="true" navButtonPress="navToListPage">
+	xmlns="sap.m" controllerName="sap.ui.medApp.view.VendorDetail" xmlns:l="sap.ui.layout"
+	xmlns:vbm="sap.ui.vbm" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page class="mainPage" id="mainPage" showNavButton="true"
+		navButtonPress="navToListPage">
 		<content>
 			<List items="{/vendorsDetail}" id="VendorsList" class="VendorsList"
 				select="handleDetailNav">
@@ -21,19 +21,22 @@
 										<Text text="{LOCLT} , {CTYNM}" />
 									</HBox>
 									<HBox alignItems="Center" items="{PIC_DATA}" class="imgLabelBox">
-										<Image width="70%" src="assets/img/{path:'USIMGURL'}" />
+										<Image width="70%" src="assets/img/{path:'USIMGURL'}"
+											densityAware="false" />
 									</HBox>
 								</VBox>
 								<VBox width="49%">
 									<HBox width="100%">
 										<HBox width="50%" alignItems="Center" class="vendorRecommend"
 											justifyContent="End">
-											<Image src="assets/img/ecommerce_86-32.png" width="70%" />
+											<Image src="assets/img/ecommerce_86-32.png" width="70%"
+												densityAware="false" />
 											<Text text="{RATIN} Recommendations" />
 										</HBox>
 										<HBox width="50%" alignItems="Center" class="vendorRecommend"
 											justifyContent="End">
-											<Image src="assets/img/Location-Pointer.png" width="70%" />
+											<Image src="assets/img/Location-Pointer.png" width="70%"
+												densityAware="false" />
 											<Text text="{VUDV} KMs away" />
 										</HBox>
 									</HBox>
@@ -54,19 +57,15 @@
 								</VBox>
 							</HBox>
 							<VBox width="100%" alignItems="Center">
-								<!-- <vbm:AnalyticMap id="vbi" width="100%" height="100%"
-									regionClick="onRegionClick" regionContextMenu="onRegionContextMenu">
-									<vbm:regions>
-										<vbm:Region code="EU" color="rgba(184,225,245,1.0)" />
-										<vbm:Region code="NA" color="rgba(5,71,102,1.0)" />
-										<vbm:Region code="OC" color="rgba(0,125,192,1.0)" />
-									</vbm:regions>
-								</vbm:AnalyticMap>-->
-								<Image  src="assets/img/map.png" width="80%"/>
+								<!-- <vbm:AnalyticMap id="vbi" width="100%" height="100%" regionClick="onRegionClick" 
+									regionContextMenu="onRegionContextMenu"> <vbm:regions> <vbm:Region code="EU" 
+									color="rgba(184,225,245,1.0)" /> <vbm:Region code="NA" color="rgba(5,71,102,1.0)" 
+									/> <vbm:Region code="OC" color="rgba(0,125,192,1.0)" /> </vbm:regions> </vbm:AnalyticMap> -->
+								<Image src="assets/img/map.png" width="80%" densityAware="false" />
 							</VBox>
 							<VBox width="100%" height="100%" alignItems="End">
 								<Button text="{i18n>BOOK_APPOINTMENT}" class="buttonDesign"
-											press="handleBookAppointment" />
+									press="handleBookAppointment" />
 							</VBox>
 						</VBox>
 					</CustomListItem>
