@@ -34,44 +34,6 @@ public class UserCommand extends aimCommand {
 
 	
 	private Object registerUser(HashMap myInfo, ConnectionManager dbcon) {
-		/*
-
-
-
-
-
-
-INSERT INTO `bookingdb`.`uadmp`
-(`MPNID`, `USRID`, `ADRID`, `PRIMR`, `ACTIV`, `CHNDT`, `CRTDT`, `CRTBY`, `CHNBY`)
-VALUES
-(mpnid,
-detailsJSON.USRID,
-adrid,
-addJSON.PRIMR,
-addJSON.ACTIV,
-addJSON.CHNDT,
-addJSON.CRTDT,
-addJSON.CRTBY,
-addJSON.CHNBY);
-
-INSERT INTO `bookingdb`.`addmt`
-(`ADRID`, `STRET`, `LNDMK`, `LOCLT`, `CTYID`, `PINCD`, `LONGT`, `LATIT`, 
-`CHNDT`, `CRTDT`, `ACTIV`, `CHNBY`, `CRTBY`)
-VALUES
-(adrid,
-addJSON.STREET,
-addJSON.LNDMK,
-addJSON.LOCLT,
-addJSON.CTYID,
-addJSON.PINCD,
-addJSON.LONGT,
-addJSON.LATIT,
-addJSON.CHNDT,
-addJSON.CRTDT,
-addJSON.ACTIV,
-addJSON.CHNBY,
-addJSON.CRTBY);
-		 */
 		try{
 			myInfo.put("details",  createUserAccount(myInfo, dbcon));
 			String details 	=  myInfo.get("details")+"";
@@ -82,6 +44,9 @@ addJSON.CRTBY);
 				if(detailsJSON.has("Charachterisitics")){
 					myInfo.put("details",  createUserCharachteristics(myInfo, dbcon));
 				}
+				if(detailsJSON.has("Address")){
+					myInfo.put("details",  createUserAddress(myInfo, dbcon));
+				}
 			}
 		}catch(Exception ex){
 			return new JSONObject();
@@ -90,6 +55,96 @@ addJSON.CRTBY);
 		return myInfo.get("details");
 		
 	}
+
+	private Object createUserAddress(HashMap myInfo, ConnectionManager dbcon) {
+		
+		
+		ResultSet rs=null;
+		try{
+			String details 	=  myInfo.get("details")+"";
+			JSONObject detailsJSON 	= new JSONObject(details);
+			JSONArray addJSONArray = (JSONArray) detailsJSON.get("Address");
+			JSONArray addOutJARRAY = new JSONArray();
+			if(dbcon == null){
+				try{
+					dbcon.Connect("MYSQL");
+				}
+				catch(Exception ex){
+					System.out.println(""+ex);
+				}
+			}
+			int iAdridNext = getNextAdrid(dbcon);
+			for(int cIndex=0;cIndex<addJSONArray.length();cIndex++){
+				JSONObject addJSON = (JSONObject) addJSONArray.get(cIndex);
+				addJSON.put("USRID", detailsJSON.get("USRID"));
+				addJSON.put("ACTIV", detailsJSON.get("ACTIV"));
+				addJSON.put("CRTDT", detailsJSON.get("CRTDT"));
+				addJSON.put("CRTBY", detailsJSON.get("CRTBY"));
+				addJSON.put("CHNDT", detailsJSON.get("CHNDT"));
+				addJSON.put("CHNBY", detailsJSON.get("CHNBY"));
+				
+				String adrid = iAdridNext+"";
+				iAdridNext++;
+
+				//THINK IF WE NEED STATE AND COUNTRY DENORMALIZED!!
+				String query1 = "INSERT INTO `bookingdb`.`addmt`"
+						+ "(`ADRID`, `STREET`, `LNDMK`, `LOCLT`, `CTYID`, `PINCD`, `LONGT`, `LATIT`, "
+						+ "`CHNDT`, `CRTDT`, `ACTIV`, `CHNBY`, `CRTBY`)"
+						+ "VALUES "
+						+ "( "
+						+ "'"+adrid+ "', "
+						+ "'"+addJSON.getString("STREET")+ "', "
+						+ "'"+addJSON.getString("LNDMK")+ "', "
+						+ "'"+addJSON.getString("LOCLT")+ "', "
+						+ "'"+addJSON.getString("CTYID")+ "', "
+						+ "'"+addJSON.getString("PINCD")+ "', "
+						+ "'"+addJSON.getString("LONGT")+ "', "
+						+ "'"+addJSON.getString("LATIT")+ "', "
+						+ "'"+addJSON.getString("CHNDT")+ "', "
+						+ "'"+addJSON.getString("CRTDT")+ "', "
+						+ "'"+addJSON.getString("ACTIV")+ "', "
+						+ "'"+addJSON.getString("CHNBY")+ "', "
+						+ "'"+addJSON.getString("CRTBY")+ "' "
+								+ ")";				
+				String query2 = "INSERT INTO `bookingdb`.`uadmp`"
+						+ "(`USRID`, `ADRID`, `PRIMR`, "
+						+ "`ACTIV`, `CHNDT`, `CRTDT`, `CRTBY`, `CHNBY`) "
+						+ "VALUES "
+						+ "( "
+						//+ "'"+uchid+ "',"//AI
+						+ "'"+addJSON.getString("USRID")+ "', "
+						+ "'"+adrid+ "', "
+						+ "'"+addJSON.getString("PRIMR")+ "', "
+						+ "'"+addJSON.getString("ACTIV")+ "', "
+						+ "'"+addJSON.getString("CHNDT")+ "', "
+						+ "'"+addJSON.getString("CRTDT")+ "', "
+						+ "'"+addJSON.getString("CRTBY")+ "', "
+						+ "'"+addJSON.getString("CHNBY")+ "')";
+				
+
+			
+				System.out.println(query1);
+				int rowCount1=dbcon.stm.executeUpdate(query1);
+				System.out.println(query2);
+				int rowCount2=dbcon.stm.executeUpdate(query2);
+				if(rowCount1 > 0){
+					addOutJARRAY.put(addJSON);
+				}else{
+					//TODO: Consider Raising Error
+					addOutJARRAY.put((JSONObject) addJSONArray.get(cIndex));
+				}
+			}
+			
+			detailsJSON.put("Address",addOutJARRAY );
+			return detailsJSON;
+
+		}
+		catch(Exception ex){
+			System.out.println("Error from USER usermaster Command "+ex +"==dbcon=="+dbcon);
+			return null;
+		}
+	}
+
 
 	private Object createUserCharachteristics(HashMap myInfo, ConnectionManager dbcon) {
 		
@@ -345,6 +400,36 @@ addJSON.CRTBY);
 		catch(Exception ex){
 			System.out.println("Error from USER next type map ID Command "+ex +"==dbcon=="+dbcon);
 			return "";
+		}
+	}
+	
+	private int getNextAdrid(ConnectionManager dbcon) {
+		
+		ResultSet rs=null;
+		try{
+			if(dbcon == null){
+				try{
+					dbcon.Connect("MYSQL");
+				}
+				catch(Exception ex){
+					System.out.println(""+ex);
+				}
+			}
+			System.out.println("SELECT "+
+					"MAX(`ADRID`)+1"+
+					" FROM `bookingdb`.`addmt`  ");
+			rs=dbcon.stm.executeQuery("SELECT "+
+					"MAX(`ADRID`)+1"+
+					" FROM `bookingdb`.`addmt`  ");
+			if(rs.next()){
+				return rs.getInt(1);
+			}
+			return 0;
+
+		}
+		catch(Exception ex){
+			System.out.println("Error from adrid next ID Command "+ex +"==dbcon=="+dbcon);
+			return 0;
 		}
 	}
 	private String getNewUserID(ConnectionManager dbcon) {
