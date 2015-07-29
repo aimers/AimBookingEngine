@@ -50,18 +50,11 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 		this._oRouter.navTo("_VendorDetail", { vendorId : "123", vendorDetailId : "123"});
 	},
 	changeToOneWeek: function () {
-		var oCalendar = this.oBookingBox.getContent()[0];
-		oCalendar.setMonthsPerRow(1);
-		oCalendar.setWeeksPerRow(1);
-		oCalendar.setSingleRow(true);
+		var oCalendar = this.oBookingBox.getContent()[0].setVisible(false);
 		this.oBookingBox.getContent()[1].setVisible(true);
 	},
 	changeToOneMonth: function () {
-		var oCalendar = this.oBookingBox.getContent()[0];
-		oCalendar.setSingleRow(false);
-		oCalendar.setMonthsToDisplay(1);
-		oCalendar.setWeeksPerRow(1);
-		oCalendar.setMonthsPerRow(1);
+		var oCalendar = this.oBookingBox.getContent()[0].setVisible(true);
 		this.oBookingBox.getContent()[1].setVisible(false);
 	},
 	handleSelectDialogPress: function (oEvent) {
@@ -138,5 +131,17 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 	},
 	handleBookingTime : function(oEvt) {
 		this._oRouter.navTo("_Signup");
+	},
+	getDateLabel : function(oValue){
+		if (oValue != null && oValue != undefined) {
+			var splitValue = oValue.split(" ");
+			return splitValue[0]+" "+splitValue[1]+" "+splitValue[2];
+		}
+	},
+	getCorrectTime : function(oValue){
+		if (oValue != null && oValue != undefined) {
+			var splitValue = oValue.split(":");
+			return splitValue[0]+" "+splitValue[1];
+		}
 	}
 });

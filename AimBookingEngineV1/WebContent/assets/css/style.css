@@ -158,3 +158,13 @@
 .timeNight a{
 	color:white;
 }
+.monthCalender.sapUiCal {
+	width:100%;
+}
+.monthCalender .sapUiCalMonthView {
+	width:95%;
+}
+.monthCalender .sapUiCalDay {
+	line-height:2.4rem;
+	height:2.4rem;
+}

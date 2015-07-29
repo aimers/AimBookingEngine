@@ -18,44 +18,27 @@
 			</Bar>
 		</subHeader>
 		<content>
-			<me:Calendar singleRow="false" tapOnDate="changeToOneWeek">
+			<me:Calendar width="100%" class="monthCalender"
+				tapOnDate="changeToOneWeek">
 			</me:Calendar>
-			<HBox visible="false" alignItems="Start" justifyContent="SpaceAround">
+			<HBox visible="false" alignItems="Start" justifyContent="SpaceAround"
+				items="{/vendorsAvailableTime}">
 				<items>
-					<!--<VBox items="{/vendorsAvailableTime/TIMEDATA/MON}">
-						<VBox class="timeMorning">
-							<Link text="{path:'TIME', formatter:'.getTimeMorning'}" />
+
+					<!-- <List items="{path:'/vendorsAvailableTime/TIMEDATA/TUES', sorter: 
+						{path:'TIME',descending:false, group:true}, groupHeaderFactory: '.groupTime'}"> 
+						<StandardListItem title="{path:'TIME'}" press="handleBookingTime"/> </List> 
+						<VBox items="{/vendorsAvailableTime/TIMEDATA/TUES}"> <Link text="{TIME}" 
+						press="handleBookingTime"/> </VBox> <VBox items="{/vendorsAvailableTime/TIMEDATA/WED}"> 
+						<Link text="{TIME}" press="handleBookingTime"/> </VBox> <VBox items="{/vendorsAvailableTime/TIMEDATA/THUR}"> 
+						<Link text="{TIME}" press="handleBookingTime"/> </VBox> <VBox items="{/vendorsAvailableTime/TIMEDATA/FRI}"> 
+						<Link text="{TIME}" press="handleBookingTime"/> </VBox> <VBox items="{/vendorsAvailableTime/TIMEDATA/SAT}"> 
+						<Link text="{TIME}" press="handleBookingTime"/> </VBox> -->
+					<VBox>
+					    <VBox><Label text="{path:'Date', formatter:'.getDateLabel'}"/></VBox>
+						<VBox items="{TimeSlots}">
+							<Link text="{path:'start', formatter:'.getCorrectTime'}-{path:'end', formatter:'.getCorrectTime'}" press="handleBookingTime" />
 						</VBox>
-						 <VBox class="timeAfterNoon">
-							<Link text="{path:'TIME', formatter:'.getTimeAF'}" />
-						</VBox>
-						<VBox class="timeEvening">
-							<Link text="{path:'TIME', formatter:'.getTimeEVE'}" />
-						</VBox>
-						<VBox class="timeNight">
-							<Link text="{path:'TIME', formatter:'.getTimeNIGHT'}" />
-						</VBox>
-					</VBox>-->
-					<List items="{path:'/vendorsAvailableTime/TIMEDATA/TUES', sorter: {path:'TIME',descending:false, group:true}, groupHeaderFactory: '.groupTime'}">
-						<StandardListItem title="{path:'TIME'}" press="handleBookingTime"/>
-					</List>
-					<VBox items="{/vendorsAvailableTime/TIMEDATA/TUES}">
-						<Link text="{TIME}" press="handleBookingTime"/>
-					</VBox>
-					<VBox items="{/vendorsAvailableTime/TIMEDATA/WED}">
-						<Link text="{TIME}" press="handleBookingTime"/>
-					</VBox>
-					<VBox items="{/vendorsAvailableTime/TIMEDATA/THUR}">
-						<Link text="{TIME}" press="handleBookingTime"/>
-					</VBox>
-					<VBox items="{/vendorsAvailableTime/TIMEDATA/FRI}">
-						<Link text="{TIME}" press="handleBookingTime"/>
-					</VBox>
-					<VBox items="{/vendorsAvailableTime/TIMEDATA/SAT}">
-						<Link text="{TIME}" press="handleBookingTime"/>
-					</VBox>
-					<VBox items="{/vendorsAvailableTime/TIMEDATA/SUN}">
-						<Link text="{TIME}" press="handleBookingTime"/>
 					</VBox>
 				</items>
 			</HBox>

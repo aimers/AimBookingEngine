@@ -11,16 +11,16 @@
 							<HBox width="100%">
 								<VBox width="49%">
 									<VBox justifyContent="Center" class="vendorAddress">
-										<Label text="{PRFIX}{DSPNM}" />
+										<Label text="{prfix}{dspnm}" />
 									</VBox>
 									<HBox alignItems="Center" class="vendorAddress">
-										<Text text="{UQNM} , {CLNM}" />
+										<Text text="{uqnm} , {clnm}" />
 									</HBox>
 									<HBox alignItems="Center" class="vendorAddress">
-										<Text text="{LOCLT} , {CTYNM}" />
+										<Text text="{loclt} , {ctynm}" />
 									</HBox>
-									<HBox alignItems="Center" items="{PIC_DATA}" class="imgLabelBox">
-										<Image width="70%" src="assets/img/{path:'USIMGURL'}"
+									<HBox alignItems="Center" items="{picdetails}" class="imgLabelBox">
+										<Image width="70%" src="assets/img/{path:'usimgurl'}"
 											densityAware="false" press="handleSelectDialogPress" />
 									</HBox>
 								</VBox>
@@ -30,13 +30,13 @@
 											justifyContent="End">
 											<Image src="assets/img/ecommerce_86-32.png" width="70%"
 												densityAware="false" />
-											<Text text="{RATIN} Recommendations" />
+											<Text text="{ratin} Recommendations" />
 										</HBox>
 										<HBox width="50%" alignItems="Center" class="vendorRecommend"
 											justifyContent="End">
 											<Image src="assets/img/Location-Pointer.png" width="70%"
 												densityAware="false" />
-											<Text text="{VUDV} KMs away" />
+											<Text text="{vudv} KMs away" />
 										</HBox>
 									</HBox>
 									<VBox alignItems="End">
