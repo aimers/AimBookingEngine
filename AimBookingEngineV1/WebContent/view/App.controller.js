@@ -28,7 +28,7 @@ sap.ui.controller("sap.ui.medApp.view.App", {
 
 	},
 	_handleRouteMatched: function(oEvent) {
-		this.getView().byId('myShell').removeAllContent();
+		
 		var scope = oEvent.getParameter("config").name;
 		var fullWidthRoutes = [
 		                       "_homeTiles",
@@ -38,8 +38,12 @@ sap.ui.controller("sap.ui.medApp.view.App", {
 		var bIsFullWidthRoute = (jQuery.inArray(scope, fullWidthRoutes) >= 0);
 		var bIsHomeRoute = (scope === "_homeTiles");
 		var app = (bIsFullWidthRoute) ? this.fullWidthApp : this.splitApp;
-		this.getView().byId('myShell').addContent(app);
-		//this.getView().byId('myShell').setAppWidthLimited(!bIsHomeRoute);
+		if(this.getView().byId('myShell').getContent()[0] === undefined ||
+				this.getView().byId('myShell').getContent()[0].getId() !== app.getId()	)
+			{
+				this.getView().byId('myShell').removeAllContent();
+				this.getView().byId('myShell').addContent(app);
+			}
 	},  
 	onAfterRendering : function(){
 

@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m"
-	xmlns:core="sap.ui.core" xmlns:c="sap.ui.commons" xmlns:me="sap.me">
+	xmlns:core="sap.ui.core" xmlns:c="sap.ui.commons" xmlns:me="sap.ui.unified">
 	<Page showHeader="false" class="bookingBox">
 		<subHeader>
 			<Bar>

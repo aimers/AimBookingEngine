@@ -10,7 +10,11 @@
 	<!-- ============================================================== -->
 	<!-- UI5 resource servlet used to handle application resources      -->
 	<!-- ============================================================== -->
-
+<servlet>
+  <display-name>ResourceServlet</display-name>
+  <servlet-name>ResourceServlet</servlet-name>
+  <servlet-class>com.sap.ui5.resource.ResourceServlet</servlet-class>
+</servlet>
 	<servlet>
 		<display-name>MasterServlet</display-name>
 		<servlet-name>MasterServlet</servlet-name>
