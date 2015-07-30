@@ -334,7 +334,7 @@ public class VendorCommand extends aimCommand {
 			String query =
 			" SELECT `usrmt`.`USRID`, "+
 			" `UADMP`.`PRIMR`, "+
-			" `ADDMT`.`STRET`, "+
+			" `ADDMT`.`STREET`, "+
 			" `ADDMT`.`LNDMK`, "+
 			" `ADDMT`.`LOCLT`, "+
 			" `ADDMT`.`CTYID`, "+
@@ -531,8 +531,13 @@ public class VendorCommand extends aimCommand {
 						if(!entid.equals("null")){
 							query += " and `VEMPT`.`ENTID` in (\""+entid+"\") ";
 						}
-					}			
-			
+					}	
+					if(myInfo.get("filters") != null){
+						JSONObject filterJSON = new JSONObject(myInfo.get("filters")+"");
+						if(filterJSON.has("USRID")){
+							query += " and `usrmt`.`USRID` in ("+filterJSON.get("USRID")+") ";
+						}
+					}
 			
 			System.out.println(query);
 			rs=dbcon.stm.executeQuery(query);
