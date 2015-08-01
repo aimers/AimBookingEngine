@@ -49,7 +49,7 @@ public class UserCommand extends aimCommand {
 			if(detailsJSON.has("USRID")){
 				myInfo.put("details",  createUserMaster(myInfo, dbcon));
 				myInfo.put("details",  createUserEntityMapping(myInfo, dbcon));
-				if(detailsJSON.has("Charachterisitics")){
+				if(detailsJSON.has("Characteristics")){
 					myInfo.put("details",  createUserCharachteristics(myInfo, dbcon));
 				}
 				if(detailsJSON.has("Address")){
@@ -158,7 +158,7 @@ public class UserCommand extends aimCommand {
 		try{
 			String details 	=  myInfo.get("details")+"";
 			JSONObject detailsJSON 	= new JSONObject(details);
-			JSONArray charJSONArray = (JSONArray) detailsJSON.get("Charachterisitics");
+			JSONArray charJSONArray = (JSONArray) detailsJSON.get("Characteristics");
 			JSONArray charOutJARRAY = new JSONArray();
 			if(dbcon == null){
 				try{
@@ -205,7 +205,7 @@ public class UserCommand extends aimCommand {
 				}
 			}
 			
-			detailsJSON.put("Charachterisitics",charOutJARRAY );
+			detailsJSON.put("Characteristics",charOutJARRAY );
 			return detailsJSON;
 
 		}
@@ -479,7 +479,7 @@ public class UserCommand extends aimCommand {
 				myInfo.put("details",  updateUserMaster(myInfo, dbcon));
 				deleteUserEntityMapping(myInfo, dbcon);
 				myInfo.put("details",  createUserEntityMapping(myInfo, dbcon));
-				if(detailsJSON.has("Charachterisitics")){
+				if(detailsJSON.has("Characteristics")){
 					deleteUserCharachteristics(myInfo, dbcon);
 					myInfo.put("details",  createUserCharachteristics(myInfo, dbcon));
 				}

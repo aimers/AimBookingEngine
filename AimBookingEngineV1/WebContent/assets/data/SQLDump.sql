@@ -19,6 +19,10 @@
 -- Table structure for table `addmt`
 --
 
+CREATE SCHEMA `bookingdb`;
+
+set schema `bookingdb`;
+
 DROP TABLE IF EXISTS `addmt`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
