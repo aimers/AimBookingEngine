@@ -91,32 +91,32 @@ public class Convertor {
 				int day = cDate.getDay();
 				for(int rIndex=0; rIndex<ruleDetailsJSON.length();rIndex++){
 					JSONObject rule = (JSONObject) ruleDetailsJSON.get(rIndex);
-					if(rule.get("days").toString().contains(day+"")){
-						timeSlot.put("DayStartTime", rule.get("dstim"));
-						timeSlot.put("DayEndTime", rule.get("detim"));
+					if(rule.get("DAYS").toString().contains(day+"")){
+						timeSlot.put("DayStartTime", rule.get("DSTIM"));
+						timeSlot.put("DayEndTime", rule.get("DETIM"));
 						JSONArray slots = new JSONArray();
 						timeSlot.put("TimeSlots", slots);
 						
 						SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm:ss");
 						
-						Date startTime = timeformat.parse(rule.get("dstim")+"");
-						Date endTime = timeformat.parse(rule.get("detim")+"");
+						Date startTime = timeformat.parse(rule.get("DSTIM")+"");
+						Date endTime = timeformat.parse(rule.get("DETIM")+"");
 						long milDiff =  endTime.getTime() - startTime.getTime();
 						
-						Date startSlotTime = timeformat.parse(rule.get("ostsl")+"");
-						Date endSlotTime = timeformat.parse(rule.get("oetsl")+"");
+						Date startSlotTime = timeformat.parse(rule.get("OSTSL")+"");
+						Date endSlotTime = timeformat.parse(rule.get("OETSL")+"");
 						long milDiffSlot =  endSlotTime.getTime() - startSlotTime.getTime();
 						
 						int totSlots = (int) (milDiff/milDiffSlot);
 						for(int sIndex=0; sIndex<totSlots;sIndex++){
 							JSONObject slot = new JSONObject();
 							
-							slot.put("start", timeformat.format(startTime));
+							slot.put("START", timeformat.format(startTime));
 							
 							long newTime = startTime.getTime() + milDiffSlot;
 							startTime.setTime(newTime);
 							
-							slot.put("end", timeformat.format(startTime));
+							slot.put("END", timeformat.format(startTime));
 							
 							slots.put(slot);
 						}

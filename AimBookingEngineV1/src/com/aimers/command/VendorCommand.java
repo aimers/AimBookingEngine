@@ -229,19 +229,19 @@ public class VendorCommand extends aimCommand {
 				JSONArray timeSlotsArray = 	(JSONArray) record.get("TimeSlots");
 				for(int tIndex=0;tIndex<timeSlotsArray.length();tIndex++){
 					JSONObject tSlot = ((JSONObject) timeSlotsArray.get(tIndex));
-					tSlot.put("Status", 0);
+					tSlot.put("STATUS", 0);
 					for(int bIndex=0;bIndex<bookedSlots.length();bIndex++){
 						JSONObject bSlot = ((JSONObject) bookedSlots.get(bIndex));
 						//Mon Jul 27 00:00:00 IST 2015
 						//2015-07-29 00:00:00.0
 						
-						System.out.println(sdf.parse(bSlot.get("bdtim")+"").equals(ndf.parse(record.get("Date")+"")));
+						System.out.println(sdf.parse(bSlot.get("BDTIM")+"").equals(ndf.parse(record.get("Date")+"")));
 						
-						if(sdf.parse(bSlot.get("bdtim")+"").equals(ndf.parse(record.get("Date")+""))){
-							if(tSlot.get("start").equals(bSlot.get("bostm")+"")
+						if(sdf.parse(bSlot.get("BDTIM")+"").equals(ndf.parse(record.get("Date")+""))){
+							if(tSlot.get("START").equals(bSlot.get("BOSTM")+"")
 									&& 	
-									tSlot.get("end").equals(bSlot.get("boetm")+"")){
-								tSlot.put("Status",  bSlot.get("stats")+"");
+									tSlot.get("END").equals(bSlot.get("BOETM")+"")){
+								tSlot.put("STATUS",  bSlot.get("STATS")+"");
 							}
 						}
 
