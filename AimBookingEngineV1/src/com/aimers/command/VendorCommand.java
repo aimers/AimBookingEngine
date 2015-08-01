@@ -36,7 +36,7 @@ public class VendorCommand extends aimCommand {
 	private Object getVendorRuleDetail(HashMap myInfo, ConnectionManager dbcon) {
 
 		/* INPUTS: 
-					"usrid": 32,
+					"USRID": 32,
 			        "rulid": 3,
 			        "etyid": 1,
 			        "etcid": 1,
@@ -44,7 +44,7 @@ public class VendorCommand extends aimCommand {
 
 			       Rule can be set at type/category or id so category and id are optional
 		 */
-		String userid =  myInfo.get("usrid")+"";
+		String userid =  myInfo.get("USRID")+"";
 		String rulid =  myInfo.get("rulid")+"";
 		String etyid =  myInfo.get("etyid")+"";
 		String etcid =  myInfo.get("etcid")+"";
@@ -392,9 +392,9 @@ public class VendorCommand extends aimCommand {
 				for(int cIndex=0;cIndex<vendorCharacteristics.length();cIndex++){
 
 					if(
-							((JSONObject)vendorHeaderList.get(vIndex)).get("usrid") 
+							((JSONObject)vendorHeaderList.get(vIndex)).get("USRID") 
 							== 
-							((JSONObject)vendorCharacteristics.get(cIndex)).get("usrid") 
+							((JSONObject)vendorCharacteristics.get(cIndex)).get("USRID") 
 							){
 						JSONObject vendorChars = ((JSONObject)vendorCharacteristics.get(cIndex));
 						charValues.put(vendorChars);
@@ -407,9 +407,9 @@ public class VendorCommand extends aimCommand {
 				for(int cIndex=0;cIndex<vendorAddressList.length();cIndex++){
 
 					if(
-							((JSONObject)vendorHeaderList.get(vIndex)).get("usrid") 
+							((JSONObject)vendorHeaderList.get(vIndex)).get("USRID") 
 							== 
-							((JSONObject)vendorAddressList.get(cIndex)).get("usrid") 
+							((JSONObject)vendorAddressList.get(cIndex)).get("USRID") 
 							){
 						JSONObject vendorAdds = ((JSONObject)vendorAddressList.get(cIndex));
 						addValues.put(vendorAdds);
@@ -421,9 +421,9 @@ public class VendorCommand extends aimCommand {
 				for(int cIndex=0;cIndex<vendorRules.length();cIndex++){
 
 					if(
-							((JSONObject)vendorHeaderList.get(vIndex)).get("usrid") 
+							((JSONObject)vendorHeaderList.get(vIndex)).get("USRID") 
 							== 
-							((JSONObject)vendorRules.get(cIndex)).get("usrid") 
+							((JSONObject)vendorRules.get(cIndex)).get("USRID") 
 							){
 						JSONObject vendorRule= ((JSONObject)vendorRules.get(cIndex));
 						ruleValues.put(vendorRule);
