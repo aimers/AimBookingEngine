@@ -45,12 +45,12 @@ public class VendorCommand extends aimCommand {
 			       Rule can be set at type/category or id so category and id are optional
 		 */
 		String userid =  myInfo.get("USRID")+"";
-		String rulid =  myInfo.get("rulid")+"";
-		String etyid =  myInfo.get("etyid")+"";
-		String etcid =  myInfo.get("etcid")+"";
-		String entid =  myInfo.get("entid")+"";
-		String stDate =  myInfo.get("stDate")+"";
-		String enDate =  myInfo.get("enDate")+"";
+		String rulid =  myInfo.get("RULID")+"";
+		String etyid =  myInfo.get("ETYID")+"";
+		String etcid =  myInfo.get("ETCID")+"";
+		String entid =  myInfo.get("ENTID")+"";
+		String stDate =  myInfo.get("STDATE")+"";
+		String enDate =  myInfo.get("ENDATE")+"";
 
 		if(!rulid.equals("3")){
 			JSONArray timeslots		= getTimeSlots(dbcon, userid, rulid, etyid, etcid, entid, stDate, enDate);
