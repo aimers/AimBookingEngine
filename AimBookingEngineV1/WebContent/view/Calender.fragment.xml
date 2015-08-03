@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:c="sap.ui.commons" xmlns:me="sap.ui.unified">
-	<Page showHeader="false" class="bookingBox">
+	<Page showHeader="false" class="bookingBox" enableScrolling="false">
 		<subHeader>
 			<Bar>
 				<contentMiddle>
@@ -22,21 +22,11 @@
 				tapOnDate="changeToOneWeek">
 			</me:Calendar>
 			<HBox visible="false" alignItems="Start" justifyContent="SpaceAround"
-				items="{/vendorsAvailableTime}">
+				items="{/vendorsAvailableTime}" class="weekCalenderView">
 				<items>
-
-					<!-- <List items="{path:'/vendorsAvailableTime/TIMEDATA/TUES', sorter: 
-						{path:'TIME',descending:false, group:true}, groupHeaderFactory: '.groupTime'}"> 
-						<StandardListItem title="{path:'TIME'}" press="handleBookingTime"/> </List> 
-						<VBox items="{/vendorsAvailableTime/TIMEDATA/TUES}"> <Link text="{TIME}" 
-						press="handleBookingTime"/> </VBox> <VBox items="{/vendorsAvailableTime/TIMEDATA/WED}"> 
-						<Link text="{TIME}" press="handleBookingTime"/> </VBox> <VBox items="{/vendorsAvailableTime/TIMEDATA/THUR}"> 
-						<Link text="{TIME}" press="handleBookingTime"/> </VBox> <VBox items="{/vendorsAvailableTime/TIMEDATA/FRI}"> 
-						<Link text="{TIME}" press="handleBookingTime"/> </VBox> <VBox items="{/vendorsAvailableTime/TIMEDATA/SAT}"> 
-						<Link text="{TIME}" press="handleBookingTime"/> </VBox> -->
-					<VBox>
-					    <VBox><Label text="{path:'Date', formatter:'.getDateLabel'}"/></VBox>
-						<VBox items="{TimeSlots}">
+					<VBox class="daySchedule" renderType="Div">
+					    <VBox class="CalenderDate"><Label text="{path:'Date', formatter:'.getDateLabel'}"/></VBox>
+						<VBox  items="{path:'TimeSlots'}" class="CalenderTime" >
 							<Link text="{path:'start', formatter:'.getCorrectTime'}-{path:'end', formatter:'.getCorrectTime'}" press="handleBookingTime" />
 						</VBox>
 					</VBox>

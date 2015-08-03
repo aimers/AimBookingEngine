@@ -10,11 +10,11 @@
 		width: 3rem;
 		height: 3rem;
 	}
-	.inputLocation .sapMInputBaseInner{
-	    width:20rem;
+	.inputLocation .sapMInputBaseInner {
+		width: 20rem;
 	}
 	.homeTileText {
-	    font-size:0.875rem;
+		font-size: 0.875rem;
 	}
 }
 
@@ -31,16 +31,18 @@
 		height: 2rem;
 	}
 	.homeTileText {
-	    font-size:0.675rem;
+		font-size: 0.675rem;
 	}
-	.inputLocation .sapMInputBaseInner{
-	    width:12rem;
+	.inputLocation .sapMInputBaseInner {
+		width: 12rem;
 	}
 }
+
 .spaceAround {
-	padding-top:2rem;
-	padding-bottom:1rem;
+	padding-top: 2rem;
+	padding-bottom: 1rem;
 }
+
 .mainShell .sapMShellCentralBox {
 	width: 1200px;
 }
@@ -55,10 +57,12 @@
 	-webkit-box-shadow: inset 0 -0.0625em #dff2f3;
 	box-shadow: inset 0 -0.0625em #dff2f3;
 }
+
 .filterLabel.sapMLabel {
 	padding: 1rem 0 1rem 0.5rem;
-    font-weight:bold;
+	font-weight: bold;
 }
+
 .sapMAppBG.sapMGlobalBackgroundImage {
 	background-color: #ffffff;
 }
@@ -128,43 +132,103 @@
 .appointment {
 	padding-left: 10px;
 	padding-right: 10px;
-	padding-bottom:10px;
-	border-bottom:3px solid #cccccc;
+	padding-bottom: 10px;
+	border-bottom: 3px solid #cccccc;
 }
+
 .weekDayFilter .sapMSegBBtn {
-    padding-left:0.20rem;
-    padding-right:0.20rem;	
+	padding-left: 0.20rem;
+	padding-right: 0.20rem;
 }
+
 .clinicImages {
-	max-width:500px;
-	min-width:200px;
+	max-width: 500px;
+	min-width: 200px;
 }
+
 .timeMorning {
-	background-color:#BDDEE6;
-	padding-bottom:10px;
+	background-color: #BDDEE6;
+	padding-bottom: 10px;
 }
+
 .timeAfterNoon {
-	background-color:#F9F179;
-	padding-bottom:10px;
+	background-color: #F9F179;
+	padding-bottom: 10px;
 }
+
 .timeEvening {
-	background-color:#EFCB7F;
-	padding-bottom:10px;
+	background-color: #EFCB7F;
+	padding-bottom: 10px;
 }
+
 .timeNight {
-	background-color:#504747;
-	padding-bottom:10px;
+	background-color: #504747;
+	padding-bottom: 10px;
 }
-.timeNight a{
-	color:white;
+
+.timeNight a {
+	color: white;
 }
+
 .monthCalender.sapUiCal {
-	width:100%;
+	width: 98%;
 }
+
 .monthCalender .sapUiCalMonthView {
-	width:95%;
+	width: 95%;
 }
+
 .monthCalender .sapUiCalDay {
-	line-height:2.4rem;
-	height:2.4rem;
+	line-height: 2.4rem;
+	height: 2.4rem;
+}
+
+.CalenderDate {
+	padding: 0.25rem;
+}
+
+.CalenderDate .sapMLabel {
+	font-weight: bold;
+}
+
+.CalenderTime .sapMLnk {
+	margin: 0.2rem 0.3rem 0.2rem 0.2rem;
+	font-size: 0.7rem;
+}
+
+.weekCalenderView {
+	background-color: white;
+}
+
+.CalenderTime {
+	overflow-y: scroll;
+	max-height: 312px;
+	padding: 0.25rem;
+	scrollbar-3dlight-color:gold;
+    scrollbar-arrow-color:blue;
+    scrollbar-base-color:;
+    scrollbar-darkshadow-color:blue;
+    scrollbar-face-color:;
+    scrollbar-highlight-color:;
+    scrollbar-shadow-color:
+}
+.bookingBox .sapMBar{
+	width:99%;
+}
+.VendorsList .sapMPanelWrappingDivTb>.sapMTB {
+	margin-left:0;
+}
+.filterCategoryList {
+  overflow-y:scroll;
+  max-height:300px;
+}
+.filterCategoryList .sapMSLIIconThumb{
+	height:2rem;
+}
+.filterCategoryList .sapMSLITitleOnly{
+	font-size:1rem;
+}
+.filterCategoryList .sapMCbBg{
+	width:1rem;
+	height:1rem;
 }

@@ -7,45 +7,51 @@
 				headerText="8 results found" select="handleDetailNav" mode="SingleSelectMaster">
 				<items>
 					<CustomListItem type="Inactive">
-						<VBox width="100%" class="vendorItems">
-							<HBox width="100%">
-								<VBox width="49%">
-									<VBox justifyContent="Center" class="vendorAddress">
-										<Label text="{prfix}{dspnm}" />
-									</VBox>
-									<HBox alignItems="Center" class="vendorAddress">
-										<Text text="{uqnm} , {clnm}" />
-									</HBox>
-									<HBox alignItems="Center" class="vendorAddress">
-										<Text text="{loclt} , {ctynm}" />
-									</HBox>
-									<HBox alignItems="Center" items="{picdetails}" class="imgLabelBox">
-										<Image width="70%" src="assets/img/{path:'usimgurl'}"
-											densityAware="false" press="handleSelectDialogPress" />
-									</HBox>
-								</VBox>
-								<VBox width="49%">
-									<HBox width="100%">
-										<HBox width="50%" alignItems="Center" class="vendorRecommend"
-											justifyContent="End">
-											<Image src="assets/img/ecommerce_86-32.png" width="70%"
-												densityAware="false" />
-											<Text text="{ratin} Recommendations" />
+						<Panel expandable="true" expanded="false">
+							<headerToolbar>
+								<Toolbar height="5rem">
+									<VBox width="100%" class="vendorItems">
+										<HBox width="100%">
+											<VBox width="49%">
+												<VBox justifyContent="Center" class="vendorAddress">
+													<Label text="{prfix}{dspnm}" />
+												</VBox>
+												<HBox alignItems="Center" class="vendorAddress">
+													<Text text="{uqnm} , {clnm}" />
+												</HBox>
+												<HBox alignItems="Center" class="vendorAddress">
+													<Text text="{loclt} , {ctynm}" />
+												</HBox>
+												<HBox alignItems="Center" items="{picdetails}" class="imgLabelBox">
+													<Image width="70%" src="assets/img/{path:'usimgurl'}"
+														densityAware="false" press="handleSelectDialogPress" />
+												</HBox>
+											</VBox>
+											<VBox width="49%">
+												<HBox width="100%">
+													<HBox width="50%" alignItems="Center" class="vendorRecommend"
+														justifyContent="End">
+														<Image src="assets/img/ecommerce_86-32.png" width="70%"
+															densityAware="false" />
+														<Text text="{ratin} Recommendations" />
+													</HBox>
+													<HBox width="50%" alignItems="Center" class="vendorRecommend"
+														justifyContent="End">
+														<Image src="assets/img/Location-Pointer.png" width="70%"
+															densityAware="false" />
+														<Text text="{vudv} KMs away" />
+													</HBox>
+												</HBox>
+												<VBox alignItems="End">
+													<Button text="{i18n>BOOK_APPOINTMENT}" class="buttonDesign"
+														press="handleBookAppointment" />
+												</VBox>
+											</VBox>
 										</HBox>
-										<HBox width="50%" alignItems="Center" class="vendorRecommend"
-											justifyContent="End">
-											<Image src="assets/img/Location-Pointer.png" width="70%"
-												densityAware="false" />
-											<Text text="{vudv} KMs away" />
-										</HBox>
-									</HBox>
-									<VBox alignItems="End">
-										<Button text="{i18n>BOOK_APPOINTMENT}" class="buttonDesign"
-											press="handleBookAppointment" />
 									</VBox>
-								</VBox>
-							</HBox>
-						</VBox>
+								</Toolbar>
+							</headerToolbar>
+						</Panel>
 					</CustomListItem>
 				</items>
 			</List>

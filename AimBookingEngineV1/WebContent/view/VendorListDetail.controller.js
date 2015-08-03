@@ -10,7 +10,7 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 		this.oModel = new sap.ui.model.json.JSONModel();
 		this.loadListFacade();
 		this.getView().setModel(this.oModel);
-		this.oIndexItem = -1;
+		this.oIndexItem = [];
 		this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 		//this._oRouter.attachRoutePatternMatched(this._handleRouteMatched, this);
 	},
@@ -28,34 +28,49 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 	handleBookAppointment : function(oEvent){
 		var oController = this;
 		var buttonId = oEvent.oSource.getId();
-		if(this.oIndexItem + 1){
-			this.handleCancelBooking();
+		var oFlagIndexItem = buttonId.slice(-1);
+		var oFlag = jQuery.inArray(oFlagIndexItem,this.oIndexItem) + 1;
+		if(oFlag){
+			this.handleCancelBooking(oFlagIndexItem);
 		}
-		this.oIndexItem = buttonId.slice(-1);
-		this.oItemSelected = this.getView().byId("VendorsList").getItems()[this.oIndexItem].getContent();
+		else {
+			this.oIndexItem[this.oIndexItem.length] = oFlagIndexItem;
+			var oItemSelected = this.getView().byId("VendorsList").getItems()[oFlagIndexItem].getContent()[0];	
+			var oBookingBox = sap.ui.xmlfragment("sap.ui.medApp.view.Calender", this);
+			oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1].getItems()[0].setGroupName(oFlagIndexItem);
+			oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1].getItems()[1].setGroupName(oFlagIndexItem);
+			oItemSelected.addContent(oBookingBox);
+			this.loadVendorCalendorTime();
+			oItemSelected.setExpanded(true);
+		}
 		
-		this.oBookingBox = sap.ui.xmlfragment("sap.ui.medApp.view.Calender", this);
-		this.oItemSelected[0].addItem(this.oBookingBox);
-		this.loadVendorCalendorTime();
 	},
 	loadVendorCalendorTime : function(){
 		this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(this.oModel);
 		this._vendorListServiceFacade.getRecords(null, null, "/vendorsAvailableTime", "vendorsAvailableTime" , "");
 	},
-	handleCancelBooking : function(){
-		this.oItemSelected[0].removeItem(this.oItemSelected[0].getItems()[1]);
-		this.oIndexItem = -1;
+	handleCancelBooking : function(oFlagIndex){
+		var bookingBox = this.getView().byId("VendorsList").getItems()[oFlagIndex].getContent();
+		bookingBox[0].removeAllContent();
+		bookingBox[0].setExpanded(false);
+		this.oIndexItem.splice(this.oIndexItem.indexOf(oFlagIndex), 1);
 	},
 	handleDetailNav : function(oEvent){
 		this._oRouter.navTo("_VendorDetail", { vendorId : "123", vendorDetailId : "123"});
 	},
-	changeToOneWeek: function () {
-		var oCalendar = this.oBookingBox.getContent()[0].setVisible(false);
-		this.oBookingBox.getContent()[1].setVisible(true);
+	changeToOneWeek: function (oEvent) {
+		var oIndex = oEvent.oSource.getGroupName();
+		var oItemSelected = this.getView().byId("VendorsList").getItems()[oIndex].getContent()[0];
+		var oBookingBox = oItemSelected.getContent();
+		var oCalendar = oBookingBox[0].getContent()[0].setVisible(false);
+		oBookingBox[0].getContent()[1].setVisible(true);
 	},
-	changeToOneMonth: function () {
-		var oCalendar = this.oBookingBox.getContent()[0].setVisible(true);
-		this.oBookingBox.getContent()[1].setVisible(false);
+	changeToOneMonth: function (oEvent) {
+		var oIndex = oEvent.oSource.getGroupName();
+		var oItemSelected = this.getView().byId("VendorsList").getItems()[oIndex].getContent()[0];
+		var oBookingBox = oItemSelected.getContent();
+		var oCalendar = oBookingBox[0].getContent()[0].setVisible(true);
+		oBookingBox[0].getContent()[1].setVisible(false);
 	},
 	handleSelectDialogPress: function (oEvent) {
 		if (! this._oDialog) {
@@ -141,7 +156,12 @@ sap.ui.controller("sap.ui.medApp.view.VendorListDetail", {
 	getCorrectTime : function(oValue){
 		if (oValue != null && oValue != undefined) {
 			var splitValue = oValue.split(":");
-			return splitValue[0]+" "+splitValue[1];
+			return splitValue[0]+":"+splitValue[1];
+		}
+	},
+	getListCount : function(oArray){
+		if (oArray != null && oArray != undefined) {
+			return oArray.length + " results found";
 		}
 	}
 });
