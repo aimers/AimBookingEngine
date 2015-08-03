@@ -38,9 +38,9 @@ public class VendorCommand extends aimCommand {
 		/* INPUTS: 
 					"USRID": 32,
 			        "rulid": 3,
-			        "etyid": 1,
-			        "etcid": 1,
-			        "entid": 9
+			        "ETYID": 1,
+			        "ETCID": 1,
+			        "ENTID": 9
 
 			       Rule can be set at type/category or id so category and id are optional
 		 */
@@ -269,9 +269,9 @@ public class VendorCommand extends aimCommand {
 
 	private JSONArray getVendorRules(HashMap myInfo, ConnectionManager dbcon) {
 		// TODO: Add skip/top
-		String etyid =  myInfo.get("etyid")+"";
-		String etcid =  myInfo.get("etcid")+"";
-		String entid =  myInfo.get("entid")+"";
+		String etyid =  myInfo.get("ETYID")+"";
+		String etcid =  myInfo.get("ETCID")+"";
+		String entid =  myInfo.get("ENTID")+"";
 		ResultSet rs=null;
 		try{
 			if(dbcon == null){
@@ -318,9 +318,9 @@ public class VendorCommand extends aimCommand {
 
 	private JSONArray getVendorAddressList(HashMap myInfo, ConnectionManager dbcon) {
 		// TODO: Add skip/top
-		String etyid =  myInfo.get("etyid")+"";
-		String etcid =  myInfo.get("etcid")+"";
-		String entid =  myInfo.get("entid")+"";
+		String etyid =  myInfo.get("ETYID")+"";
+		String etcid =  myInfo.get("ETCID")+"";
+		String entid =  myInfo.get("ENTID")+"";
 		ResultSet rs=null;
 		try{
 			if(dbcon == null){
@@ -441,9 +441,9 @@ public class VendorCommand extends aimCommand {
 
 	private JSONArray getVendorCharacteristics(HashMap myInfo, ConnectionManager dbcon) {
 		// TODO: Add skip/top
-		String etyid =  myInfo.get("etyid")+"";
-		String etcid =  myInfo.get("etcid")+"";
-		String entid =  myInfo.get("entid")+"";
+		String etyid =  myInfo.get("ETYID")+"";
+		String etcid =  myInfo.get("ETCID")+"";
+		String entid =  myInfo.get("ENTID")+"";
 		
 		ResultSet rs=null;
 		try{
@@ -487,9 +487,9 @@ public class VendorCommand extends aimCommand {
 
 	private JSONArray getVendorHeaderList(HashMap myInfo, ConnectionManager dbcon) {
 		// TODO: Add skip/top
-		String etyid =  myInfo.get("etyid")+"";
-		String etcid =  myInfo.get("etcid")+"";
-		String entid =  myInfo.get("entid")+"";
+		String etyid =  myInfo.get("ETYID")+"";
+		String etcid =  myInfo.get("ETCID")+"";
+		String entid =  myInfo.get("ENTID")+"";
 		
 		ResultSet rs=null;
 		try{
@@ -566,9 +566,9 @@ public class VendorCommand extends aimCommand {
 				((JSONObject)vendorList.get(vIndex)).put("Characteristics", charValues);
 				for(int cIndex=0;cIndex<vendorCharacteristics.length();cIndex++){
 					if(
-							((JSONObject)vendorList.get(vIndex)).get("entid") 
+							((JSONObject)vendorList.get(vIndex)).get("ENTID") 
 							== 
-							((JSONObject)vendorCharacteristics.get(cIndex)).get("entid") 
+							((JSONObject)vendorCharacteristics.get(cIndex)).get("ENTID") 
 							){
 						JSONObject vendorChars = ((JSONObject)vendorCharacteristics.get(cIndex));
 						charValues.put(vendorChars);
