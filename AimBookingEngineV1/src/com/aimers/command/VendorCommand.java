@@ -439,6 +439,7 @@ public class VendorCommand extends aimCommand {
 		return vendorHeaderList;
 	}
 
+	
 	private JSONArray getVendorCharacteristics(HashMap myInfo, ConnectionManager dbcon) {
 		// TODO: Add skip/top
 		String etyid =  myInfo.get("ETYID")+"";
