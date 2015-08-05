@@ -29,10 +29,39 @@ public class RuleCommand extends aimCommand {
 			return createRule(myInfo, dbcon);
 		}else if(aimAction.equals("getVendorRuleDef")){
 			return getRuleDefinition(myInfo, dbcon);
+		}else if(aimAction.equals("updateRule")){
+			return updateRule(myInfo, dbcon);
 		}
 		
 		return new JSONObject();
 
+	}
+
+	private Object updateRule(HashMap myInfo, ConnectionManager dbcon) {
+		try{
+			String details 	=  myInfo.get("details")+"";
+			JSONObject detailsJSON 	= new JSONObject(details);
+			String rulid = detailsJSON.getString("RULID");
+			aimCommand rule= null;
+			if(rulid.equals("1")){
+				rule = new Rule1Command();
+			}else if(rulid.equals("2")){
+				rule = new Rule2Command();
+			}else if(rulid.equals("3")){
+				rule = new Rule3Command();
+			}
+			
+			if(rule != null){
+				return (JSONObject) rule.execute(myInfo, dbcon);
+			}else{
+				return null;
+			}
+				
+		}
+		catch(Exception ex){
+			System.out.println("Error from Rule Command "+ex +"==dbcon=="+dbcon);
+			return null;
+		}
 	}
 
 	private Object getRuleDefinition(HashMap myInfo, ConnectionManager dbcon) {

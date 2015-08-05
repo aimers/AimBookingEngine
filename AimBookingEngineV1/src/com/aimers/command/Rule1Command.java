@@ -32,12 +32,82 @@ public class Rule1Command extends aimCommand {
 			return createAutoTimeRule(myInfo, dbcon);
 		}else if(aimAction.equals("getVendorRuleDef")){
 			return getVendorRuleDef(myInfo, dbcon);
+		}else if(aimAction.equals("updateRule")){
+			return updateRule(myInfo, dbcon);
 		}
 		
 		return new JSONObject();
 
 	}
 	
+	private Object updateRule(HashMap myInfo, ConnectionManager dbcon) {
+		
+		
+		ResultSet rs=null;
+		try{
+			String details 	=  myInfo.get("details")+"";
+			JSONObject detailsJSON 	= new JSONObject(details);
+			
+			if(dbcon == null){
+				try{
+					dbcon.Connect("MYSQL");
+				}
+				catch(Exception ex){
+					System.out.println(""+ex);
+				}
+			}
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			Date date = new Date();
+			detailsJSON.put("ACTIV", 1+"");
+			detailsJSON.put("CRTDT", dateFormat.format(date)+"");
+			detailsJSON.put("CRTBY", detailsJSON.get("USRID"));
+			detailsJSON.put("CHNDT", dateFormat.format(date)+"");
+			detailsJSON.put("CHNBY", detailsJSON.get("USRID"));
+			if(!detailsJSON.has("UERPW")){
+				detailsJSON.put("UERPW", detailsJSON.get("USRID").hashCode()+"");
+			}
+			String query = "UPDATE `bookingdb`.`vtrdt`"
+					+ " SET  "
+					+ " `ENTID` = '"+detailsJSON.get("ENTID")+ "', " 
+					+ " `ETCID` ='"+detailsJSON.get("ETCID")+ "', "
+					+ " `ETYID` = '"+detailsJSON.get("ETYID")+ "', "
+					+ " `RULID` = '"+detailsJSON.get("RULID")+ "' ,"
+					+ " `DSTIM` = '"+detailsJSON.get("DSTIM")+ "', "
+					+ " `DETIM` = '"+detailsJSON.get("DETIM")+ "', "
+					+ " `TIMZN` = '"+detailsJSON.get("TIMZN")+ "', "
+					+ " `OSTSL` = '"+detailsJSON.get("OSTSL")+ "', "
+					+ " `OETSL` = '"+detailsJSON.get("OETSL")+ "', "
+					+ " `RECUR` = '"+detailsJSON.get("RECUR")+ "', "
+					+ " `DAYS` = '"+detailsJSON.get("DAYS")+ "', "
+					+ " `DESCR` = '"+detailsJSON.get("DESCR")+ "', "
+					+ " `ACTIV` = '"+detailsJSON.get("ACTIV")+ "', "
+					+ " `CRTDT` = '"+detailsJSON.get("CRTDT")+ "', "
+					+ " `CRTBY` = '"+detailsJSON.get("CRTBY")+ "', "
+					+ " `CHNDT` = '"+detailsJSON.get("CHNDT")+ "', "
+					+ " `CHNBY` = '"+detailsJSON.get("CHNBY")+ "' "
+					+ " where "
+					+ " `USRID` = '"+detailsJSON.get("USRID")+ "' and"
+					+ " `UTYID` = '"+detailsJSON.get("UTYID")+ "' and "
+					+ " `VTRID` = '"+detailsJSON.get("VTRID")+ "'  ";
+					
+			System.out.println(query);
+			int rowCount=dbcon.stm.executeUpdate(query);
+			if(rowCount > 0){
+				return detailsJSON;
+			}else{
+				//TODO: Consider Raising Error
+				return new JSONObject(details);
+			}
+			
+			
+
+		}
+		catch(Exception ex){
+			System.out.println("Error from USER usermaster Command "+ex +"==dbcon=="+dbcon);
+			return null;
+		}
+	}
+
 	private Object getVendorRuleDef(HashMap myInfo, ConnectionManager dbcon) {
 		
 		JSONObject ruleDetails = new JSONObject();
