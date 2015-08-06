@@ -783,11 +783,24 @@ public class UserCommand extends aimCommand {
 					+ " `usrmt`.`DSPNM`, `uacmt`.`ACTIV`, `uacmt`.`CRTDT`, `uacmt`.`CRTBY`,"
 					+ " `uacmt`.`CHNDT`, `uacmt`.`CHNBY` "
 					+ " FROM `bookingdb`.`uacmt` left outer join "
-					+ " `bookingdb`.`usrmt` on `uacmt`.`USRID` = `usrmt`.`USRID`"
-					+ " where `uacmt`.`USRID` = "
-					+ "'"+detailsJSON.get("USRID")+ "' "
-					+ " and `uacmt`.`UERPW` = "
-					+ "'"+detailsJSON.get("UERPW")+ "' ";
+					+ " `bookingdb`.`usrmt` on `uacmt`.`USRID` = `usrmt`.`USRID`";
+			
+			if(detailsJSON.has("USRID")){
+				query = query  
+						+ " where `uacmt`.`USRID` = "
+						+ "'"+detailsJSON.get("USRID")+ "' "
+						+ " and `uacmt`.`UERPW` = "
+						+ "'"+detailsJSON.get("UERPW")+ "' ";
+			}else if(detailsJSON.has("USRNM")){
+				query = query  
+						+ " where `uacmt`.`USRNM` = "
+						+ "'"+detailsJSON.get("USRNM")+ "' "
+						+ " and `uacmt`.`UERPW` = "
+						+ "'"+detailsJSON.get("UERPW")+ "' ";
+			}else{
+				return null;
+			}
+				
 					
 			System.out.println(query);
 			rs=dbcon.stm.executeQuery(query);
