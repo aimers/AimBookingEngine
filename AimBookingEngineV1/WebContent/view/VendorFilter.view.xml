@@ -25,7 +25,7 @@
 					mode="MultiSelect" includeItemInSelection="true" growing="true" growingThreshold="4"
 					growingScrollToLoad ="true"  class="filterCategoryList">
 					<items>
-						<StandardListItem title="{descr}"
+						<StandardListItem title="{DESCR}"
 							iconDensityAware="false" iconInset="false" />
 					</items>
 				</List>

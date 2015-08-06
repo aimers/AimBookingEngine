@@ -25,9 +25,13 @@
 				items="{/vendorsAvailableTime}" class="weekCalenderView">
 				<items>
 					<VBox class="daySchedule" renderType="Div">
-					    <VBox class="CalenderDate"><Label text="{path:'Date', formatter:'.getDateLabel'}"/></VBox>
-						<VBox  items="{path:'TimeSlots'}" class="CalenderTime" >
-							<Link text="{path:'start', formatter:'.getCorrectTime'}-{path:'end', formatter:'.getCorrectTime'}" press="handleBookingTime" />
+						<VBox class="CalenderDate">
+							<Label text="{path:'Date', formatter:'.getDateLabel'}" />
+						</VBox>
+						<VBox items="{path:'TimeSlots'}" class="CalenderTime">
+							<Link
+								text="{path:'START', formatter:'.getCorrectTime'}-{path:'END', formatter:'.getCorrectTime'}"
+								press="handleBookingTime" />
 						</VBox>
 					</VBox>
 				</items>

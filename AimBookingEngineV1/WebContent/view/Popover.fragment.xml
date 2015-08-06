@@ -1,13 +1,12 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:c="sap.ui.commons">
-	<Dialog  showHeader="false" width="700px">
+	<Dialog  showHeader="false" contentWidth="50%" contentHeight="50%">
 		<content>
-		<Carousel class="sapUiContentPadding" width="70%">
+		<Carousel class="sapUiContentPadding" width="70%" pages="{/ImageCarousal/Characteristics}">
 			<pages>
-				<Image src="assets/img/clinic1.jpg" class="clinicImages" densityAware="false"/>
-				<Image src="assets/img/clinic2.jpg" class="clinicImages"  densityAware="false"/>
-				<Image src="assets/img/clinic3.jpeg" class="clinicImages"  densityAware="false"/>
-				<Image src="assets/img/clinic4.jpg" class="clinicImages"  densityAware="false"/>
+				<Image src="{path:'VALUE', formatter:'sap.ui.medApp.global.globalFormatter.getVendorImageUrl'}" 
+				class="clinicImages" densityAware="false"
+				visible="{path:'CHRID', formatter:'sap.ui.medApp.global.globalFormatter.checkImage'}"/>
 			</pages>
 		</Carousel>
 		</content>

@@ -215,8 +215,9 @@
 .bookingBox .sapMBar{
 	width:99%;
 }
-.VendorsList .sapMPanelWrappingDivTb>.sapMTB {
+.VendorsList .sapMPanelWrappingDivTb>.sapMTB, .detailPanel .sapMPanelWrappingDivTb>.sapMTB {
 	margin-left:0;
+	padding-top:6px;
 }
 .filterCategoryList {
   overflow-y:scroll;
@@ -231,4 +232,13 @@
 .filterCategoryList .sapMCbBg{
 	width:1rem;
 	height:1rem;
+}
+.VendorsList .sapMPanelExpandableIcon, .detailPanel .sapMPanelExpandableIcon {
+	font-size:0;
+}
+.BookingMainBox .sapMFlexItem:first-child {
+	width:99%;
+}
+.detailPanel .sapMTB-Transparent-CTX .sapMText,.detailPanel .sapMTB-Transparent-CTX .sapMLabel {
+	font-size:0.9rem;
 }

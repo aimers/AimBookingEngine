@@ -9,16 +9,20 @@
 						<Label text="Login Here" />
 						
 					</HBox>
+					<HBox width="100%" height="20%" alignItems="Center" justifyContent="SpaceBetween">
+            <Label id="messageBox" />
+            
+          </HBox>
 					<HBox width="100%" height="10%" alignItems="Center" justifyContent="SpaceBetween">
 						<Label text="Username" />
-						<Input />
+						<Input id="usrNme"/>
 					</HBox>
 					<HBox width="100%" height="10%" alignItems="Center" justifyContent="SpaceBetween">
-						<Label text="Passowrd" />
-						<Input />
+						<Label  text="Passowrd" />
+						<Input id="pswd"/>
 					</HBox>
 					<HBox width="100%" height="10%" alignItems="Center" justifyContent="Center">
-						<Button text="Login" class="buttonDesign"/>
+						<Button text="Login" class="buttonDesign" press="handleLogin"/>
 					</HBox>
 					<HBox width="100%" height="15%" alignItems="Center" justifyContent="Center">
 						<Button text="Signup" class="buttonDesign"></Button>
