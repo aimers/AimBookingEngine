@@ -16,11 +16,14 @@ public class ConnectionManager{
 				if(dbaccess.equals("MYSQL")){
 					//TODO: Replace hardcoding with properties parameters
 					con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/bookingdb","root","sa");
+					//con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/bookingdb","iaadmin","iamocha");
 				}
+				
 				try {
 					con.createStatement().executeQuery(
-							"Select count(*) from `VEMPT`");//TODO: Replace with table
+							"Select count(*) from `vempt`");//TODO: Replace with table
 				} catch (Exception e) {
+					System.out.println("Error in DB Command");
 					e.printStackTrace();
 					try {
 						Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -30,6 +33,7 @@ public class ConnectionManager{
 						e1.printStackTrace();
 					}
 					con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306","root","sa");
+					//con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/bookingdb","iaadmin","iamocha");
 				}
 				stm=con.createStatement();
 			}

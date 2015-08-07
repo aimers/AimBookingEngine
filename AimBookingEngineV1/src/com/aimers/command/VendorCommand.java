@@ -343,20 +343,20 @@ public class VendorCommand extends aimCommand {
 			" `ADDMT`.`LATIT` "+
 			" FROM `BOOKINGDB`.`usrmt` "+ 
 			"  left outer join "+
-			" `BOOKINGDB`.`UETMP` "+
+			" `BOOKINGDB`.`uetmp` "+
 			"  on "+
-			" `usrmt`.`USRID` = `UETMP`.`USRID` "+
+			" `usrmt`.`USRID` = `uetmp`.`USRID` "+
 			" left outer join "+
-			" `BOOKINGDB`.`UADMP` "+
+			" `BOOKINGDB`.`uadmp` "+
 			" on "+
-			" `usrmt`.`USRID` = `UADMP`.`USRID` "+
+			" `usrmt`.`USRID` = `uadmp`.`USRID` "+
 			" left outer join "+
-			" `BOOKINGDB`.`ADDMT` "+
+			" `BOOKINGDB`.`addmt` "+
 			" on "+
-			" `ADDMT`.`ADRID` = `UADMP`.`ADRID` "+
+			" `addmt`.`ADRID` = `uadmp`.`ADRID` "+
 			//" left outer join `BOOKINGDB`.`VEMPT`  "+
 			//" on  `usrmt`.`USRID` = `VEMPT`.`USRID`   "+
-			" where `UETMP`.ACTIV = 1 and `UETMP`.UTYID = 2 ";
+			" where `uetmp`.ACTIV = 1 and `uetmp`.UTYID = 2 ";
 			//+ "and "
 			//		+ " `VEMPT`.`ETYID` in (\""
 			//		+entid+"\") ";
@@ -460,11 +460,11 @@ public class VendorCommand extends aimCommand {
 					+ "`UCHMT`.`VALUE`,  "
 					+ "`CHRMT`.`DESCR`, `CHRMT`.`REGXT`, `CHRMT`.`MDTEXT`,  "
 					+ "`CHRMT`.`LNTXT`, `CHRMT`.`SRTXT`  "
-					+ " FROM `BOOKINGDB`.`UCHMT`    "    
+					+ " FROM `BOOKINGDB`.`uchmt`    "    
 					+ " left outer join      " 
-					+ " `BOOKINGDB`.`CHRMT`  "       
+					+ " `BOOKINGDB`.`chrmt`  "       
 					+ " on 	   "
-					+ "  `UCHMT`.`CHRID` = `CHRMT`.`CHRID`  ";
+					+ "  `uchmt`.`CHRID` = `chrmt`.`CHRID`  ";
 					//+" left outer join `BOOKINGDB`.`VEMPT`  "
 					//+" on  `UCHMT`.`USRID` = `VEMPT`.`USRID`  where "
 					//+ " `VEMPT`.`ETYID` in (\""
@@ -514,23 +514,23 @@ public class VendorCommand extends aimCommand {
 							" `usrmt`.`DSPNM` "+
 							" FROM `BOOKINGDB`.`usrmt` "+ 
 							"  left outer join "+
-							" `BOOKINGDB`.`UETMP` "+
+							" `BOOKINGDB`.`uetmp` "+
 							"  on "+
-							" `usrmt`.`USRID` = `UETMP`.`USRID` "+
+							" `usrmt`.`USRID` = `uetmp`.`USRID` "+
 							" left outer join "+
-							" `BOOKINGDB`.`UADMP` "+
+							" `BOOKINGDB`.`uadmp` "+
 							" on "+
-							" `usrmt`.`USRID` = `UADMP`.`USRID` "+
-							" left outer join `BOOKINGDB`.`VEMPT`  "+
-							" on  `USRMT`.`USRID` = `VEMPT`.`USRID`   "+
-					" where `UETMP`.ACTIV = 1 and `UETMP`.UTYID = 2 and "
-					+ " `VEMPT`.`ETYID` in (\""
+							" `usrmt`.`USRID` = `uadmp`.`USRID` "+
+							" left outer join `BOOKINGDB`.`vempt`  "+
+							" on  `usrmt`.`USRID` = `vempt`.`USRID`   "+
+					" where `uetmp`.ACTIV = 1 and `uetmp`.UTYID = 2 and "
+					+ " `vempt`.`ETYID` in (\""
 					+etyid+"\") ";
 					
 					if(!etcid.equals("null")){
-						query += " and `VEMPT`.`ETCID` in (\""+etcid+"\") ";
+						query += " and `vempt`.`ETCID` in (\""+etcid+"\") ";
 						if(!entid.equals("null")){
-							query += " and `VEMPT`.`ENTID` in (\""+entid+"\") ";
+							query += " and `vempt`.`ENTID` in (\""+entid+"\") ";
 						}
 					}	
 					if(myInfo.get("filters") != null){
@@ -606,16 +606,16 @@ public class VendorCommand extends aimCommand {
 					"`CHRMT`.`MDTEXT`, "+
 					"`CHRMT`.`LNTXT`, "+
 					"`CHRMT`.`SRTXT` "+
-					"FROM `BOOKINGDB`.`ECHMP`  "+
+					"FROM `BOOKINGDB`.`echmp`  "+
 					"     left outer join "+
-					"     `BOOKINGDB`.`CHRMT`  "+
+					"     `BOOKINGDB`.`chrmt`  "+
 					"     on "+
-					"	  `ECHMP`.`CHRID` = `CHRMT`.`CHRID` "+
+					"	  `echmp`.`CHRID` = `chrmt`.`CHRID` "+
 					"     right join "+
-					"     `BOOKINGDB`.`ECHMT`  "+
+					"     `BOOKINGDB`.`echmt`  "+
 					"     on "+
-					"		`ECHMP`.`MPNID` = `ECHMT`.`MPNID` "+
-					" where `CHRMT`.`ACTIV` = 1 and `ECHMP`.`ACTIV` = 1 order by ENTID");
+					"		`echmp`.`MPNID` = `echmt`.`MPNID` "+
+					" where `chrmt`.`ACTIV` = 1 and `echmp`.`ACTIV` = 1 order by ENTID");
 			rs=dbcon.stm.executeQuery("SELECT "+
 					"`ECHMP`.`ENTID`, "+
 					"`CHRMT`.`CHRID`, "+
@@ -626,16 +626,16 @@ public class VendorCommand extends aimCommand {
 					"`CHRMT`.`MDTEXT`, "+
 					"`CHRMT`.`LNTXT`, "+
 					"`CHRMT`.`SRTXT` "+
-					"FROM `BOOKINGDB`.`ECHMP`  "+
+					"FROM `BOOKINGDB`.`echmp`  "+
 					"     left outer join "+
-					"     `BOOKINGDB`.`CHRMT`  "+
+					"     `BOOKINGDB`.`chrmt`  "+
 					"     on "+
-					"	  `ECHMP`.`CHRID` = `CHRMT`.`CHRID` "+
+					"	  `echmp`.`CHRID` = `chrmt`.`CHRID` "+
 					"     right join "+
-					"     `BOOKINGDB`.`ECHMT`  "+
+					"     `BOOKINGDB`.`echmt`  "+
 					"     on "+
-					"		`ECHMP`.`MPNID` = `ECHMT`.`MPNID` "+
-					" where `CHRMT`.`ACTIV` = 1 and `ECHMP`.`ACTIV` = 1 order by ENTID");
+					"		`echmp`.`MPNID` = `echmt`.`MPNID` "+
+					" where `chrmt`.`ACTIV` = 1 and `echmp`.`ACTIV` = 1 order by ENTID");
 			return Convertor.convertToJSON(rs);
 
 		}
@@ -668,8 +668,8 @@ public class VendorCommand extends aimCommand {
 					+"   `ENTMT`.`CRTBY`,"
 					+"   `ENTMT`.`CHNDT`,"
 					+"   `ENTMT`.`CHNBY`"
-					+" FROM `BOOKINGDB`.`ENTMT` where ENTID in ("
-					+"		SELECT  ENTID FROM BOOKINGDB.IENMP where USRID = "+
+					+" FROM `BOOKINGDB`.`entmt` where ENTID in ("
+					+"		SELECT  ENTID FROM BOOKINGDB.ienmp where USRID = "+
 					userid + " and INTID = "+ intent+" and ACTIV = 1"
 					+" ) order by ENTID");
 			rs=dbcon.stm.executeQuery("SELECT `ENTMT`.`ENTID`,"
@@ -679,9 +679,9 @@ public class VendorCommand extends aimCommand {
 					+"   `ENTMT`.`CRTBY`,"
 					+"   `ENTMT`.`CHNDT`,"
 					+"   `ENTMT`.`CHNBY`"
-					+" FROM `BOOKINGDB`.`ENTMT` where ENTID in ("
-					+"		SELECT  ENTID FROM BOOKINGDB.IENMP where USRID = "+
-					userid + " and INTID = "+ intent+" and ACTIV = 1 "
+					+" FROM `BOOKINGDB`.`entmt` where ENTID in ("
+					+"		SELECT  ENTID FROM BOOKINGDB.ienmp where USRID = "+
+					userid + " and INTID = "+ intent+" and ACTIV = 1"
 					+" ) order by ENTID");
 			return Convertor.convertToJSON(rs);
 

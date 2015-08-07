@@ -742,12 +742,12 @@ public class UserCommand extends aimCommand {
 					+ "`UCHMT`.`VALUE`,  "
 					+ "`CHRMT`.`DESCR`, `CHRMT`.`REGXT`, `CHRMT`.`MDTEXT`,  "
 					+ "`CHRMT`.`LNTXT`, `CHRMT`.`SRTXT`  "
-					+ " FROM `BOOKINGDB`.`UCHMT`    "    
+					+ " FROM `BOOKINGDB`.`uchmt`    "    
 					+ " left outer join      " 
-					+ " `BOOKINGDB`.`CHRMT`  "       
+					+ " `BOOKINGDB`.`chrmt`  "       
 					+ " on 	   "
-					+ "  `UCHMT`.`CHRID` = `CHRMT`.`CHRID` "
-					+ "where `UCHMT`.`USRID` = '"+detailsJSON.get("USRID")+"'";				
+					+ "  `uchmt`.`CHRID` = `chrmt`.`CHRID` "
+					+ "where `uchmt`.`USRID` = '"+detailsJSON.get("USRID")+"'";				
 			System.out.println(query1);
 			rs =dbcon.stm.executeQuery(query1);
 			JSONArray addArray = Convertor.convertToJSON(rs);
