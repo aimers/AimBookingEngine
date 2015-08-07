@@ -94,7 +94,7 @@ public class UserCommand extends aimCommand {
 				iAdridNext++;
 
 				//THINK IF WE NEED STATE AND COUNTRY DENORMALIZED!!
-				String query1 = "INSERT INTO `bookingdb`.`addmt`"
+				String query1 = "INSERT INTO `addmt`"
 						+ "(`ADRID`, `STREET`, `LNDMK`, `LOCLT`, `CTYID`, `PINCD`, `LONGT`, `LATIT`, "
 						+ "`CHNDT`, `CRTDT`, `ACTIV`, `CHNBY`, `CRTBY`)"
 						+ "VALUES "
@@ -113,7 +113,7 @@ public class UserCommand extends aimCommand {
 						+ "'"+addJSON.get("CHNBY")+ "', "
 						+ "'"+addJSON.get("CRTBY")+ "' "
 								+ ")";				
-				String query2 = "INSERT INTO `bookingdb`.`uadmp`"
+				String query2 = "INSERT INTO `uadmp`"
 						+ "(`USRID`, `ADRID`, `PRIMR`, "
 						+ "`ACTIV`, `CHNDT`, `CRTDT`, `CRTBY`, `CHNBY`) "
 						+ "VALUES "
@@ -178,7 +178,7 @@ public class UserCommand extends aimCommand {
 				charJSON.put("CHNDT", detailsJSON.get("CHNDT"));
 				charJSON.put("CHNBY", detailsJSON.get("CHNBY"));
 				
-				String query = "INSERT INTO `bookingdb`.`uchmt`"
+				String query = "INSERT INTO `uchmt`"
 						+ "( `CHRID`, `UTYID`, `USRID`, `VALUE`, "
 						+ "`ACTIV`, `CRTDT`, `CRTBY`, `CHNDT`, `CHNBY`) "
 						+ "VALUES "
@@ -232,7 +232,7 @@ public class UserCommand extends aimCommand {
 				}
 			}
 			String mpnid = getNewTypeMapId(dbcon);
-			String query = "INSERT INTO `bookingdb`.`uetmp`"
+			String query = "INSERT INTO `uetmp`"
 					+ "(`MPNID`, `UTYID`, `USRID`, `ACTIV`, `CRTDT`, `CRTBY`, `CHNDT`, `CHNBY`)"
 					+ " VALUES "
 					+ " ("
@@ -279,7 +279,7 @@ public class UserCommand extends aimCommand {
 				}
 			}
 			
-			String query = "INSERT INTO `bookingdb`.`usrmt`"
+			String query = "INSERT INTO `usrmt`"
 					+ "(`USRID`, `URCOD`, `PRFIX`, `TITLE`, `FRNAM`, `LTNAM`, "
 					+ "`URDOB`, `GENDR`, `DSPNM`, `ACTIV`, `CRTDT`, `CRTBY`, `CHNDT`, `CHNBY`)"
 					+ " VALUES "
@@ -348,7 +348,7 @@ public class UserCommand extends aimCommand {
 				detailsJSON.put("UERPW", detailsJSON.get("USRID").hashCode()+"");
 			}
 			
-			String query = "INSERT INTO `bookingdb`.`uacmt`"
+			String query = "INSERT INTO `uacmt`"
 					+ "(`USRID`, `USRNM`, `UERPW`,`ACTIV`, `CRTDT`, `CRTBY`, `CHNDT`, `CHNBY`)"
 					+ " VALUES "
 					+ " ("
@@ -392,10 +392,10 @@ public class UserCommand extends aimCommand {
 			}
 			System.out.println("SELECT "+
 					"MAX(`MPNID`)+1"+
-					" FROM `bookingdb`.`uetmp`  ");
+					" FROM `uetmp`  ");
 			rs=dbcon.stm.executeQuery("SELECT "+
 					"MAX(`MPNID`)+1"+
-					" FROM `bookingdb`.`uetmp`  ");
+					" FROM `uetmp`  ");
 			if(rs.next()){
 				return rs.getString(1);
 			}
@@ -421,10 +421,10 @@ public class UserCommand extends aimCommand {
 			}
 			System.out.println("SELECT "+
 					"MAX(`ADRID`)+1"+
-					" FROM `bookingdb`.`addmt`  ");
+					" FROM `addmt`  ");
 			rs=dbcon.stm.executeQuery("SELECT "+
 					"MAX(`ADRID`)+1"+
-					" FROM `bookingdb`.`addmt`  ");
+					" FROM `addmt`  ");
 			if(rs.next()){
 				return rs.getInt(1);
 			}
@@ -450,10 +450,10 @@ public class UserCommand extends aimCommand {
 			}
 			System.out.println("SELECT "+
 					"MAX(`USRID`)+1"+
-					" FROM `bookingdb`.`uacmt`  ");
+					" FROM `uacmt`  ");
 			rs=dbcon.stm.executeQuery("SELECT "+
 					"MAX(`USRID`)+1"+
-					" FROM `bookingdb`.`uacmt`  ");
+					" FROM `uacmt`  ");
 			if(rs.next()){
 				return rs.getString(1);
 			}
@@ -506,7 +506,7 @@ public class UserCommand extends aimCommand {
 //			String query1 = "DELETE FROM `bookingdb`.`addmt`"
 //					+ " where `ADRID` in ( select `ADRID` from " 
 //					+ " `bookingdb`.`uadmp` where `USRID` = '"+detailsJSON.get("USRID")+"' )";				
-			String query2 = "DELETE FROM `bookingdb`.`uadmp` "
+			String query2 = "DELETE FROM `uadmp` "
 					+ " where `USRID` = '"+detailsJSON.get("USRID")+"'";
 //			System.out.println(query1);
 //			int rowCount1=dbcon.stm.executeUpdate(query1);
@@ -527,7 +527,7 @@ public class UserCommand extends aimCommand {
 			String details 	=  myInfo.get("details")+"";
 			JSONObject detailsJSON 	= new JSONObject(details);
 			
-			String query1 = "DELETE FROM `bookingdb`.`uchmt`"
+			String query1 = "DELETE FROM `uchmt`"
 					+ " where `USRID` = '"+detailsJSON.get("USRID")+"'";				
 			System.out.println(query1);
 			int rowCount1=dbcon.stm.executeUpdate(query1);
@@ -550,7 +550,7 @@ public class UserCommand extends aimCommand {
 			String details 	=  myInfo.get("details")+"";
 			JSONObject detailsJSON 	= new JSONObject(details);
 			
-			String query1 = "DELETE FROM `bookingdb`.`uetmp`"
+			String query1 = "DELETE FROM `uetmp`"
 					+ " where `USRID` = '"+detailsJSON.get("USRID")+"'";				
 			System.out.println(query1);
 			int rowCount1=dbcon.stm.executeUpdate(query1);
@@ -589,7 +589,7 @@ public class UserCommand extends aimCommand {
 			if(!detailsJSON.has("UERPW")){
 				detailsJSON.put("UERPW", detailsJSON.get("USRID").hashCode()+"");
 			}
-			String query = "UPDATE `bookingdb`.`usrmt`"
+			String query = "UPDATE `usrmt`"
 					+ " SET  "
 					+ " `URCOD` = '"+detailsJSON.get("USRID")+ "', " //URCOD???WHY IS THIS NEEDED
 					+ " `PRFIX` ='"+detailsJSON.get("PRFIX")+ "', "
@@ -653,7 +653,7 @@ public class UserCommand extends aimCommand {
 				detailsJSON.put("UERPW", detailsJSON.get("USRID").hashCode()+"");
 			}
 			
-			String query = "UPDATE `bookingdb`.`uacmt` set"
+			String query = "UPDATE `uacmt` set"
 					+ "`USRNM` = '"+detailsJSON.get("USRNM")+ "', "
 					+ "`UERPW` = '"+detailsJSON.get("UERPW")+ "', "
 					+ "`ACTIV` = '"+detailsJSON.get("ACTIV")+ "', "
@@ -715,7 +715,7 @@ public class UserCommand extends aimCommand {
 					+ " `addmt`.`CTYID`, `addmt`.`CNTRY`, `addmt`.`PINCD`, `addmt`.`LONGT`, "
 					+ " `addmt`.`LATIT`, `uadmp`.`ACTIV`, `uadmp`.`CHNDT`, `uadmp`.`CRTDT`, "
 					+ " `uadmp`.`CRTBY`, `uadmp`.`CHNBY` "
-					+ " FROM `bookingdb`.`uadmp` left outer join `bookingdb`.`addmt` on "
+					+ " FROM `uadmp` left outer join `addmt` on "
 					+ "`uadmp`.`ADRID` = `addmt`.`ADRID` "
 					+ "where `USRID` = '"+detailsJSON.get("USRID")+"'";				
 			System.out.println(query1);
@@ -738,13 +738,13 @@ public class UserCommand extends aimCommand {
 			String details 	=  myInfo.get("details")+"";
 			JSONObject detailsJSON 	= new JSONObject(details);
 			
-			String query1 = "SELECT `UCHMT`.`USRID`, `CHRMT`.`CHRID`, `UCHMT`.`CHRID`, "
-					+ "`UCHMT`.`VALUE`,  "
-					+ "`CHRMT`.`DESCR`, `CHRMT`.`REGXT`, `CHRMT`.`MDTEXT`,  "
-					+ "`CHRMT`.`LNTXT`, `CHRMT`.`SRTXT`  "
-					+ " FROM `BOOKINGDB`.`uchmt`    "    
+			String query1 = "SELECT `uchmt`.`USRID`, `chrmt`.`CHRID`, `uchmt`.`CHRID`, "
+					+ "`uchmt`.`VALUE`,  "
+					+ "`chrmt`.`DESCR`, `chrmt`.`REGXT`, `chrmt`.`MDTEXT`,  "
+					+ "`chrmt`.`LNTXT`, `chrmt`.`SRTXT`  "
+					+ " FROM `uchmt`    "    
 					+ " left outer join      " 
-					+ " `BOOKINGDB`.`chrmt`  "       
+					+ " `chrmt`  "       
 					+ " on 	   "
 					+ "  `uchmt`.`CHRID` = `chrmt`.`CHRID` "
 					+ "where `uchmt`.`USRID` = '"+detailsJSON.get("USRID")+"'";				
@@ -782,8 +782,8 @@ public class UserCommand extends aimCommand {
 					+ " `usrmt`.`FRNAM`, `usrmt`.`LTNAM`, `usrmt`.`URDOB`, `usrmt`.`GENDR`, "
 					+ " `usrmt`.`DSPNM`, `uacmt`.`ACTIV`, `uacmt`.`CRTDT`, `uacmt`.`CRTBY`,"
 					+ " `uacmt`.`CHNDT`, `uacmt`.`CHNBY` "
-					+ " FROM `bookingdb`.`uacmt` left outer join "
-					+ " `bookingdb`.`usrmt` on `uacmt`.`USRID` = `usrmt`.`USRID`";
+					+ " FROM `uacmt` left outer join "
+					+ " `usrmt` on `uacmt`.`USRID` = `usrmt`.`USRID`";
 			
 			if(detailsJSON.has("USRID")){
 				query = query  

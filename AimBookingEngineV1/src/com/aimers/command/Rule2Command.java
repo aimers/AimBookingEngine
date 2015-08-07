@@ -66,7 +66,7 @@ public class Rule2Command extends aimCommand {
 			if(!detailsJSON.has("UERPW")){
 				detailsJSON.put("UERPW", detailsJSON.get("USRID").hashCode()+"");
 			}
-			String query = "UPDATE `bookingdb`.`vtrdt`"
+			String query = "UPDATE `vtrdt`"
 					+ " SET  "
 					+ " `ENTID` = '"+detailsJSON.get("ENTID")+ "', " 
 					+ " `ETCID` ='"+detailsJSON.get("ETCID")+ "', "
@@ -123,7 +123,7 @@ public class Rule2Command extends aimCommand {
 					+ " `vtrdt`.`DESCR` "
 					//+ " `vtrdt`.`ACTIV`, "
 					//+ " `vtrdt`.`CRTDT`, `vtrdt`.`CRTBY`, `vtrdt`.`CHNDT`, `vtrdt`.`CHNBY` "
-					+ " FROM `bookingdb`.`vtrdt` "
+					+ " FROM `vtrdt` "
 					+ " where UTYID = '"+detailsJSON.get("UTYID")+"' and "
 							+ " USRID = '"+detailsJSON.get("USRID")+"'";
 
@@ -191,14 +191,14 @@ public class Rule2Command extends aimCommand {
 			String vtrid = getNewRuleEntryID(dbcon);
 			detailsJSON.put("VTRID", vtrid);
 			detailsJSON.put("ACTIV", 1+"");
-			detailsJSON.put("STATS", "3");//AUTO APPROVAL :: Request
+			detailsJSON.put("STATS", "1");//AUTO APPROVAL :: Change to Enum
 			detailsJSON.put("CRTDT", dateFormat.format(date)+"");
 			detailsJSON.put("CHNBY", detailsJSON.get("USRID"));
 			detailsJSON.put("CRTBY", detailsJSON.get("USRID"));
 			detailsJSON.put("CHNDT", dateFormat.format(date)+"");
 			
 			
-			String query = "INSERT INTO `bookingdb`.`vtrdt` "
+			String query = "INSERT INTO `vtrdt` "
 					+ " (`VTRID`, `UTYID`, `USRID`, `ENTID`, `ETCID`, `ETYID`, "
 					+ "  `RULID`, `DSTIM`, `DETIM`, `TIMZN`, `OSTSL`, `OETSL`, "
 					+ "  `RECUR`, `DAYS`, `DESCR`, "
@@ -265,10 +265,10 @@ public class Rule2Command extends aimCommand {
 			}
 			System.out.println("SELECT "+
 					"MAX(`VTRID`)+1"+
-					" FROM `bookingdb`.`vtrdt`  ");
+					" FROM `vtrdt`  ");
 			rs=dbcon.stm.executeQuery("SELECT "+
 					"MAX(`VTRID`)+1"+
-					" FROM `bookingdb`.`vtrdt`  ");
+					" FROM `vtrdt`  ");
 			if(rs.next()){
 				return rs.getString(1);
 			}
@@ -339,7 +339,7 @@ public class Rule2Command extends aimCommand {
 			String vtrmi = getNewBookingID(dbcon);
 			detailsJSON.put("VTRMI", vtrmi);
 			detailsJSON.put("ACTIV", 1+"");
-			detailsJSON.put("STATS", "1");//AUTO APPROVAL :: Change to Enum
+			detailsJSON.put("STATS", "2");//Manual APPROVAL :: Change to Enum
 			detailsJSON.put("CRTDT", dateFormat.format(date)+"");
 			detailsJSON.put("CRTBY", detailsJSON.get("CUSID"));
 			detailsJSON.put("CHNDT", dateFormat.format(date)+"");
@@ -347,7 +347,7 @@ public class Rule2Command extends aimCommand {
 			
 			detailsJSON.put("CHNBY", detailsJSON.get("CUSID"));
 			
-			String query = "INSERT INTO `bookingdb`.`vtrmt`"
+			String query = "INSERT INTO `vtrmt`"
 					+ "(`VTRMI`, `VSUID`, `VUTID`, `CUSID`, `CUTID`,"
 					+ " `ETYID`, `ETCID`, `ENTID`, `RULID`, `BDTIM`, `BTIMZ`, `BOSTM`, `BOETM`, "
 					+ " `RTYPE`, `STATS`, `ACTIV`, `CRTDT`, `CRTBY`, `CHNDT`, `CHNBY`)"
@@ -412,10 +412,10 @@ public class Rule2Command extends aimCommand {
 			}
 			System.out.println("SELECT "+
 					"MAX(`VTRMI`)+1"+
-					" FROM `bookingdb`.`vtrmt`  ");
+					" FROM `vtrmt`  ");
 			rs=dbcon.stm.executeQuery("SELECT "+
 					"MAX(`VTRMI`)+1"+
-					" FROM `bookingdb`.`vtrmt`  ");
+					" FROM `vtrmt`  ");
 			if(rs.next()){
 				return rs.getString(1);
 			}
