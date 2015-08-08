@@ -504,6 +504,7 @@ public class VendorCommand extends aimCommand {
 			}
 			String query = 
 					" SELECT `usrmt`.`USRID`, "+
+							" `uetmp`.`UTYID`, "+
 							" `usrmt`.`URCOD`, "+
 							" `usrmt`.`PRFIX`, "+
 							" `usrmt`.`TITLE`, "+
