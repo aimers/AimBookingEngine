@@ -38,6 +38,9 @@
               var paramStr = "";
               if (param.length > 0) {
                 for (var i = 0; i < param.length; i++) {
+                  if (typeof param[i].value === 'object') {
+                    param[i].value = JSON.stringify(param[i].value);
+                  }
                   if (paramStr == "") {
                     paramStr = param[i].key + "=" + param[i].value + "&";
                   } else {
@@ -61,8 +64,6 @@
 
               // Set test data file name
               var sModelDataFileName = "userDetail.json";
-              // Prepare the custom payload
-              // Call this service
               this._send(sServicePath, fnSuccess, fnError, [ {} ],
                   sModelDataFileName);
             },

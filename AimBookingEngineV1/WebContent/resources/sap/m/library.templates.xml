@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Library name="sap.m" xmlns="http://www.sap.com/ui5/ide/templates/xmlview">
-<Template name="sap.m.ActionListItem" alias="ActionListItem,Item">
-	<jsTemplate><![CDATA[new sap.m.ActionListItem({
+	<Template name="sap.m.ActionListItem" alias="ActionListItem,Item">
+		<jsTemplate><![CDATA[new sap.m.ActionListItem({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -30,7 +30,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ActionListItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ActionListItem xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -50,9 +50,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ActionListItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ActionSelect" alias="ActionSelect,Select">
-	<jsTemplate><![CDATA[new sap.m.ActionSelect({
+	</Template>
+	<Template name="sap.m.ActionSelect" alias="ActionSelect,Select">
+		<jsTemplate><![CDATA[new sap.m.ActionSelect({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -80,7 +80,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ActionSelect xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ActionSelect xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -105,9 +105,9 @@
 		<items></items> <!-- sap.ui.core.Item -->
 </ActionSelect>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ActionSheet" alias="ActionSheet,Sheet">
-	<jsTemplate><![CDATA[new sap.m.ActionSheet({
+	</Template>
+	<Template name="sap.m.ActionSheet" alias="ActionSheet,Sheet">
+		<jsTemplate><![CDATA[new sap.m.ActionSheet({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -140,7 +140,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ActionSheet xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ActionSheet xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -160,9 +160,9 @@
 		<buttons></buttons> <!-- sap.m.Button -->
 </ActionSheet>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.App" alias="App">
-	<jsTemplate><![CDATA[new sap.m.App({
+	</Template>
+	<Template name="sap.m.App" alias="App">
+		<jsTemplate><![CDATA[new sap.m.App({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -192,7 +192,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<App xmlns="sap.m"
+		<xmlTemplate><![CDATA[<App xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -215,9 +215,9 @@
 		<pages></pages> <!-- sap.ui.core.Control -->
 </App>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Bar" alias="Bar">
-	<jsTemplate><![CDATA[new sap.m.Bar({
+	</Template>
+	<Template name="sap.m.Bar" alias="Bar">
+		<jsTemplate><![CDATA[new sap.m.Bar({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -233,7 +233,7 @@
 	contentRight: [] // sap.ui.core.Control
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Bar xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Bar xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -248,9 +248,9 @@
 		<contentRight></contentRight> <!-- sap.ui.core.Control -->
 </Bar>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.BusyDialog" alias="BusyDialog,Dialog">
-	<jsTemplate><![CDATA[new sap.m.BusyDialog({
+	</Template>
+	<Template name="sap.m.BusyDialog" alias="BusyDialog,Dialog">
+		<jsTemplate><![CDATA[new sap.m.BusyDialog({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -272,7 +272,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<BusyDialog xmlns="sap.m"
+		<xmlTemplate><![CDATA[<BusyDialog xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -291,9 +291,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </BusyDialog>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.BusyIndicator" alias="BusyIndicator,Indicator">
-	<jsTemplate><![CDATA[new sap.m.BusyIndicator({
+	</Template>
+	<Template name="sap.m.BusyIndicator" alias="BusyIndicator,Indicator">
+		<jsTemplate><![CDATA[new sap.m.BusyIndicator({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -314,7 +314,7 @@
 	ariaLabelledBy: [] // sap.ui.core.Control, since 1.27.0
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<BusyIndicator xmlns="sap.m"
+		<xmlTemplate><![CDATA[<BusyIndicator xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -334,9 +334,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </BusyIndicator>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Button" alias="Button">
-	<jsTemplate><![CDATA[new sap.m.Button({
+	</Template>
+	<Template name="sap.m.Button" alias="Button">
+		<jsTemplate><![CDATA[new sap.m.Button({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -363,7 +363,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Button xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Button xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -385,9 +385,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Button>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Carousel" alias="Carousel">
-	<jsTemplate><![CDATA[new sap.m.Carousel({
+	</Template>
+	<Template name="sap.m.Carousel" alias="Carousel">
+		<jsTemplate><![CDATA[new sap.m.Carousel({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -415,7 +415,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Carousel xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Carousel xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -436,9 +436,9 @@
 		<pages></pages> <!-- sap.ui.core.Control -->
 </Carousel>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.CheckBox" alias="CheckBox,Box">
-	<jsTemplate><![CDATA[new sap.m.CheckBox({
+	</Template>
+	<Template name="sap.m.CheckBox" alias="CheckBox,Box">
+		<jsTemplate><![CDATA[new sap.m.CheckBox({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -462,7 +462,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<CheckBox xmlns="sap.m"
+		<xmlTemplate><![CDATA[<CheckBox xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -483,9 +483,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </CheckBox>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Column" alias="Column">
-	<jsTemplate><![CDATA[new sap.m.Column({
+	</Template>
+	<Template name="sap.m.Column" alias="Column">
+		<jsTemplate><![CDATA[new sap.m.Column({
 	id: "${id}", // sap.ui.core.ID
 	width: undefined, // sap.ui.core.CSSSize
 	hAlign: sap.ui.core.TextAlign.Begin, // sap.ui.core.TextAlign
@@ -505,7 +505,7 @@
 	footer: undefined // sap.ui.core.Control
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Column xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Column xmlns="sap.m"
 	id="${id}"
 	width=""
 	hAlign="Begin"
@@ -524,9 +524,9 @@
 		<footer></footer> <!-- sap.ui.core.Control -->
 </Column>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ColumnListItem" alias="ColumnListItem,Item">
-	<jsTemplate><![CDATA[new sap.m.ColumnListItem({
+	</Template>
+	<Template name="sap.m.ColumnListItem" alias="ColumnListItem,Item">
+		<jsTemplate><![CDATA[new sap.m.ColumnListItem({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -556,7 +556,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ColumnListItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ColumnListItem xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -577,9 +577,9 @@
 		<cells></cells> <!-- sap.ui.core.Control -->
 </ColumnListItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ComboBox" alias="ComboBox,Box">
-	<jsTemplate><![CDATA[new sap.m.ComboBox({
+	</Template>
+	<Template name="sap.m.ComboBox" alias="ComboBox,Box">
+		<jsTemplate><![CDATA[new sap.m.ComboBox({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -612,7 +612,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ComboBox xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ComboBox xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -640,9 +640,9 @@
 		<items></items> <!-- sap.ui.core.Item -->
 </ComboBox>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ComboBoxBase" alias="ComboBoxBase,Base">
-	<jsTemplate><![CDATA[new sap.m.ComboBoxBase({
+	</Template>
+	<Template name="sap.m.ComboBoxBase" alias="ComboBoxBase,Base">
+		<jsTemplate><![CDATA[new sap.m.ComboBoxBase({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -669,7 +669,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ComboBoxBase xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ComboBoxBase xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -693,9 +693,9 @@
 		<items></items> <!-- sap.ui.core.Item -->
 </ComboBoxBase>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.CustomListItem" alias="CustomListItem,Item">
-	<jsTemplate><![CDATA[new sap.m.CustomListItem({
+	</Template>
+	<Template name="sap.m.CustomListItem" alias="CustomListItem,Item">
+		<jsTemplate><![CDATA[new sap.m.CustomListItem({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -724,7 +724,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<CustomListItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<CustomListItem xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -744,9 +744,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </CustomListItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.CustomTile" alias="CustomTile,Tile">
-	<jsTemplate><![CDATA[new sap.m.CustomTile({
+	</Template>
+	<Template name="sap.m.CustomTile" alias="CustomTile,Tile">
+		<jsTemplate><![CDATA[new sap.m.CustomTile({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -761,7 +761,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<CustomTile xmlns="sap.m"
+		<xmlTemplate><![CDATA[<CustomTile xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -773,9 +773,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </CustomTile>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.DatePicker" alias="DatePicker,Picker">
-	<jsTemplate><![CDATA[new sap.m.DatePicker({
+	</Template>
+	<Template name="sap.m.DatePicker" alias="DatePicker,Picker">
+		<jsTemplate><![CDATA[new sap.m.DatePicker({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -804,7 +804,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<DatePicker xmlns="sap.m"
+		<xmlTemplate><![CDATA[<DatePicker xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -830,9 +830,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </DatePicker>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.DateRangeSelection" alias="DateRangeSelection,Selection">
-	<jsTemplate><![CDATA[new sap.m.DateRangeSelection({
+	</Template>
+	<Template name="sap.m.DateRangeSelection" alias="DateRangeSelection,Selection">
+		<jsTemplate><![CDATA[new sap.m.DateRangeSelection({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -868,7 +868,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<DateRangeSelection xmlns="sap.m"
+		<xmlTemplate><![CDATA[<DateRangeSelection xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -899,9 +899,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </DateRangeSelection>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.DateTimeInput" alias="DateTimeInput,Input">
-	<jsTemplate><![CDATA[new sap.m.DateTimeInput({
+	</Template>
+	<Template name="sap.m.DateTimeInput" alias="DateTimeInput,Input">
+		<jsTemplate><![CDATA[new sap.m.DateTimeInput({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -933,7 +933,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<DateTimeInput xmlns="sap.m"
+		<xmlTemplate><![CDATA[<DateTimeInput xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -960,9 +960,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </DateTimeInput>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Dialog" alias="Dialog">
-	<jsTemplate><![CDATA[new sap.m.Dialog({
+	</Template>
+	<Template name="sap.m.Dialog" alias="Dialog">
+		<jsTemplate><![CDATA[new sap.m.Dialog({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1005,7 +1005,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Dialog xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Dialog xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1039,9 +1039,9 @@
 		<buttons></buttons> <!-- sap.m.Button, since 1.21.1 -->
 </Dialog>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.DisplayListItem" alias="DisplayListItem,Item">
-	<jsTemplate><![CDATA[new sap.m.DisplayListItem({
+	</Template>
+	<Template name="sap.m.DisplayListItem" alias="DisplayListItem,Item">
+		<jsTemplate><![CDATA[new sap.m.DisplayListItem({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1072,7 +1072,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<DisplayListItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<DisplayListItem xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1094,9 +1094,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </DisplayListItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.FacetFilter" alias="FacetFilter,Filter">
-	<jsTemplate><![CDATA[new sap.m.FacetFilter({
+	</Template>
+	<Template name="sap.m.FacetFilter" alias="FacetFilter,Filter">
+		<jsTemplate><![CDATA[new sap.m.FacetFilter({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1116,7 +1116,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<FacetFilter xmlns="sap.m"
+		<xmlTemplate><![CDATA[<FacetFilter xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1133,9 +1133,9 @@
 		<lists></lists> <!-- sap.m.FacetFilterList -->
 </FacetFilter>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.FacetFilterItem" alias="FacetFilterItem,Item">
-	<jsTemplate><![CDATA[new sap.m.FacetFilterItem({
+	</Template>
+	<Template name="sap.m.FacetFilterItem" alias="FacetFilterItem,Item">
+		<jsTemplate><![CDATA[new sap.m.FacetFilterItem({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1166,7 +1166,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<FacetFilterItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<FacetFilterItem xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1188,9 +1188,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </FacetFilterItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.FacetFilterList" alias="FacetFilterList,List">
-	<jsTemplate><![CDATA[new sap.m.FacetFilterList({
+	</Template>
+	<Template name="sap.m.FacetFilterList" alias="FacetFilterList,List">
+		<jsTemplate><![CDATA[new sap.m.FacetFilterList({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1270,7 +1270,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<FacetFilterList xmlns="sap.m"
+		<xmlTemplate><![CDATA[<FacetFilterList xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1327,9 +1327,9 @@
 		<columns></columns> <!-- sap.m.Column -->
 </FacetFilterList>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.FeedInput" alias="FeedInput,Input">
-	<jsTemplate><![CDATA[new sap.m.FeedInput({
+	</Template>
+	<Template name="sap.m.FeedInput" alias="FeedInput,Input">
+		<jsTemplate><![CDATA[new sap.m.FeedInput({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1350,7 +1350,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<FeedInput xmlns="sap.m"
+		<xmlTemplate><![CDATA[<FeedInput xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1368,9 +1368,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </FeedInput>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.FeedListItem" alias="FeedListItem,Item">
-	<jsTemplate><![CDATA[new sap.m.FeedListItem({
+	</Template>
+	<Template name="sap.m.FeedListItem" alias="FeedListItem,Item">
+		<jsTemplate><![CDATA[new sap.m.FeedListItem({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1415,7 +1415,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<FeedListItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<FeedListItem xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1447,9 +1447,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </FeedListItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.FlexBox" alias="FlexBox,Box">
-	<jsTemplate><![CDATA[new sap.m.FlexBox({
+	</Template>
+	<Template name="sap.m.FlexBox" alias="FlexBox,Box">
+		<jsTemplate><![CDATA[new sap.m.FlexBox({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1468,7 +1468,7 @@
 	items: [] // sap.ui.core.Control
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<FlexBox xmlns="sap.m"
+		<xmlTemplate><![CDATA[<FlexBox xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1486,9 +1486,9 @@
 		<items></items> <!-- sap.ui.core.Control -->
 </FlexBox>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.FlexItemData" alias="FlexItemData,Data">
-	<jsTemplate><![CDATA[new sap.m.FlexItemData({
+	</Template>
+	<Template name="sap.m.FlexItemData" alias="FlexItemData,Data">
+		<jsTemplate><![CDATA[new sap.m.FlexItemData({
 	id: "${id}", // sap.ui.core.ID
 	alignSelf: sap.m.FlexAlignSelf.Auto, // sap.m.FlexAlignSelf
 	order: 0, // int
@@ -1500,7 +1500,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<FlexItemData xmlns="sap.m"
+		<xmlTemplate><![CDATA[<FlexItemData xmlns="sap.m"
 	id="${id}"
 	alignSelf="Auto"
 	order="0"
@@ -1511,9 +1511,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </FlexItemData>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.GroupHeaderListItem" alias="GroupHeaderListItem,Item">
-	<jsTemplate><![CDATA[new sap.m.GroupHeaderListItem({
+	</Template>
+	<Template name="sap.m.GroupHeaderListItem" alias="GroupHeaderListItem,Item">
+		<jsTemplate><![CDATA[new sap.m.GroupHeaderListItem({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1545,7 +1545,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<GroupHeaderListItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<GroupHeaderListItem xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1568,9 +1568,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </GroupHeaderListItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.GrowingList" alias="GrowingList,List">
-	<jsTemplate><![CDATA[new sap.m.GrowingList({
+	</Template>
+	<Template name="sap.m.GrowingList" alias="GrowingList,List">
+		<jsTemplate><![CDATA[new sap.m.GrowingList({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1636,7 +1636,7 @@
 	}, this] // since 1.20
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<GrowingList xmlns="sap.m"
+		<xmlTemplate><![CDATA[<GrowingList xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1683,9 +1683,9 @@
 		<columns></columns> <!-- sap.m.Column -->
 </GrowingList>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.HBox" alias="HBox">
-	<jsTemplate><![CDATA[new sap.m.HBox({
+	</Template>
+	<Template name="sap.m.HBox" alias="HBox">
+		<jsTemplate><![CDATA[new sap.m.HBox({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1704,7 +1704,7 @@
 	items: [] // sap.ui.core.Control
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<HBox xmlns="sap.m"
+		<xmlTemplate><![CDATA[<HBox xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1722,9 +1722,9 @@
 		<items></items> <!-- sap.ui.core.Control -->
 </HBox>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.IconTabBar" alias="IconTabBar,Bar">
-	<jsTemplate><![CDATA[new sap.m.IconTabBar({
+	</Template>
+	<Template name="sap.m.IconTabBar" alias="IconTabBar,Bar">
+		<jsTemplate><![CDATA[new sap.m.IconTabBar({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1750,7 +1750,7 @@
 	}, this] // since 1.15.0
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<IconTabBar xmlns="sap.m"
+		<xmlTemplate><![CDATA[<IconTabBar xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1771,9 +1771,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </IconTabBar>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.IconTabFilter" alias="IconTabFilter,Filter">
-	<jsTemplate><![CDATA[new sap.m.IconTabFilter({
+	</Template>
+	<Template name="sap.m.IconTabFilter" alias="IconTabFilter,Filter">
+		<jsTemplate><![CDATA[new sap.m.IconTabFilter({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -1792,7 +1792,7 @@
 	content: [] // sap.ui.core.Control, since 1.15.0
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<IconTabFilter xmlns="sap.m"
+		<xmlTemplate><![CDATA[<IconTabFilter xmlns="sap.m"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -1810,9 +1810,9 @@
 		<content></content> <!-- sap.ui.core.Control, since 1.15.0 -->
 </IconTabFilter>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.IconTabHeader" alias="IconTabHeader,Header">
-	<jsTemplate><![CDATA[new sap.m.IconTabHeader({
+	</Template>
+	<Template name="sap.m.IconTabHeader" alias="IconTabHeader,Header">
+		<jsTemplate><![CDATA[new sap.m.IconTabHeader({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1829,7 +1829,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<IconTabHeader xmlns="sap.m"
+		<xmlTemplate><![CDATA[<IconTabHeader xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1843,9 +1843,9 @@
 		<items></items> <!-- sap.m.IconTab -->
 </IconTabHeader>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.IconTabSeparator" alias="IconTabSeparator,Separator">
-	<jsTemplate><![CDATA[new sap.m.IconTabSeparator({
+	</Template>
+	<Template name="sap.m.IconTabSeparator" alias="IconTabSeparator,Separator">
+		<jsTemplate><![CDATA[new sap.m.IconTabSeparator({
 	id: "${id}", // sap.ui.core.ID
 	icon: "", // sap.ui.core.URI
 	iconDensityAware: true, // boolean
@@ -1854,7 +1854,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<IconTabSeparator xmlns="sap.m"
+		<xmlTemplate><![CDATA[<IconTabSeparator xmlns="sap.m"
 	id="${id}"
 	icon=""
 	iconDensityAware="true">
@@ -1862,9 +1862,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </IconTabSeparator>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Image" alias="Image">
-	<jsTemplate><![CDATA[new sap.m.Image({
+	</Template>
+	<Template name="sap.m.Image" alias="Image">
+		<jsTemplate><![CDATA[new sap.m.Image({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1888,7 +1888,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Image xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Image xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -1907,9 +1907,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Image>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Input" alias="Input">
-	<jsTemplate><![CDATA[new sap.m.Input({
+	</Template>
+	<Template name="sap.m.Input" alias="Input">
+		<jsTemplate><![CDATA[new sap.m.Input({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -1962,7 +1962,7 @@
 	}, this] // since 1.16.3
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Input xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Input xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2004,9 +2004,9 @@
 		<suggestionRows></suggestionRows> <!-- sap.m.ColumnListItem, since 1.21.1 -->
 </Input>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.InputBase" alias="InputBase,Base">
-	<jsTemplate><![CDATA[new sap.m.InputBase({
+	</Template>
+	<Template name="sap.m.InputBase" alias="InputBase,Base">
+		<jsTemplate><![CDATA[new sap.m.InputBase({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2031,7 +2031,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<InputBase xmlns="sap.m"
+		<xmlTemplate><![CDATA[<InputBase xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2053,9 +2053,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </InputBase>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.InputListItem" alias="InputListItem,Item">
-	<jsTemplate><![CDATA[new sap.m.InputListItem({
+	</Template>
+	<Template name="sap.m.InputListItem" alias="InputListItem,Item">
+		<jsTemplate><![CDATA[new sap.m.InputListItem({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2085,7 +2085,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<InputListItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<InputListItem xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2106,9 +2106,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </InputListItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Label" alias="Label">
-	<jsTemplate><![CDATA[new sap.m.Label({
+	</Template>
+	<Template name="sap.m.Label" alias="Label">
+		<jsTemplate><![CDATA[new sap.m.Label({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2125,7 +2125,7 @@
 	labelFor: undefined // sap.ui.core.Control
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Label xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Label xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2141,9 +2141,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Label>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Link" alias="Link">
-	<jsTemplate><![CDATA[new sap.m.Link({
+	</Template>
+	<Template name="sap.m.Link" alias="Link">
+		<jsTemplate><![CDATA[new sap.m.Link({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2168,7 +2168,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Link xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Link xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2190,9 +2190,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Link>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.List" alias="List">
-	<jsTemplate><![CDATA[new sap.m.List({
+	</Template>
+	<Template name="sap.m.List" alias="List">
+		<jsTemplate><![CDATA[new sap.m.List({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2255,7 +2255,7 @@
 	}, this] // since 1.20
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<List xmlns="sap.m"
+		<xmlTemplate><![CDATA[<List xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2299,9 +2299,9 @@
 		<columns></columns> <!-- sap.m.Column -->
 </List>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ListBase" alias="ListBase,Base">
-	<jsTemplate><![CDATA[new sap.m.ListBase({
+	</Template>
+	<Template name="sap.m.ListBase" alias="ListBase,Base">
+		<jsTemplate><![CDATA[new sap.m.ListBase({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2362,7 +2362,7 @@
 	}, this] // since 1.20
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ListBase xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ListBase xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2404,9 +2404,9 @@
 		<infoToolbar></infoToolbar> <!-- sap.m.Toolbar, since 1.16 -->
 </ListBase>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ListItemBase" alias="ListItemBase,Base">
-	<jsTemplate><![CDATA[new sap.m.ListItemBase({
+	</Template>
+	<Template name="sap.m.ListItemBase" alias="ListItemBase,Base">
+		<jsTemplate><![CDATA[new sap.m.ListItemBase({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2434,7 +2434,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ListItemBase xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ListItemBase xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2453,9 +2453,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ListItemBase>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.MessagePage" alias="MessagePage,Page">
-	<jsTemplate><![CDATA[new sap.m.MessagePage({
+	</Template>
+	<Template name="sap.m.MessagePage" alias="MessagePage,Page">
+		<jsTemplate><![CDATA[new sap.m.MessagePage({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2479,7 +2479,7 @@
 	}, this] // since 1.28.1
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<MessagePage xmlns="sap.m"
+		<xmlTemplate><![CDATA[<MessagePage xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2500,9 +2500,9 @@
 		<customDescription></customDescription> <!-- sap.m.Link -->
 </MessagePage>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.MessagePopover" alias="MessagePopover,Popover">
-	<jsTemplate><![CDATA[new sap.m.MessagePopover({
+	</Template>
+	<Template name="sap.m.MessagePopover" alias="MessagePopover,Popover">
+		<jsTemplate><![CDATA[new sap.m.MessagePopover({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2533,7 +2533,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<MessagePopover xmlns="sap.m"
+		<xmlTemplate><![CDATA[<MessagePopover xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2551,9 +2551,9 @@
 		<items></items> <!-- sap.m.MessagePopoverItem -->
 </MessagePopover>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.MessagePopoverItem" alias="MessagePopoverItem,Item">
-	<jsTemplate><![CDATA[new sap.m.MessagePopoverItem({
+	</Template>
+	<Template name="sap.m.MessagePopoverItem" alias="MessagePopoverItem,Item">
+		<jsTemplate><![CDATA[new sap.m.MessagePopoverItem({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -2567,7 +2567,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<MessagePopoverItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<MessagePopoverItem xmlns="sap.m"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -2580,9 +2580,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </MessagePopoverItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.MultiComboBox" alias="MultiComboBox,Box">
-	<jsTemplate><![CDATA[new sap.m.MultiComboBox({
+	</Template>
+	<Template name="sap.m.MultiComboBox" alias="MultiComboBox,Box">
+		<jsTemplate><![CDATA[new sap.m.MultiComboBox({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2617,7 +2617,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<MultiComboBox xmlns="sap.m"
+		<xmlTemplate><![CDATA[<MultiComboBox xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2645,9 +2645,9 @@
 		<items></items> <!-- sap.ui.core.Item -->
 </MultiComboBox>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.MultiInput" alias="MultiInput,Input">
-	<jsTemplate><![CDATA[new sap.m.MultiInput({
+	</Template>
+	<Template name="sap.m.MultiInput" alias="MultiInput,Input">
+		<jsTemplate><![CDATA[new sap.m.MultiInput({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2705,7 +2705,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<MultiInput xmlns="sap.m"
+		<xmlTemplate><![CDATA[<MultiInput xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2750,9 +2750,9 @@
 		<tokens></tokens> <!-- sap.m.Token -->
 </MultiInput>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.NavContainer" alias="NavContainer,Container">
-	<jsTemplate><![CDATA[new sap.m.NavContainer({
+	</Template>
+	<Template name="sap.m.NavContainer" alias="NavContainer,Container">
+		<jsTemplate><![CDATA[new sap.m.NavContainer({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2774,7 +2774,7 @@
 	}, this] // since 1.7.1
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<NavContainer xmlns="sap.m"
+		<xmlTemplate><![CDATA[<NavContainer xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2791,9 +2791,9 @@
 		<pages></pages> <!-- sap.ui.core.Control -->
 </NavContainer>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ObjectAttribute" alias="ObjectAttribute,Attribute">
-	<jsTemplate><![CDATA[new sap.m.ObjectAttribute({
+	</Template>
+	<Template name="sap.m.ObjectAttribute" alias="ObjectAttribute,Attribute">
+		<jsTemplate><![CDATA[new sap.m.ObjectAttribute({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2810,7 +2810,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ObjectAttribute xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ObjectAttribute xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2824,9 +2824,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ObjectAttribute>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ObjectHeader" alias="ObjectHeader,Header">
-	<jsTemplate><![CDATA[new sap.m.ObjectHeader({
+	</Template>
+	<Template name="sap.m.ObjectHeader" alias="ObjectHeader,Header">
+		<jsTemplate><![CDATA[new sap.m.ObjectHeader({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2880,7 +2880,7 @@
 	}, this] // since 1.16.0
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ObjectHeader xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ObjectHeader xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2925,9 +2925,9 @@
 		<headerContainer></headerContainer> <!-- sap.m.ObjectHeaderContainer, since 1.21.1 -->
 </ObjectHeader>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ObjectIdentifier" alias="ObjectIdentifier,Identifier">
-	<jsTemplate><![CDATA[new sap.m.ObjectIdentifier({
+	</Template>
+	<Template name="sap.m.ObjectIdentifier" alias="ObjectIdentifier,Identifier">
+		<jsTemplate><![CDATA[new sap.m.ObjectIdentifier({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -2948,7 +2948,7 @@
 	}, this] // since 1.26
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ObjectIdentifier xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ObjectIdentifier xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -2966,9 +2966,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ObjectIdentifier>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ObjectListItem" alias="ObjectListItem,Item">
-	<jsTemplate><![CDATA[new sap.m.ObjectListItem({
+	</Template>
+	<Template name="sap.m.ObjectListItem" alias="ObjectListItem,Item">
+		<jsTemplate><![CDATA[new sap.m.ObjectListItem({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3014,7 +3014,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ObjectListItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ObjectListItem xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3051,9 +3051,9 @@
 		<secondStatus></secondStatus> <!-- sap.m.ObjectStatus -->
 </ObjectListItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ObjectNumber" alias="ObjectNumber,Number">
-	<jsTemplate><![CDATA[new sap.m.ObjectNumber({
+	</Template>
+	<Template name="sap.m.ObjectNumber" alias="ObjectNumber,Number">
+		<jsTemplate><![CDATA[new sap.m.ObjectNumber({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3070,7 +3070,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ObjectNumber xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ObjectNumber xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3086,9 +3086,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ObjectNumber>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ObjectStatus" alias="ObjectStatus,Status">
-	<jsTemplate><![CDATA[new sap.m.ObjectStatus({
+	</Template>
+	<Template name="sap.m.ObjectStatus" alias="ObjectStatus,Status">
+		<jsTemplate><![CDATA[new sap.m.ObjectStatus({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3105,7 +3105,7 @@
 	ariaDescribedBy: [] // sap.ui.core.Control
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ObjectStatus xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ObjectStatus xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3121,9 +3121,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ObjectStatus>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.OverflowToolbar" alias="OverflowToolbar,Toolbar">
-	<jsTemplate><![CDATA[new sap.m.OverflowToolbar({
+	</Template>
+	<Template name="sap.m.OverflowToolbar" alias="OverflowToolbar,Toolbar">
+		<jsTemplate><![CDATA[new sap.m.OverflowToolbar({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3142,7 +3142,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<OverflowToolbar xmlns="sap.m"
+		<xmlTemplate><![CDATA[<OverflowToolbar xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3158,9 +3158,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </OverflowToolbar>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.OverflowToolbarLayoutData" alias="OverflowToolbarLayoutData,Data">
-	<jsTemplate><![CDATA[new sap.m.OverflowToolbarLayoutData({
+	</Template>
+	<Template name="sap.m.OverflowToolbarLayoutData" alias="OverflowToolbarLayoutData,Data">
+		<jsTemplate><![CDATA[new sap.m.OverflowToolbarLayoutData({
 	id: "${id}", // sap.ui.core.ID
 	shrinkable: false, // boolean
 	minWidth: undefined, // sap.ui.core.CSSSize
@@ -3172,7 +3172,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<OverflowToolbarLayoutData xmlns="sap.m"
+		<xmlTemplate><![CDATA[<OverflowToolbarLayoutData xmlns="sap.m"
 	id="${id}"
 	shrinkable="false"
 	minWidth=""
@@ -3183,9 +3183,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </OverflowToolbarLayoutData>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nColumnsItem" alias="P13nColumnsItem,Item">
-	<jsTemplate><![CDATA[new sap.m.P13nColumnsItem({
+	</Template>
+	<Template name="sap.m.P13nColumnsItem" alias="P13nColumnsItem,Item">
+		<jsTemplate><![CDATA[new sap.m.P13nColumnsItem({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -3200,7 +3200,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nColumnsItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nColumnsItem xmlns="sap.m"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -3214,9 +3214,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </P13nColumnsItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nColumnsPanel" alias="P13nColumnsPanel,Panel">
-	<jsTemplate><![CDATA[new sap.m.P13nColumnsPanel({
+	</Template>
+	<Template name="sap.m.P13nColumnsPanel" alias="P13nColumnsPanel,Panel">
+		<jsTemplate><![CDATA[new sap.m.P13nColumnsPanel({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3245,7 +3245,7 @@
 	}, this] // since 1.26.7
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nColumnsPanel xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nColumnsPanel xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3265,9 +3265,9 @@
 		<columnsItems></columnsItems> <!-- sap.m.P13nColumnsItem, since 1.26.0 -->
 </P13nColumnsPanel>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nConditionPanel" alias="P13nConditionPanel,Panel">
-	<jsTemplate><![CDATA[new sap.m.P13nConditionPanel({
+	</Template>
+	<Template name="sap.m.P13nConditionPanel" alias="P13nConditionPanel,Panel">
+		<jsTemplate><![CDATA[new sap.m.P13nConditionPanel({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3291,7 +3291,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nConditionPanel xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nConditionPanel xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3312,9 +3312,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </P13nConditionPanel>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nDialog" alias="P13nDialog,Dialog">
-	<jsTemplate><![CDATA[new sap.m.P13nDialog({
+	</Template>
+	<Template name="sap.m.P13nDialog" alias="P13nDialog,Dialog">
+		<jsTemplate><![CDATA[new sap.m.P13nDialog({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3369,7 +3369,7 @@
 	}, this] // since 1.26.0
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nDialog xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nDialog xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3409,9 +3409,9 @@
 		<panels></panels> <!-- sap.m.P13nPanel, since 1.26.0 -->
 </P13nDialog>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nFilterItem" alias="P13nFilterItem,Item">
-	<jsTemplate><![CDATA[new sap.m.P13nFilterItem({
+	</Template>
+	<Template name="sap.m.P13nFilterItem" alias="P13nFilterItem,Item">
+		<jsTemplate><![CDATA[new sap.m.P13nFilterItem({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -3427,7 +3427,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nFilterItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nFilterItem xmlns="sap.m"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -3442,9 +3442,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </P13nFilterItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nFilterPanel" alias="P13nFilterPanel,Panel">
-	<jsTemplate><![CDATA[new sap.m.P13nFilterPanel({
+	</Template>
+	<Template name="sap.m.P13nFilterPanel" alias="P13nFilterPanel,Panel">
+		<jsTemplate><![CDATA[new sap.m.P13nFilterPanel({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3476,7 +3476,7 @@
 	}, this] // since 1.26
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nFilterPanel xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nFilterPanel xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3499,9 +3499,9 @@
 		<filterItems></filterItems> <!-- sap.m.P13nFilterItem, since 1.26 -->
 </P13nFilterPanel>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nGroupItem" alias="P13nGroupItem,Item">
-	<jsTemplate><![CDATA[new sap.m.P13nGroupItem({
+	</Template>
+	<Template name="sap.m.P13nGroupItem" alias="P13nGroupItem,Item">
+		<jsTemplate><![CDATA[new sap.m.P13nGroupItem({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -3515,7 +3515,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nGroupItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nGroupItem xmlns="sap.m"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -3528,9 +3528,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </P13nGroupItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nGroupPanel" alias="P13nGroupPanel,Panel">
-	<jsTemplate><![CDATA[new sap.m.P13nGroupPanel({
+	</Template>
+	<Template name="sap.m.P13nGroupPanel" alias="P13nGroupPanel,Panel">
+		<jsTemplate><![CDATA[new sap.m.P13nGroupPanel({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3561,7 +3561,7 @@
 	}, this] // since 1.26
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nGroupPanel xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nGroupPanel xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3583,9 +3583,9 @@
 		<groupItems></groupItems> <!-- sap.m.P13nGroupItem, since 1.26 -->
 </P13nGroupPanel>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nItem" alias="P13nItem,Item">
-	<jsTemplate><![CDATA[new sap.m.P13nItem({
+	</Template>
+	<Template name="sap.m.P13nItem" alias="P13nItem,Item">
+		<jsTemplate><![CDATA[new sap.m.P13nItem({
 	id: "${id}", // sap.ui.core.ID
 	columnKey: undefined, // string, since 1.26.0
 	text: "", // string, since 1.26.0
@@ -3601,7 +3601,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nItem xmlns="sap.m"
 	id="${id}"
 	columnKey=""
 	text=""
@@ -3616,9 +3616,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </P13nItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nPanel" alias="P13nPanel,Panel">
-	<jsTemplate><![CDATA[new sap.m.P13nPanel({
+	</Template>
+	<Template name="sap.m.P13nPanel" alias="P13nPanel,Panel">
+		<jsTemplate><![CDATA[new sap.m.P13nPanel({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3636,7 +3636,7 @@
 	}, this] // since 1.28.0
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nPanel xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nPanel xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3651,9 +3651,9 @@
 		<items></items> <!-- sap.m.P13nItem, since 1.26.0 -->
 </P13nPanel>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nSortItem" alias="P13nSortItem,Item">
-	<jsTemplate><![CDATA[new sap.m.P13nSortItem({
+	</Template>
+	<Template name="sap.m.P13nSortItem" alias="P13nSortItem,Item">
+		<jsTemplate><![CDATA[new sap.m.P13nSortItem({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -3666,7 +3666,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nSortItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nSortItem xmlns="sap.m"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -3678,9 +3678,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </P13nSortItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.P13nSortPanel" alias="P13nSortPanel,Panel">
-	<jsTemplate><![CDATA[new sap.m.P13nSortPanel({
+	</Template>
+	<Template name="sap.m.P13nSortPanel" alias="P13nSortPanel,Panel">
+		<jsTemplate><![CDATA[new sap.m.P13nSortPanel({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3710,7 +3710,7 @@
 	}, this] // since 1.26
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<P13nSortPanel xmlns="sap.m"
+		<xmlTemplate><![CDATA[<P13nSortPanel xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3731,9 +3731,9 @@
 		<sortItems></sortItems> <!-- sap.m.P13nSortItem, since 1.26 -->
 </P13nSortPanel>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Page" alias="Page">
-	<jsTemplate><![CDATA[new sap.m.Page({
+	</Template>
+	<Template name="sap.m.Page" alias="Page">
+		<jsTemplate><![CDATA[new sap.m.Page({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3765,7 +3765,7 @@
 	}, this] // since 1.12.2
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Page xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Page xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3792,9 +3792,9 @@
 		<headerContent></headerContent> <!-- sap.ui.core.Control -->
 </Page>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Panel" alias="Panel">
-	<jsTemplate><![CDATA[new sap.m.Panel({
+	</Template>
+	<Template name="sap.m.Panel" alias="Panel">
+		<jsTemplate><![CDATA[new sap.m.Panel({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3816,7 +3816,7 @@
 	}, this] // since 1.22
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Panel xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Panel xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3835,9 +3835,9 @@
 		<infoToolbar></infoToolbar> <!-- sap.m.Toolbar, since 1.16 -->
 </Panel>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Popover" alias="Popover">
-	<jsTemplate><![CDATA[new sap.m.Popover({
+	</Template>
+	<Template name="sap.m.Popover" alias="Popover">
+		<jsTemplate><![CDATA[new sap.m.Popover({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3881,7 +3881,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Popover xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Popover xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3916,9 +3916,9 @@
 		<endButton></endButton> <!-- sap.ui.core.Control, since 1.15.1 -->
 </Popover>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ProgressIndicator" alias="ProgressIndicator,Indicator">
-	<jsTemplate><![CDATA[new sap.m.ProgressIndicator({
+	</Template>
+	<Template name="sap.m.ProgressIndicator" alias="ProgressIndicator,Indicator">
+		<jsTemplate><![CDATA[new sap.m.ProgressIndicator({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3936,7 +3936,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ProgressIndicator xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ProgressIndicator xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3953,9 +3953,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ProgressIndicator>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.PullToRefresh" alias="PullToRefresh,Refresh">
-	<jsTemplate><![CDATA[new sap.m.PullToRefresh({
+	</Template>
+	<Template name="sap.m.PullToRefresh" alias="PullToRefresh,Refresh">
+		<jsTemplate><![CDATA[new sap.m.PullToRefresh({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -3972,7 +3972,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<PullToRefresh xmlns="sap.m"
+		<xmlTemplate><![CDATA[<PullToRefresh xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -3986,9 +3986,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </PullToRefresh>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.QuickView" alias="QuickView,View">
-	<jsTemplate><![CDATA[new sap.m.QuickView({
+	</Template>
+	<Template name="sap.m.QuickView" alias="QuickView,View">
+		<jsTemplate><![CDATA[new sap.m.QuickView({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4019,7 +4019,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<QuickView xmlns="sap.m"
+		<xmlTemplate><![CDATA[<QuickView xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4037,9 +4037,9 @@
 		<pages></pages> <!-- sap.m.QuickViewPage -->
 </QuickView>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.QuickViewBase" alias="QuickViewBase,Base">
-	<jsTemplate><![CDATA[new sap.m.QuickViewBase({
+	</Template>
+	<Template name="sap.m.QuickViewBase" alias="QuickViewBase,Base">
+		<jsTemplate><![CDATA[new sap.m.QuickViewBase({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4056,7 +4056,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<QuickViewBase xmlns="sap.m"
+		<xmlTemplate><![CDATA[<QuickViewBase xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4068,9 +4068,9 @@
 		<pages></pages> <!-- sap.m.QuickViewPage -->
 </QuickViewBase>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.QuickViewGroup" alias="QuickViewGroup,Group">
-	<jsTemplate><![CDATA[new sap.m.QuickViewGroup({
+	</Template>
+	<Template name="sap.m.QuickViewGroup" alias="QuickViewGroup,Group">
+		<jsTemplate><![CDATA[new sap.m.QuickViewGroup({
 	id: "${id}", // sap.ui.core.ID
 	visible: true, // boolean
 	heading: "", // string
@@ -4080,7 +4080,7 @@
 	elements: [] // sap.m.QuickViewGroupElement
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<QuickViewGroup xmlns="sap.m"
+		<xmlTemplate><![CDATA[<QuickViewGroup xmlns="sap.m"
 	id="${id}"
 	visible="true"
 	heading="">
@@ -4089,9 +4089,9 @@
 		<elements></elements> <!-- sap.m.QuickViewGroupElement -->
 </QuickViewGroup>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.QuickViewGroupElement" alias="QuickViewGroupElement,Element">
-	<jsTemplate><![CDATA[new sap.m.QuickViewGroupElement({
+	</Template>
+	<Template name="sap.m.QuickViewGroupElement" alias="QuickViewGroupElement,Element">
+		<jsTemplate><![CDATA[new sap.m.QuickViewGroupElement({
 	id: "${id}", // sap.ui.core.ID
 	visible: true, // boolean
 	label: "", // string
@@ -4106,7 +4106,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<QuickViewGroupElement xmlns="sap.m"
+		<xmlTemplate><![CDATA[<QuickViewGroupElement xmlns="sap.m"
 	id="${id}"
 	visible="true"
 	label=""
@@ -4120,9 +4120,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </QuickViewGroupElement>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.QuickViewPage" alias="QuickViewPage,Page">
-	<jsTemplate><![CDATA[new sap.m.QuickViewPage({
+	</Template>
+	<Template name="sap.m.QuickViewPage" alias="QuickViewPage,Page">
+		<jsTemplate><![CDATA[new sap.m.QuickViewPage({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4140,7 +4140,7 @@
 	groups: [] // sap.m.QuickViewGroup
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<QuickViewPage xmlns="sap.m"
+		<xmlTemplate><![CDATA[<QuickViewPage xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4157,9 +4157,9 @@
 		<groups></groups> <!-- sap.m.QuickViewGroup -->
 </QuickViewPage>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.RadioButton" alias="RadioButton,Button">
-	<jsTemplate><![CDATA[new sap.m.RadioButton({
+	</Template>
+	<Template name="sap.m.RadioButton" alias="RadioButton,Button">
+		<jsTemplate><![CDATA[new sap.m.RadioButton({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4184,7 +4184,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<RadioButton xmlns="sap.m"
+		<xmlTemplate><![CDATA[<RadioButton xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4206,9 +4206,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </RadioButton>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.RadioButtonGroup" alias="RadioButtonGroup,Group">
-	<jsTemplate><![CDATA[new sap.m.RadioButtonGroup({
+	</Template>
+	<Template name="sap.m.RadioButtonGroup" alias="RadioButtonGroup,Group">
+		<jsTemplate><![CDATA[new sap.m.RadioButtonGroup({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4231,7 +4231,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<RadioButtonGroup xmlns="sap.m"
+		<xmlTemplate><![CDATA[<RadioButtonGroup xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4251,9 +4251,9 @@
 		<buttons></buttons> <!-- sap.m.RadioButton -->
 </RadioButtonGroup>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.RatingIndicator" alias="RatingIndicator,Indicator">
-	<jsTemplate><![CDATA[new sap.m.RatingIndicator({
+	</Template>
+	<Template name="sap.m.RatingIndicator" alias="RatingIndicator,Indicator">
+		<jsTemplate><![CDATA[new sap.m.RatingIndicator({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4279,7 +4279,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<RatingIndicator xmlns="sap.m"
+		<xmlTemplate><![CDATA[<RatingIndicator xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4300,9 +4300,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </RatingIndicator>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ResponsivePopover" alias="ResponsivePopover,Popover">
-	<jsTemplate><![CDATA[new sap.m.ResponsivePopover({
+	</Template>
+	<Template name="sap.m.ResponsivePopover" alias="ResponsivePopover,Popover">
+		<jsTemplate><![CDATA[new sap.m.ResponsivePopover({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4343,7 +4343,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ResponsivePopover xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ResponsivePopover xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4375,9 +4375,9 @@
 		<endButton></endButton> <!-- sap.m.Button -->
 </ResponsivePopover>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ScrollContainer" alias="ScrollContainer,Container">
-	<jsTemplate><![CDATA[new sap.m.ScrollContainer({
+	</Template>
+	<Template name="sap.m.ScrollContainer" alias="ScrollContainer,Container">
+		<jsTemplate><![CDATA[new sap.m.ScrollContainer({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4393,7 +4393,7 @@
 	content: [] // sap.ui.core.Control
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ScrollContainer xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ScrollContainer xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4408,9 +4408,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </ScrollContainer>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.SearchField" alias="SearchField,Field">
-	<jsTemplate><![CDATA[new sap.m.SearchField({
+	</Template>
+	<Template name="sap.m.SearchField" alias="SearchField,Field">
+		<jsTemplate><![CDATA[new sap.m.SearchField({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4439,7 +4439,7 @@
 	}, this] // since 1.9.1
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<SearchField xmlns="sap.m"
+		<xmlTemplate><![CDATA[<SearchField xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4463,9 +4463,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </SearchField>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.SegmentedButton" alias="SegmentedButton,Button">
-	<jsTemplate><![CDATA[new sap.m.SegmentedButton({
+	</Template>
+	<Template name="sap.m.SegmentedButton" alias="SegmentedButton,Button">
+		<jsTemplate><![CDATA[new sap.m.SegmentedButton({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4486,7 +4486,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<SegmentedButton xmlns="sap.m"
+		<xmlTemplate><![CDATA[<SegmentedButton xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4504,9 +4504,9 @@
 		<items></items> <!-- sap.m.SegmentedButtonItem, since 1.28 -->
 </SegmentedButton>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.SegmentedButtonItem" alias="SegmentedButtonItem,Item">
-	<jsTemplate><![CDATA[new sap.m.SegmentedButtonItem({
+	</Template>
+	<Template name="sap.m.SegmentedButtonItem" alias="SegmentedButtonItem,Item">
+		<jsTemplate><![CDATA[new sap.m.SegmentedButtonItem({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -4522,7 +4522,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<SegmentedButtonItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<SegmentedButtonItem xmlns="sap.m"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -4535,9 +4535,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </SegmentedButtonItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Select" alias="Select">
-	<jsTemplate><![CDATA[new sap.m.Select({
+	</Template>
+	<Template name="sap.m.Select" alias="Select">
+		<jsTemplate><![CDATA[new sap.m.Select({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4564,7 +4564,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Select xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Select xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4588,9 +4588,9 @@
 		<items></items> <!-- sap.ui.core.Item -->
 </Select>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.SelectDialog" alias="SelectDialog,Dialog">
-	<jsTemplate><![CDATA[new sap.m.SelectDialog({
+	</Template>
+	<Template name="sap.m.SelectDialog" alias="SelectDialog,Dialog">
+		<jsTemplate><![CDATA[new sap.m.SelectDialog({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4620,7 +4620,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<SelectDialog xmlns="sap.m"
+		<xmlTemplate><![CDATA[<SelectDialog xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4641,9 +4641,9 @@
 		<items></items> <!-- sap.m.ListItemBase -->
 </SelectDialog>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.SelectList" alias="SelectList,List">
-	<jsTemplate><![CDATA[new sap.m.SelectList({
+	</Template>
+	<Template name="sap.m.SelectList" alias="SelectList,List">
+		<jsTemplate><![CDATA[new sap.m.SelectList({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4664,7 +4664,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<SelectList xmlns="sap.m"
+		<xmlTemplate><![CDATA[<SelectList xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4682,9 +4682,9 @@
 		<items></items> <!-- sap.ui.core.Item -->
 </SelectList>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Shell" alias="Shell">
-	<jsTemplate><![CDATA[new sap.m.Shell({
+	</Template>
+	<Template name="sap.m.Shell" alias="Shell">
+		<jsTemplate><![CDATA[new sap.m.Shell({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4708,7 +4708,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Shell xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Shell xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4729,9 +4729,9 @@
 		<app></app> <!-- sap.ui.core.Control -->
 </Shell>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Slider" alias="Slider">
-	<jsTemplate><![CDATA[new sap.m.Slider({
+	</Template>
+	<Template name="sap.m.Slider" alias="Slider">
+		<jsTemplate><![CDATA[new sap.m.Slider({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4756,7 +4756,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Slider xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Slider xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4776,9 +4776,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Slider>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.SplitApp" alias="SplitApp,App">
-	<jsTemplate><![CDATA[new sap.m.SplitApp({
+	</Template>
+	<Template name="sap.m.SplitApp" alias="SplitApp,App">
+		<jsTemplate><![CDATA[new sap.m.SplitApp({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4831,7 +4831,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<SplitApp xmlns="sap.m"
+		<xmlTemplate><![CDATA[<SplitApp xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4863,9 +4863,9 @@
 		<detailPages></detailPages> <!-- sap.ui.core.Control -->
 </SplitApp>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.SplitContainer" alias="SplitContainer,Container">
-	<jsTemplate><![CDATA[new sap.m.SplitContainer({
+	</Template>
+	<Template name="sap.m.SplitContainer" alias="SplitContainer,Container">
+		<jsTemplate><![CDATA[new sap.m.SplitContainer({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4914,7 +4914,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<SplitContainer xmlns="sap.m"
+		<xmlTemplate><![CDATA[<SplitContainer xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -4944,9 +4944,9 @@
 		<detailPages></detailPages> <!-- sap.ui.core.Control -->
 </SplitContainer>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.StandardListItem" alias="StandardListItem,Item">
-	<jsTemplate><![CDATA[new sap.m.StandardListItem({
+	</Template>
+	<Template name="sap.m.StandardListItem" alias="StandardListItem,Item">
+		<jsTemplate><![CDATA[new sap.m.StandardListItem({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -4985,7 +4985,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<StandardListItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<StandardListItem xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5015,9 +5015,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </StandardListItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.StandardTile" alias="StandardTile,Tile">
-	<jsTemplate><![CDATA[new sap.m.StandardTile({
+	</Template>
+	<Template name="sap.m.StandardTile" alias="StandardTile,Tile">
+		<jsTemplate><![CDATA[new sap.m.StandardTile({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5041,7 +5041,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<StandardTile xmlns="sap.m"
+		<xmlTemplate><![CDATA[<StandardTile xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5062,9 +5062,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </StandardTile>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Switch" alias="Switch">
-	<jsTemplate><![CDATA[new sap.m.Switch({
+	</Template>
+	<Template name="sap.m.Switch" alias="Switch">
+		<jsTemplate><![CDATA[new sap.m.Switch({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5084,7 +5084,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Switch xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Switch xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5101,9 +5101,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Switch>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Table" alias="Table">
-	<jsTemplate><![CDATA[new sap.m.Table({
+	</Template>
+	<Template name="sap.m.Table" alias="Table">
+		<jsTemplate><![CDATA[new sap.m.Table({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5168,7 +5168,7 @@
 	}, this] // since 1.20
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Table xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Table xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5214,9 +5214,9 @@
 		<columns></columns> <!-- sap.m.Column -->
 </Table>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.TableSelectDialog" alias="TableSelectDialog,Dialog">
-	<jsTemplate><![CDATA[new sap.m.TableSelectDialog({
+	</Template>
+	<Template name="sap.m.TableSelectDialog" alias="TableSelectDialog,Dialog">
+		<jsTemplate><![CDATA[new sap.m.TableSelectDialog({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5247,7 +5247,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<TableSelectDialog xmlns="sap.m"
+		<xmlTemplate><![CDATA[<TableSelectDialog xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5269,9 +5269,9 @@
 		<columns></columns> <!-- sap.m.Column -->
 </TableSelectDialog>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Text" alias="Text">
-	<jsTemplate><![CDATA[new sap.m.Text({
+	</Template>
+	<Template name="sap.m.Text" alias="Text">
+		<jsTemplate><![CDATA[new sap.m.Text({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5287,7 +5287,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Text xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Text xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5302,9 +5302,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Text>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.TextArea" alias="TextArea,Area">
-	<jsTemplate><![CDATA[new sap.m.TextArea({
+	</Template>
+	<Template name="sap.m.TextArea" alias="TextArea,Area">
+		<jsTemplate><![CDATA[new sap.m.TextArea({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5337,7 +5337,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<TextArea xmlns="sap.m"
+		<xmlTemplate><![CDATA[<TextArea xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5365,9 +5365,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </TextArea>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Tile" alias="Tile">
-	<jsTemplate><![CDATA[new sap.m.Tile({
+	</Template>
+	<Template name="sap.m.Tile" alias="Tile">
+		<jsTemplate><![CDATA[new sap.m.Tile({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5381,7 +5381,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Tile xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Tile xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5392,9 +5392,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Tile>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.TileContainer" alias="TileContainer,Container">
-	<jsTemplate><![CDATA[new sap.m.TileContainer({
+	</Template>
+	<Template name="sap.m.TileContainer" alias="TileContainer,Container">
+		<jsTemplate><![CDATA[new sap.m.TileContainer({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5418,7 +5418,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<TileContainer xmlns="sap.m"
+		<xmlTemplate><![CDATA[<TileContainer xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5435,9 +5435,9 @@
 		<tiles></tiles> <!-- sap.ui.core.Control -->
 </TileContainer>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Title" alias="Title">
-	<jsTemplate><![CDATA[new sap.m.Title({
+	</Template>
+	<Template name="sap.m.Title" alias="Title">
+		<jsTemplate><![CDATA[new sap.m.Title({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5453,7 +5453,7 @@
 	title: undefined // sap.ui.core.Title
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Title xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Title xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5468,9 +5468,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Title>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ToggleButton" alias="ToggleButton,Button">
-	<jsTemplate><![CDATA[new sap.m.ToggleButton({
+	</Template>
+	<Template name="sap.m.ToggleButton" alias="ToggleButton,Button">
+		<jsTemplate><![CDATA[new sap.m.ToggleButton({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5498,7 +5498,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ToggleButton xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ToggleButton xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5521,9 +5521,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ToggleButton>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Token" alias="Token">
-	<jsTemplate><![CDATA[new sap.m.Token({
+	</Template>
+	<Template name="sap.m.Token" alias="Token">
+		<jsTemplate><![CDATA[new sap.m.Token({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5547,7 +5547,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Token xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Token xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5564,9 +5564,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Token>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Tokenizer" alias="Tokenizer">
-	<jsTemplate><![CDATA[new sap.m.Tokenizer({
+	</Template>
+	<Template name="sap.m.Tokenizer" alias="Tokenizer">
+		<jsTemplate><![CDATA[new sap.m.Tokenizer({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5582,7 +5582,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Tokenizer xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Tokenizer xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5595,9 +5595,9 @@
 		<tokens></tokens> <!-- sap.m.Token -->
 </Tokenizer>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.Toolbar" alias="Toolbar">
-	<jsTemplate><![CDATA[new sap.m.Toolbar({
+	</Template>
+	<Template name="sap.m.Toolbar" alias="Toolbar">
+		<jsTemplate><![CDATA[new sap.m.Toolbar({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5616,7 +5616,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Toolbar xmlns="sap.m"
+		<xmlTemplate><![CDATA[<Toolbar xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5632,9 +5632,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </Toolbar>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ToolbarLayoutData" alias="ToolbarLayoutData,Data">
-	<jsTemplate><![CDATA[new sap.m.ToolbarLayoutData({
+	</Template>
+	<Template name="sap.m.ToolbarLayoutData" alias="ToolbarLayoutData,Data">
+		<jsTemplate><![CDATA[new sap.m.ToolbarLayoutData({
 	id: "${id}", // sap.ui.core.ID
 	shrinkable: false, // boolean
 	minWidth: undefined, // sap.ui.core.CSSSize
@@ -5644,7 +5644,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ToolbarLayoutData xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ToolbarLayoutData xmlns="sap.m"
 	id="${id}"
 	shrinkable="false"
 	minWidth=""
@@ -5653,9 +5653,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ToolbarLayoutData>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ToolbarSeparator" alias="ToolbarSeparator,Separator">
-	<jsTemplate><![CDATA[new sap.m.ToolbarSeparator({
+	</Template>
+	<Template name="sap.m.ToolbarSeparator" alias="ToolbarSeparator,Separator">
+		<jsTemplate><![CDATA[new sap.m.ToolbarSeparator({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5665,7 +5665,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ToolbarSeparator xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ToolbarSeparator xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5674,9 +5674,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ToolbarSeparator>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ToolbarSpacer" alias="ToolbarSpacer,Spacer">
-	<jsTemplate><![CDATA[new sap.m.ToolbarSpacer({
+	</Template>
+	<Template name="sap.m.ToolbarSpacer" alias="ToolbarSpacer,Spacer">
+		<jsTemplate><![CDATA[new sap.m.ToolbarSpacer({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5687,7 +5687,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ToolbarSpacer xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ToolbarSpacer xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5697,9 +5697,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ToolbarSpacer>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.UploadCollection" alias="UploadCollection,Collection">
-	<jsTemplate><![CDATA[new sap.m.UploadCollection({
+	</Template>
+	<Template name="sap.m.UploadCollection" alias="UploadCollection,Collection">
+		<jsTemplate><![CDATA[new sap.m.UploadCollection({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5746,7 +5746,7 @@
 	}, this] // since 1.26.2
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<UploadCollection xmlns="sap.m"
+		<xmlTemplate><![CDATA[<UploadCollection xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5776,9 +5776,9 @@
 		<parameters></parameters> <!-- sap.m.UploadCollectionParameter -->
 </UploadCollection>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.UploadCollectionItem" alias="UploadCollectionItem,Item">
-	<jsTemplate><![CDATA[new sap.m.UploadCollectionItem({
+	</Template>
+	<Template name="sap.m.UploadCollectionItem" alias="UploadCollectionItem,Item">
+		<jsTemplate><![CDATA[new sap.m.UploadCollectionItem({
 	id: "${id}", // sap.ui.core.ID
 	contributor: undefined, // string, since 1.12.2
 	documentId: undefined, // string
@@ -5797,7 +5797,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<UploadCollectionItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<UploadCollectionItem xmlns="sap.m"
 	id="${id}"
 	contributor=""
 	documentId=""
@@ -5815,9 +5815,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </UploadCollectionItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.UploadCollectionParameter" alias="UploadCollectionParameter,Parameter">
-	<jsTemplate><![CDATA[new sap.m.UploadCollectionParameter({
+	</Template>
+	<Template name="sap.m.UploadCollectionParameter" alias="UploadCollectionParameter,Parameter">
+		<jsTemplate><![CDATA[new sap.m.UploadCollectionParameter({
 	id: "${id}", // sap.ui.core.ID
 	name: undefined, // string, since 1.12.2
 	value: undefined, // string, since 1.12.2
@@ -5826,7 +5826,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<UploadCollectionParameter xmlns="sap.m"
+		<xmlTemplate><![CDATA[<UploadCollectionParameter xmlns="sap.m"
 	id="${id}"
 	name=""
 	value="">
@@ -5834,9 +5834,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </UploadCollectionParameter>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.VBox" alias="VBox">
-	<jsTemplate><![CDATA[new sap.m.VBox({
+	</Template>
+	<Template name="sap.m.VBox" alias="VBox">
+		<jsTemplate><![CDATA[new sap.m.VBox({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5855,7 +5855,7 @@
 	items: [] // sap.ui.core.Control
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<VBox xmlns="sap.m"
+		<xmlTemplate><![CDATA[<VBox xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5873,9 +5873,9 @@
 		<items></items> <!-- sap.ui.core.Control -->
 </VBox>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ViewSettingsCustomItem" alias="ViewSettingsCustomItem,Item">
-	<jsTemplate><![CDATA[new sap.m.ViewSettingsCustomItem({
+	</Template>
+	<Template name="sap.m.ViewSettingsCustomItem" alias="ViewSettingsCustomItem,Item">
+		<jsTemplate><![CDATA[new sap.m.ViewSettingsCustomItem({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -5889,7 +5889,7 @@
 	customControl: undefined // sap.ui.core.Control
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ViewSettingsCustomItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ViewSettingsCustomItem xmlns="sap.m"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -5902,9 +5902,9 @@
 		<customControl></customControl> <!-- sap.ui.core.Control -->
 </ViewSettingsCustomItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ViewSettingsDialog" alias="ViewSettingsDialog,Dialog">
-	<jsTemplate><![CDATA[new sap.m.ViewSettingsDialog({
+	</Template>
+	<Template name="sap.m.ViewSettingsDialog" alias="ViewSettingsDialog,Dialog">
+		<jsTemplate><![CDATA[new sap.m.ViewSettingsDialog({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -5933,7 +5933,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ViewSettingsDialog xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ViewSettingsDialog xmlns="sap.m"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -5955,9 +5955,9 @@
 		<presetFilterItems></presetFilterItems> <!-- sap.m.ViewSettingsItem -->
 </ViewSettingsDialog>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ViewSettingsFilterItem" alias="ViewSettingsFilterItem,Item">
-	<jsTemplate><![CDATA[new sap.m.ViewSettingsFilterItem({
+	</Template>
+	<Template name="sap.m.ViewSettingsFilterItem" alias="ViewSettingsFilterItem,Item">
+		<jsTemplate><![CDATA[new sap.m.ViewSettingsFilterItem({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -5971,7 +5971,7 @@
 	items: [] // sap.m.ViewSettingsItem
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ViewSettingsFilterItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ViewSettingsFilterItem xmlns="sap.m"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -5984,9 +5984,9 @@
 		<items></items> <!-- sap.m.ViewSettingsItem -->
 </ViewSettingsFilterItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.m.ViewSettingsItem" alias="ViewSettingsItem,Item">
-	<jsTemplate><![CDATA[new sap.m.ViewSettingsItem({
+	</Template>
+	<Template name="sap.m.ViewSettingsItem" alias="ViewSettingsItem,Item">
+		<jsTemplate><![CDATA[new sap.m.ViewSettingsItem({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -5998,7 +5998,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ViewSettingsItem xmlns="sap.m"
+		<xmlTemplate><![CDATA[<ViewSettingsItem xmlns="sap.m"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -6009,5 +6009,5 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ViewSettingsItem>
 ]]></xmlTemplate>
-</Template>
+	</Template>
 </Library>

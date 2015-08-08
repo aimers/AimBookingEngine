@@ -1,18 +1,20 @@
 <core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core" xmlns:c="sap.ui.commons">
-	<Dialog  showHeader="false" contentWidth="50%" contentHeight="50%">
+	<Dialog showHeader="false" contentWidth="50%" contentHeight="50%">
 		<content>
-		<Carousel class="sapUiContentPadding" width="70%" pages="{/ImageCarousal/Characteristics}">
-			<pages>
-				<Image src="{path:'VALUE', formatter:'sap.ui.medApp.global.globalFormatter.getVendorImageUrl'}" 
-				class="clinicImages" densityAware="false"
-				visible="{path:'CHRID', formatter:'sap.ui.medApp.global.globalFormatter.checkImage'}"/>
-			</pages>
-		</Carousel>
+			<Carousel class="sapUiContentPadding" width="70%"
+				pages="{/ImageCarousal/Characteristics}">
+				<pages>
+					<Image
+						src="{path:'VALUE', formatter:'sap.ui.medApp.global.globalFormatter.getVendorImageUrl'}"
+						class="clinicImages" densityAware="false"
+						visible="{path:'CHRID', formatter:'sap.ui.medApp.global.globalFormatter.checkImage'}" />
+				</pages>
+			</Carousel>
 		</content>
 		<beginButton>
-		  <Button text="Close" press="HandleCloseDialog"></Button>
+			<Button text="Close" press="HandleCloseDialog"></Button>
 		</beginButton>
 	</Dialog>
-   
+
 </core:FragmentDefinition>

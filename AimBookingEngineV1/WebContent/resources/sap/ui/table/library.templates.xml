@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Library name="sap.ui.table" xmlns="http://www.sap.com/ui5/ide/templates/xmlview">
-<Template name="sap.ui.table.AnalyticalColumn" alias="AnalyticalColumn,Column">
-	<jsTemplate><![CDATA[new sap.ui.table.AnalyticalColumn({
+	<Template name="sap.ui.table.AnalyticalColumn" alias="AnalyticalColumn,Column">
+		<jsTemplate><![CDATA[new sap.ui.table.AnalyticalColumn({
 	id: "${id}", // sap.ui.core.ID
 	width: undefined, // sap.ui.core.CSSSize
 	flexible: true, // boolean
@@ -37,7 +37,7 @@
 	menu: undefined // sap.ui.unified.Menu
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<AnalyticalColumn xmlns="sap.ui.table"
+		<xmlTemplate><![CDATA[<AnalyticalColumn xmlns="sap.ui.table"
 	id="${id}"
 	width=""
 	flexible="true"
@@ -72,9 +72,9 @@
 		<menu></menu> <!-- sap.ui.unified.Menu -->
 </AnalyticalColumn>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.table.AnalyticalColumnMenu" alias="AnalyticalColumnMenu,Menu">
-	<jsTemplate><![CDATA[new sap.ui.table.AnalyticalColumnMenu({
+	</Template>
+	<Template name="sap.ui.table.AnalyticalColumnMenu" alias="AnalyticalColumnMenu,Menu">
+		<jsTemplate><![CDATA[new sap.ui.table.AnalyticalColumnMenu({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -93,7 +93,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<AnalyticalColumnMenu xmlns="sap.ui.table"
+		<xmlTemplate><![CDATA[<AnalyticalColumnMenu xmlns="sap.ui.table"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -109,9 +109,9 @@
 		<items></items> <!-- sap.ui.unified.MenuItemBase -->
 </AnalyticalColumnMenu>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.table.AnalyticalTable" alias="AnalyticalTable,Table">
-	<jsTemplate><![CDATA[new sap.ui.table.AnalyticalTable({
+	</Template>
+	<Template name="sap.ui.table.AnalyticalTable" alias="AnalyticalTable,Table">
+		<jsTemplate><![CDATA[new sap.ui.table.AnalyticalTable({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -198,7 +198,7 @@
 	}, this] // since 1.23.0
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<AnalyticalTable xmlns="sap.ui.table"
+		<xmlTemplate><![CDATA[<AnalyticalTable xmlns="sap.ui.table"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -260,9 +260,9 @@
 		<noData></noData> <!-- sap.ui.core.Control -->
 </AnalyticalTable>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.table.Column" alias="Column">
-	<jsTemplate><![CDATA[new sap.ui.table.Column({
+	</Template>
+	<Template name="sap.ui.table.Column" alias="Column">
+		<jsTemplate><![CDATA[new sap.ui.table.Column({
 	id: "${id}", // sap.ui.core.ID
 	width: undefined, // sap.ui.core.CSSSize
 	flexible: true, // boolean
@@ -293,7 +293,7 @@
 	menu: undefined // sap.ui.unified.Menu
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Column xmlns="sap.ui.table"
+		<xmlTemplate><![CDATA[<Column xmlns="sap.ui.table"
 	id="${id}"
 	width=""
 	flexible="true"
@@ -323,9 +323,9 @@
 		<menu></menu> <!-- sap.ui.unified.Menu -->
 </Column>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.table.ColumnMenu" alias="ColumnMenu,Menu">
-	<jsTemplate><![CDATA[new sap.ui.table.ColumnMenu({
+	</Template>
+	<Template name="sap.ui.table.ColumnMenu" alias="ColumnMenu,Menu">
+		<jsTemplate><![CDATA[new sap.ui.table.ColumnMenu({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -344,7 +344,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ColumnMenu xmlns="sap.ui.table"
+		<xmlTemplate><![CDATA[<ColumnMenu xmlns="sap.ui.table"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -360,9 +360,9 @@
 		<items></items> <!-- sap.ui.unified.MenuItemBase -->
 </ColumnMenu>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.table.DataTable" alias="DataTable,Table">
-	<jsTemplate><![CDATA[new sap.ui.table.DataTable({
+	</Template>
+	<Template name="sap.ui.table.DataTable" alias="DataTable,Table">
+		<jsTemplate><![CDATA[new sap.ui.table.DataTable({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -459,7 +459,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<DataTable xmlns="sap.ui.table"
+		<xmlTemplate><![CDATA[<DataTable xmlns="sap.ui.table"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -527,9 +527,9 @@
 		<noData></noData> <!-- sap.ui.core.Control -->
 </DataTable>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.table.Row" alias="Row">
-	<jsTemplate><![CDATA[new sap.ui.table.Row({
+	</Template>
+	<Template name="sap.ui.table.Row" alias="Row">
+		<jsTemplate><![CDATA[new sap.ui.table.Row({
 	id: "${id}", // sap.ui.core.ID
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
@@ -537,16 +537,16 @@
 	cells: [] // sap.ui.core.Control
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Row xmlns="sap.ui.table"
+		<xmlTemplate><![CDATA[<Row xmlns="sap.ui.table"
 	id="${id}">
 		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 		<cells></cells> <!-- sap.ui.core.Control -->
 </Row>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.table.Table" alias="Table">
-	<jsTemplate><![CDATA[new sap.ui.table.Table({
+	</Template>
+	<Template name="sap.ui.table.Table" alias="Table">
+		<jsTemplate><![CDATA[new sap.ui.table.Table({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -629,7 +629,7 @@
 	}, this] // since 1.23.0
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Table xmlns="sap.ui.table"
+		<xmlTemplate><![CDATA[<Table xmlns="sap.ui.table"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -687,9 +687,9 @@
 		<noData></noData> <!-- sap.ui.core.Control -->
 </Table>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.table.TreeTable" alias="TreeTable,Table">
-	<jsTemplate><![CDATA[new sap.ui.table.TreeTable({
+	</Template>
+	<Template name="sap.ui.table.TreeTable" alias="TreeTable,Table">
+		<jsTemplate><![CDATA[new sap.ui.table.TreeTable({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -780,7 +780,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<TreeTable xmlns="sap.ui.table"
+		<xmlTemplate><![CDATA[<TreeTable xmlns="sap.ui.table"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -844,5 +844,5 @@
 		<noData></noData> <!-- sap.ui.core.Control -->
 </TreeTable>
 ]]></xmlTemplate>
-</Template>
+	</Template>
 </Library>

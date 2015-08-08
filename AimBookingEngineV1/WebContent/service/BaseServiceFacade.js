@@ -68,8 +68,7 @@
     _send : function(sServicePath, fnSuccess, fnError, oData,
         sModelDataFileName) {
       var oPayload = {};
-      oPayload.Data = oData;
-      this._executeAjax(sServicePath, fnSuccess, fnError, oPayload,
+      this._executeAjax(sServicePath, fnSuccess, fnError, "GET", oPayload,
           sModelDataFileName);
     },
 

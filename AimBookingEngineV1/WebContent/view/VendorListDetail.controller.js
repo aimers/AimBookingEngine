@@ -51,29 +51,31 @@ sap.ui
               oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1]
                   .getItems()[1].setGroupName(oFlagIndexItem);
               oItemSelected.addContent(oBookingBox);
-              this.loadVendorCalendorTime();
+              var sPath = oEvent.oSource.oParent.getBindingContext().getPath();
+              this.loadVendorCalendorTime(sPath);
               oItemSelected.setExpanded(true);
             }
 
           },
-          loadVendorCalendorTime : function() {
+          loadVendorCalendorTime : function(sPath) {
+            var UserData = this.oModel.getProperty(sPath);
             this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
                 this.oModel);
             var param = [ {
               "key" : "USRID",
-              "value" : "3"
+              "value" : UserData.USRID
             }, {
               "key" : "RULID",
-              "value" : 1
+              "value" : UserData.Rules[0].RULID
             }, {
               "key" : "ETCID",
-              "value" : 1
+              "value" : UserData.Rules[0].ETCID
             }, {
               "key" : "ETYID",
-              "value" : 1
+              "value" : UserData.Rules[0].ETYID
             }, {
               "key" : "ENTID",
-              "value" : 1
+              "value" : UserData.Rules[0].ENTID
             }, {
               "key" : "STDATE",
               "value" : "27-07-2015"
@@ -83,6 +85,9 @@ sap.ui
             } ]
             this._vendorListServiceFacade.getRecords(null, null,
                 "/vendorsAvailableTime", "getVendorRuleDetail", param);
+            var vendorTimeDetail = this.oModel
+                .getProperty("/vendorsAvailableTime");
+            vendorTimeDetail[0].SPATH = sPath;
           },
           handleCancelBooking : function(oFlagIndex) {
             var bookingBox = this.getView().byId("VendorsList").getItems()[oFlagIndex]
@@ -137,8 +142,7 @@ sap.ui
             this._oDialog.close();
           },
           handleBookingTime : function(oEvt) {
-            sap.ui.medApp.global.util.handleBooking(oEvt, this.oModel,
-                this._oRouter);
+            sap.ui.medApp.global.util.handleBooking(oEvt, this._oRouter);
           },
           getDateLabel : function(oValue) {
             if (oValue != null && oValue != undefined) {

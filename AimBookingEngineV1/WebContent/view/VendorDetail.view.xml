@@ -4,8 +4,7 @@
 	<Page class="mainPage" id="mainPage" showNavButton="true"
 		navButtonPress="navToListPage">
 		<content>
-			<Panel class="detailPanel" expandable="true" expanded="true" 
-				>
+			<Panel class="detailPanel" expandable="true" expanded="true">
 				<headerToolbar>
 					<Toolbar height="5rem">
 						<VBox width="100%" class="vendorItems" items="{/vendorsDetail}">
@@ -78,9 +77,9 @@
 								<Label text="Select Date"></Label>
 							</HBox>
 							<HBox width="50%" justifyContent="End">
-								<RadioButton text="Weekly" select="changeToOneWeek"
-									 />
-								<RadioButton text="Monthly" select="changeToOneMonth" selected="true"/>
+								<RadioButton text="Weekly" select="changeToOneWeek" />
+								<RadioButton text="Monthly" select="changeToOneMonth"
+									selected="true" />
 							</HBox>
 						</HBox>
 						<VBox id="monthCalenderView" width="99%">
@@ -89,7 +88,8 @@
 							</me:Calendar>
 						</VBox>
 						<HBox alignItems="Start" justifyContent="SpaceAround"
-							items="{/vendorsAvailableTime}" class="weekCalenderView" id="weekCalenderView" visible="false">
+							items="{/vendorsAvailableTime}" class="weekCalenderView" id="weekCalenderView"
+							visible="false">
 							<items>
 								<VBox class="daySchedule" renderType="Div">
 									<VBox class="CalenderDate">
@@ -98,7 +98,8 @@
 									<VBox items="{path:'TimeSlots'}" class="CalenderTime">
 										<Link
 											text="{path:'START', formatter:'.getCorrectTime'}-{path:'END', formatter:'.getCorrectTime'}"
-											press="handleBookingTime" enabled="{path:'STATUS', formatter : 'sap.ui.medApp.global.globalFormatter.getBookingStatus'}"/>
+											press="handleBookingTime"
+											enabled="{path:'STATUS', formatter : 'sap.ui.medApp.global.globalFormatter.getBookingStatus'}" />
 									</VBox>
 								</VBox>
 							</items>

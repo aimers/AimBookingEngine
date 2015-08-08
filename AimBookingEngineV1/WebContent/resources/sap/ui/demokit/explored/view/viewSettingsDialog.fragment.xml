@@ -1,19 +1,18 @@
-<core:FragmentDefinition
-	xmlns="sap.m"
+<core:FragmentDefinition xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<ViewSettingsDialog
-		confirm="onConfirmViewSettings">
+	<ViewSettingsDialog confirm="onConfirmViewSettings">
 		<groupItems>
-			<ViewSettingsItem text="{i18n>itemName}" key="name" selected="true" />
-			<ViewSettingsItem text="{i18n>itemAppComponent}" key="appComponent" />
+			<ViewSettingsItem text="{i18n>itemName}" key="name"
+				selected="true" />
+			<ViewSettingsItem text="{i18n>itemAppComponent}"
+				key="appComponent" />
 			<ViewSettingsItem text="{i18n>itemCategory}" key="category" />
 			<ViewSettingsItem text="{i18n>itemFormFactors}" key="formFactors" />
 			<ViewSettingsItem text="{i18n>itemNamespace}" key="namespace" />
 			<ViewSettingsItem text="{i18n>itemSince}" key="since" />
 		</groupItems>
 		<filterItems>
-			<ViewSettingsFilterItem
-				text="{i18n>itemAppComponent}"
+			<ViewSettingsFilterItem text="{i18n>itemAppComponent}"
 				key="appComponent"
 				items="{
 					path:'filter>/appComponent',
@@ -21,13 +20,12 @@
 						path: 'filter>id',
 						descending: false
 					}
-				}" >
+				}">
 				<items>
 					<ViewSettingsItem text="{filter>id}" key="{filter>id}" />
 				</items>
 			</ViewSettingsFilterItem>
-			<ViewSettingsFilterItem
-				text="{i18n>itemCategory}"
+			<ViewSettingsFilterItem text="{i18n>itemCategory}"
 				key="category"
 				items="{
 					path:'filter>/category',
@@ -35,13 +33,12 @@
 						path: 'filter>id',
 						descending: false
 					}
-				}" >
+				}">
 				<items>
 					<ViewSettingsItem text="{filter>id}" key="{filter>id}" />
 				</items>
 			</ViewSettingsFilterItem>
-			<ViewSettingsFilterItem
-				text="{i18n>itemFormFactors}"
+			<ViewSettingsFilterItem text="{i18n>itemFormFactors}"
 				key="formFactors"
 				items="{
 					path:'filter>/formFactors',
@@ -49,13 +46,12 @@
 						path: 'filter>id',
 						descending: false
 					}
-				}" >
+				}">
 				<items>
 					<ViewSettingsItem text="{filter>id}" key="{filter>id}" />
 				</items>
 			</ViewSettingsFilterItem>
-			<ViewSettingsFilterItem
-				text="{i18n>itemNamespace}"
+			<ViewSettingsFilterItem text="{i18n>itemNamespace}"
 				key="namespace"
 				items="{
 					path:'filter>/namespace',
@@ -63,13 +59,12 @@
 						path: 'filter>id',
 						descending: false
 					}
-				}" >
+				}">
 				<items>
 					<ViewSettingsItem text="{filter>id}" key="{filter>id}" />
 				</items>
 			</ViewSettingsFilterItem>
-			<ViewSettingsFilterItem
-				text="{i18n>itemSince}"
+			<ViewSettingsFilterItem text="{i18n>itemSince}"
 				key="since"
 				items="{
 					path:'filter>/since',
@@ -77,7 +72,7 @@
 						path: 'filter>id',
 						descending: false
 					}
-				}" >
+				}">
 				<items>
 					<ViewSettingsItem text="{filter>id}" key="{filter>id}" />
 				</items>

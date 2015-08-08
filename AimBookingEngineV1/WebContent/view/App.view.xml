@@ -1,8 +1,7 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" xmlns:u="sap.ui.unified" controllerName="sap.ui.medApp.view.App"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<u:Shell id="myShell" class="mainShell"
-		icon="assets/img/logo.png">
+	<u:Shell id="myShell" class="mainShell" icon="assets/img/logo.png">
 		<u:headItems>
 			<u:ShellHeadItem tooltip="Home" icon="sap-icon://home"
 				press="handelHomeBtn" />

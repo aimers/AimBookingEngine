@@ -93,6 +93,7 @@
 	background: -webkit-linear-gradient(top, #1abc9c 0, #1abc9c 100%);
 	background: linear-gradient(top, #1abc9c 0, #1abc9c 100%);
 	margin-left: 10px;
+	text-shadow: 0;
 }
 
 .mAppSapUiSmallMarginTop .sapMObjLIconDiv {
@@ -204,41 +205,54 @@
 	overflow-y: scroll;
 	max-height: 312px;
 	padding: 0.25rem;
-	scrollbar-3dlight-color:gold;
-    scrollbar-arrow-color:blue;
-    scrollbar-base-color:;
-    scrollbar-darkshadow-color:blue;
-    scrollbar-face-color:;
-    scrollbar-highlight-color:;
-    scrollbar-shadow-color:
 }
-.bookingBox .sapMBar{
-	width:99%;
+
+.bookingBox .sapMBar {
+	width: 99%;
 }
-.VendorsList .sapMPanelWrappingDivTb>.sapMTB, .detailPanel .sapMPanelWrappingDivTb>.sapMTB {
-	margin-left:0;
-	padding-top:6px;
+
+.VendorsList .sapMPanelWrappingDivTb>.sapMTB, .detailPanel .sapMPanelWrappingDivTb>.sapMTB
+	{
+	margin-left: 0;
+	padding-top: 6px;
 }
+
 .filterCategoryList {
-  overflow-y:scroll;
-  max-height:300px;
+	overflow-y: scroll;
+	max-height: 300px;
 }
-.filterCategoryList .sapMSLIIconThumb{
-	height:2rem;
+
+.filterCategoryList .sapMSLIIconThumb {
+	height: 2rem;
 }
-.filterCategoryList .sapMSLITitleOnly{
-	font-size:1rem;
+
+.filterCategoryList .sapMSLITitleOnly {
+	font-size: 1rem;
 }
-.filterCategoryList .sapMCbBg{
-	width:1rem;
-	height:1rem;
+
+.filterCategoryList .sapMCbBg {
+	width: 1rem;
+	height: 1rem;
 }
-.VendorsList .sapMPanelExpandableIcon, .detailPanel .sapMPanelExpandableIcon {
-	font-size:0;
+
+.VendorsList .sapMPanelExpandableIcon, .detailPanel .sapMPanelExpandableIcon
+	{
+	font-size: 0;
 }
+
 .BookingMainBox .sapMFlexItem:first-child {
-	width:99%;
+	width: 99%;
 }
-.detailPanel .sapMTB-Transparent-CTX .sapMText,.detailPanel .sapMTB-Transparent-CTX .sapMLabel {
-	font-size:0.9rem;
+
+.detailPanel .sapMTB-Transparent-CTX .sapMText, .detailPanel .sapMTB-Transparent-CTX .sapMLabel
+	{
+	font-size: 0.9rem;
+}
+
+.editableForm .buttonDesign .sapMBtnInner {
+	margin-left: 0;
+}
+
+.buttonDesign .sapMBtnInner:hover {
+	color: #000000;
 }

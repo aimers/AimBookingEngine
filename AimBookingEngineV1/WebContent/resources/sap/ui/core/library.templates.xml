@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Library name="sap.ui.core" xmlns="http://www.sap.com/ui5/ide/templates/xmlview">
-<Template name="sap.ui.core.ComponentContainer" alias="ComponentContainer,Container">
-	<jsTemplate><![CDATA[new sap.ui.core.ComponentContainer({
+	<Template name="sap.ui.core.ComponentContainer" alias="ComponentContainer,Container">
+		<jsTemplate><![CDATA[new sap.ui.core.ComponentContainer({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -19,7 +19,7 @@
 	component: undefined // sap.ui.core.UIComponent
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ComponentContainer xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<ComponentContainer xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -36,9 +36,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ComponentContainer>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.Control" alias="Control">
-	<jsTemplate><![CDATA[new sap.ui.core.Control({
+	</Template>
+	<Template name="sap.ui.core.Control" alias="Control">
+		<jsTemplate><![CDATA[new sap.ui.core.Control({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -48,7 +48,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Control xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<Control xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -57,9 +57,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Control>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.CustomData" alias="CustomData,Data">
-	<jsTemplate><![CDATA[new sap.ui.core.CustomData({
+	</Template>
+	<Template name="sap.ui.core.CustomData" alias="CustomData,Data">
+		<jsTemplate><![CDATA[new sap.ui.core.CustomData({
 	id: "${id}", // sap.ui.core.ID
 	key: undefined, // string
 	value: undefined, // any
@@ -69,7 +69,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<CustomData xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<CustomData xmlns="sap.ui.core"
 	id="${id}"
 	key=""
 	value=""
@@ -78,24 +78,24 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </CustomData>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.Element" alias="Element">
-	<jsTemplate><![CDATA[new sap.ui.core.Element({
+	</Template>
+	<Template name="sap.ui.core.Element" alias="Element">
+		<jsTemplate><![CDATA[new sap.ui.core.Element({
 	id: "${id}", // sap.ui.core.ID
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Element xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<Element xmlns="sap.ui.core"
 	id="${id}">
 		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Element>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.HTML" alias="HTML">
-	<jsTemplate><![CDATA[new sap.ui.core.HTML({
+	</Template>
+	<Template name="sap.ui.core.HTML" alias="HTML">
+		<jsTemplate><![CDATA[new sap.ui.core.HTML({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -112,7 +112,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<HTML xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<HTML xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -126,9 +126,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </HTML>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.Icon" alias="Icon">
-	<jsTemplate><![CDATA[new sap.ui.core.Icon({
+	</Template>
+	<Template name="sap.ui.core.Icon" alias="Icon">
+		<jsTemplate><![CDATA[new sap.ui.core.Icon({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -152,7 +152,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Icon xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<Icon xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -173,9 +173,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Icon>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.InvisibleText" alias="InvisibleText,Text">
-	<jsTemplate><![CDATA[new sap.ui.core.InvisibleText({
+	</Template>
+	<Template name="sap.ui.core.InvisibleText" alias="InvisibleText,Text">
+		<jsTemplate><![CDATA[new sap.ui.core.InvisibleText({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -186,7 +186,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<InvisibleText xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<InvisibleText xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -196,9 +196,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </InvisibleText>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.Item" alias="Item">
-	<jsTemplate><![CDATA[new sap.ui.core.Item({
+	</Template>
+	<Template name="sap.ui.core.Item" alias="Item">
+		<jsTemplate><![CDATA[new sap.ui.core.Item({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -209,7 +209,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Item xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<Item xmlns="sap.ui.core"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -219,24 +219,24 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Item>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.LayoutData" alias="LayoutData,Data">
-	<jsTemplate><![CDATA[new sap.ui.core.LayoutData({
+	</Template>
+	<Template name="sap.ui.core.LayoutData" alias="LayoutData,Data">
+		<jsTemplate><![CDATA[new sap.ui.core.LayoutData({
 	id: "${id}", // sap.ui.core.ID
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<LayoutData xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<LayoutData xmlns="sap.ui.core"
 	id="${id}">
 		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </LayoutData>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.ListItem" alias="ListItem,Item">
-	<jsTemplate><![CDATA[new sap.ui.core.ListItem({
+	</Template>
+	<Template name="sap.ui.core.ListItem" alias="ListItem,Item">
+		<jsTemplate><![CDATA[new sap.ui.core.ListItem({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -249,7 +249,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ListItem xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<ListItem xmlns="sap.ui.core"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -261,9 +261,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ListItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.LocalBusyIndicator" alias="LocalBusyIndicator,Indicator">
-	<jsTemplate><![CDATA[new sap.ui.core.LocalBusyIndicator({
+	</Template>
+	<Template name="sap.ui.core.LocalBusyIndicator" alias="LocalBusyIndicator,Indicator">
+		<jsTemplate><![CDATA[new sap.ui.core.LocalBusyIndicator({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -275,7 +275,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<LocalBusyIndicator xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<LocalBusyIndicator xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -286,9 +286,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </LocalBusyIndicator>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.Message" alias="Message">
-	<jsTemplate><![CDATA[new sap.ui.core.Message({
+	</Template>
+	<Template name="sap.ui.core.Message" alias="Message">
+		<jsTemplate><![CDATA[new sap.ui.core.Message({
 	id: "${id}", // sap.ui.core.ID
 	text: undefined, // string
 	timestamp: undefined, // string
@@ -300,7 +300,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Message xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<Message xmlns="sap.ui.core"
 	id="${id}"
 	text=""
 	timestamp=""
@@ -311,9 +311,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Message>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.ScrollBar" alias="ScrollBar,Bar">
-	<jsTemplate><![CDATA[new sap.ui.core.ScrollBar({
+	</Template>
+	<Template name="sap.ui.core.ScrollBar" alias="ScrollBar,Bar">
+		<jsTemplate><![CDATA[new sap.ui.core.ScrollBar({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -331,7 +331,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<ScrollBar xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<ScrollBar xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -346,9 +346,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </ScrollBar>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.SeparatorItem" alias="SeparatorItem,Item">
-	<jsTemplate><![CDATA[new sap.ui.core.SeparatorItem({
+	</Template>
+	<Template name="sap.ui.core.SeparatorItem" alias="SeparatorItem,Item">
+		<jsTemplate><![CDATA[new sap.ui.core.SeparatorItem({
 	id: "${id}", // sap.ui.core.ID
 	text: "", // string
 	enabled: true, // boolean
@@ -359,7 +359,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<SeparatorItem xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<SeparatorItem xmlns="sap.ui.core"
 	id="${id}"
 	text=""
 	enabled="true"
@@ -369,9 +369,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </SeparatorItem>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.Title" alias="Title">
-	<jsTemplate><![CDATA[new sap.ui.core.Title({
+	</Template>
+	<Template name="sap.ui.core.Title" alias="Title">
+		<jsTemplate><![CDATA[new sap.ui.core.Title({
 	id: "${id}", // sap.ui.core.ID
 	text: undefined, // string
 	icon: undefined, // sap.ui.core.URI
@@ -382,7 +382,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<Title xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<Title xmlns="sap.ui.core"
 	id="${id}"
 	text=""
 	icon=""
@@ -392,9 +392,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </Title>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.TooltipBase" alias="TooltipBase,Base">
-	<jsTemplate><![CDATA[new sap.ui.core.TooltipBase({
+	</Template>
+	<Template name="sap.ui.core.TooltipBase" alias="TooltipBase,Base">
+		<jsTemplate><![CDATA[new sap.ui.core.TooltipBase({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -416,7 +416,7 @@
 	}, this] // since 1.11.0
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<TooltipBase xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<TooltipBase xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -435,9 +435,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </TooltipBase>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.UIComponent" alias="UIComponent">
-	<jsTemplate><![CDATA[new sap.ui.core.UIComponent({
+	</Template>
+	<Template name="sap.ui.core.UIComponent" alias="UIComponent">
+		<jsTemplate><![CDATA[new sap.ui.core.UIComponent({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -447,7 +447,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<UIComponent xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<UIComponent xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -456,9 +456,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </UIComponent>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.VariantLayoutData" alias="VariantLayoutData,Data">
-	<jsTemplate><![CDATA[new sap.ui.core.VariantLayoutData({
+	</Template>
+	<Template name="sap.ui.core.VariantLayoutData" alias="VariantLayoutData,Data">
+		<jsTemplate><![CDATA[new sap.ui.core.VariantLayoutData({
 	id: "${id}", // sap.ui.core.ID
 	tooltip: undefined, // sap.ui.core.TooltipBase
 	customData: [], // sap.ui.core.CustomData
@@ -466,16 +466,16 @@
 	multipleLayoutData: [] // sap.ui.core.LayoutData
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<VariantLayoutData xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<VariantLayoutData xmlns="sap.ui.core"
 	id="${id}">
 		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 		<multipleLayoutData></multipleLayoutData> <!-- sap.ui.core.LayoutData -->
 </VariantLayoutData>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.mvc.HTMLView" alias="HTMLView">
-	<jsTemplate><![CDATA[new sap.ui.core.mvc.HTMLView({
+	</Template>
+	<Template name="sap.ui.core.mvc.HTMLView" alias="HTMLView">
+		<jsTemplate><![CDATA[new sap.ui.core.mvc.HTMLView({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -502,7 +502,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<mvc/HTMLView xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<mvc/HTMLView xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -520,9 +520,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </mvc/HTMLView>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.mvc.JSONView" alias="JSONView">
-	<jsTemplate><![CDATA[new sap.ui.core.mvc.JSONView({
+	</Template>
+	<Template name="sap.ui.core.mvc.JSONView" alias="JSONView">
+		<jsTemplate><![CDATA[new sap.ui.core.mvc.JSONView({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -549,7 +549,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<mvc/JSONView xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<mvc/JSONView xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -567,9 +567,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </mvc/JSONView>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.mvc.JSView" alias="JSView">
-	<jsTemplate><![CDATA[new sap.ui.core.mvc.JSView({
+	</Template>
+	<Template name="sap.ui.core.mvc.JSView" alias="JSView">
+		<jsTemplate><![CDATA[new sap.ui.core.mvc.JSView({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -596,7 +596,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<mvc/JSView xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<mvc/JSView xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -614,9 +614,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </mvc/JSView>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.mvc.TemplateView" alias="TemplateView,View">
-	<jsTemplate><![CDATA[new sap.ui.core.mvc.TemplateView({
+	</Template>
+	<Template name="sap.ui.core.mvc.TemplateView" alias="TemplateView,View">
+		<jsTemplate><![CDATA[new sap.ui.core.mvc.TemplateView({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -643,7 +643,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<mvc/TemplateView xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<mvc/TemplateView xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -661,9 +661,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </mvc/TemplateView>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.mvc.View" alias="View">
-	<jsTemplate><![CDATA[new sap.ui.core.mvc.View({
+	</Template>
+	<Template name="sap.ui.core.mvc.View" alias="View">
+		<jsTemplate><![CDATA[new sap.ui.core.mvc.View({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -690,7 +690,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<mvc/View xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<mvc/View xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -708,9 +708,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </mvc/View>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.mvc.XMLView" alias="XMLView">
-	<jsTemplate><![CDATA[new sap.ui.core.mvc.XMLView({
+	</Template>
+	<Template name="sap.ui.core.mvc.XMLView" alias="XMLView">
+		<jsTemplate><![CDATA[new sap.ui.core.mvc.XMLView({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -737,7 +737,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<mvc/XMLView xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<mvc/XMLView xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -755,9 +755,9 @@
 		<content></content> <!-- sap.ui.core.Control -->
 </mvc/XMLView>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.search.OpenSearchProvider" alias="OpenSearchProvider,Provider">
-	<jsTemplate><![CDATA[new sap.ui.core.search.OpenSearchProvider({
+	</Template>
+	<Template name="sap.ui.core.search.OpenSearchProvider" alias="OpenSearchProvider,Provider">
+		<jsTemplate><![CDATA[new sap.ui.core.search.OpenSearchProvider({
 	id: "${id}", // sap.ui.core.ID
 	icon: undefined, // string
 	suggestUrl: undefined, // sap.ui.core.URI
@@ -767,7 +767,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<search/OpenSearchProvider xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<search/OpenSearchProvider xmlns="sap.ui.core"
 	id="${id}"
 	icon=""
 	suggestUrl=""
@@ -776,9 +776,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </search/OpenSearchProvider>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.search.SearchProvider" alias="SearchProvider,Provider">
-	<jsTemplate><![CDATA[new sap.ui.core.search.SearchProvider({
+	</Template>
+	<Template name="sap.ui.core.search.SearchProvider" alias="SearchProvider,Provider">
+		<jsTemplate><![CDATA[new sap.ui.core.search.SearchProvider({
 	id: "${id}", // sap.ui.core.ID
 	icon: undefined, // string
 	tooltip: undefined, // sap.ui.core.TooltipBase
@@ -786,16 +786,16 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<search/SearchProvider xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<search/SearchProvider xmlns="sap.ui.core"
 	id="${id}"
 	icon="">
 		<tooltip></tooltip> <!-- sap.ui.core.TooltipBase -->
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </search/SearchProvider>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.tmpl.DOMAttribute" alias="DOMAttribute">
-	<jsTemplate><![CDATA[new sap.ui.core.tmpl.DOMAttribute({
+	</Template>
+	<Template name="sap.ui.core.tmpl.DOMAttribute" alias="DOMAttribute">
+		<jsTemplate><![CDATA[new sap.ui.core.tmpl.DOMAttribute({
 	id: "${id}", // sap.ui.core.ID
 	name: undefined, // string
 	value: undefined, // string
@@ -804,7 +804,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<tmpl/DOMAttribute xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<tmpl/DOMAttribute xmlns="sap.ui.core"
 	id="${id}"
 	name=""
 	value="">
@@ -812,9 +812,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </tmpl/DOMAttribute>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.tmpl.DOMElement" alias="DOMElement">
-	<jsTemplate><![CDATA[new sap.ui.core.tmpl.DOMElement({
+	</Template>
+	<Template name="sap.ui.core.tmpl.DOMElement" alias="DOMElement">
+		<jsTemplate><![CDATA[new sap.ui.core.tmpl.DOMElement({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -828,7 +828,7 @@
 	elements: [] // sap.ui.core.tmpl.DOMElement
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<tmpl/DOMElement xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<tmpl/DOMElement xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -841,9 +841,9 @@
 		<elements></elements> <!-- sap.ui.core.tmpl.DOMElement -->
 </tmpl/DOMElement>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.tmpl.Template" alias="Template">
-	<jsTemplate><![CDATA[new sap.ui.core.tmpl.Template({
+	</Template>
+	<Template name="sap.ui.core.tmpl.Template" alias="Template">
+		<jsTemplate><![CDATA[new sap.ui.core.tmpl.Template({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -854,7 +854,7 @@
 	dependents: [] // sap.ui.core.Control, since 1.19
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<tmpl/Template xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<tmpl/Template xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -864,9 +864,9 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </tmpl/Template>
 ]]></xmlTemplate>
-</Template>
-<Template name="sap.ui.core.tmpl.TemplateControl" alias="TemplateControl,Control">
-	<jsTemplate><![CDATA[new sap.ui.core.tmpl.TemplateControl({
+	</Template>
+	<Template name="sap.ui.core.tmpl.TemplateControl" alias="TemplateControl,Control">
+		<jsTemplate><![CDATA[new sap.ui.core.tmpl.TemplateControl({
 	id: "${id}", // sap.ui.core.ID
 	busy: false, // boolean
 	busyIndicatorDelay: 1000, // int
@@ -884,7 +884,7 @@
 	}, this]
 })
 ]]></jsTemplate>
-	<xmlTemplate><![CDATA[<tmpl/TemplateControl xmlns="sap.ui.core"
+		<xmlTemplate><![CDATA[<tmpl/TemplateControl xmlns="sap.ui.core"
 	id="${id}"
 	busy="false"
 	busyIndicatorDelay="1000"
@@ -897,5 +897,5 @@
 		<dependents></dependents> <!-- sap.ui.core.Control, since 1.19 -->
 </tmpl/TemplateControl>
 ]]></xmlTemplate>
-</Template>
+	</Template>
 </Library>

@@ -41,7 +41,8 @@
 						<Text text="{i18n>DETAILLAYER_SUB_HEADING}"></Text>
 					</HBox>
 					<HBox>
-						<Table class="detailTable" id="detailTable" inset="false" items="{/ProductCollection}">
+						<Table class="detailTable" id="detailTable" inset="false"
+							items="{/ProductCollection}">
 
 							<columns>
 								<Column minScreenWidth="Tablet">

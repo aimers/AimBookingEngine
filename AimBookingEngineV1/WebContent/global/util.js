@@ -74,16 +74,34 @@ sap.ui.medApp.global.util = {
     }
     return dist
   },
-  handleBooking : function(oEvent, oModel, oRouter) {
+  handleBooking : function(oEvent, oRouter) {
     var sTime = oEvent.oSource.getText();
     var sContextPath = oEvent.oSource.oParent.getBindingContext().getPath();
-    var modelData = oModel.getProperty(sContextPath);
+    var vendorIndexPath;
+    var modelData = this._vendorModel.getProperty(sContextPath);
+    if (sContextPath == "/vendorsAvailableTime/0") {
+      vendorIndexPath = modelData.SPATH;
+    } else {
+      var modelData1 = this._vendorModel.getProperty("/vendorsAvailableTime/0");
+      vendorIndexPath = modelData1.SPATH;
+    }
+    var vendordata = this._vendorModel.getProperty(vendorIndexPath);
     var sDate = modelData.Date;
+    var BookingData = [ {
+      bookTime : sTime,
+      bookDate : sDate,
+      IPATH : vendorIndexPath,
+      DSPNM : vendordata.DSPNM
+    } ];
+    this._vendorModel.setProperty("/bookingdata", BookingData);
     if (!sessionStorage.medAppUID) {
       oRouter.navTo("_loginPage", {
         "flagID" : 2
       });
+    } else {
+      oRouter.navTo("ConfirmBooking", {
+        "UID" : sessionStorage.medAppUID
+      });
     }
-    console.log(oEvent);
   }
 }

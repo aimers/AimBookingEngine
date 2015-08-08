@@ -61,6 +61,12 @@ sap.ui.core.UIComponent
                     view : "Login", // View of the _DealsList Router
                     targetAggregation : "pages",
                     targetControl : "idAppControl", // Target Control Id
+                  }, {
+                    pattern : "confirm/{UID}", // patern matching
+                    name : "ConfirmBooking", // router name
+                    view : "ConfirmBooking", // View of the _DealsList Router
+                    targetAggregation : "pages",
+                    targetControl : "idAppControl", // Target Control Id
                   } ]
             }
           },

@@ -15,14 +15,17 @@
 	color: white;
 	padding: 1rem 0;
 	width: 100%;
-	transition: transform 2s, -webkit-transform 2s;	/* transition: IE10, Opera, Firefox, Chrome 26  */
-	-webkit-transition: -webkit-transform 2s; 		/* -webkit-transition: Safari, Android Browser, BB Browser, Chrome 25 */
+	transition: transform 2s, -webkit-transform 2s;
+	/* transition: IE10, Opera, Firefox, Chrome 26  */
+	-webkit-transition: -webkit-transform 2s;
+	/* -webkit-transition: Safari, Android Browser, BB Browser, Chrome 25 */
 }
 
 .preview:hover {
 	background-color: #E69A17;
-	transform: rotate(360deg); 						/* transform: IE10, Opera, Firefox */
-	-webkit-transform: rotate(360deg); 				/* -webkit-transform: Chrome, Safari, Android Browser, BB Browser */
+	transform: rotate(360deg); /* transform: IE10, Opera, Firefox */
+	-webkit-transform: rotate(360deg);
+	/* -webkit-transform: Chrome, Safari, Android Browser, BB Browser */
 }
 
 .previewColor1 {

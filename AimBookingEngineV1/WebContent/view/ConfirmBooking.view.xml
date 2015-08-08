@@ -1,0 +1,26 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="sap.ui.medApp.view.ConfirmBooking"
+	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page enableScrolling="false" showHeader="false" backgroundDesign="Solid">
+		<content>
+			<VBox width="100%" alignItems="Center" items="{/bookingdata}">
+				<l:Grid defaultSpan="L12 M12 S12" width="auto">
+					<f:SimpleForm id="SimpleFormChange354" minWidth="300"
+						maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
+						title="Booking Confirmation" labelSpanL="3" labelSpanM="3"
+						emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="editableForm">
+						<f:content>
+							<Label text="Name" />
+							<Text text="{DSPNM}" />
+							<Label text="Booking Time" />
+							<Text text="{bookTime}" />
+							<Label text="Booking Date" />
+							<Text text="{bookDate}" />
+							<Button text="Confirm" class="buttonDesign" press="handleConfirmBooking" />
+						</f:content>
+					</f:SimpleForm>
+				</l:Grid>
+			</VBox>
+		</content>
+	</Page>
+</core:View>

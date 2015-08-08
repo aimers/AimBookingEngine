@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 							http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-		version="2.5"
-		xmlns="http://java.sun.com/xml/ns/javaee">
+	version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
 
 	<display-name>GeoTracking</display-name>
 
 	<!-- ============================================================== -->
-	<!-- UI5 resource servlet used to handle application resources      -->
+	<!-- UI5 resource servlet used to handle application resources -->
 	<!-- ============================================================== -->
-<servlet>
-  <display-name>ResourceServlet</display-name>
-  <servlet-name>ResourceServlet</servlet-name>
-  <servlet-class>com.sap.ui5.resource.ResourceServlet</servlet-class>
-</servlet>
+	<servlet>
+		<display-name>ResourceServlet</display-name>
+		<servlet-name>ResourceServlet</servlet-name>
+		<servlet-class>com.sap.ui5.resource.ResourceServlet</servlet-class>
+	</servlet>
 	<servlet>
 		<display-name>MasterServlet</display-name>
 		<servlet-name>MasterServlet</servlet-name>
@@ -35,11 +34,11 @@
 
 
 	<!-- ============================================================== -->
-	<!-- Cache Control Filter to prevent caching of any resource        -->
+	<!-- Cache Control Filter to prevent caching of any resource -->
 	<!-- ============================================================== -->
 
 	<!-- ============================================================== -->
-	<!-- Welcome file list                                              -->
+	<!-- Welcome file list -->
 	<!-- ============================================================== -->
 
 	<welcome-file-list>

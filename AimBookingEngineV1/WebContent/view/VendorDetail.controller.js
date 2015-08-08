@@ -25,13 +25,14 @@ sap.ui
             if (!this.oModel) {
               this.oModel = sap.ui.medApp.global.util
                   .getVendorModel(this.paramValue);
-              var vendorDetail = [ this.oModel.getProperty(sPath) ];
+              this.vendorDetail = [ this.oModel.getProperty(sPath) ];
               this.oModel.setProperty("/vendorsDetail", vendorDetail);
               this.loadListDetailFacade();
               this.oView.setModel(this.oModel);
             }
           },
           loadListDetailFacade : function(facade) {
+            var UserData = this.oModel.getProperty(sPath);
             this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
                 this.oModel);
             var param = [ {
@@ -58,7 +59,9 @@ sap.ui
             } ];
             this._vendorListServiceFacade.getRecords(null, null,
                 "/vendorsAvailableTime", "getVendorRuleDetail", param);
-
+            var vendorTimeDetail = this.oModel
+                .getProperty("/vendorsAvailableTime");
+            vendorTimeDetail[0].DSPNM = this.vendorDetail[0].DSPNM;
           },
           getImageUrl : function(oValue) {
             if (oValue != null && oValue != undefined) {
@@ -105,8 +108,7 @@ sap.ui
             });
           },
           handleBookingTime : function(oEvt) {
-            sap.ui.medApp.global.util.handleBooking(oEvt, this.oModel,
-                this.router);
+            sap.ui.medApp.global.util.handleBooking(oEvt, this.router);
           },
           getDateLabel : function(oValue) {
             if (oValue != null && oValue != undefined) {
