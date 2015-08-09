@@ -4,12 +4,12 @@
 	<Page class="mainPage" id="mainPage" showHeader="false">
 		<content>
 			<List items="{/vendorsList}" id="VendorsList" class="VendorsList"
-				headerText="8 results found" select="handleDetailNav" mode="SingleSelectMaster">
+				headerText="8 results found" mode="SingleSelectMaster" select="handleDetailNav">
 				<items>
 					<CustomListItem type="Inactive">
 						<Panel expandable="true" expanded="false">
 							<headerToolbar>
-								<Toolbar height="5rem">
+								<Toolbar height="5rem" >
 									<VBox width="100%" class="vendorItems">
 										<HBox width="100%">
 											<VBox width="49%">

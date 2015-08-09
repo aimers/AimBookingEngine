@@ -12,8 +12,8 @@ sap.ui.controller("sap.ui.medApp.view.Login", {
     this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
     this.router = sap.ui.core.UIComponent.getRouterFor(this);
 
-    if (sap.ui.medApp.global.util._vendorModel) {
-      this.oModel = sap.ui.medApp.global.util._vendorModel;
+    if (sap.ui.medApp.global.util._mainModel) {
+      this.oModel = sap.ui.medApp.global.util._mainModel;
     } else {
       this.oModel = new sap.ui.model.json.JSONModel();
     }
@@ -48,6 +48,41 @@ sap.ui.controller("sap.ui.medApp.view.Login", {
     if (!oData.results.USRID) {
       this.oView.byId("MessageBox").setVisible(true);
       this.oView.byId("MessageBox").setText("Email/Password is incorrect");
+    } else {
+      this.oView.byId("MessageBox").setVisible(false);
+      sessionStorage.setItem("medAppUID", oData.results.USRID);
+      sessionStorage.setItem("medAppPWD", oData.results.UERPW);
+      this.oModel.setProperty("/LoggedUser", oData.results);
+      if (this.parameter.flagID == 2) {
+        this._oRouter.navTo("ConfirmBooking", {
+          "UID" : sessionStorage.medAppUID
+        });
+      } else {
+        this._oRouter.navTo('_homeTiles');
+      }
+    }
+  },
+  handleRegister : function() {
+    var _this = this;
+    var username = this.oView.byId("usrNme").getValue();
+    var param = [ {
+      "key" : "details",
+      "value" : {
+        "USRNM" : username,
+        "UTYID" : "2",
+        "PRFIX" : "",
+        "TITLE" : "",
+        "FRNAM" : "",
+        "LTNAM" : "",
+        "URDOB" : "1900/01/01",
+        "GENDR" : "2",
+        "DSPNM" : ""
+      }
+    } ];
+    var oData = sap.ui.medApp.global.util.getRegisterData(param);
+    if (!oData.results.USRID) {
+      this.oView.byId("MessageBox").setVisible(true);
+      this.oView.byId("MessageBox").setText("User cannot be registered");
     } else {
       this.oView.byId("MessageBox").setVisible(false);
       sessionStorage.setItem("medAppUID", oData.results.USRID);

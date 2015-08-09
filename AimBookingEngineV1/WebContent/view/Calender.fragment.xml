@@ -19,7 +19,7 @@
 		</subHeader>
 		<content>
 			<me:Calendar width="100%" class="monthCalender"
-				tapOnDate="changeToOneWeek">
+				select="handleWeekCalender">
 			</me:Calendar>
 			<HBox visible="false" alignItems="Start" justifyContent="SpaceAround"
 				items="{/vendorsAvailableTime}" class="weekCalenderView">

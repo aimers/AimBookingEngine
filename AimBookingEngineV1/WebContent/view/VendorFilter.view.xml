@@ -5,7 +5,7 @@
 		<content>
 			<VBox width="90%" class="appointment" height="20%">
 				<Label text="{i18n>APPOINTMENT_DAY}" class="filterLabel" />
-				<SegmentedButton selectedButton="Sunday" class="weekDayFilter">
+				<SegmentedButton  class="weekDayFilter">
 					<Button text="Mon"></Button>
 					<Button text="Tue"></Button>
 					<Button text="Wed"></Button>
@@ -17,7 +17,7 @@
 			</VBox>
 			<VBox height="20%" class="appointment">
 				<Label text="{i18n>SELECT_TIME}" class="filterLabel"></Label>
-				<c:RangeSlider max="2400" min="0" value="0" value2="60"
+				<c:RangeSlider max="2400" min="0" value="0" value2="2400"
 					totalUnits="3" smallStepWidth="1" stepLabels="true" labels="00:00, 12:00, 24:00"
 					class="filterLabel"></c:RangeSlider>
 			</VBox>
@@ -28,7 +28,7 @@
 					growingThreshold="4" growingScrollToLoad="true" class="filterCategoryList">
 					<items>
 						<StandardListItem title="{DESCR}"
-							iconDensityAware="false" iconInset="false" />
+							iconDensityAware="false" iconInset="false" selected="{selected}"/>
 					</items>
 				</List>
 			</VBox>

@@ -133,5 +133,18 @@ sap.ui.medApp.global.util = {
     this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
         "loginUser");
     return bool;
+  },
+  getRegisterData : function(param, args) {
+    // var _oRouter = sap.ui.core.UIComponent.getRouterFor(_this);
+    var _this = this;
+    var bool;
+    this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+        this._mainModel);
+    var fnSuccess = function(oData) {
+      bool = oData;
+    };
+    this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
+        "registerUser");
+    return bool;
   }
 }

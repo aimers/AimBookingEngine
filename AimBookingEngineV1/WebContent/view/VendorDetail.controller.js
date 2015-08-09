@@ -25,8 +25,9 @@ sap.ui
             if (!this.oModel) {
               this.oModel = sap.ui.medApp.global.util
                   .getVendorModel(this.paramValue);
-              this.vendorDetail = [ this.oModel.getProperty(sPath) ];
-              this.oModel.setProperty("/vendorsDetail", vendorDetail);
+              // this.vendorDetail = [ this.oModel.getProperty(sPath) ];
+              this.oModel.setProperty("/vendorsDetail", [ this.oModel
+                  .getProperty(sPath) ]);
               this.loadListDetailFacade();
               this.oView.setModel(this.oModel);
             }
@@ -58,9 +59,6 @@ sap.ui
             } ];
             this._vendorListServiceFacade.getRecords(null, null,
                 "/vendorsAvailableTime", "getVendorRuleDetail", param);
-            var vendorTimeDetail = this.oModel
-                .getProperty("/vendorsAvailableTime");
-            vendorTimeDetail[0].DSPNM = this.vendorDetail[0].DSPNM;
           },
           getImageUrl : function(oValue) {
             if (oValue != null && oValue != undefined) {

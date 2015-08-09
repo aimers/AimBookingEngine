@@ -119,6 +119,9 @@ sap.ui
             var oCalendar = oBookingBox[0].getContent()[0].setVisible(false);
             oBookingBox[0].getContent()[1].setVisible(true);
           },
+          handleWeekCalender : function(oEvent) {
+            console.log(oEvent);
+          },
           changeToOneMonth : function(oEvent) {
             var oIndex = oEvent.oSource.getGroupName();
             var oItemSelected = this.getView().byId("VendorsList").getItems()[oIndex]
