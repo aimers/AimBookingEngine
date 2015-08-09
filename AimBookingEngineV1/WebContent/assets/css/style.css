@@ -3,7 +3,7 @@
 		max-width: 116px;
 		padding-top: 10px;
 	}
-	.homeContent {
+	.homeContent, .homePageContent {
 		width: 60%;
 	}
 	.homeTileIcons {
@@ -23,7 +23,7 @@
 		max-width: 100px;
 		padding-top: 15px;
 	}
-	.homeContent {
+	.homeContent, .homePageContent {
 		width: 100%;
 	}
 	.homeTileIcons {
@@ -255,4 +255,8 @@
 
 .buttonDesign .sapMBtnInner:hover {
 	color: #000000;
+}
+.sapUiFormEdit .messageBox.sapMText {
+	font-weight:bold;
+	color:red;
 }

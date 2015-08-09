@@ -10,6 +10,7 @@
 						title="Login here" labelSpanL="3" labelSpanM="3" emptySpanL="4"
 						emptySpanM="4" columnsL="1" columnsM="1" class="editableForm">
 						<f:content>
+							<Text id="MessageBox" class="messageBox" visible="false" />
 							<Label text="Username" />
 							<Input id="usrNme" />
 							<Label text="Password" />
@@ -19,7 +20,7 @@
 							<Button text="Login" class="buttonDesign" press="handleLogin" />
 							<Button text="Sign Up" class="buttonDesign">
 								<layoutData>
-									<l:GridData span="L2 M2 S4" />
+									<l:GridData span="L2 M4 S6" />
 								</layoutData>
 							</Button>
 							<Button text="Forgot Password?" class="buttonDesign">

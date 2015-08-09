@@ -61,5 +61,19 @@ sap.ui.medApp.global.globalFormatter = {
         return true;
       }
     }
+  },
+  showLogoutButton : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+  showLoginButton : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

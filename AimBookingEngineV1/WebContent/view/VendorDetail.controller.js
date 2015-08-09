@@ -32,7 +32,6 @@ sap.ui
             }
           },
           loadListDetailFacade : function(facade) {
-            var UserData = this.oModel.getProperty(sPath);
             this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
                 this.oModel);
             var param = [ {

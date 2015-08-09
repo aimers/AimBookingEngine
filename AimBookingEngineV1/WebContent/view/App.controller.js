@@ -5,7 +5,7 @@ sap.ui.controller("sap.ui.medApp.view.App", {
     /*
      * For getting user information
      */
-    var oModel = new sap.ui.model.json.JSONModel();
+    this.oModel = sap.ui.medApp.global.util.getHomeModel();
 
     /*
      * if(!this.oLoadingDialog){ this.oLoadingDialog = new
@@ -20,7 +20,7 @@ sap.ui.controller("sap.ui.medApp.view.App", {
       mode : "ShowHideMode",
       defaultTransitionNameDetail : "slide"
     });
-    this.getView().byId('myShell').setModel(oModel);
+    this.getView().byId('myShell').setModel(this.oModel);
 
     this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
     this.router = sap.ui.core.UIComponent.getRouterFor(this);
@@ -51,10 +51,31 @@ sap.ui.controller("sap.ui.medApp.view.App", {
   },
 
   handleLogin : function(oEvent) {
-    this._oRouter.navTo('_loginPage');
+    this._oRouter.navTo('_loginPage', {
+      flagID : 0
+    });
   },
   okCallback : function() {
     var oService = new oDataService();
     oService.handleLogout(this);
   },
+  settingsSelect : function(oEvent) {
+    var oController = this;
+    if (!this.oSettingsHeaderActionSheet) {
+      this.oSettingsHeaderActionSheet = new sap.m.ActionSheet({
+        placement : sap.m.PlacementType.Bottom,
+        buttons : new sap.m.Button({
+          id : "headerLogoutButton",
+          icon : "sap-icon://log",
+          text : "Logout",
+          tooltip : "Logout",
+          press : oController.logout.bind(oController)
+        })
+      });
+    }
+    this.oSettingsHeaderActionSheet.openBy(oEvent.oSource);
+  },
+  logout : function(evt) {
+    console.log(evt);
+  }
 });

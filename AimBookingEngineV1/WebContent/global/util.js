@@ -1,12 +1,30 @@
 jQuery.sap.declare("sap.ui.medApp.global.util");
 jQuery.sap.require("sap.ui.medApp.service.vendorListServiceFacade");
 sap.ui.medApp.global.util = {
-  getMainModel : function() {
+  getHomeModel : function(_oRouter) {
     if (!this._mainModel) {
       this._mainModel = new sap.ui.model.json.JSONModel();
-      this.loadListCategory();
-    }
+      if (sessionStorage.medAppUID != undefined
+          && sessionStorage.medAppPWD != undefined) {
+        var param = [ {
+          "key" : "details",
+          "value" : {
+            "USRID" : sessionStorage.medAppUID,
+            "UERPW" : sessionStorage.medAppPWD
+          }
+        } ];
+        var oData = this.getLoginData(param);
+        this._mainModel.setProperty("/LoggedUser", oData.results);
+      }
 
+    }
+    return this._mainModel;
+  },
+  getMainModel : function() {
+    if (!this._mainModel) {
+      this._mainModel = this.getHomeModel();
+    }
+    this.loadListCategory();
     return this._mainModel;
   },
   loadListCategory : function(facade) {
@@ -24,16 +42,15 @@ sap.ui.medApp.global.util = {
 
   },
   getVendorModel : function(paramValue) {
-    if (!this._vendorModel) {
-      this._vendorModel = new sap.ui.model.json.JSONModel();
-      this.loadVendorData(paramValue);
+    if (!this._mainModel) {
+      this._mainModel = this.getHomeModel();
     }
-
-    return this._vendorModel;
+    this.loadVendorData(paramValue);
+    return this._mainModel;
   },
   loadVendorData : function(paramValue) {
     this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
-        this._vendorModel);
+        this._mainModel);
     var param = [ {
       "key" : "INTENT",
       "value" : "1"
@@ -78,14 +95,14 @@ sap.ui.medApp.global.util = {
     var sTime = oEvent.oSource.getText();
     var sContextPath = oEvent.oSource.oParent.getBindingContext().getPath();
     var vendorIndexPath;
-    var modelData = this._vendorModel.getProperty(sContextPath);
+    var modelData = this._mainModel.getProperty(sContextPath);
     if (sContextPath == "/vendorsAvailableTime/0") {
       vendorIndexPath = modelData.SPATH;
     } else {
-      var modelData1 = this._vendorModel.getProperty("/vendorsAvailableTime/0");
+      var modelData1 = this._mainModel.getProperty("/vendorsAvailableTime/0");
       vendorIndexPath = modelData1.SPATH;
     }
-    var vendordata = this._vendorModel.getProperty(vendorIndexPath);
+    var vendordata = this._mainModel.getProperty(vendorIndexPath);
     var sDate = modelData.Date;
     var BookingData = [ {
       bookTime : sTime,
@@ -93,7 +110,7 @@ sap.ui.medApp.global.util = {
       IPATH : vendorIndexPath,
       DSPNM : vendordata.DSPNM
     } ];
-    this._vendorModel.setProperty("/bookingdata", BookingData);
+    this._mainModel.setProperty("/bookingdata", BookingData);
     if (!sessionStorage.medAppUID) {
       oRouter.navTo("_loginPage", {
         "flagID" : 2
@@ -103,5 +120,18 @@ sap.ui.medApp.global.util = {
         "UID" : sessionStorage.medAppUID
       });
     }
+  },
+  getLoginData : function(param, args) {
+    // var _oRouter = sap.ui.core.UIComponent.getRouterFor(_this);
+    var _this = this;
+    var bool;
+    this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+        this._mainModel);
+    var fnSuccess = function(oData) {
+      bool = oData;
+    };
+    this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
+        "loginUser");
+    return bool;
   }
 }

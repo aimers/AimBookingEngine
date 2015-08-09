@@ -31,7 +31,7 @@
 						<VBox items="{path:'TimeSlots'}" class="CalenderTime">
 							<Link
 								text="{path:'START', formatter:'.getCorrectTime'}-{path:'END', formatter:'.getCorrectTime'}"
-								press="handleBookingTime" />
+								press="handleBookingTime" enabled="{path:'STATUS', formatter : 'sap.ui.medApp.global.globalFormatter.getBookingStatus'}"/>
 						</VBox>
 					</VBox>
 				</items>

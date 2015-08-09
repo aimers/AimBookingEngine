@@ -42,14 +42,29 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
     this.oModel.setProperty("/vendorsTileCategory", tileVendorData);
   },
   getVendorList : function(evt) {
+    var medAppUID;
+    if (sessionStorage.medAppUID) {
+      medAppUID = sessionStorage.medAppUID
+    } else {
+      medAppUID = "1";
+    }
     this._oRouter.navTo("VendorListDetail", {
-      entityId : evt.oSource.getUseMap()
+      ENTID : evt.oSource.getUseMap(),
+      ETYID : "1",
+      ETCID : "1",
+      UID : medAppUID
     });
   },
   /*
    * Handle Press Tile
    */
   handleSearchKeyword : function(evt) {
+    var medAppUID;
+    if (sessionStorage.medAppUID) {
+      medAppUID = sessionStorage.medAppUID
+    } else {
+      medAppUID = "1";
+    }
     // open the loading dialog
     var searchBar = this.oView.byId("homeSearchBar");
     var keys = searchBar.getSelectedKeys().join();
@@ -57,7 +72,7 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
       ENTID : keys,
       ETYID : "1",
       ETCID : "1",
-      UID : "1"
+      UID : medAppUID
     });
 
   },

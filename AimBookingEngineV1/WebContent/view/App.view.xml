@@ -15,12 +15,14 @@
 				tooltip="Logoff" press="handleLogoffPress" />
 		</u:headEndItems>
 		<u:headEndItems>
-			<u:ShellHeadItem icon="sap-icon://log" tooltip="Logoff"
-				press="handleLogoffPress" />
+			<u:ShellHeadItem icon="sap-icon://log" tooltip="Login"
+				press="handleLogin"
+				visible="{path:'/LoggedUser/USRNM', formatter:'sap.ui.medApp.global.globalFormatter.showLogoutButton'}" />
 		</u:headEndItems>
-		<u:user>
-			<u:ShellHeadUserItem image="sap-icon://person-placeholder"
-				username="{/fullName}" press="handleUserItemPressed" />
-		</u:user>
+		<u:headEndItems>
+			<u:ShellHeadItem image="sap-icon://person-placeholder"
+				username="{/LoggedUser/USRNM}" press="settingsSelect"
+				visible="{path:'/LoggedUser/USRNM', formatter:'sap.ui.medApp.global.globalFormatter.showLoginButton'}" />
+		</u:headEndItems>
 	</u:Shell>
 </core:View>

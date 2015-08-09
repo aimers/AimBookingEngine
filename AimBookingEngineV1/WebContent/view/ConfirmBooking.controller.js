@@ -16,8 +16,8 @@ sap.ui
             this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             this.router = sap.ui.core.UIComponent.getRouterFor(this);
             this.paramValue = [ {} ];
-            if (sap.ui.medApp.global.util._vendorModel) {
-              this.oModel = sap.ui.medApp.global.util._vendorModel;
+            if (sap.ui.medApp.global.util._mainModel) {
+              this.oModel = sap.ui.medApp.global.util._mainModel;
             } else {
               this.oModel = new sap.ui.model.json.JSONModel();
             }
@@ -33,27 +33,28 @@ sap.ui
             });
           },
           handleConfirmBooking : function() {
+            var _this = this;
             var bookingdata = this.oModel.getProperty("/bookingdata");
             var vendorData = this.oModel.getProperty(bookingdata[0].IPATH);
             var bookingdate = bookingdata[0].bookDate;
             var month = this.getMonth(bookingdate.split(" ")[1]);
             var date = bookingdate.split(" ")[2];
             var year = bookingdate.split(" ")[5];
-            var my_date = year + "/" + month + "/" + date
-            " " + bookingdate.split(" ")[3];
+            var my_date = year + "/" + month + "/" + date + " 00:00:00";
             var bostm = bookingdata[0].bookTime.split("-")[0] + ":00";
             var BOETM = bookingdata[0].bookTime.split("-")[1] + ":00";
+            var userData = this.oModel.getProperty("/LoggedUser");
             var param = [ {
               "key" : "details",
               "value" : {
-                "VSUID" : vendorData.USRID,
-                "VUTID" : 2,
-                "CUSID" : medApp.global.config.user.USRID,
-                "CUTID" : medApp.global.config.user.UTYID,
-                "ETYID" : vendorData.Rules[0].ETYID,
-                "ETCID" : vendorData.Rules[0].ETCID,
-                "ENTID" : vendorData.Rules[0].ENTID,
-                "RULID" : vendorData.Rules[0].RULID,
+                "VSUID" : vendorData.USRID.toString(),
+                "VUTID" : "2",
+                "CUSID" : userData.USRID.toString(),
+                "CUTID" : userData.UTYID.toString(),
+                "ETYID" : vendorData.Rules[0].ETYID.toString(),
+                "ETCID" : vendorData.Rules[0].ETCID.toString(),
+                "ENTID" : vendorData.Rules[0].ENTID.toString(),
+                "RULID" : vendorData.Rules[0].RULID.toString(),
                 "BDTIM" : my_date,
                 "BTIMZ" : bookingdate.split(" ")[4],
                 "BOSTM" : bostm,
@@ -62,7 +63,8 @@ sap.ui
               }
             } ];
             var fnSuccess = function(oData) {
-              console.log(oData);
+              sap.m.MessageToast.show("Your booking has been confirmed");
+              _this._oRouter.navTo('_homeTiles');
             };
             this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
                 this.oModel);

@@ -2,7 +2,7 @@
 	xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="sap.ui.medApp.view.Home"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<VBox width="100%" height="100%" alignItems="Center">
-		<VBox width="60%" height="100%" alignItems="Center">
+		<VBox height="100%" alignItems="Center" class="homePageContent">
 			<HBox justifyContent="Center" alignItems="Center" width="100%"
 				class="spaceAround">
 				<Image width="2rem" height="2rem" class="spaceLeft"
@@ -24,8 +24,8 @@
 			</HBox>
 			<HBox justifyContent="Center" alignItems="Center" width="100%">
 				<MultiComboBox id="homeSearchBar" class="inputLocation"
-					selectionChange="handleSelectionChange" width="100%"
-					items="{path: '/vendorsCategory', sorter: { path: 'descr' }}">
+					selectionChange="handleSelectionChange" width="100%" maxWidth="280px"
+					items="{path: '/vendorsCategory', sorter: { path: 'DESCR' }}">
 					<core:Item key="{ENTID}" text="{DESCR}" />
 				</MultiComboBox>
 				<Button class="buttonDesign" text="{i18n>SEARCH}" press="handleSearchKeyword" />
