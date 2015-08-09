@@ -13,8 +13,8 @@
 							<Text id="MessageBox" class="messageBox" visible="false" />
 							<Label text="Username" />
 							<Input id="usrNme" />
-							<Label text="Password" type="Password"/>
-							<Input id="pswd">
+							<Label text="Password" />
+							<Input id="pswd" type="Password">
 							</Input>
 							<Label />
 							<Button text="Login" class="buttonDesign" press="handleLogin" />

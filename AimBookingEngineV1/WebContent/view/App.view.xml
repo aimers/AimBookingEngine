@@ -20,8 +20,8 @@
 				visible="{path:'/LoggedUser/USRNM', formatter:'sap.ui.medApp.global.globalFormatter.showLogoutButton'}" />
 		</u:headEndItems>
 		<u:headEndItems>
-			<u:ShellHeadItem image="sap-icon://person-placeholder"
-				username="{/LoggedUser/USRNM}" press="settingsSelect"
+			<u:ShellHeadItem icon="sap-icon://person-placeholder"
+				text="{/LoggedUser/USRNM}" press="settingsSelect"
 				visible="{path:'/LoggedUser/USRNM', formatter:'sap.ui.medApp.global.globalFormatter.showLoginButton'}" />
 		</u:headEndItems>
 	</u:Shell>
