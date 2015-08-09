@@ -16,21 +16,22 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
     this.paramValue = evt.getParameter("arguments");
 
     this.oModel = sap.ui.medApp.global.util.getMainModel();
-
-    var selectedKeys = this.paramValue.ENTID.split(",");
-    for (var i = 0; i < selectedKeys.length; i++) {
-      selectedKeys[0] = parseInt(selectedKeys[0]);
-    }
-    var vendorCat = this.oModel.getProperty("/vendorsCategory");
-    for (var i = 0; i < vendorCat.length; i++) {
-      if (jQuery.inArray(vendorCat[i].ENTID, selectedKeys) != -1) {
-        vendorCat[i].selected = true;
-      } else {
-        vendorCat[i].selected = false;
-      }
-    }
-    this.oModel.setProperty("/vendorsCategory", vendorCat);
-    this.oView.setModel(this.oModel);
+    if(this.paramValue.ENTID !== undefined){
+	    var selectedKeys = this.paramValue.ENTID.split(",");
+	    for (var i = 0; i < selectedKeys.length; i++) {
+	      selectedKeys[0] = parseInt(selectedKeys[0]);
+	    }
+	    var vendorCat = this.oModel.getProperty("/vendorsCategory");
+	    for (var i = 0; i < vendorCat.length; i++) {
+	      if (jQuery.inArray(vendorCat[i].ENTID, selectedKeys) != -1) {
+	        vendorCat[i].selected = true;
+	      } else {
+	        vendorCat[i].selected = false;
+	      }
+	    }
+	    this.oModel.setProperty("/vendorsCategory", vendorCat);
+	    this.oView.setModel(this.oModel);
+  	}
   },
 
   /**
