@@ -28,9 +28,72 @@ public class VendorCommand extends aimCommand {
 			return getVendorData(myInfo, dbcon);
 		}else if(aimAction.equals("getVendorRuleDetail")){
 			return getVendorRuleDetail(myInfo, dbcon);
+		}else if(aimAction.equals("getUniqueAddress")){
+			return getUniqueAddress(myInfo, dbcon);
 		}
 		return new JSONObject();
 
+	}
+
+	private Object getUniqueAddress(HashMap myInfo, ConnectionManager dbcon) {
+		// TODO: Add skip/top
+		String etyid =  myInfo.get("ETYID")+"";
+		String etcid =  myInfo.get("ETCID")+"";
+		String entid =  myInfo.get("ENTID")+"";
+		ResultSet rs=null;
+		try{
+			if(dbcon == null){
+				try{
+					dbcon.Connect("MYSQL");
+				}
+				catch(Exception ex){
+					System.out.println(""+ex);
+				}
+			}
+			String query =
+			" SELECT `usrmt`.`USRID`, "+
+			" `uadmp`.`PRIMR`, "+
+			" `addmt`.`STREET`, "+
+			" `addmt`.`LNDMK`, "+
+			" `addmt`.`LOCLT`, "+
+			" `addmt`.`CTYID`, "+
+			" `addmt`.`PINCD`, "+
+			" `addmt`.`LONGT`, "+
+			" `addmt`.`LATIT` "+
+			" FROM `usrmt` "+ 
+			"  left outer join "+
+			" `uetmp` "+
+			"  on "+
+			" `usrmt`.`USRID` = `uetmp`.`USRID` "+
+			" left outer join "+
+			" `uadmp` "+
+			" on "+
+			" `usrmt`.`USRID` = `uadmp`.`USRID` "+
+			" left outer join "+
+			" `addmt` "+
+			" on "+
+			" `addmt`.`ADRID` = `uadmp`.`ADRID` "+
+			//" left outer join `BOOKINGDB`.`VEMPT`  "+
+			//" on  `usrmt`.`USRID` = `VEMPT`.`USRID`   "+
+			" where `uetmp`.ACTIV = 1 and `uetmp`.UTYID = 2 ";
+			//+ "and "
+			//		+ " `VEMPT`.`ETYID` in (\""
+			//		+entid+"\") ";
+			
+			/*if(!etcid.equals("null")){
+				query += " and `VEMPT`.`ETCID` in (\""+etcid+"\") ";
+				if(!entid.equals("null")){
+					query += " and `VEMPT`.`ENTID` in (\""+entid+"\") ";
+				}
+			}*/
+			System.out.println(query);
+			rs=dbcon.stm.executeQuery(query);
+			return Convertor.convertToJSON(rs);
+		}
+		catch(Exception ex){
+			System.out.println("Error from VENDOR Address Command "+ex +"==dbcon=="+dbcon);
+			return null;
+		}
 	}
 
 	private Object getVendorRuleDetail(HashMap myInfo, ConnectionManager dbcon) {
