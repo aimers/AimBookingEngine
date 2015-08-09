@@ -21,11 +21,16 @@ sap.ui
           },
           _handleRouteMatched : function(evt) {
             this.paramValue = evt.getParameter("arguments");
-            if (!this.oModel) {
+            //JT FIX for refresh from home button
+            if(this.paramValue.ENTID === undefined){
+            	this.oIndexItem = [];
+            	//this.oModel = undefined;
+            }
+           // if (!this.oModel) {
               this.oModel = sap.ui.medApp.global.util
                   .getVendorModel(this.paramValue);
               this.oView.setModel(this.oModel);
-            }
+            //}
           },
           getImageUrl : function(oValue) {
             if (oValue != null && oValue != undefined) {
