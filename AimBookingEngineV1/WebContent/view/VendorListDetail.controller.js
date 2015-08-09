@@ -22,15 +22,19 @@ sap.ui
           _handleRouteMatched : function(evt) {
             this.paramValue = evt.getParameter("arguments");
             //JT FIX for refresh from home button
-            if(this.paramValue.ENTID === undefined){
+            if(evt.getParameter("name") === "VendorListDetail"){
             	this.oIndexItem = [];
-            	//this.oModel = undefined;
+            	this.oModel = sap.ui.medApp.global.util
+                .getVendorModel(this.paramValue);
+            	this.oView.setModel(this.oModel);
+            }else if(evt.getParameter("name") === "_homeTiles"){
+            	//JT: TODO Check: Reset Model for next refresh
+            	this.oIndexItem = [];
+            	this.oModel = sap.ui.medApp.global.util
+                .getVendorModel(this.paramValue);
+            	this.oView.setModel(this.oModel);
             }
-           // if (!this.oModel) {
-              this.oModel = sap.ui.medApp.global.util
-                  .getVendorModel(this.paramValue);
-              this.oView.setModel(this.oModel);
-            //}
+            
           },
           getImageUrl : function(oValue) {
             if (oValue != null && oValue != undefined) {
