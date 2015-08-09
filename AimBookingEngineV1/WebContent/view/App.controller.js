@@ -76,6 +76,8 @@ sap.ui.controller("sap.ui.medApp.view.App", {
     this.oSettingsHeaderActionSheet.openBy(oEvent.oSource);
   },
   logout : function(evt) {
-    console.log(evt);
+    sessionStorage.removeItem("medAppUID");
+    sessionStorage.removeItem("medAppPWD");
+    this._oRouter.navTo('_homeTiles');
   }
 });

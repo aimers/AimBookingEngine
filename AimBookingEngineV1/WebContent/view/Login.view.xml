@@ -13,7 +13,7 @@
 							<Text id="MessageBox" class="messageBox" visible="false" />
 							<Label text="Username" />
 							<Input id="usrNme" />
-							<Label text="Password" />
+							<Label text="Password" type="Password"/>
 							<Input id="pswd">
 							</Input>
 							<Label />
