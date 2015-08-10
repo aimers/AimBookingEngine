@@ -34,13 +34,48 @@ public class UserCommand extends aimCommand {
 			//return registerUser(myInfo, dbcon);
 		}else if(aimAction.equals("loginUser")){
 			return loginUser(myInfo, dbcon);
+		}else if(aimAction.equals("getBookingHistory")){
+			return getBookingHistory(myInfo, dbcon);
 		}
 		
 		return new JSONObject();
 
 	}
 
-/*CREATE USER METHODS START*/	
+private Object getBookingHistory(HashMap myInfo, ConnectionManager dbcon) {
+	
+	
+	ResultSet rs=null;
+	try{
+		String details 	=  myInfo.get("details")+"";
+		JSONObject detailsJSON 	= new JSONObject(details);
+		
+		String query1 = "SELECT `vtrmt`.`VTRMI`, `vtrmt`.`VSUID`, `vtrmt`.`VUTID`, "
+				+ " `vtrmt`.`CUSID`, `vtrmt`.`CUTID`, "
+				+ " `vtrmt`.`ETYID`, `vtrmt`.`ETCID`, `vtrmt`.`ENTID`, "
+				+ " `vtrmt`.`RULID`, "
+				+ " `vtrmt`.`BDTIM`, `vtrmt`.`BTIMZ`, `vtrmt`.`BOSTM`, `vtrmt`.`BOETM`, "
+				+ " `vtrmt`.`RTYPE`, `vtrmt`.`STATS` "
+				+ " FROM `bookingdb`.`vtrmt` ";
+		if(detailsJSON.has("CUSID") && detailsJSON.has("CUTID")){
+			query1 = query1+ "where `CUSID` = '"+detailsJSON.get("CUSID")+"' "
+					+ " and `CUTID` = '"+detailsJSON.get("CUTID")+"' ";	
+		}else if(detailsJSON.has("VSUID") && detailsJSON.has("VUTID")){
+			query1 = query1+ "where `VSUID` = '"+detailsJSON.get("VSUID")+"' "
+					+ " and `VUTID` = '"+detailsJSON.get("VUTID")+"' ";	
+		}
+		System.out.println(query1);
+		rs =dbcon.stm.executeQuery(query1);
+		return Convertor.convertToJSON(rs);
+
+	}
+	catch(Exception ex){
+		System.out.println("Error from USER usermaster Command "+ex +"==dbcon=="+dbcon);
+		return null;
+	}
+}
+
+	/*CREATE USER METHODS START*/	
 	private Object registerUser(HashMap myInfo, ConnectionManager dbcon) {
 		try{
 			myInfo.put("details",  createUserAccount(myInfo, dbcon));

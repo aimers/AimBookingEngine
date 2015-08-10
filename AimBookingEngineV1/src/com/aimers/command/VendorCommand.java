@@ -359,13 +359,13 @@ public class VendorCommand extends aimCommand {
 					" left outer join `rulmt` on  "+
 					" `vrumt`.`RULID` = `rulmt`.`RULID`  "+
 					" where `rulmt`.`ACTIV` = 1 and `vrumt`.`ACTIV` = 1  and "
-					+ " `VRUMT`.`ETYID` in (\""
+					+ " `vrumt`.`ETYID` in (\""
 					+etyid+"\") ";
 			
 			if(!etcid.equals("null")){
-				query += " and `VRUMT`.`ETCID` in (\""+etcid+"\") ";
+				query += " and `vrumt`.`ETCID` in (\""+etcid+"\") ";
 				if(!entid.equals("null")){
-					query += " and `VRUMT`.`ENTID` in (\""+entid+"\") ";
+					query += " and `vrumt`.`ENTID` in (\""+entid+"\") ";
 				}
 			}
 			System.out.println(query);

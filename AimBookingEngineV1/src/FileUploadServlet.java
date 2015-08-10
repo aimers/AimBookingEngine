@@ -34,7 +34,7 @@ public class FileUploadServlet extends HttpServlet {
         String applicationPath = request.getServletContext().getRealPath("");
         // constructs path of the directory to save uploaded file
         ////home/saath/public_html/bookingdemodocs
-        String uploadFilePath = "home/saath/public_html/bookingdemodocs";//"/Users/i039198/Documents/Projects/BOOKING/UPLOAD";
+        String uploadFilePath = "/home/saath/public_html/bookingdemodocs";//"/Users/i039198/Documents/Projects/BOOKING/UPLOAD";
         //File.createTempFile("upload-", ".bin");;//applicationPath + File.separator + UPLOAD_DIR;
           
         // creates the save directory if it does not exists
