@@ -5,15 +5,15 @@
 		<content>
 			<VBox width="90%" class="appointment" height="20%">
 				<Label text="{i18n>APPOINTMENT_DAY}" class="filterLabel" />
-				<SegmentedButton  class="weekDayFilter">
-					<Button text="Mon"></Button>
-					<Button text="Tue"></Button>
-					<Button text="Wed"></Button>
-					<Button text="Thu"></Button>
-					<Button text="Fri"></Button>
-					<Button text="Sat"></Button>
-					<Button text="Sun" id="Sunday"></Button>
-				</SegmentedButton>
+				<HBox  class="weekDayFilter">
+					<ToggleButton text="Mon" pressed="true"></ToggleButton>
+					<ToggleButton text="Tue" pressed="true"></ToggleButton>
+					<ToggleButton text="Wed" pressed="true"></ToggleButton>
+					<ToggleButton text="Thu" pressed="true"></ToggleButton>
+					<ToggleButton text="Fri" pressed="true"></ToggleButton>
+					<ToggleButton text="Sat" pressed="true"></ToggleButton>
+					<ToggleButton text="Sun" pressed="true"></ToggleButton>
+				</HBox>
 			</VBox>
 			<VBox height="20%" class="appointment">
 				<Label text="{i18n>SELECT_TIME}" class="filterLabel"></Label>

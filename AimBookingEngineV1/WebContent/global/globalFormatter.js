@@ -75,5 +75,25 @@ sap.ui.medApp.global.globalFormatter = {
     } else {
       return false;
     }
+  },
+  getListCount : function(oArray) {
+    if (oArray != null && oArray != undefined) {
+      return oArray.length;
+    }
+  },
+  checkFavorite : function(userId) {
+    if (userId != null && userId != undefined) {
+      var userData = sap.ui.medApp.global.util._mainModel
+          .getProperty("/LoggedUser");
+      var chars = userData.Characteristics;
+      for (var i = 0; i < chars.length; i++) {
+        if (chars[i].CHRID == 11) {
+          if (chars[i].VALUE == userId) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
   }
 }

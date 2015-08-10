@@ -12,9 +12,16 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
     // getting Router
     this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
     this.router = sap.ui.core.UIComponent.getRouterFor(this);
-    this.oModel = sap.ui.medApp.global.util.getMainModel();
-    this.getView().setModel(this.oModel);
-    this._getTileIcons();
+
+    this.router.attachRoutePatternMatched(this._handleRouteMatched, this);
+  },
+  _handleRouteMatched : function(oEvent) {
+    var scope = oEvent.getParameter("config").name;
+    if (scope === "_homeTiles") {
+      this.oModel = sap.ui.medApp.global.util.getMainModel();
+      this.getView().setModel(this.oModel);
+      this._getTileIcons();
+    }
   },
   _getTileIcons : function() {
     var vendorData = this.oModel.getProperty("/vendorsCategory");

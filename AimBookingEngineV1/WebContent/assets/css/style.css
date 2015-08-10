@@ -1,4 +1,23 @@
-@media only screen and (min-width: 640px) {
+@media (max-width:1000px) and (min-width:640px) {
+  .mainShell .sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
+    max-width: 116px;
+    padding-top: 10px;
+  }
+  .homeContent, .homePageContent {
+    width: 75%;
+  }
+  .homeTileIcons {
+    width: 3rem;
+    height: 3rem;
+  }
+  .inputLocation .sapMInputBaseInner {
+    width: 20rem;
+  }
+  .homeTileText {
+    font-size: 0.875rem;
+  }
+}
+@media only screen and (min-width: 1000px) {
 	.mainShell .sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
 		max-width: 116px;
 		padding-top: 10px;
@@ -137,9 +156,10 @@
 	border-bottom: 3px solid #cccccc;
 }
 
-.weekDayFilter .sapMSegBBtn {
-	padding-left: 0.20rem;
-	padding-right: 0.20rem;
+.weekDayFilter .sapMBtnInner {
+	padding-left: 0.30rem;
+	padding-right: 0.30rem;
+	min-width:1.8rem;
 }
 
 .clinicImages {
@@ -259,4 +279,21 @@
 .sapUiFormEdit .messageBox.sapMText {
 	font-weight:bold;
 	color:red;
+}
+.vendorAddress .sapMBtnIcon{
+	font-size : 1.2rem;
+	line-height : 0.7rem;
+	width : 1.5rem;
+}
+.vendorAddress .sapMBtn{
+  padding : 0;
+  height : 0.7rem;
+  margin-left:5px;
+}
+.vendorAddress .sapMBtnInner {
+	height:1.5rem;
+	min-width:1.5rem;
+}
+.sapMIBar .vendorAddress .sapMBtnInner {
+	padding-top : 3px;
 }

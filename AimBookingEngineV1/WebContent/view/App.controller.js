@@ -1,3 +1,4 @@
+jQuery.sap.require("jquery.sap.history");
 sap.ui.controller("sap.ui.medApp.view.App", {
 
   onInit : function() {
@@ -17,16 +18,24 @@ sap.ui.controller("sap.ui.medApp.view.App", {
     });
 
     this.splitApp = new sap.m.SplitApp("idSplitAppControl", {
-      mode : "ShowHideMode",
+      mode : "PopoverMode",
       defaultTransitionNameDetail : "slide"
     });
     this.getView().byId('myShell').setModel(this.oModel);
-
+    var bus = sap.ui.getCore().getEventBus();
     this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
     this.router = sap.ui.core.UIComponent.getRouterFor(this);
     this.router.attachRoutePatternMatched(this._handleRouteMatched, this);
     this.oLoadingDialog = sap.ui.getCore().byId("loadingDialog");
+    bus.subscribe("nav", "back", this.navHandler, this);
 
+  },
+  navHandler : function(channelId, eventId, data) {
+    if (data && data.id) {
+      this.navBack(data.id);
+    } else {
+      jQuery.sap.history.back();
+    }
   },
   _handleRouteMatched : function(oEvent) {
 
@@ -61,23 +70,50 @@ sap.ui.controller("sap.ui.medApp.view.App", {
   },
   settingsSelect : function(oEvent) {
     var oController = this;
-    if (!this.oSettingsHeaderActionSheet) {
-      this.oSettingsHeaderActionSheet = new sap.m.ActionSheet({
+    if (!this.oSettingsloginHeaderActionSheet) {
+      this.oSettingsloginHeaderActionSheet = new sap.m.ActionSheet({
         placement : sap.m.PlacementType.Bottom,
-        buttons : new sap.m.Button({
-          id : "headerLogoutButton",
+        buttons : [ new sap.m.Button({
+          icon : "sap-icon://log",
+          text : "Login",
+          tooltip : "Login",
+          press : oController.handleLogin.bind(oController)
+        }) ]
+      });
+    }
+    if (!this.oSettingsLogoutHeaderActionSheet) {
+      this.oSettingsLogoutHeaderActionSheet = new sap.m.ActionSheet({
+        placement : sap.m.PlacementType.Bottom,
+        buttons : [ new sap.m.Button({
+          icon : "sap-icon://account",
+          text : "Profile",
+          tooltip : "Profile",
+          press : oController.handleProfile.bind(oController)
+        }), new sap.m.Button({
           icon : "sap-icon://log",
           text : "Logout",
           tooltip : "Logout",
           press : oController.logout.bind(oController)
-        })
+        }) ]
       });
     }
+    if (sessionStorage.medAppUID != undefined
+        && sessionStorage.medAppPWD != undefined) {
+      this.oSettingsHeaderActionSheet = this.oSettingsLogoutHeaderActionSheet;
+    } else {
+      this.oSettingsHeaderActionSheet = this.oSettingsloginHeaderActionSheet;
+    }
+
     this.oSettingsHeaderActionSheet.openBy(oEvent.oSource);
+  },
+
+  handleProfile : function(evt) {
+
   },
   logout : function(evt) {
     sessionStorage.removeItem("medAppUID");
     sessionStorage.removeItem("medAppPWD");
+    this.oModel.setProperty("/LoggedUser", []);
     this._oRouter.navTo('_homeTiles');
   }
 });

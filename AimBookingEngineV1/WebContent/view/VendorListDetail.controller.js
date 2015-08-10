@@ -17,24 +17,24 @@ sap.ui
             this.router = sap.ui.core.UIComponent.getRouterFor(this);
             this.router.attachRoutePatternMatched(this._handleRouteMatched,
                 this);
-
+            this.bus = sap.ui.getCore().getEventBus();
           },
           _handleRouteMatched : function(evt) {
             this.paramValue = evt.getParameter("arguments");
-            //JT FIX for refresh from home button
-            if(evt.getParameter("name") === "VendorListDetail"){
-            	this.oIndexItem = [];
-            	this.oModel = sap.ui.medApp.global.util
-                .getVendorModel(this.paramValue);
-            	this.oView.setModel(this.oModel);
-            }else if(evt.getParameter("name") === "_homeTiles"){
-            	//JT: TODO Check: Reset Model for next refresh
-            	this.oIndexItem = [];
-            	this.oModel = sap.ui.medApp.global.util
-                .getVendorModel(this.paramValue);
-            	this.oView.setModel(this.oModel);
+            // JT FIX for refresh from home button
+            if (evt.getParameter("name") === "VendorListDetail") {
+              this.oIndexItem = [];
+              this.oModel = sap.ui.medApp.global.util
+                  .getVendorModel(this.paramValue);
+              this.oView.setModel(this.oModel);
+            } else if (evt.getParameter("name") === "_homeTiles") {
+              // JT: TODO Check: Reset Model for next refresh
+              this.oIndexItem = [];
+              this.oModel = sap.ui.medApp.global.util
+                  .getVendorModel(this.paramValue);
+              this.oView.setModel(this.oModel);
             }
-            
+
           },
           getImageUrl : function(oValue) {
             if (oValue != null && oValue != undefined) {
@@ -168,9 +168,25 @@ sap.ui
               return splitValue[0] + ":" + splitValue[1];
             }
           },
-          getListCount : function(oArray) {
-            if (oArray != null && oArray != undefined) {
-              return oArray.length + " results found";
+          doNavBack : function(event) {
+            this.bus.publish("nav", "back");
+          },
+          handleAddFavorite : function(oEvent) {
+            if (sessionStorage.medAppUID != undefined) {
+              var flag;
+              var sPath = oEvent.oSource.getBindingContext().getPath();
+              var vendorData = this.oModel.getProperty(sPath);
+              var flag = sap.ui.medApp.global.util
+                  .setFavorite(vendorData.USRID);
+              if (flag) {
+                sap.m.MessageToast.show("Added to your favorite");
+              } else {
+                sap.m.MessageToast.show("Removed from your favorite");
+              }
+            } else {
+              this._oRouter.navTo('_loginPage', {
+                flagID : 0
+              });
             }
           }
         });

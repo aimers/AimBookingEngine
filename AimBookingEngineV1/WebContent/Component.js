@@ -114,6 +114,20 @@ sap.ui.core.UIComponent
               bundleUrl : "assets/text/i18n.properties"
             });
             oView.setModel(i18nModel, "i18n");
+            var oDeviceModel = new sap.ui.model.json.JSONModel({
+              isTouch : sap.ui.Device.support.touch,
+              isNoTouch : !sap.ui.Device.support.touch,
+              isPhone : sap.ui.Device.system.phone,
+              isNoPhone : !sap.ui.Device.system.phone,
+              listMode : (sap.ui.Device.system.phone) ? "None"
+                  : "SingleSelectMaster",
+              listItemType : (sap.ui.Device.system.phone) ? "Active"
+                  : "Inactive"
+            });
+            oDeviceModel.setDefaultBindingMode("OneWay");
+            sap.ui.getCore().setModel(oDeviceModel, "device");
+            oView.setModel(oDeviceModel, "device");
+            oView.setDisplayBlock(true);
             return oView
           },
 

@@ -146,5 +146,50 @@ sap.ui.medApp.global.util = {
     this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
         "registerUser");
     return bool;
+  },
+  setFavorite : function(userId) {
+    var value = -1;
+    var oData;
+    var bool;
+    var userData = this._mainModel.getProperty("/LoggedUser");
+    var chars = userData.Characteristics;
+    for (var i = 0; i < chars.length; i++) {
+      if (chars[i].CHRID == 11) {
+        if (chars[i].VALUE == userId) {
+          value = i;
+        }
+      }
+    }
+    if (value > 0) {
+      delete userData.Characteristics.splice(value, 1);
+      bool = false;
+
+    } else {
+      bool = true;
+      oData = {
+        CHRID : 11,
+        DESCR : "Fav Char",
+        LNTXT : "fav char",
+        MDTEXT : "fav char",
+        REGXT : "uid",
+        SRTXT : "uid",
+        USRID : userData.USRID,
+        VALUE : userId
+      }
+      userData.Characteristics.push(oData);
+    }
+    this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+        this._mainModel);
+    var param = [ {
+      "key" : "details",
+      "value" : userData
+    } ];
+
+    var fnSuccess = function(oData) {
+
+    };
+    this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
+        "updateUser");
+    return bool;
   }
 }
