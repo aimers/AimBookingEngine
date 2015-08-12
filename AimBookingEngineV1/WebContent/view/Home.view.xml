@@ -6,10 +6,10 @@
 			<HBox justifyContent="Center" alignItems="Center" width="100%"
 				class="spaceAround">
 				<Image width="2rem" height="2rem" class="spaceLeft"
-					src="assets/img/location.png" densityAware="false" />
+					src="assets/img/location.png" densityAware="false" press="getGeoLocation"/>
 				<Input class="inputLocation" id="productInput" type="Text"
 					placeholder="Landmark, Locality , City .." showSuggestion="true"
-					suggestionRows="{/ProductCollection}">
+					suggestionRows="{/ProductCollection}" >
 					<suggestionRows>
 						<ColumnListItem>
 							<cells>

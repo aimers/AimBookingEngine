@@ -28,7 +28,7 @@ sap.ui.controller("sap.ui.medApp.view.App", {
     this.router.attachRoutePatternMatched(this._handleRouteMatched, this);
     this.oLoadingDialog = sap.ui.getCore().byId("loadingDialog");
     bus.subscribe("nav", "back", this.navHandler, this);
-
+    jQuery(".loader").remove();
   },
   navHandler : function(channelId, eventId, data) {
     if (data && data.id) {

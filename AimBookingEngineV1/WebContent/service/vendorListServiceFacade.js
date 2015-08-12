@@ -67,5 +67,10 @@
               this._send(sServicePath, fnSuccess, fnError, [ {} ],
                   sModelDataFileName);
             },
+            getThirdPartyData : function(param, fnSuccess, fnError, fnPath) {
+              var sServicePath;
+              sServicePath = encodeURI(fnPath);
+              this._send(sServicePath, fnSuccess, fnError, [ {} ], "");
+            }
           });
 })();
