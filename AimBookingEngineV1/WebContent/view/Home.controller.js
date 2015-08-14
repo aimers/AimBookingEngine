@@ -64,7 +64,8 @@ sap.ui
               ENTID : evt.oSource.getUseMap(),
               ETYID : "1",
               ETCID : "1",
-              UID : medAppUID
+              UID : medAppUID,
+              FILTER : ""
             });
           },
           /*

@@ -101,7 +101,8 @@ sap.ui
               ENTID : this.paramValue.ENTID,
               UID : this.paramValue.UID,
               ETYID : this.paramValue.ETYID,
-              ETCID : this.paramValue.ETCID
+              ETCID : this.paramValue.ETCID,
+              FILTER : this.paramValue.FILTER
             });
           },
           handleBookingTime : function(oEvt) {

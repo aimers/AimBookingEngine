@@ -53,14 +53,38 @@ sap.ui.controller("sap.ui.medApp.view.Login", {
       sessionStorage.setItem("medAppUID", oData.results.USRID);
       sessionStorage.setItem("medAppPWD", oData.results.UERPW);
       this.oModel.setProperty("/LoggedUser", oData.results);
-      if (this.parameter.flagID == 2) {
-        this._oRouter.navTo("ConfirmBooking", {
-          "UID" : sessionStorage.medAppUID
-        });
-      } else {
-        this._oRouter.navTo('_homeTiles');
+      var fav = this.handleFovoriteUsers(oData.results);
+      if (fav) {
+        if (this.parameter.flagID == 2) {
+          this._oRouter.navTo("ConfirmBooking", {
+            "UID" : sessionStorage.medAppUID
+          });
+        } else {
+          this._oRouter.navTo('_homeTiles');
+        }
       }
     }
+  },
+  handleFovoriteUsers : function(uData) {
+    var aUserIds = [];
+    if (uData.Characteristics) {
+      for (var i = 0; i < uData.Characteristics.length; i++) {
+        if (uData.Characteristics[i].CHRID == 11) {
+          aUserIds.push(uData.Characteristics[i].VALUE);
+        }
+      }
+      if (aUserIds.length > 0) {
+        this._oRouter.navTo("VendorListDetail", {
+          ENTID : evt.oSource.getUseMap(),
+          ETYID : "1",
+          ETCID : "1",
+          UID : medAppUID,
+          FILTER : aUserIds.toString()
+        });
+        return false;
+      }
+    }
+    return true;
   },
   handleRegister : function() {
     var _this = this;

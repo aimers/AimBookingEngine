@@ -24,8 +24,13 @@ sap.ui
             // JT FIX for refresh from home button
             if (evt.getParameter("name") === "VendorListDetail") {
               this.oIndexItem = [];
-              this.oModel = sap.ui.medApp.global.util
-                  .getVendorModel(this.paramValue);
+              if (this.paramValue.FILTER != "") {
+                this.oModel = sap.ui.medApp.global.util
+                    .getVendorFilterModel(this.paramValue);
+              } else {
+                this.oModel = sap.ui.medApp.global.util
+                    .getVendorModel(this.paramValue);
+              }
               this.oView.setModel(this.oModel);
             } else if (evt.getParameter("name") === "_homeTiles") {
               // JT: TODO Check: Reset Model for next refresh
@@ -169,7 +174,12 @@ sap.ui
             }
           },
           doNavBack : function(event) {
-            this.bus.publish("nav", "back");
+            this._oRouter.navTo("_searchVendors", {
+              ETYID : this.paramValue.ETYID,
+              UID : this.paramValue.UID,
+              ENTID : this.paramValue.ENTID,
+              ETCID : this.paramValue.ETCID
+            });
           },
           handleAddFavorite : function(oEvent) {
             if (sessionStorage.medAppUID != undefined) {

@@ -32,7 +32,7 @@ sap.ui.core.UIComponent
                     targetControl : "idAppControl", // Target Control Id
                   },
                   {
-                    pattern : "searchList",
+                    pattern : "searchList/{ENTID}/{UID}/{ETYID}/{ETCID}/{FILTER}/filter",
                     name : "_searchVendors",
                     view : "VendorFilter",
                     viewLevel : 0,
@@ -40,7 +40,7 @@ sap.ui.core.UIComponent
                     targetControl : "idSplitAppControl",
                     subroutes : [
                         {
-                          pattern : "searchList/{ENTID}/{UID}/{ETYID}/{ETCID}",
+                          pattern : "searchList/{ENTID}/{UID}/{ETYID}/{ETCID}/{FILTER}",
                           name : "VendorListDetail",
                           view : "VendorListDetail",
                           viewLevel : 1,
@@ -48,7 +48,7 @@ sap.ui.core.UIComponent
                           targetControl : "idSplitAppControl",
                         },
                         {
-                          pattern : "searchList/{USRID}/{RULID}/{VPATH}/{VINDEX}/{ETYID}/{UID}/{ENTID}/{ETCID}",
+                          pattern : "searchList/{USRID}/{RULID}/{VPATH}/{VINDEX}/{ETYID}/{UID}/{ENTID}/{ETCID}/{FILTER}",
                           name : "_VendorDetail",
                           view : "VendorDetail",
                           viewLevel : 2,

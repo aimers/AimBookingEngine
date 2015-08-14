@@ -48,6 +48,13 @@ sap.ui.medApp.global.util = {
     this.loadVendorData(paramValue);
     return this._mainModel;
   },
+  getVendorFilterModel : function(paramValue) {
+    if (!this._mainModel) {
+      this._mainModel = this.getHomeModel();
+    }
+    this.loadVendorFILTERData(paramValue);
+    return this._mainModel;
+  },
   loadVendorData : function(paramValue) {
     this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
         this._mainModel);
@@ -66,6 +73,32 @@ sap.ui.medApp.global.util = {
     }, {
       "key" : "ENTID",
       "value" : paramValue.ENTID
+    } ]
+    this._vendorListServiceFacade.getRecords(null, null, "/vendorsList",
+        "getVendorData", param);
+
+  },
+  loadVendorFILTERData : function(paramValue) {
+    this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+        this._mainModel);
+    var param = [ {
+      "key" : "INTENT",
+      "value" : "1"
+    }, {
+      "key" : "UID",
+      "value" : paramValue.UID
+    }, {
+      "key" : "ETCID",
+      "value" : paramValue.ETCID
+    }, {
+      "key" : "ETYID",
+      "value" : paramValue.ETYID
+    }, {
+      "key" : "ENTID",
+      "value" : paramValue.ENTID
+    }, {
+      "key" : "filters",
+      "value" : '{"USRID" = ' + paramValue.FILTER + '}'
     } ]
     this._vendorListServiceFacade.getRecords(null, null, "/vendorsList",
         "getVendorData", param);

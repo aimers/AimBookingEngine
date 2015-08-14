@@ -16,22 +16,22 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
     this.paramValue = evt.getParameter("arguments");
 
     this.oModel = sap.ui.medApp.global.util.getMainModel();
-    if(this.paramValue.ENTID !== undefined){
-	    var selectedKeys = this.paramValue.ENTID.split(",");
-	    for (var i = 0; i < selectedKeys.length; i++) {
-	      selectedKeys[0] = parseInt(selectedKeys[0]);
-	    }
-	    var vendorCat = this.oModel.getProperty("/vendorsCategory");
-	    for (var i = 0; i < vendorCat.length; i++) {
-	      if (jQuery.inArray(vendorCat[i].ENTID, selectedKeys) != -1) {
-	        vendorCat[i].selected = true;
-	      } else {
-	        vendorCat[i].selected = false;
-	      }
-	    }
-	    this.oModel.setProperty("/vendorsCategory", vendorCat);
-	    this.oView.setModel(this.oModel);
-  	}
+    if (this.paramValue.ENTID !== undefined) {
+      var selectedKeys = this.paramValue.ENTID.split(",");
+      for (var i = 0; i < selectedKeys.length; i++) {
+        selectedKeys[0] = parseInt(selectedKeys[0]);
+      }
+      var vendorCat = this.oModel.getProperty("/vendorsCategory");
+      for (var i = 0; i < vendorCat.length; i++) {
+        if (jQuery.inArray(vendorCat[i].ENTID, selectedKeys) != -1) {
+          vendorCat[i].selected = true;
+        } else {
+          vendorCat[i].selected = false;
+        }
+      }
+      this.oModel.setProperty("/vendorsCategory", vendorCat);
+      this.oView.setModel(this.oModel);
+    }
   },
 
   /**
@@ -60,6 +60,15 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
    */
   // onExit: function() {
   // }
+  handleFilter : function(oEvent) {
+    this.router.navTo("VendorListDetail", {
+      ETYID : this.paramValue.ETYID,
+      UID : this.paramValue.UID,
+      ENTID : this.paramValue.ENTID,
+      ETCID : this.paramValue.ETCID,
+      FILTER : this.paramValue.FILTER
+    });
+  },
   onSearch : function(oEvt) {
 
     // add filter for search
