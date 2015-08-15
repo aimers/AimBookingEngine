@@ -75,10 +75,10 @@ sap.ui.controller("sap.ui.medApp.view.Login", {
       }
       if (aUserIds.length > 0) {
         this._oRouter.navTo("VendorListDetail", {
-          ENTID : evt.oSource.getUseMap(),
+          ENTID : "1",
           ETYID : "1",
           ETCID : "1",
-          UID : medAppUID,
+          UID : uData.USRID,
           FILTER : aUserIds.toString()
         });
         return false;

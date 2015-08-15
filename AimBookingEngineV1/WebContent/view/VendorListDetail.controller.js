@@ -24,7 +24,7 @@ sap.ui
             // JT FIX for refresh from home button
             if (evt.getParameter("name") === "VendorListDetail") {
               this.oIndexItem = [];
-              if (this.paramValue.FILTER != "") {
+              if (this.paramValue.FILTER != 0) {
                 this.oModel = sap.ui.medApp.global.util
                     .getVendorFilterModel(this.paramValue);
               } else {
@@ -66,15 +66,26 @@ sap.ui
                   .getItems()[1].setGroupName(oFlagIndexItem);
               oItemSelected.addContent(oBookingBox);
               var sPath = oEvent.oSource.oParent.getBindingContext().getPath();
-              this.loadVendorCalendorTime(sPath);
               oItemSelected.setExpanded(true);
             }
 
           },
-          loadVendorCalendorTime : function(sPath) {
+          loadVendorCalendorTime : function(sPath, d) {
+            var deviceModel = sap.ui.getCore().getModel("device");
             var UserData = this.oModel.getProperty(sPath);
             this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
                 this.oModel);
+            var dd = d.getDate();
+            var mm = d.getMonth() + 1; // January is 0!
+            var yyyy = d.getFullYear();
+            var startDate = dd + "-" + mm + "-" + yyyy;
+            if (deviceModel.oData.isPhone) {
+              d.setDate(d.getDate() + 3);
+            } else {
+              d.setDate(d.getDate() + 7);
+            }
+            mm = d.getMonth() + 1;
+            var endData = d.getDate() + "-" + mm + "-" + d.getFullYear();
             var param = [ {
               "key" : "USRID",
               "value" : UserData.USRID
@@ -92,10 +103,10 @@ sap.ui
               "value" : UserData.Rules[0].ENTID
             }, {
               "key" : "STDATE",
-              "value" : "27-07-2015"
+              "value" : startDate
             }, {
               "key" : "ENDATE",
-              "value" : "03-08-2015"
+              "value" : endData
             } ]
             this._vendorListServiceFacade.getRecords(null, null,
                 "/vendorsAvailableTime", "getVendorRuleDetail", param);
@@ -111,7 +122,7 @@ sap.ui
             this.oIndexItem.splice(this.oIndexItem.indexOf(oFlagIndex), 1);
           },
           handleDetailNav : function(oEvent) {
-            var sPath = oEvent.oSource.getSelectedContexts()[0].getPath();
+            var sPath = oEvent.oSource.oParent.getBindingContext().getPath();
             var vIndex = sPath.split("/");
             var oVendorData = this.oModel.getProperty(sPath);
             this._oRouter.navTo("_VendorDetail", {
@@ -119,10 +130,11 @@ sap.ui
               RULID : oVendorData.Rules[0].RULID,
               VPATH : vIndex[1],
               VINDEX : vIndex[2],
-              ETYID : 1,
-              UID : 1,
-              ENTID : 1,
-              ETCID : 1
+              ETYID : this.paramValue.ETYID,
+              UID : this.paramValue.UID,
+              ENTID : this.paramValue.ENTID,
+              ETCID : this.paramValue.ETCID,
+              FILTER : this.paramValue.FILTER
             });
           },
           changeToOneWeek : function(oEvent) {
@@ -131,10 +143,23 @@ sap.ui
                 .getContent()[0];
             var oBookingBox = oItemSelected.getContent();
             var oCalendar = oBookingBox[0].getContent()[0].setVisible(false);
+            var sPath = oCalendar.getBindingContext().getPath();
+            this.loadVendorCalendorTime(sPath, new Date());
             oBookingBox[0].getContent()[1].setVisible(true);
           },
           handleWeekCalender : function(oEvent) {
-            console.log(oEvent);
+            var oBookingBox = oEvent.oSource.oParent;
+            var selectedDate = oEvent.oSource.getSelectedDates()[0]
+                .getStartDate();
+            var oBookingBox = oEvent.oSource.oParent;
+            var sPath = oEvent.oSource.oParent.getBindingContext().getPath();
+            this.loadVendorCalendorTime(sPath, selectedDate);
+            oEvent.oSource.setVisible(false);
+            oBookingBox.getContent()[1].setVisible(true);
+            oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1]
+                .getItems()[1].setSelected(false);
+            oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1]
+                .getItems()[0].setSelected(true);
           },
           changeToOneMonth : function(oEvent) {
             var oIndex = oEvent.oSource.getGroupName();

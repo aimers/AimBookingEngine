@@ -41,7 +41,7 @@ sap.ui.controller("sap.ui.medApp.view.App", {
 
     var scope = oEvent.getParameter("config").name;
     var fullWidthRoutes = [ "_homeTiles", "_loginPage", "_Signup",
-        "ConfirmBooking" ];
+        "ConfirmBooking", "_history" ];
     var bIsFullWidthRoute = (jQuery.inArray(scope, fullWidthRoutes) >= 0);
     var bIsHomeRoute = (scope === "_homeTiles");
     var app = (bIsFullWidthRoute) ? this.fullWidthApp : this.splitApp;
@@ -115,5 +115,8 @@ sap.ui.controller("sap.ui.medApp.view.App", {
     sessionStorage.removeItem("medAppPWD");
     this.oModel.setProperty("/LoggedUser", []);
     this._oRouter.navTo('_homeTiles');
+  },
+  handleHistoryBooking : function() {
+    this._oRouter.navTo('_history');
   }
 });

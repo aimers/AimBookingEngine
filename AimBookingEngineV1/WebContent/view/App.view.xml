@@ -12,7 +12,7 @@
 		</u:headEndItems>
 		<u:headEndItems>
 			<u:ShellHeadItem icon="sap-icon://customer-history"
-				tooltip="Logoff" press="handleLogoffPress" />
+				tooltip="History" press="handleHistoryBooking" />
 		</u:headEndItems>
 		<u:user>
         <u:ShellHeadUserItem

@@ -3,9 +3,9 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="false">
 		<content>
-		  <VBox width="90%" height="5%" alignItems="End">
+		  <!--  <VBox width="90%" height="5%" alignItems="End">
 		    <Button text="Apply" press="handleFilter" class="buttonDesign"/>
-		  </VBox>
+		  </VBox>-->
 			<VBox width="90%" class="appointment" height="20%">
 				<Label text="{i18n>APPOINTMENT_DAY}" class="filterLabel" />
 				<HBox  class="weekDayFilter">
@@ -18,7 +18,7 @@
 					<ToggleButton text="Sun" pressed="true"></ToggleButton>
 				</HBox>
 			</VBox>
-			<VBox height="15%" class="appointment">
+			<VBox height="20%" class="appointment">
 				<Label text="{i18n>SELECT_TIME}" class="filterLabel"></Label>
 				<c:RangeSlider max="2400" min="0" value="0" value2="2400"
 					totalUnits="3" smallStepWidth="1" stepLabels="true" labels="00:00, 12:00, 24:00"
@@ -36,5 +36,12 @@
 				</List>
 			</VBox>
 		</content>
+		<footer>
+		   <Bar>
+		      <contentRight>
+		       <Button icon="sap-icon://filter" press="handleFilter"/>
+		      </contentRight>
+		   </Bar>
+		</footer>
 	</Page>
 </core:View>

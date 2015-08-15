@@ -25,6 +25,7 @@ sap.ui.medApp.global.util = {
       this._mainModel = this.getHomeModel();
     }
     this.loadListCategory();
+    this.loadAddress();
     return this._mainModel;
   },
   loadListCategory : function(facade) {
@@ -39,6 +40,13 @@ sap.ui.medApp.global.util = {
     } ]
     this._vendorListServiceFacade.getRecords(null, null, "/vendorsCategory",
         "getVendorCategory", param);
+  },
+  loadAddress : function(facade) {
+    this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+        this._mainModel);
+    param = [];
+    this._vendorListServiceFacade.getRecords(null, null, "/vendorsAddress",
+        "getUniqueAddress", param);
 
   },
   getVendorModel : function(paramValue) {
@@ -98,11 +106,34 @@ sap.ui.medApp.global.util = {
       "value" : paramValue.ENTID
     }, {
       "key" : "filters",
-      "value" : '{"USRID" = ' + paramValue.FILTER + '}'
+      "value" : '{"USRID" = "' + paramValue.FILTER + '"}'
     } ]
     this._vendorListServiceFacade.getRecords(null, null, "/vendorsList",
         "getVendorData", param);
 
+  },
+  getHistoryModel : function(paramValue) {
+    if (!this._mainModel) {
+      this._mainModel = this.getHomeModel();
+    }
+    if (sessionStorage.medAppUID != undefined) {
+      this.loadBookingHistory();
+    }
+    return this._mainModel;
+  },
+  loadBookingHistory : function() {
+    this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+        this._mainModel);
+    var userData = this._mainModel.getProperty("/LoggedUser");
+    var param = [ {
+      "key" : "details",
+      "value" : {
+        "CUSID" : userData.USRID,
+        "CUTID" : userData.UTYID
+      }
+    } ];
+    this._vendorListServiceFacade.getRecords(null, null, "/BookingList",
+        "getBookingHistory", param);
   },
   distance : function(lat1, lon1, lat2, lon2, unit) {
     var radlat1 = Math.PI * lat1 / 180
@@ -193,7 +224,7 @@ sap.ui.medApp.global.util = {
         }
       }
     }
-    if (value > 0) {
+    if (value >= 0) {
       delete userData.Characteristics.splice(value, 1);
       bool = false;
 

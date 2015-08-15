@@ -28,37 +28,52 @@ sap.ui
               // this.vendorDetail = [ this.oModel.getProperty(sPath) ];
               this.oModel.setProperty("/vendorsDetail", [ this.oModel
                   .getProperty(sPath) ]);
-              this.loadListDetailFacade();
               this.oView.setModel(this.oModel);
             }
           },
-          loadListDetailFacade : function(facade) {
+          loadListDetailFacade : function(sPath, d) {
+            var deviceModel = sap.ui.getCore().getModel("device");
+            var UserData = this.oModel.getProperty(sPath);
             this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
                 this.oModel);
+            var dd = d.getDate();
+            var mm = d.getMonth() + 1; // January is 0!
+            var yyyy = d.getFullYear();
+            var startDate = dd + "-" + mm + "-" + yyyy;
+            if (deviceModel.oData.isPhone) {
+              d.setDate(d.getDate() + 3);
+            } else {
+              d.setDate(d.getDate() + 7);
+            }
+            mm = d.getMonth() + 1;
+            var endData = d.getDate() + "-" + mm + "-" + d.getFullYear();
             var param = [ {
               "key" : "USRID",
-              "value" : this.paramValue.USRID
+              "value" : UserData.USRID
             }, {
               "key" : "RULID",
-              "value" : this.paramValue.RULID
+              "value" : UserData.Rules[0].RULID
             }, {
               "key" : "ETCID",
-              "value" : 1
+              "value" : UserData.Rules[0].ETCID
             }, {
               "key" : "ETYID",
-              "value" : 1
+              "value" : UserData.Rules[0].ETYID
             }, {
               "key" : "ENTID",
-              "value" : 1
+              "value" : UserData.Rules[0].ENTID
             }, {
               "key" : "STDATE",
-              "value" : "27-07-2015"
+              "value" : startDate
             }, {
               "key" : "ENDATE",
-              "value" : "03-08-2015"
-            } ];
+              "value" : endData
+            } ]
             this._vendorListServiceFacade.getRecords(null, null,
                 "/vendorsAvailableTime", "getVendorRuleDetail", param);
+            var vendorTimeDetail = this.oModel
+                .getProperty("/vendorsAvailableTime");
+            vendorTimeDetail[0].SPATH = sPath;
           },
           getImageUrl : function(oValue) {
             if (oValue != null && oValue != undefined) {
@@ -75,12 +90,30 @@ sap.ui
             this._oRouter.myNavBack();
           },
           changeToOneWeek : function(oEvent) {
+            var sPath = "/" + this.paramValue.VPATH + "/"
+                + this.paramValue.VINDEX;
+            this.loadListDetailFacade(sPath, new Date());
             this.getView().byId("monthCalenderView").setVisible(false);
             this.getView().byId("weekCalenderView").setVisible(true);
           },
           changeToOneMonth : function(oEvent) {
             this.getView().byId("monthCalenderView").setVisible(true);
             this.getView().byId("weekCalenderView").setVisible(false);
+          },
+          handleWeekCalender : function(oEvent) {
+            var oBookingBox = oEvent.oSource.oParent;
+            var selectedDate = oEvent.oSource.getSelectedDates()[0]
+                .getStartDate();
+            var oBookingBox = oEvent.oSource.oParent;
+            var sPath = "/" + this.paramValue.VPATH + "/"
+                + this.paramValue.VINDEX;
+            this.loadListDetailFacade(sPath, selectedDate);
+            this.getView().byId("monthCalenderView").setVisible(false);
+            this.getView().byId("weekCalenderView").setVisible(true);
+            oBookingBox.oParent.getItems()[0].getItems()[1].getItems()[1]
+                .setSelected(false);
+            oBookingBox.oParent.getItems()[0].getItems()[1].getItems()[0]
+                .setSelected(true);
           },
           handleSelectDialogPress : function(oEvent) {
             if (!this._oDialog) {

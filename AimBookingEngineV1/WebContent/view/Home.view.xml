@@ -6,21 +6,20 @@
 			<HBox justifyContent="Center" alignItems="Center" width="100%"
 				class="spaceAround">
 				<Image width="2rem" height="2rem" class="spaceLeft"
-					src="assets/img/location.png" densityAware="false" press="getGeoLocation"/>
-				<Input class="inputLocation" id="productInput" type="Text"
-					placeholder="Landmark, Locality , City .." showSuggestion="true"
-					suggestionRows="{/ProductCollection}" >
-					<suggestionRows>
-						<ColumnListItem>
-							<cells>
-								<Label text="{Name}" />
-								<Label text="{ProductId}" />
-								<Label text="{SupplierName}" />
-								<Label text="{Price} {CurrencyCode}" />
-							</cells>
-						</ColumnListItem>
-					</suggestionRows>
-				</Input>
+					src="assets/img/location.png" densityAware="false" press="getGeoLocation" />
+				<MultiInput class="inputLocation" id="multiInput2" width="500px"
+					enableMultiLineMode="true" placeholder="Landmark, Locality , City .."
+					showSuggestion="true" suggestionItems="{/suggestAddress}">
+					<suggestionItems>
+						<core:Item key="{LATIT}" text="{ADDR}" />
+					</suggestionItems>
+				</MultiInput>
+
+				<!-- <MultiInput class="inputLocation" id="productInput" type="Text" 
+					placeholder="Landmark, Locality , City .." suggestionItems="{/vendorsAddress}" 
+					enableMultiLineMode="true"> <suggestionRows> <ColumnListItem> <cells> <Label 
+					text="{LNDMK}" /> <Label text="{LOCLT}" /> <Label text="{CTYID}" /> </cells> 
+					</ColumnListItem> </suggestionRows> </Input> -->
 			</HBox>
 			<HBox justifyContent="Center" alignItems="Center" width="100%">
 				<MultiComboBox id="homeSearchBar" class="inputLocation"

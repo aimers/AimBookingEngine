@@ -40,7 +40,7 @@ sap.ui.core.UIComponent
                     targetControl : "idSplitAppControl",
                     subroutes : [
                         {
-                          pattern : "searchList/{ENTID}/{UID}/{ETYID}/{ETCID}/{FILTER}",
+                          pattern : "searchList/{ENTID}/{UID}/{ETYID}/{ETCID}/{FILTER}/list",
                           name : "VendorListDetail",
                           view : "VendorListDetail",
                           viewLevel : 1,
@@ -48,7 +48,7 @@ sap.ui.core.UIComponent
                           targetControl : "idSplitAppControl",
                         },
                         {
-                          pattern : "searchList/{USRID}/{RULID}/{VPATH}/{VINDEX}/{ETYID}/{UID}/{ENTID}/{ETCID}/{FILTER}",
+                          pattern : "searchList/{USRID}/{RULID}/{VPATH}/{VINDEX}/{ETYID}/{UID}/{ENTID}/{ETCID}/{FILTER}/detail",
                           name : "_VendorDetail",
                           view : "VendorDetail",
                           viewLevel : 2,
@@ -65,6 +65,12 @@ sap.ui.core.UIComponent
                     pattern : "confirm/{UID}", // patern matching
                     name : "ConfirmBooking", // router name
                     view : "ConfirmBooking", // View of the _DealsList Router
+                    targetAggregation : "pages",
+                    targetControl : "idAppControl", // Target Control Id
+                  }, {
+                    pattern : "history", // patern matching
+                    name : "_history", // router name
+                    view : "BookingHistory", // View of the _DealsList Router
                     targetAggregation : "pages",
                     targetControl : "idAppControl", // Target Control Id
                   } ]

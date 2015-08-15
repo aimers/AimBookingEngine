@@ -84,7 +84,7 @@
 						</HBox>
 						<VBox id="monthCalenderView" width="99%">
 							<me:Calendar width="100%" class="monthCalender"
-								tapOnDate="changeToOneWeek">
+								select="handleWeekCalender">
 							</me:Calendar>
 						</VBox>
 						<HBox alignItems="Start" justifyContent="SpaceAround"

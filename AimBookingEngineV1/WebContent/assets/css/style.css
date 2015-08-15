@@ -68,7 +68,9 @@
 		padding-top: 3px;
 	}
 }
-
+.BookingList {
+	max-width:600px;
+}
 @media only screen and (max-width: 640px) {
 	.mainShell .sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
 		max-width: 100px;
@@ -163,7 +165,7 @@
 	background: -webkit-linear-gradient(top, #1abc9c 0, #1abc9c 100%);
 	background: linear-gradient(top, #1abc9c 0, #1abc9c 100%);
 	margin-left: 10px;
-	text-shadow: 0;
+	text-shadow: 0 0;
 }
 
 .mAppSapUiSmallMarginTop .sapMObjLIconDiv {
@@ -344,4 +346,7 @@
 	z-index: 9999;
 	background: url('../../assets/img/page-loader.gif') 50% 50% no-repeat
 		rgb(249, 249, 249);
+}
+.inputLocation .sapMMultiInputBorder {
+	border:0; 
 }

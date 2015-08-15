@@ -6,7 +6,7 @@
 		title="{path:'/vendorsList',formatter: 'sap.ui.medApp.global.globalFormatter.getListCount'} results found">
 		<content>
 			<List items="{/vendorsList}" id="VendorsList" class="VendorsList"
-				mode="SingleSelectMaster" select="handleDetailNav" includeItemInSelection ="true">
+				mode="None" >
 				<items>
 					<CustomListItem type="Inactive">
 						<Panel expandable="true" expanded="false">
@@ -22,7 +22,7 @@
 												<!-- <HBox alignItems="Center" class="vendorAddress"> <Text text="{uqnm} 
 													, {clnm}" /> </HBox> -->
 												<HBox alignItems="Center" class="vendorAddress" items="{Address}">
-													<Text text="{LOCLT} , {CTYID}" />
+													<Text text="{LOCLT} , {CTYNM}" />
 												</HBox>
 												<HBox alignItems="Center" items="{Characteristics}"
 													class="imgLabelBox">
@@ -51,10 +51,12 @@
 															text="{path:'Address', formatter: 'sap.ui.medApp.global.globalFormatter.getDistance'} KMs away" />
 													</HBox>
 												</HBox>
-												<VBox alignItems="End">
+												<HBox justifyContent="End">
+												  <Button text="{i18n>VENDOR_DETAIL}" class="buttonDesign"
+                            press="handleDetailNav" />
 													<Button text="{i18n>BOOK_APPOINTMENT}" class="buttonDesign"
 														press="handleBookAppointment" />
-												</VBox>
+												</HBox>
 											</VBox>
 										</HBox>
 									</VBox>

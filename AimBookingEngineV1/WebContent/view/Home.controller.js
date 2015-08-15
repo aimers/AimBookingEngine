@@ -26,7 +26,21 @@ sap.ui
               this.oModel = sap.ui.medApp.global.util.getMainModel();
               this.getView().setModel(this.oModel);
               this._getTileIcons();
+              this.getAddressSuggestions();
             }
+          },
+          getAddressSuggestions : function() {
+            var vendorData = this.oModel.getProperty("/vendorsAddress");
+            var suggestionData = [];
+            for (var k = 0; k < vendorData.length; k++) {
+              suggestionData.push({
+                "ADDR" : vendorData[k].LNDMK + ", " + vendorData[k].LOCLT
+                    + ", " + vendorData[k].CTYNM,
+                "LATIT" : vendorData[k].LATIT,
+                "LONGT" : vendorData[k].LONGT
+              });
+            }
+            this.oModel.setProperty("/suggestAddress", suggestionData);
           },
           _getTileIcons : function() {
             var vendorData = this.oModel.getProperty("/vendorsCategory");
@@ -65,7 +79,7 @@ sap.ui
               ETYID : "1",
               ETCID : "1",
               UID : medAppUID,
-              FILTER : ""
+              FILTER : "0"
             });
           },
           /*
@@ -85,7 +99,8 @@ sap.ui
               ENTID : keys,
               ETYID : "1",
               ETCID : "1",
-              UID : medAppUID
+              UID : medAppUID,
+              FILTER : "0"
             });
 
           },
