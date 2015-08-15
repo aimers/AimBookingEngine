@@ -64,6 +64,12 @@ private Object getBookingHistory(HashMap myInfo, ConnectionManager dbcon) {
 			query1 = query1+ "where `VSUID` = '"+detailsJSON.get("VSUID")+"' "
 					+ " and `VUTID` = '"+detailsJSON.get("VUTID")+"' ";	
 		}
+		
+		if(detailsJSON.has("BDTIM")){
+			query1 = query1+ " and `BDTIM` = STR_TO_DATE('"+detailsJSON.get("BDTIM")+"', '%d-%m-%Y')  ";	
+		}
+		
+		
 		System.out.println(query1);
 		rs =dbcon.stm.executeQuery(query1);
 		return Convertor.convertToJSON(rs);
