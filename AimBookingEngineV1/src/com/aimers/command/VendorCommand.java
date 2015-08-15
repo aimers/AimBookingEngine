@@ -57,6 +57,7 @@ public class VendorCommand extends aimCommand {
 			" `addmt`.`LNDMK`, "+
 			" `addmt`.`LOCLT`, "+
 			" `addmt`.`CTYID`, "+
+			" `ctymt`.`CTYNM`, "+
 			" `addmt`.`PINCD`, "+
 			" `addmt`.`LONGT`, "+
 			" `addmt`.`LATIT` "+
@@ -72,7 +73,10 @@ public class VendorCommand extends aimCommand {
 			" left outer join "+
 			" `addmt` "+
 			" on "+
-			" `addmt`.`ADRID` = `uadmp`.`ADRID` "+
+			" `addmt`.`ADRID` = `uadmp`.`ADRID` "
+			+ "left outer join  `ctymt`  "
+			+ " on  "
+			+ " `addmt`.`CTYID` = `ctymt`.`CTYID`"+
 			//" left outer join `BOOKINGDB`.`VEMPT`  "+
 			//" on  `usrmt`.`USRID` = `VEMPT`.`USRID`   "+
 			" where `uetmp`.ACTIV = 1 and `uetmp`.UTYID = 2 ";
@@ -401,6 +405,7 @@ public class VendorCommand extends aimCommand {
 			" `addmt`.`LNDMK`, "+
 			" `addmt`.`LOCLT`, "+
 			" `addmt`.`CTYID`, "+
+			" `ctymt`.`CTYNM`, "+
 			" `addmt`.`PINCD`, "+
 			" `addmt`.`LONGT`, "+
 			" `addmt`.`LATIT` "+
@@ -416,7 +421,10 @@ public class VendorCommand extends aimCommand {
 			" left outer join "+
 			" `addmt` "+
 			" on "+
-			" `addmt`.`ADRID` = `uadmp`.`ADRID` "+
+			" `addmt`.`ADRID` = `uadmp`.`ADRID` "
+			+ "left outer join  `ctymt`  "
+			+ " on  "
+			+ " `addmt`.`CTYID` = `ctymt`.`CTYID`"+
 			//" left outer join `BOOKINGDB`.`VEMPT`  "+
 			//" on  `usrmt`.`USRID` = `VEMPT`.`USRID`   "+
 			" where `uetmp`.ACTIV = 1 and `uetmp`.UTYID = 2 ";
