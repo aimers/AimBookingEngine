@@ -29,11 +29,40 @@ public class BookingCommand extends aimCommand {
 			return book(myInfo, dbcon);
 		}if(aimAction.equals("cancelBooking")){
 			return cancelBooking(myInfo, dbcon);
+		}if(aimAction.equals("acceptBooking")){
+			return acceptBooking(myInfo, dbcon);
 		}
 		
 		return new JSONObject();
 
 	}
+	private Object acceptBooking(HashMap myInfo, ConnectionManager dbcon) {
+		try{
+			String details 	=  myInfo.get("details")+"";
+			JSONObject detailsJSON 	= new JSONObject(details);
+			String rulid = detailsJSON.getString("RULID");
+			aimCommand rule= null;
+			if(rulid.equals("1")){
+				rule = new Rule1Command();
+			}else if(rulid.equals("2")){
+				rule = new Rule2Command();
+			}else if(rulid.equals("3")){
+				rule = new Rule3Command();
+			}
+			
+			if(rule != null){
+				return (JSONObject) rule.execute(myInfo, dbcon);
+			}else{
+				return null;
+			}
+				
+		}
+		catch(Exception ex){
+			System.out.println("Error from Booking Command "+ex +"==dbcon=="+dbcon);
+			return null;
+		}
+	}
+
 
 private Object cancelBooking(HashMap myInfo, ConnectionManager dbcon) {
 	try{
