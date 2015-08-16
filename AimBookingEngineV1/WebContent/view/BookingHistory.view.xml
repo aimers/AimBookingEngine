@@ -14,13 +14,17 @@
 										<Label text="{VDSPNM}" />
 									</HBox>
 									<HBox class="BookTimeDate">
-										<Label text="Appointment Day" />
+										<Label text="Appointment Day : " />
 										<Text text="{BDTIM}" />
 									</HBox>
 									<HBox class="BookTimeDate">
-										<Label text="Appointment Time" />
+										<Label text="Appointment Time : " />
 										<Text text="{BOSTM} - {BOETM}" />
 									</HBox>
+									<HBox class="BookTimeDate">
+                    <Label text="Status : " />
+                    <Text text="{path:'STATS', formatter:'sap.ui.medApp.global.globalFormatter.getBookingStatus'}" />
+                  </HBox>
 								</VBox>
 								<VBox alignItems="End" width="30%">
 									<Button text="Cancel" class="buttonDesign" press="handleCancelBooking" />

@@ -16,8 +16,8 @@
 										<HBox width="100%">
 											<VBox width="49%">
 												<HBox class="vendorAddress">
-													<Label text="{PRFIX}{DSPNM}" /> <ToggleButton press="handleAddFavorite" icon="sap-icon://favorite" 
-													pressed="{path:'USRID', formatter:'sap.ui.medApp.global.globalFormatter.checkFavorite'}"></ToggleButton>
+													<ToggleButton press="handleAddFavorite" icon="sap-icon://favorite" 
+                          pressed="{path:'USRID', formatter:'sap.ui.medApp.global.globalFormatter.checkFavorite'}"></ToggleButton><Label text="{PRFIX}{DSPNM}" /> 
 												</HBox>
 												<!-- <HBox alignItems="Center" class="vendorAddress"> <Text text="{uqnm} 
 													, {clnm}" /> </HBox> -->

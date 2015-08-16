@@ -100,5 +100,14 @@ sap.ui.medApp.global.globalFormatter = {
 
       return false;
     }
+  },
+  getBookingStatus : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      if (oValue == 1) {
+        return "Approved";
+      } else {
+        return "Pending";
+      }
+    }
   }
 }
