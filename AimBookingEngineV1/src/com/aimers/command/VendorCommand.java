@@ -358,10 +358,13 @@ public class VendorCommand extends aimCommand {
 					" `rulmt`.`DESCR`, "+
 					" `vrumt`.`ETYID`, "+
 					" `vrumt`.`ETCID`, "+
-					" `vrumt`.`ENTID` "+
+					" `vrumt`.`ENTID`, "+
+					" `entmt`.`DESCR` "+
 					" FROM `vrumt` "+
 					" left outer join `rulmt` on  "+
-					" `vrumt`.`RULID` = `rulmt`.`RULID`  "+
+					" `vrumt`.`RULID` = `rulmt`.`RULID`  "
+					+ " left outer join `entmt` on   "
+					+ " `vrumt`.`ENTID` = `entmt`.`ENTID` "+
 					" where `rulmt`.`ACTIV` = 1 and `vrumt`.`ACTIV` = 1  and "
 					+ " `vrumt`.`ETYID` in (\""
 					+etyid+"\") ";
