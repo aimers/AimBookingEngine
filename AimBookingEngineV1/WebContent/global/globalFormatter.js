@@ -87,14 +87,17 @@ sap.ui.medApp.global.globalFormatter = {
           .getProperty("/LoggedUser");
       if (userData != undefined) {
         var chars = userData.Characteristics;
-        for (var i = 0; i < chars.length; i++) {
-          if (chars[i].CHRID == 11) {
-            if (chars[i].VALUE == userId) {
-              return true;
+        if (chars != undefined) {
+          for (var i = 0; i < chars.length; i++) {
+            if (chars[i].CHRID == 11) {
+              if (chars[i].VALUE == userId) {
+                return true;
+              }
             }
           }
         }
       }
+
       return false;
     }
   }

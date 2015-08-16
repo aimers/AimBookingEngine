@@ -95,13 +95,18 @@ sap.ui
             // open the loading dialog
             var searchBar = this.oView.byId("homeSearchBar");
             var keys = searchBar.getSelectedKeys().join();
-            this._oRouter.navTo("VendorListDetail", {
-              ENTID : keys,
-              ETYID : "1",
-              ETCID : "1",
-              UID : medAppUID,
-              FILTER : "0"
-            });
+            if (keys != "") {
+              this._oRouter.navTo("VendorListDetail", {
+                ENTID : keys,
+                ETYID : "1",
+                ETCID : "1",
+                UID : medAppUID,
+                FILTER : "0"
+              });
+            } else {
+              sap.m.MessageToast.show("Please select category");
+              return false;
+            }
 
           },
           /*

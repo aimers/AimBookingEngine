@@ -12,7 +12,7 @@
 						emptySpanM="4" columnsL="1" columnsM="1" class="editableForm">
 						<f:content>
 							<Text id="MessageBox" class="messageBox" visible="false" />
-							<Label text="Username" />
+							<Label text="Email Address" />
 							<Input id="usrNme" />
 							<Label text="Password" />
 							<Input id="pswd" type="Password">

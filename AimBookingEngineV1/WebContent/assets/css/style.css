@@ -69,7 +69,12 @@
 	}
 }
 .BookingList {
-	max-width:600px;
+	max-width:1000px;
+	margin : 0 auto;
+}
+.BookTimeDate .sapMLabel,.BookTimeDate .sapMText{
+	font-size:0.775rem;
+	padding: 4px 0;
 }
 @media only screen and (max-width: 640px) {
 	.mainShell .sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {

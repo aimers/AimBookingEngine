@@ -4,21 +4,31 @@
 	<Page enableScrolling="false" showNavButton="true" navButtonPress="handleBackButton"
 		backgroundDesign="Solid">
 		<content>
-			<VBox width="100%" alignItems="Center">
 				<List items="{/BookingList}" id="VendorsList" class="BookingList"
-					mode="None">
+					mode="None" width="100%">
 					<items>
 						<CustomListItem type="Inactive">
 							<HBox width="100%">
-								<VBox justifyContent="Start">
-									<Label text="{CUTID}" />
+								<VBox justifyContent="Start" width="70%">
+									<HBox>
+										<Label text="{VDSPNM}" />
+									</HBox>
+									<HBox class="BookTimeDate">
+										<Label text="Appointment Day" />
+										<Text text="{BDTIM}" />
+									</HBox>
+									<HBox class="BookTimeDate">
+										<Label text="Appointment Time" />
+										<Text text="{BOSTM} - {BOETM}" />
+									</HBox>
 								</VBox>
-								<VBox alignItems="End"></VBox>
+								<VBox alignItems="End" width="30%">
+									<Button text="Cancel" class="buttonDesign" press="handleCancelBooking" />
+								</VBox>
 							</HBox>
 						</CustomListItem>
 					</items>
 				</List>
-			</VBox>
 		</content>
 	</Page>
 </core:View>

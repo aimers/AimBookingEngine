@@ -203,7 +203,8 @@ sap.ui
               ETYID : this.paramValue.ETYID,
               UID : this.paramValue.UID,
               ENTID : this.paramValue.ENTID,
-              ETCID : this.paramValue.ETCID
+              ETCID : this.paramValue.ETCID,
+              FILTER : this.paramValue.FILTER
             });
           },
           handleAddFavorite : function(oEvent) {
