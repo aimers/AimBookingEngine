@@ -7,8 +7,8 @@
 				press="handelHomeBtn" />
 		</u:headItems>
 		<u:headEndItems>
-			<u:ShellHeadItem icon="sap-icon://favorite" tooltip="Logoff"
-				press="handleLogoffPress" />
+			<u:ShellHeadItem icon="sap-icon://favorite" tooltip="Favorite"
+				press="handleFavorite" />
 		</u:headEndItems>
 		<u:headEndItems>
 			<u:ShellHeadItem icon="sap-icon://customer-history"

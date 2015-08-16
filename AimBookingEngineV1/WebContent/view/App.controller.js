@@ -118,5 +118,32 @@ sap.ui.controller("sap.ui.medApp.view.App", {
   },
   handleHistoryBooking : function() {
     this._oRouter.navTo('_history');
+  },
+  handleFavorite : function() {
+    if (sessionStorage.medAppUID != undefined) {
+      var userData = this.oModel.getProperty("/LoggedUser");
+      var aUserIds = [];
+      if (userData.Characteristics) {
+        for (var i = 0; i < userData.Characteristics.length; i++) {
+          if (userData.Characteristics[i].CHRID == 11) {
+            aUserIds.push(userData.Characteristics[i].VALUE);
+          }
+        }
+        if (aUserIds.length > 0) {
+          this._oRouter.navTo("VendorListDetail", {
+            ENTID : "1",
+            ETYID : "1",
+            ETCID : "1",
+            UID : userData.USRID,
+            FILTER : aUserIds.toString()
+          });
+          return false;
+        }
+      }
+    } else {
+      this._oRouter.navTo('_loginPage', {
+        flagID : 0
+      });
+    }
   }
 });
