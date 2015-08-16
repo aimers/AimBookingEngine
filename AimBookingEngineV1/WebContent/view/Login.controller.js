@@ -142,7 +142,6 @@ sap.ui
           navToBack : function() {
             this._oRouter.myNavBack();
           }
-
         /**
          * Similar to onAfterRendering, but this hook is invoked before the
          * controller's View is re-rendered (NOT before the first rendering!

@@ -164,7 +164,6 @@ sap.ui
             this._vendorListServiceFacade.getThirdPartyData(param, fnSuccess,
                 fnError, fPath);
           }
-
         /**
          * Similar to onAfterRendering, but this hook is invoked before the
          * controller's View is re-rendered (NOT before the first rendering!
