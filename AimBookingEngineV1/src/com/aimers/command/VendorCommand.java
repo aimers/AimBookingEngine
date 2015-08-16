@@ -200,8 +200,15 @@ public class VendorCommand extends aimCommand {
 				+ "   `vtrmt`.`RTYPE`, "
 				+ "   `vtrmt`.`STATS`, "
 				+ "   `vtrmt`.`ACTIV` "
-				+ "FROM `vtrmt` where BDTIM >= STR_TO_DATE('"+stDate+"', '%d-%m-%Y') "
-				+ "and BDTIM <= STR_TO_DATE('"+enDate+"', '%d-%m-%Y') ";
+				+ "FROM `vtrmt` ";
+		if(stDate.equals(enDate)){
+			query = query + "where BDTIM = STR_TO_DATE('"+stDate+"', '%d-%m-%Y') ";
+					
+		}else{
+			query = query + "where BDTIM >= STR_TO_DATE('"+stDate+"', '%d-%m-%Y') "
+					+ "and BDTIM <= STR_TO_DATE('"+enDate+"', '%d-%m-%Y') ";
+		}
+		
 
 
 		try{
@@ -301,9 +308,7 @@ public class VendorCommand extends aimCommand {
 						JSONObject bSlot = ((JSONObject) bookedSlots.get(bIndex));
 						//Mon Jul 27 00:00:00 IST 2015
 						//2015-07-29 00:00:00.0
-						
 						System.out.println(sdf.parse(bSlot.get("BDTIM")+"").equals(ndf.parse(record.get("Date")+"")));
-						
 						if(sdf.parse(bSlot.get("BDTIM")+"").equals(ndf.parse(record.get("Date")+""))){
 							if(tSlot.get("START").equals(bSlot.get("BOSTM")+"")
 									&& 	
