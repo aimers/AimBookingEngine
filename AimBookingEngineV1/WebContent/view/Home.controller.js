@@ -122,6 +122,7 @@ sap.ui
             }
           },
           getGeoLocation : function() {
+            this.oView.byId("multiInput2").setBusy(true);
             var _this = this;
             var display_user_location = function display_user_location(
                 user_position) {
@@ -150,14 +151,18 @@ sap.ui
                 LOG : lat
               } ];
               _this.oModel.setProperty("/GeoLocation", oDataNew);
-              _this.oView.byId("productInput").setValue(
+              _this.oView.byId("multiInput2").setValue(
                   oDataNew[0].LANDMARK + "," + oDataNew[0].LOCALITY + ","
                       + oDataNew[0].CITY);
+              _this.oView.byId("multiInput2").setBusy(false);
+            };
+            fnError = function() {
+              _this.oView.byId("multiInput2").setBusy(false);
             };
             var fPath = "http://maps.googleapis.com/maps/api/geocode/json?latlng="
                 + lat + "," + log;
             this._vendorListServiceFacade.getThirdPartyData(param, fnSuccess,
-                null, fPath);
+                fnError, fPath);
           }
 
         /**

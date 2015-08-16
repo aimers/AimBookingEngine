@@ -1,7 +1,8 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="sap.ui.medApp.view.Login"
 	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page enableScrolling="false" showHeader="false" backgroundDesign="Solid">
+	<Page enableScrolling="false" showNavButton="true"
+    navButtonPress="navToBack" backgroundDesign="Solid">
 		<content>
 			<VBox width="100%" alignItems="Center">
 				<l:Grid defaultSpan="L12 M12 S12" width="auto">

@@ -1,0 +1,24 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="sap.ui.medApp.view.BookingHistory"
+	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page enableScrolling="false" showNavButton="true" navButtonPress="handleBackButton"
+		backgroundDesign="Solid">
+		<content>
+			<VBox width="100%" alignItems="Center">
+				<List items="{/BookingList}" id="VendorsList" class="BookingList"
+					mode="None">
+					<items>
+						<CustomListItem type="Inactive">
+							<HBox width="100%">
+								<VBox justifyContent="Start">
+									<Label text="{CUTID}" />
+								</VBox>
+								<VBox alignItems="End"></VBox>
+							</HBox>
+						</CustomListItem>
+					</items>
+				</List>
+			</VBox>
+		</content>
+	</Page>
+</core:View>
