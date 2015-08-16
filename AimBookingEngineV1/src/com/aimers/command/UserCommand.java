@@ -52,11 +52,19 @@ private Object getBookingHistory(HashMap myInfo, ConnectionManager dbcon) {
 		
 		String query1 = "SELECT `vtrmt`.`VTRMI`, `vtrmt`.`VSUID`, `vtrmt`.`VUTID`, "
 				+ " `vtrmt`.`CUSID`, `vtrmt`.`CUTID`, "
-				+ " `vtrmt`.`ETYID`, `vtrmt`.`ETCID`, `vtrmt`.`ENTID`, "
+				+ " `usrmt`.`USRID`, `usrmt`.`URCOD`, `usrmt`.`PRFIX`, `usrmt`.`TITLE`, `usrmt`.`FRNAM`, "
+				+ " `usrmt`.`LTNAM`, `usrmt`.`URDOB`, `usrmt`.`GENDR`, `usrmt`.`DSPNM`, "
+				+ " `vendor`.`USRID` as `VUSRID`, `vendor`.`URCOD` as `VURCOD`, `vendor`.`PRFIX` as `VPREFIX`, "
+				+ " `vendor`.`TITLE` as `VTITLE`, `vendor`.`FRNAM` as `VFRNAM`, `vendor`.`LTNAM` as `VLTNAM`, "
+				+ " `vendor`.`URDOB` as `VURDOB`, `vendor`.`GENDR` as `VGENDR`, `vendor`.`DSPNM` as `VDSPNM`, "
+				+ "`vtrmt`.`ETYID`, `vtrmt`.`ETCID`, `vtrmt`.`ENTID`, "
 				+ " `vtrmt`.`RULID`, "
 				+ " `vtrmt`.`BDTIM`, `vtrmt`.`BTIMZ`, `vtrmt`.`BOSTM`, `vtrmt`.`BOETM`, "
 				+ " `vtrmt`.`RTYPE`, `vtrmt`.`STATS` "
-				+ " FROM `bookingdb`.`vtrmt` ";
+				+ " FROM `bookingdb`.`vtrmt` left outer join  `bookingdb`.`usrmt` "
+				+ " on `vtrmt`.`CUSID` = `usrmt`.`USRID` "
+				+ " left outer join  `bookingdb`.`usrmt` as `vendor` "
+				+ " on `vtrmt`.`VSUID` = `vendor`.`USRID`";
 		if(detailsJSON.has("CUSID") && detailsJSON.has("CUTID")){
 			query1 = query1+ "where `CUSID` = '"+detailsJSON.get("CUSID")+"' "
 					+ " and `CUTID` = '"+detailsJSON.get("CUTID")+"' ";	
