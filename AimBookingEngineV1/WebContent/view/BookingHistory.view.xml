@@ -23,7 +23,7 @@
 									</HBox>
 									<HBox class="BookTimeDate">
                     <Label text="Status : " />
-                    <Text text="{path:'STATS', formatter:'sap.ui.medApp.global.globalFormatter.getBookingStatus'}" />
+                    <Text text="{path:'STATS', formatter:'sap.ui.medApp.global.globalFormatter.getBookConfirmStatus'}" />
                   </HBox>
 								</VBox>
 								<VBox alignItems="End" width="30%">
