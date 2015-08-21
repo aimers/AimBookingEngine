@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import com.aimers.dbaccess.ConnectionManager;
 import com.aimers.utils.Convertor;
+import com.aimers.utils.mail.SendMailUsingAuthentication;
 
 public class UserCommand extends aimCommand {
 
@@ -413,6 +414,17 @@ private Object getBookingHistory(HashMap myInfo, ConnectionManager dbcon) {
 			System.out.println(query);
 			int rowCount=dbcon.stm.executeUpdate(query);
 			if(rowCount > 0){
+				SendMailUsingAuthentication sendEmail = new SendMailUsingAuthentication();
+				String message = "Welcome to Aimmedics, Your user id is registered with us :"
+						+ "user id: "+detailsJSON.get("USRNM")+" and "
+						+ "password :"+detailsJSON.get("UERPW")+".";
+				String[] recipients = new String[2];
+				recipients[0] = detailsJSON.get("USRNM")+"";
+				recipients[1] = "uxdevsupport@aimersinfosoft.com";
+				String from = "uxdevsupport@aimersinfosoft.com";
+				String subject = "User Registered";
+				sendEmail.postMail(recipients, subject, message, from);
+				
 				return detailsJSON;
 			}else{
 				//TODO: Consider Raising Error

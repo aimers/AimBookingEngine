@@ -17,7 +17,7 @@ medApp.global.config.development = {
 };
 
 medApp.global.config.production = {
-  base : "http://localhost:8080/AimBookingEngineV1/",
+  base : "http://bookingdemo.aimersinfosoft.com/",
   endPoints : {
     vendorData : "MasterServlet?AimAction=",
     vendorDataList : "assets/data/vendorsData.json",
