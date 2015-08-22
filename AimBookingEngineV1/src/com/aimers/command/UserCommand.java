@@ -53,9 +53,9 @@ private Object getBookingHistory(HashMap myInfo, ConnectionManager dbcon) {
 		
 		String query1 = "SELECT `vtrmt`.`VTRMI`, `vtrmt`.`VSUID`, `vtrmt`.`VUTID`, "
 				+ " `vtrmt`.`CUSID`, `vtrmt`.`CUTID`, "
-				+ " `usrmt`.`USRID`, `usrmt`.`URCOD`, `usrmt`.`PRFIX`, `usrmt`.`TITLE`, `usrmt`.`FRNAM`, "
+				+ " `usrmt`.`USRID`, `uacmt`.`USRNM`, `usrmt`.`URCOD`, `usrmt`.`PRFIX`, `usrmt`.`TITLE`, `usrmt`.`FRNAM`, "
 				+ " `usrmt`.`LTNAM`, `usrmt`.`URDOB`, `usrmt`.`GENDR`, `usrmt`.`DSPNM`, "
-				+ " `vendor`.`USRID` as `VUSRID`, `vendor`.`URCOD` as `VURCOD`, `vendor`.`PRFIX` as `VPREFIX`, "
+				+ " `vendor`.`USRID` as `VUSRID`, `vacct`.`USRNM` as `VERNM`, `vendor`.`URCOD` as `VURCOD`, `vendor`.`PRFIX` as `VPREFIX`, "
 				+ " `vendor`.`TITLE` as `VTITLE`, `vendor`.`FRNAM` as `VFRNAM`, `vendor`.`LTNAM` as `VLTNAM`, "
 				+ " `vendor`.`URDOB` as `VURDOB`, `vendor`.`GENDR` as `VGENDR`, `vendor`.`DSPNM` as `VDSPNM`, "
 				+ "`vtrmt`.`ETYID`, `vtrmt`.`ETCID`, `vtrmt`.`ENTID`, "
@@ -65,7 +65,11 @@ private Object getBookingHistory(HashMap myInfo, ConnectionManager dbcon) {
 				+ " FROM `bookingdb`.`vtrmt` left outer join  `bookingdb`.`usrmt` "
 				+ " on `vtrmt`.`CUSID` = `usrmt`.`USRID` "
 				+ " left outer join  `bookingdb`.`usrmt` as `vendor` "
-				+ " on `vtrmt`.`VSUID` = `vendor`.`USRID`";
+				+ " on `vtrmt`.`VSUID` = `vendor`.`USRID` "
+				+ " left outer join  `bookingdb`.`uacmt` "
+				+ " on `vtrmt`.`CUSID` = `uacmt`.`USRID`  "
+				+" left outer join  `bookingdb`.`uacmt` as `vacct`  "
+				+ " on `vtrmt`.`VSUID` = `vacct`.`USRID` ";
 		if(detailsJSON.has("CUSID") && detailsJSON.has("CUTID")){
 			query1 = query1+ "where `CUSID` = '"+detailsJSON.get("CUSID")+"' "
 					+ " and `CUTID` = '"+detailsJSON.get("CUTID")+"' ";	
@@ -860,8 +864,7 @@ private Object getBookingHistory(HashMap myInfo, ConnectionManager dbcon) {
 						+ "'"+detailsJSON.get("UERPW")+ "' ";
 			}else{
 				return null;
-			}
-				
+			}	
 					
 			System.out.println(query);
 			rs=dbcon.stm.executeQuery(query);
