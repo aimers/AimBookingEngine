@@ -37,11 +37,76 @@ public class UserCommand extends aimCommand {
 			return loginUser(myInfo, dbcon);
 		}else if(aimAction.equals("getBookingHistory")){
 			return getBookingHistory(myInfo, dbcon);
+		}else if(aimAction.equals("getAllUsers")){
+			return getAllUsers(myInfo, dbcon);
 		}
 		
 		return new JSONObject();
 
 	}
+
+private Object getAllUsers(HashMap myInfo, ConnectionManager dbcon) {
+	JSONArray response = new JSONArray();
+	try{
+		
+		JSONArray details 	=  (JSONArray) selectAllUserAccount(myInfo, dbcon);
+		for(int dIndex=0;dIndex<details.length();dIndex++){
+			JSONObject detailsJSON 	= details.getJSONObject(dIndex);
+			myInfo = new HashMap();
+			myInfo.put("details", detailsJSON);
+			myInfo.put("details",  selectUserCharachteristics(myInfo, dbcon));
+			myInfo.put("details",  selectUserAddress(myInfo, dbcon));
+			response.put((JSONObject)myInfo.get("details"));
+		}
+		
+		
+	}catch(Exception ex){
+		return new JSONObject();
+	}
+	
+	return response;
+	
+}
+
+private Object selectAllUserAccount(HashMap myInfo, ConnectionManager dbcon) {
+	//TODO: Send email
+	ResultSet rs=null;
+	try{
+		String details 	=  myInfo.get("details")+"";
+		JSONObject detailsJSON 	= new JSONObject(details);
+		
+		if(dbcon == null){
+			try{
+				dbcon.Connect("MYSQL");
+			}
+			catch(Exception ex){
+				System.out.println(""+ex);
+			}
+		}
+		
+		String query = "SELECT `uacmt`.`USRID`,"
+				+ " `uacmt`.`USRNM`,"
+				+ " `uacmt`.`UERPW`, `usrmt`.`URCOD`, `usrmt`.`PRFIX`, `usrmt`.`TITLE`, "
+				+ " `usrmt`.`FRNAM`, `usrmt`.`LTNAM`, `usrmt`.`URDOB`, `usrmt`.`GENDR`, "
+				+ " `usrmt`.`DSPNM`, `uacmt`.`ACTIV`, `uacmt`.`CRTDT`, `uacmt`.`CRTBY`,"
+				+ " `uacmt`.`CHNDT`, `uacmt`.`CHNBY` "
+				+ " FROM `uacmt` left outer join "
+				+ " `usrmt` on `uacmt`.`USRID` = `usrmt`.`USRID`";
+		
+		if(detailsJSON.has("USRID")){
+			query = query + "where `usrmt`.`USRID` in ("+detailsJSON.get("USRID")+") ";
+		}
+	
+		System.out.println(query);
+		rs=dbcon.stm.executeQuery(query);
+		JSONArray userArray = Convertor.convertToJSON(rs);
+		return userArray;
+	}
+	catch(Exception ex){
+		System.out.println("Error from USER Command "+ex +"==dbcon=="+dbcon);
+		return null;
+	}
+}
 
 private Object getBookingHistory(HashMap myInfo, ConnectionManager dbcon) {
 	
@@ -81,7 +146,6 @@ private Object getBookingHistory(HashMap myInfo, ConnectionManager dbcon) {
 		if(detailsJSON.has("BDTIM")){
 			query1 = query1+ " and `BDTIM` = STR_TO_DATE('"+detailsJSON.get("BDTIM")+"', '%d-%m-%Y')  ";	
 		}
-		
 		
 		System.out.println(query1);
 		rs =dbcon.stm.executeQuery(query1);
@@ -864,7 +928,8 @@ private Object getBookingHistory(HashMap myInfo, ConnectionManager dbcon) {
 						+ "'"+detailsJSON.get("UERPW")+ "' ";
 			}else{
 				return null;
-			}	
+			}
+				
 					
 			System.out.println(query);
 			rs=dbcon.stm.executeQuery(query);
