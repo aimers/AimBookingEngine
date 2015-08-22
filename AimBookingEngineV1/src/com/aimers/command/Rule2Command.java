@@ -289,7 +289,8 @@ public class Rule2Command extends aimCommand {
 					//+ " `vtrdt`.`CRTDT`, `vtrdt`.`CRTBY`, `vtrdt`.`CHNDT`, `vtrdt`.`CHNBY` "
 					+ " FROM `vtrdt` "
 					+ " where UTYID = '"+detailsJSON.get("UTYID")+"' and "
-							+ " USRID = '"+detailsJSON.get("USRID")+"'";
+							+ " USRID = '"+detailsJSON.get("USRID")+"' and "
+							+ " RULID = '"+detailsJSON.get("RULID")+"' ";
 
 			if(dbcon == null){
 				try{
