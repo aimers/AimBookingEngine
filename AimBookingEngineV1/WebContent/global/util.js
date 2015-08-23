@@ -210,11 +210,14 @@ sap.ui.medApp.global.util = {
     var value = -1;
     var oData;
     var bool;
+    var chars;
     var userData = this._mainModel.getProperty("/LoggedUser");
-    var chars = userData.Characteristics;
-    if (chars == undefined) {
+    if (userData.Characteristics == undefined) {
       chars = [];
+    } else {
+      chars = userData.Characteristics;
     }
+
     for (var i = 0; i < chars.length; i++) {
       if (chars[i].CHRID == 11) {
         if (chars[i].VALUE == userId) {

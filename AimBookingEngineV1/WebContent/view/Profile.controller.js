@@ -26,21 +26,12 @@ sap.ui
                 this.oModel = sap.ui.medApp.global.util._mainModel;
                 var userData = this.oModel.getProperty("/LoggedUser");
                 var address;
-                if (!userData.Address.length) {
-                  address = {
-                    'USRID' : "",
-                    'PRIMR' : "",
-                    'STREET' : "",
-                    'LNDMK' : "",
-                    'LOCLT' : "",
-                    'CTYID' : "",
-                    'CTYNM' : "",
-                    'PINCD' : "",
-                    'LONGT' : "",
-                    'LATIT' : ""
-                  };
-                  userData.Address.push(address);
-                }
+                /*
+                 * if (!userData.Address.length) { address = { 'USRID' : "",
+                 * 'PRIMR' : "", 'STREET' : "", 'LNDMK' : "", 'LOCLT' : "",
+                 * 'CTYID' : "", 'CTYNM' : "", 'PINCD' : "", 'LONGT' : "",
+                 * 'LATIT' : "" }; userData.Address.push(address); }
+                 */
                 this.oModel.setProperty("/LoggedUser", [ userData ]);
               } else {
                 this.oModel = new sap.ui.model.json.JSONModel();
