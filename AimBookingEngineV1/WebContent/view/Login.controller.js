@@ -61,13 +61,13 @@ sap.ui
               sessionStorage.setItem("medAppUID", oData.results.USRID);
               sessionStorage.setItem("medAppPWD", oData.results.UERPW);
               this.oModel.setProperty("/LoggedUser", oData.results);
-              var fav = this.handleFovoriteUsers(oData.results);
-              if (fav) {
-                if (this.parameter.flagID == 2) {
-                  this._oRouter.navTo("ConfirmBooking", {
-                    "UID" : sessionStorage.medAppUID
-                  });
-                } else {
+              if (this.parameter.flagID == 2) {
+                this._oRouter.navTo("ConfirmBooking", {
+                  "UID" : sessionStorage.medAppUID
+                });
+              } else {
+                var fav = this.handleFovoriteUsers(oData.results);
+                if (fav) {
                   this._oRouter.navTo('_homeTiles');
                 }
               }
