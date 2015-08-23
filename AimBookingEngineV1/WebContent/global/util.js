@@ -212,6 +212,9 @@ sap.ui.medApp.global.util = {
     var bool;
     var userData = this._mainModel.getProperty("/LoggedUser");
     var chars = userData.Characteristics;
+    if (chars == undefined) {
+      chars = [];
+    }
     for (var i = 0; i < chars.length; i++) {
       if (chars[i].CHRID == 11) {
         if (chars[i].VALUE == userId) {
@@ -297,7 +300,7 @@ sap.ui.medApp.global.util = {
         "cancelBooking");
   },
   showMessage : function(oEvent) {
-    if (this.MessageToast) {
+    if (!this.MessageToast) {
       this.MessageToast = sap.m.MessageToast;
     }
     return this.MessageToast;

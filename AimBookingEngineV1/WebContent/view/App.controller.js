@@ -138,6 +138,10 @@ sap.ui.controller("sap.ui.medApp.view.App", {
             FILTER : aUserIds.toString()
           });
           return false;
+        } else {
+          this._oRouter.navTo('_loginPage', {
+            flagID : 0
+          });
         }
       }
     } else {

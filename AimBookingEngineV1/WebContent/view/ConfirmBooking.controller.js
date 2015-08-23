@@ -32,7 +32,7 @@ sap.ui
               vendorId : "123"
             });
           },
-          handleConfirmBooking : function() {
+          handleConfirmBooking : function(oEvent) {
             oEvent.oSource.setBusy(true);
             var _this = this;
             var bookingdata = this.oModel.getProperty("/bookingdata");

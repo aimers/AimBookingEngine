@@ -126,5 +126,9 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
     var binding = list.getBinding("items");
     binding.filter(aFilters, "Application");
   },
-
+  handleDayChange : function(oEvent) {
+    var oMessage = sap.ui.medApp.global.util.showMessage();
+    oMessage
+        .show("Please click again on Book Appointment to see filtered list");
+  }
 });
