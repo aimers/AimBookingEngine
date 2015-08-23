@@ -64,9 +64,9 @@ sap.ui
               var oBookingBox = sap.ui.xmlfragment(
                   "sap.ui.medApp.view.Calender", this);
               oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1]
-                  .getItems()[0].setGroupName(oFlagIndexItem);
+                  .getItems()[0].getButtons()[0].setGroupName(oFlagIndexItem);
               oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1]
-                  .getItems()[1].setGroupName(oFlagIndexItem);
+                  .getItems()[0].getButtons()[1].setGroupName(oFlagIndexItem);
               var sPath = oEvent.oSource.oParent.getBindingContext().getPath();
               var oLinkTemplate = new sap.m.Link({
                 press : [ oController.handleBookingTime, oController ]
@@ -185,14 +185,35 @@ sap.ui
             });
           },
           changeToOneWeek : function(oEvent) {
-            var oIndex = oEvent.oSource.getGroupName();
-            var oItemSelected = this.getView().byId("VendorsList").getItems()[oIndex]
-                .getContent()[0];
-            var oBookingBox = oItemSelected.getContent();
-            var oCalendar = oBookingBox[0].getContent()[0].setVisible(false);
-            var sPath = oCalendar.getBindingContext().getPath();
-            this.loadVendorCalendorTime(sPath, new Date());
-            oBookingBox[0].getContent()[1].setVisible(true);
+            var that = this;
+            var _oSource = oEvent.oSource;
+            this.oView.setBusy(true);
+            setTimeout(
+                function() {
+                  if (_oSource.getSelectedIndex() == 0) {
+
+                    var oIndex = _oSource.getButtons()[_oSource
+                        .getSelectedIndex()].getGroupName();
+                    var oItemSelected = that.getView().byId("VendorsList")
+                        .getItems()[oIndex].getContent()[0];
+                    var oBookingBox = oItemSelected.getContent();
+                    var oCalendar = oBookingBox[0].getContent()[0]
+                        .setVisible(false);
+                    var sPath = oCalendar.getBindingContext().getPath();
+                    that.loadVendorCalendorTime(sPath, new Date());
+                    oBookingBox[0].getContent()[1].setVisible(true);
+                  } else {
+                    var oIndex = _oSource.getButtons()[_oSource
+                        .getSelectedIndex()].getGroupName();
+                    var oItemSelected = this.getView().byId("VendorsList")
+                        .getItems()[oIndex].getContent()[0];
+                    var oBookingBox = oItemSelected.getContent();
+                    var oCalendar = oBookingBox[0].getContent()[0]
+                        .setVisible(true);
+                    oBookingBox[0].getContent()[1].setVisible(false);
+                  }
+                  that.oView.setBusy(false);
+                }, 10);
           },
           handleWeekCalender : function(oEvent) {
             var oBookingBox = oEvent.oSource.oParent;
@@ -209,12 +230,7 @@ sap.ui
                 .getItems()[0].setSelected(true);
           },
           changeToOneMonth : function(oEvent) {
-            var oIndex = oEvent.oSource.getGroupName();
-            var oItemSelected = this.getView().byId("VendorsList").getItems()[oIndex]
-                .getContent()[0];
-            var oBookingBox = oItemSelected.getContent();
-            var oCalendar = oBookingBox[0].getContent()[0].setVisible(true);
-            oBookingBox[0].getContent()[1].setVisible(false);
+
           },
           handleSelectDialogPress : function(oEvent) {
             if (!this._oDialog) {
@@ -231,7 +247,13 @@ sap.ui
             this._oDialog.close();
           },
           handleBookingTime : function(oEvt) {
-            sap.ui.medApp.global.util.handleBooking(oEvt, this._oRouter);
+            this.oView.setBusy(true);
+            var _Event = oEvt.oSource;
+            var that = this;
+            setTimeout(function() {
+              sap.ui.medApp.global.util.handleBooking(_Event, that._oRouter);
+              that.oView.setBusy(false);
+            }, 10);
           },
           doNavBack : function(event) {
             this._oRouter.navTo("_searchVendors", {

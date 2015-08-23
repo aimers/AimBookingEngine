@@ -50,8 +50,6 @@
 					<c:Label text="Email"></c:Label>
 					<c:TextField value="{USRNM}" enabled="false" />
 					<core:Title text="Password" />
-					<c:Label text="Password"></c:Label>
-					<c:PasswordField value="{UERPW}"  type="password"/>
 					<c:Label text="Confirm Password"></c:Label>
 					<c:PasswordField value="{UERPW}" type="password"/>
 					<c:Label text="Re-Confirm Password"></c:Label>

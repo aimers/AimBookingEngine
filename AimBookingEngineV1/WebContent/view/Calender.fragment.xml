@@ -8,21 +8,24 @@
 						<HBox width="50%" justifyContent="Start">
 							<Label text="Select Date"></Label>
 						</HBox>
-						<HBox width="50%" justifyContent="End">
-							<RadioButton text="Weekly" select="changeToOneWeek" />
-							<RadioButton text="Monthly" select="changeToOneMonth"
-								selected="true" />
+						<HBox width="50%" justifyContent="Start">
+							<RadioButtonGroup class="sapUiMediumMarginBottom" selectedIndex="1" select="changeToOneWeek"
+							columns="3">
+								<buttons>
+									<RadioButton text="Weekly"  />
+									<RadioButton text="Monthly" />
+								</buttons>
+							</RadioButtonGroup>
 						</HBox>
 					</HBox>
 				</contentMiddle>
 			</Bar>
 		</subHeader>
 		<content>
-			<me:Calendar width="100%" class="monthCalender"
-				select="handleWeekCalender">
+			<me:Calendar width="100%" class="monthCalender" select="handleWeekCalender">
 			</me:Calendar>
 			<HBox visible="false" alignItems="Start" justifyContent="SpaceAround"
-				  class="weekCalenderView">
+				class="weekCalenderView">
 			</HBox>
 		</content>
 	</Page>
