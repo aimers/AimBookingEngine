@@ -87,7 +87,7 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
    * Handle Press Tile
    */
   handleSearchKeyword : function(evt) {
-
+    this.oView.byId("homePageContent").setBusy(true);
     var medAppUID;
     if (sessionStorage.medAppUID) {
       medAppUID = sessionStorage.medAppUID
@@ -97,7 +97,6 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
     }
     // open the loading dialog
     var searchBar = this.oView.byId("homeSearchBar");
-    searchBar.setBusy(true);
     var keys = searchBar.getSelectedKeys().join();
     if (keys != "") {
       this._oRouter.navTo("VendorListDetail", {
@@ -111,7 +110,7 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
       sap.m.MessageToast.show("Please select category");
       return false;
     }
-    searchBar.setBusy(false);
+    this.oView.byId("homePageContent").setBusy(false);
   },
   /*
    * handleSelectionChange : function(oEvent) { var selectedItems =

@@ -114,7 +114,7 @@
                         data : sPayload,
                         dataType : "json",
                         beforeSend : fnBeforeSend,
-                        async : false,
+                        async : true,
                         success : function(oData, textStatus, jqXHR) {
                           $.sap.log
                               .debug("Success: The server send the following response: "
