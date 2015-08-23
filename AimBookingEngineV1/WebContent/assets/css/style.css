@@ -68,14 +68,17 @@
 		padding-top: 3px;
 	}
 }
+
 .BookingList {
-	max-width:1000px;
-	margin : 0 auto;
+	max-width: 1000px;
+	margin: 0 auto;
 }
-.BookTimeDate .sapMLabel,.BookTimeDate .sapMText{
-	font-size:0.775rem;
+
+.BookTimeDate .sapMLabel, .BookTimeDate .sapMText {
+	font-size: 0.775rem;
 	padding: 4px 0;
 }
+
 @media only screen and (max-width: 640px) {
 	.mainShell .sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img {
 		max-width: 100px;
@@ -341,6 +344,7 @@
 	height: 0.7rem;
 	margin-right: 5px;
 }
+
 .loader {
 	position: fixed;
 	left: 0px;
@@ -351,6 +355,12 @@
 	background: url('../../assets/img/page-loader.gif') 50% 50% no-repeat
 		rgb(249, 249, 249);
 }
+
 .inputLocation .sapMMultiInputBorder {
-	border:0; 
+	border: 0;
+}
+
+.editableForm .sapUiFormResLayout {
+	max-width: 1000px;
+	margin: 0 auto;
 }

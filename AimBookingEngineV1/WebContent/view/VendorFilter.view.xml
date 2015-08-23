@@ -8,19 +8,13 @@
 		  </VBox>-->
 			<VBox width="90%" class="appointment" height="20%">
 				<Label text="{i18n>APPOINTMENT_DAY}" class="filterLabel" />
-				<HBox  class="weekDayFilter">
-					<ToggleButton text="Mon" pressed="true"></ToggleButton>
-					<ToggleButton text="Tue" pressed="true"></ToggleButton>
-					<ToggleButton text="Wed" pressed="true"></ToggleButton>
-					<ToggleButton text="Thu" pressed="true"></ToggleButton>
-					<ToggleButton text="Fri" pressed="true"></ToggleButton>
-					<ToggleButton text="Sat" pressed="true"></ToggleButton>
-					<ToggleButton text="Sun" pressed="true"></ToggleButton>
+				<HBox  class="weekDayFilter" items="{/filterDays}">
+					<ToggleButton text="{day}" pressed="{selected}"></ToggleButton>
 				</HBox>
 			</VBox>
-			<VBox height="20%" class="appointment">
+			<VBox height="20%" class="appointment" items="{/filterTime}">
 				<Label text="{i18n>SELECT_TIME}" class="filterLabel"></Label>
-				<c:RangeSlider max="2400" min="0" value="0" value2="2400"
+				<c:RangeSlider max="1440" min="0" value="{startTime}" value2="{endTime}"
 					totalUnits="3" smallStepWidth="1" stepLabels="true" labels="00:00, 12:00, 24:00"
 					class="filterLabel"></c:RangeSlider>
 			</VBox>

@@ -16,7 +16,6 @@ sap.ui.medApp.global.util = {
         var oData = this.getLoginData(param);
         this._mainModel.setProperty("/LoggedUser", oData.results);
       }
-
     }
     return this._mainModel;
   },
@@ -160,12 +159,8 @@ sap.ui.medApp.global.util = {
     var sContextPath = oEvent.oSource.oParent.getBindingContext().getPath();
     var vendorIndexPath;
     var modelData = this._mainModel.getProperty(sContextPath);
-    if (sContextPath == "/vendorsAvailableTime/0") {
-      vendorIndexPath = modelData.SPATH;
-    } else {
-      var modelData1 = this._mainModel.getProperty("/vendorsAvailableTime/0");
-      vendorIndexPath = modelData1.SPATH;
-    }
+    var vendorIndexPath = "/" + sContextPath.split("/")[1] + "/"
+        + sContextPath.split("/")[2];
     var vendordata = this._mainModel.getProperty(vendorIndexPath);
     var sDate = modelData.Date;
     var BookingData = [ {
@@ -255,5 +250,98 @@ sap.ui.medApp.global.util = {
     this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
         "updateUser");
     return bool;
+  },
+  userUpdate : function() {
+    var userData = this._mainModel.getProperty("/LoggedUser");
+    this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+        this._mainModel);
+    var param = [ {
+      "key" : "details",
+      "value" : userData[0]
+    } ];
+
+    var fnSuccess = function(oData) {
+      if (typeof oData.results == "object") {
+        sap.m.MessageToast.show("User Data updated");
+      }
+    };
+    fnError = function() {
+      sap.m.MessageToast.show("Improper Data entered");
+    }
+    this._vendorListServiceFacade.updateParameters(param, fnSuccess, fnError,
+        "updateUser");
+  },
+  cancelBooking : function(boomingData) {
+    var param = [ {
+      "key" : "details",
+      "value" : {
+        "VTRMI" : boomingData.VTRMI,
+        "RULID" : boomingData.RULID.toString(),
+        "USRID" : boomingData.USRID,
+        "BDTIM" : boomingData.BDTIM,
+        "BTIMZ" : boomingData.BTIMZ,
+        "BOSTM" : boomingData.BOSTM,
+        "BOETM" : boomingData.BOETM,
+        "CUEML" : boomingData.USRNM,
+        "VSEML" : boomingData.VERNM,
+      }
+    } ];
+
+    var fnSuccess = function(oData) {
+      sap.m.MessageToast.show("Booking has been cancelled");
+    };
+    fnError = function() {
+      sap.m.MessageToast.show("Booking cannot be cancelled");
+    }
+    this._vendorListServiceFacade.updateParameters(param, fnSuccess, fnError,
+        "cancelBooking");
+  },
+  showMessage : function(oEvent) {
+    if (this.MessageToast) {
+      this.MessageToast = sap.m.MessageToast;
+    }
+    return this.MessageToast;
+  },
+  getCorrectTime : function(oValue, oValue1) {
+    if (oValue != null && oValue != undefined && oValue1 != null
+        && oValue1 != undefined) {
+      var splitValue = oValue.split(":");
+      var splitValue1 = oValue1.split(":");
+      if (sap.ui.medApp.global.util._mainModel.getProperty("/filterTime")) {
+        var time = sap.ui.medApp.global.util._mainModel
+            .getProperty("/filterTime");
+        var starttime = parseInt(time[0].startTime / 60);
+        var endtime = parseInt(time[0].endTime / 60);
+        if (starttime <= parseInt(splitValue[0])
+            && endtime >= parseInt(splitValue[0])) {
+          return splitValue[0] + ":" + splitValue[1] + "-" + splitValue1[0]
+              + ":" + splitValue1[1];
+        }
+      } else {
+        return splitValue[0] + ":" + splitValue[1] + "-" + splitValue1[0] + ":"
+            + splitValue1[1];
+      }
+    }
+  },
+  getDateLabel : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      var splitValue = oValue.split(" ");
+      return splitValue[0] + " " + splitValue[1] + " " + splitValue[2];
+    }
+  },
+  handleFilterDays : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      var splitValue = oValue.split(" ");
+      if (sap.ui.medApp.global.util._mainModel.getProperty("/filterDays")) {
+        var days = sap.ui.medApp.global.util._mainModel
+            .getProperty("/filterDays");
+        for (var i = 0; i < days.length; i++) {
+          if (days[i].day == splitValue[0]) {
+            return days[i].selected;
+          }
+        }
+      }
+      return splitValue[0] + " " + splitValue[1] + " " + splitValue[2];
+    }
   }
 }

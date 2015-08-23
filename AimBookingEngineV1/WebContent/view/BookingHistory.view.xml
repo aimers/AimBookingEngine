@@ -1,7 +1,7 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="sap.ui.medApp.view.BookingHistory"
 	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page enableScrolling="false" showNavButton="true" navButtonPress="handleBackButton"
+	<Page showNavButton="true" navButtonPress="handleBackButton"
 		backgroundDesign="Solid">
 		<content>
 				<List items="{/BookingList}" id="VendorsList" class="BookingList"

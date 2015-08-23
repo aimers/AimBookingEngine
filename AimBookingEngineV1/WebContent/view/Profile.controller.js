@@ -1,6 +1,6 @@
 sap.ui
     .controller(
-        "sap.ui.medApp.view.Login",
+        "sap.ui.medApp.view.Profile",
         {
 
           /**
@@ -21,9 +21,27 @@ sap.ui
           },
           _handleRouteMatched : function(evt) {
             this.parameter = evt.getParameter("arguments");
-            if (evt.getParameter("name") === "_loginPage") {
+            if (evt.getParameter("name") === "_profile") {
               if (sap.ui.medApp.global.util._mainModel) {
                 this.oModel = sap.ui.medApp.global.util._mainModel;
+                var userData = this.oModel.getProperty("/LoggedUser");
+                var address;
+                if (!userData.Address.length) {
+                  address = {
+                    'USRID' : "",
+                    'PRIMR' : "",
+                    'STREET' : "",
+                    'LNDMK' : "",
+                    'LOCLT' : "",
+                    'CTYID' : "",
+                    'CTYNM' : "",
+                    'PINCD' : "",
+                    'LONGT' : "",
+                    'LATIT' : ""
+                  };
+                  userData.Address.push(address);
+                }
+                this.oModel.setProperty("/LoggedUser", [ userData ]);
               } else {
                 this.oModel = new sap.ui.model.json.JSONModel();
               }
@@ -143,6 +161,37 @@ sap.ui
           },
           navToBack : function() {
             this._oRouter.myNavBack();
+          },
+          handlePhoneNumber : function(chrid) {
+            if (chrid == 6) {
+              return true;
+            } else {
+              return false;
+            }
+          },
+          getPhoneNumber : function(chrid, value) {
+            if (chrid != null && chrid != undefined) {
+              if (chrid == 6) {
+                return value;
+              }
+            }
+          },
+          handleMobileNumber : function(chrid) {
+            if (chrid == 7) {
+              return true;
+            } else {
+              return false;
+            }
+          },
+          getMobileNumber : function(chrid, value) {
+            if (chrid != null && chrid != undefined) {
+              if (chrid == 7) {
+                return value;
+              }
+            }
+          },
+          handleUpdateUser : function() {
+            sap.ui.medApp.global.util.userUpdate();
           }
         /**
          * Similar to onAfterRendering, but this hook is invoked before the

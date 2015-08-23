@@ -22,27 +22,8 @@
 				select="handleWeekCalender">
 			</me:Calendar>
 			<HBox visible="false" alignItems="Start" justifyContent="SpaceAround"
-				items="{/vendorsAvailableTime}" class="weekCalenderView">
-				<items>
-					<VBox class="daySchedule" renderType="Div">
-						<VBox class="CalenderDate">
-							<Label text="{path:'Date', formatter:'.getDateLabel'}" />
-						</VBox>
-						<VBox items="{path:'TimeSlots'}" class="CalenderTime">
-							<Link
-								text="{path:'START', formatter:'.getCorrectTime'}-{path:'END', formatter:'.getCorrectTime'}"
-								press="handleBookingTime" enabled="{path:'STATUS', formatter : 'sap.ui.medApp.global.globalFormatter.getBookingStatus'}"/>
-						</VBox>
-					</VBox>
-				</items>
+				  class="weekCalenderView">
 			</HBox>
 		</content>
-		<footer>
-			<Bar>
-				<contentRight>
-					<Button text="Cancel" press="handleCancelBooking" />
-				</contentRight>
-			</Bar>
-		</footer>
 	</Page>
 </core:FragmentDefinition>

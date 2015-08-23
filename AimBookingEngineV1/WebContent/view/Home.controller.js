@@ -9,6 +9,7 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
    * @memberOf view.Home
    */
   onInit : function() {
+    this.oView.byId("homePageContent").setBusy(true);
     // getting Router
     this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
     this.router = sap.ui.core.UIComponent.getRouterFor(this);
@@ -23,6 +24,7 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
       this._getTileIcons();
       this.getAddressSuggestions();
     }
+    this.oView.byId("homePageContent").setBusy(false);
   },
   getAddressSuggestions : function() {
     var vendorData = this.oModel.getProperty("/vendorsAddress");
@@ -85,6 +87,7 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
    * Handle Press Tile
    */
   handleSearchKeyword : function(evt) {
+    this.oView.byId("homePageContent").setBusy(true);
     var medAppUID;
     if (sessionStorage.medAppUID) {
       medAppUID = sessionStorage.medAppUID
@@ -107,7 +110,7 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
       sap.m.MessageToast.show("Please select category");
       return false;
     }
-
+    this.oView.byId("homePageContent").setBusy(false);
   },
   /*
    * handleSelectionChange : function(oEvent) { var selectedItems =

@@ -33,6 +33,7 @@ sap.ui
             });
           },
           handleConfirmBooking : function() {
+            oEvent.oSource.setBusy(true);
             var _this = this;
             var bookingdata = this.oModel.getProperty("/bookingdata");
             var vendorData = this.oModel.getProperty(bookingdata[0].IPATH);
@@ -51,10 +52,12 @@ sap.ui
                 "VUTID" : "2",
                 "CUSID" : userData.USRID.toString(),
                 "CUTID" : userData.UTYID.toString(),
+                "CUEML" : userData.USRNM.toString(),
                 "ETYID" : vendorData.Rules[0].ETYID.toString(),
                 "ETCID" : vendorData.Rules[0].ETCID.toString(),
                 "ENTID" : vendorData.Rules[0].ENTID.toString(),
                 "RULID" : vendorData.Rules[0].RULID.toString(),
+                "VSEML" : vendorData.USRNM,
                 "BDTIM" : my_date,
                 "BTIMZ" : bookingdate.split(" ")[4],
                 "BOSTM" : bostm,
@@ -70,6 +73,7 @@ sap.ui
                 this.oModel);
             this._vendorListServiceFacade.updateParameters(param, fnSuccess,
                 null, "book");
+            oEvent.oSource.setBusy(false);
           },
           getMonth : function(monthStr) {
             return new Date(monthStr + '-1-01').getMonth() + 1

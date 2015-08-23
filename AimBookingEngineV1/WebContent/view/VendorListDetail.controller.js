@@ -23,6 +23,7 @@ sap.ui
             this.paramValue = evt.getParameter("arguments");
             // JT FIX for refresh from home button
             if (evt.getParameter("name") === "VendorListDetail") {
+              this.getView().byId("VendorsList").setBusy(true);
               this.oIndexItem = [];
               if (this.paramValue.FILTER != 0) {
                 this.oModel = sap.ui.medApp.global.util
@@ -32,6 +33,7 @@ sap.ui
                     .getVendorModel(this.paramValue);
               }
               this.oView.setModel(this.oModel);
+              this.getView().byId("VendorsList").setBusy(false);
             } else if (evt.getParameter("name") === "_homeTiles") {
               // JT: TODO Check: Reset Model for next refresh
               this.oIndexItem = [];
@@ -48,6 +50,7 @@ sap.ui
             }
           },
           handleBookAppointment : function(oEvent) {
+            oEvent.oSource.setBusy(true);
             var oController = this;
             var buttonId = oEvent.oSource.getId();
             var oFlagIndexItem = buttonId.slice(-1);
@@ -64,13 +67,57 @@ sap.ui
                   .getItems()[0].setGroupName(oFlagIndexItem);
               oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1]
                   .getItems()[1].setGroupName(oFlagIndexItem);
-              oItemSelected.addContent(oBookingBox);
               var sPath = oEvent.oSource.oParent.getBindingContext().getPath();
+              var oLinkTemplate = new sap.m.Link({
+                press : [ oController.handleBookingTime, oController ]
+              })
+                  .bindProperty('text', {
+                    parts : [ {
+                      path : "START",
+                    // formatter : oController.getCorrectTime()
+                    }, {
+                      path : "END",
+                    // formatter : oController.getCorrectTime()
+                    } ],
+                    formatter : sap.ui.medApp.global.util.getCorrectTime
+                  })
+                  .bindProperty(
+                      "enabled",
+                      {
+                        path : 'STATUS',
+                        formatter : sap.ui.medApp.global.globalFormatter.getBookingStatus
+                      });
+              var oTemplate = new sap.m.VBox(
+                  {
+                    renderType : "Div",
+                    items : [
+                        new sap.m.VBox(
+                            {
+                              items : [ new sap.m.Label(
+                                  {
+                                    text : {
+                                      path : 'Date',
+                                      formatter : sap.ui.medApp.global.util.getDateLabel
+                                    }
+                                  }) ]
+                            }).addStyleClass("CalenderDate"),
+                        new sap.m.VBox({}).addStyleClass("CalenderTime")
+                            .bindAggregation("items", "TimeSlots",
+                                oLinkTemplate) ],
+                    visible : {
+                      path : 'Date',
+                      formatter : sap.ui.medApp.global.util.handleFilterDays
+                    }
+                  }).addStyleClass("daySchedule");
+              oBookingBox.getContent()[1].bindAggregation("items", sPath
+                  + "/vendorsAvailableTime", oTemplate);
+              oItemSelected.addContent(oBookingBox);
               oItemSelected.setExpanded(true);
             }
-
+            oEvent.oSource.setBusy(false);
           },
           loadVendorCalendorTime : function(sPath, d) {
+            // var iPathIndex = sPath.split("/")[2];
             var deviceModel = sap.ui.getCore().getModel("device");
             var UserData = this.oModel.getProperty(sPath);
             this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
@@ -108,10 +155,10 @@ sap.ui
               "key" : "ENDATE",
               "value" : endData
             } ]
-            this._vendorListServiceFacade.getRecords(null, null,
-                "/vendorsAvailableTime", "getVendorRuleDetail", param);
-            var vendorTimeDetail = this.oModel
-                .getProperty("/vendorsAvailableTime");
+            this._vendorListServiceFacade.getRecords(null, null, sPath
+                + "/vendorsAvailableTime", "getVendorRuleDetail", param);
+            var vendorTimeDetail = this.oModel.getProperty(sPath
+                + "/vendorsAvailableTime/");
             vendorTimeDetail[0].SPATH = sPath;
           },
           handleCancelBooking : function(oFlagIndex) {
@@ -185,18 +232,6 @@ sap.ui
           },
           handleBookingTime : function(oEvt) {
             sap.ui.medApp.global.util.handleBooking(oEvt, this._oRouter);
-          },
-          getDateLabel : function(oValue) {
-            if (oValue != null && oValue != undefined) {
-              var splitValue = oValue.split(" ");
-              return splitValue[0] + " " + splitValue[1] + " " + splitValue[2];
-            }
-          },
-          getCorrectTime : function(oValue) {
-            if (oValue != null && oValue != undefined) {
-              var splitValue = oValue.split(":");
-              return splitValue[0] + ":" + splitValue[1];
-            }
           },
           doNavBack : function(event) {
             this._oRouter.navTo("_searchVendors", {

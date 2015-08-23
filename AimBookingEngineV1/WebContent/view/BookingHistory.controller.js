@@ -73,6 +73,11 @@ sap.ui
           },
           getMonth : function(monthStr) {
             return new Date(monthStr + '-1-01').getMonth() + 1
+          },
+          handleCancelBooking : function(oEvent) {
+            var sPath = oEvent.oSource.getBindingContext().getPath();
+            var bookingData = this.oModel.getProperty(sPath);
+            sap.ui.medApp.global.util.cancelBooking(bookingData);
           }
 
         /**

@@ -77,9 +77,9 @@
 								<Label text="Select Date"></Label>
 							</HBox>
 							<HBox width="50%" justifyContent="End">
-								<RadioButton text="Weekly" select="changeToOneWeek" />
+								<RadioButton text="Weekly" select="changeToOneWeek" id="radioWeekly"/>
 								<RadioButton text="Monthly" select="changeToOneMonth"
-									selected="true" />
+									id="radioMonthly"/>
 							</HBox>
 						</HBox>
 						<VBox id="monthCalenderView" width="99%">
@@ -88,27 +88,10 @@
 							</me:Calendar>
 						</VBox>
 						<HBox alignItems="Start" justifyContent="SpaceAround"
-							items="{/vendorsAvailableTime}" class="weekCalenderView" id="weekCalenderView"
-							visible="false">
-							<items>
-								<VBox class="daySchedule" renderType="Div">
-									<VBox class="CalenderDate">
-										<Label text="{path:'Date', formatter:'.getDateLabel'}" />
-									</VBox>
-									<VBox items="{path:'TimeSlots'}" class="CalenderTime">
-										<Link
-											text="{path:'START', formatter:'.getCorrectTime'}-{path:'END', formatter:'.getCorrectTime'}"
-											press="handleBookingTime"
-											enabled="{path:'STATUS', formatter : 'sap.ui.medApp.global.globalFormatter.getBookingStatus'}" />
-									</VBox>
-								</VBox>
-							</items>
+							class="weekCalenderView" id="weekCalenderView"
+							>
+							
 						</HBox>
-						<Bar>
-							<contentRight>
-								<Button text="Cancel" press="handleCancelBooking" />
-							</contentRight>
-						</Bar>
 					</VBox>
 				</content>
 			</Panel>

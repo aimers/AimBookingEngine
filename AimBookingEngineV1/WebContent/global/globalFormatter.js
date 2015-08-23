@@ -109,5 +109,14 @@ sap.ui.medApp.global.globalFormatter = {
         return "Pending";
       }
     }
+  },
+  getBooleanToNum : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      if (oValue) {
+        return 0;
+      } else {
+        return 1;
+      }
+    }
   }
 }

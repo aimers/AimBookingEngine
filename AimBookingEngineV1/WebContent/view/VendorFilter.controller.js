@@ -19,7 +19,7 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
     if (this.paramValue.ENTID !== undefined) {
       var selectedKeys = this.paramValue.ENTID.split(",");
       for (var i = 0; i < selectedKeys.length; i++) {
-        selectedKeys[0] = parseInt(selectedKeys[0]);
+        selectedKeys[i] = parseInt(selectedKeys[i]);
       }
       var vendorCat = this.oModel.getProperty("/vendorsCategory");
       for (var i = 0; i < vendorCat.length; i++) {
@@ -29,8 +29,42 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
           vendorCat[i].selected = false;
         }
       }
+      if (!this.oModel.getProperty("/filterDays")) {
+        var filterDays = [ {
+          "day" : "Mon",
+          "selected" : true
+        }, {
+          "day" : "Tue",
+          "selected" : true
+        }, {
+          "day" : "Wed",
+          "selected" : true
+        }, {
+          "day" : "Thu",
+          "selected" : true
+        }, {
+          "day" : "Fri",
+          "selected" : true
+        }, {
+          "day" : "Sat",
+          "selected" : true
+        }, {
+          "day" : "Sun",
+          "selected" : true
+        } ];
+        this.oModel.setProperty("/filterDays", filterDays);
+      }
+      if (!this.oModel.getProperty("/filterTime")) {
+        var filterTime = [ {
+          "startTime" : 0,
+          "endTime" : 1440
+        } ];
+        this.oModel.setProperty("/filterTime", filterTime);
+      }
+
       this.oModel.setProperty("/vendorsCategory", vendorCat);
       this.oView.setModel(this.oModel);
+
     }
   },
 
@@ -61,8 +95,15 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
   // onExit: function() {
   // }
   handleFilter : function(oEvent) {
+    var vendorCat = this.oModel.getProperty("/vendorsCategory");
+    var selectedKeys = [];
+    for (var i = 0; i < vendorCat.length; i++) {
+      if (vendorCat[i].selected) {
+        selectedKeys.push(vendorCat[i].ENTID);
+      }
+    }
     this.router.navTo("VendorListDetail", {
-      ETYID : this.paramValue.ETYID,
+      ETYID : selectedKeys.join(),
       UID : this.paramValue.UID,
       ENTID : this.paramValue.ENTID,
       ETCID : this.paramValue.ETCID,

@@ -1,0 +1,65 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="sap.ui.medApp.view.Profile"
+	xmlns:f="sap.ui.layout.form" xmlns:c="sap.ui.commons" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showNavButton="true" navButtonPress="navToBack" title="Update profile"
+		content="{/LoggedUser}">
+		<content>
+			<f:SimpleForm id="SimpleFormChange354" maxContainerCols="2"
+				editable="true" class="editableForm">
+				<f:content>
+					<core:Title text="Person" />
+					<c:Label text="Name"></c:Label>
+					<l:HorizontalLayout>
+						<c:TextField width="30%" value="{PRFIX}" />
+						<c:TextField width="100%" value="{FRNAM}" />
+						<c:TextField value="{LTNAM}" width="100%" />
+					</l:HorizontalLayout>
+					<c:Label text="Date of Birth"></c:Label>
+					<c:DatePicker yyyymmdd="19990909" value="{URDOB}" />
+					<c:Label text="Gender"></c:Label>
+					<c:RadioButtonGroup columns="2"
+						selectedIndex="{path:'GENDR',formatter:'sap.ui.medApp.global.globalFormatter.getBooleanToNum'}">
+						<c:items>
+							<core:Item text="male"></core:Item>
+							<core:Item text="female"></core:Item>
+						</c:items>
+					</c:RadioButtonGroup>
+					<core:Title text="Address" />
+					<c:Label text="Street/Number"></c:Label>
+					<c:TextField value="{Address/0/STREET}" />
+					<c:TextField value="{Address/0/LOCLT}" />
+					<c:Label text="Zipcode/ City"></c:Label>
+					<c:TextField value="{Address/0/PINCD}" />
+					<c:TextField value="{Address/0/CTYNM}" />
+					<c:Label text="Country"></c:Label>
+					<c:TextField value="India" />
+					<core:Title text="Contact" />
+					<c:Label text="Phone"></c:Label>
+					<l:HorizontalLayout content="{Characteristics}">
+						<c:TextField
+							value="{parts:[{path: 'CHRID'}, {path :'VALUE'}], formatter: '.getPhoneNumber'}"
+							visible="{path:'CHRID', formatter:'.handlePhoneNumber'}" />
+					</l:HorizontalLayout>
+					<c:Label text="Mobile"></c:Label>
+					<l:HorizontalLayout content="{Characteristics}">
+						<c:TextField
+							value="{parts:[{path: 'CHRID'}, {path :'VALUE'}], formatter: '.getMobileNumber'}"
+							visible="{path:'CHRID', formatter:'.handleMobileNumber'}" />
+					</l:HorizontalLayout>
+
+					<c:Label text="Email"></c:Label>
+					<c:TextField value="{USRNM}" enabled="false" />
+					<core:Title text="Password" />
+					<c:Label text="Password"></c:Label>
+					<c:PasswordField value="{UERPW}"  type="password"/>
+					<c:Label text="Confirm Password"></c:Label>
+					<c:PasswordField value="{UERPW}" type="password"/>
+					<c:Label text="Re-Confirm Password"></c:Label>
+					<c:PasswordField value="{UERPW}" type="password"/>
+					<c:Label text=""></c:Label>
+					<Button text="Update" class="buttonDesign" width="auto" press="handleUpdateUser"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</Page>
+</core:View>

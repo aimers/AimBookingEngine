@@ -20,16 +20,63 @@ sap.ui
           },
           _handleRouteMatched : function(evt) {
             this.paramValue = evt.getParameter("arguments");
-            var sPath = "/" + this.paramValue.VPATH + "/"
-                + this.paramValue.VINDEX;
-            if (!this.oModel) {
-              this.oModel = sap.ui.medApp.global.util
-                  .getVendorModel(this.paramValue);
-              // this.vendorDetail = [ this.oModel.getProperty(sPath) ];
-              this.oModel.setProperty("/vendorsDetail", [ this.oModel
-                  .getProperty(sPath) ]);
-              this.oView.setModel(this.oModel);
+            if (evt.getParameter("name") === "_VendorDetail") {
+              this.getView().byId("monthCalenderView").setBusy(true);
+              var sPath = "/" + this.paramValue.VPATH + "/"
+                  + this.paramValue.VINDEX;
+              if (!this.oModel) {
+                this.oModel = sap.ui.medApp.global.util
+                    .getVendorModel(this.paramValue);
+                // this.vendorDetail = [ this.oModel.getProperty(sPath) ];
+                this.oModel.setProperty("/vendorsDetail", [ this.oModel
+                    .getProperty(sPath) ]);
+                this.oView.setModel(this.oModel);
+              }
+              this.setAggregation(sPath);
+              this.getView().byId("monthCalenderView").setBusy(false);
             }
+          },
+          setAggregation : function(sPath) {
+            var weekCalender = this.getView().byId("weekCalenderView");
+            var oLinkTemplate = new sap.m.Link({
+              press : [ this.handleBookingTime, this ]
+            }).bindProperty('text', {
+              parts : [ {
+                path : "START",
+              // formatter : oController.getCorrectTime()
+              }, {
+                path : "END",
+              // formatter : oController.getCorrectTime()
+              } ],
+              formatter : sap.ui.medApp.global.util.getCorrectTime
+            }).bindProperty("enabled", {
+              path : 'STATUS',
+              formatter : sap.ui.medApp.global.globalFormatter.getBookingStatus
+            });
+            var oTemplate = new sap.m.VBox({
+              renderType : "Div",
+              items : [
+                  new sap.m.VBox({
+                    items : [ new sap.m.Label({
+                      text : {
+                        path : 'Date',
+                        formatter : sap.ui.medApp.global.util.getDateLabel
+                      }
+                    }) ]
+                  }).addStyleClass("CalenderDate"),
+                  new sap.m.VBox({}).addStyleClass("CalenderTime")
+                      .bindAggregation("items", "TimeSlots", oLinkTemplate) ],
+              visible : {
+                path : 'Date',
+                formatter : sap.ui.medApp.global.util.handleFilterDays
+              }
+            }).addStyleClass("daySchedule");
+            weekCalender.bindAggregation("items", sPath
+                + "/vendorsAvailableTime", oTemplate);
+            weekCalender.setVisible(false);
+            this.getView().byId("monthCalenderView").setVisible(true);
+            this.getView().byId("radioWeekly").setSelected(false);
+            this.getView().byId("radioMonthly").setSelected(true);
           },
           loadListDetailFacade : function(sPath, d) {
             var deviceModel = sap.ui.getCore().getModel("device");
@@ -69,10 +116,10 @@ sap.ui
               "key" : "ENDATE",
               "value" : endData
             } ]
-            this._vendorListServiceFacade.getRecords(null, null,
-                "/vendorsAvailableTime", "getVendorRuleDetail", param);
-            var vendorTimeDetail = this.oModel
-                .getProperty("/vendorsAvailableTime");
+            this._vendorListServiceFacade.getRecords(null, null, sPath
+                + "/vendorsAvailableTime", "getVendorRuleDetail", param);
+            var vendorTimeDetail = this.oModel.getProperty(sPath
+                + "/vendorsAvailableTime");
             vendorTimeDetail[0].SPATH = sPath;
           },
           getImageUrl : function(oValue) {

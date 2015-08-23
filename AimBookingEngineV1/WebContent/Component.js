@@ -73,6 +73,12 @@ sap.ui.core.UIComponent
                     view : "BookingHistory", // View of the _DealsList Router
                     targetAggregation : "pages",
                     targetControl : "idAppControl", // Target Control Id
+                  }, {
+                    pattern : "profile", // patern matching
+                    name : "_profile", // router name
+                    view : "Profile", // View of the _DealsList Router
+                    targetAggregation : "pages",
+                    targetControl : "idAppControl", // Target Control Id
                   } ]
             }
           },
