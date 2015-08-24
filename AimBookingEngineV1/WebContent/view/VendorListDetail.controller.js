@@ -213,7 +213,7 @@ sap.ui
                     oBookingBox[0].getContent()[1].setVisible(false);
                   }
                   that.oView.setBusy(false);
-                }, 10);
+                }, 2000);
           },
           handleWeekCalender : function(oEvent) {
             var oBookingBox = oEvent.oSource.oParent;
@@ -253,7 +253,7 @@ sap.ui
             setTimeout(function() {
               sap.ui.medApp.global.util.handleBooking(_Event, that._oRouter);
               that.oView.setBusy(false);
-            }, 10);
+            }, 2000);
           },
           doNavBack : function(event) {
             this._oRouter.navTo("_searchVendors", {

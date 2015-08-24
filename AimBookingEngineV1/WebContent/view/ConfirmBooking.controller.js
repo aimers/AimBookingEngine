@@ -79,7 +79,7 @@ sap.ui
                   _this._vendorListServiceFacade.updateParameters(param,
                       fnSuccess, null, "book");
                   _oSource.setBusy(false);
-                }, 5000);
+                }, 2000);
           },
           getMonth : function(monthStr) {
             return new Date(monthStr + '-1-01').getMonth() + 1

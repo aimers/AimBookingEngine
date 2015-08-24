@@ -27,7 +27,7 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
         _that._getTileIcons();
         _that.getAddressSuggestions();
         _that.oView.setBusy(false);
-      }, 10);
+      }, 2000);
 
     }
     // 
@@ -121,7 +121,7 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
         // return false; // TODO
       }
       _that.oView.byId("homePageContent").setBusy(false);
-    }, 10);
+    }, 2000);
 
   },
   /*
