@@ -272,7 +272,9 @@ private Object selectAllUserAccount(HashMap myInfo, ConnectionManager dbcon) {
 		if(detailsJSON.has("USRID")){
 			query = query + "where `usrmt`.`USRID` in ("+detailsJSON.get("USRID")+") ";
 		}
-	
+		if(detailsJSON.has("USRNM")){
+			query = query + "where `uacmt`.`USRNM` like \"%"+detailsJSON.get("USRNM")+"%\" ";
+		}
 		System.out.println(query);
 		rs=dbcon.stm.executeQuery(query);
 		JSONArray userArray = Convertor.convertToJSON(rs);
