@@ -155,9 +155,9 @@ sap.ui.medApp.global.util = {
     }
     return dist
   },
-  handleBooking : function(oEvent, oRouter) {
-    var sTime = oEvent.oSource.getText();
-    var sContextPath = oEvent.oSource.oParent.getBindingContext().getPath();
+  handleBooking : function(_source, oRouter) {
+    var sTime = _source.getText();
+    var sContextPath = _source.oParent.getBindingContext().getPath();
     var vendorIndexPath;
     var modelData = this._mainModel.getProperty(sContextPath);
     var vendorIndexPath = "/" + sContextPath.split("/")[1] + "/"

@@ -22,15 +22,29 @@ sap.ui
             this.paramValue = evt.getParameter("arguments");
             if (evt.getParameter("name") === "_VendorDetail") {
               this.oView.setBusy(true);
+
               var sPath = "/" + this.paramValue.VPATH + "/"
                   + this.paramValue.VINDEX;
-              if (!this.oModel) {
-                this.oModel = sap.ui.medApp.global.util
-                    .getVendorModel(this.paramValue);
-              }
+
               this.oModel = sap.ui.medApp.global.util
                   .getVendorModel(this.paramValue);
               var _that = this;
+              if (sessionStorage.medAppUID != undefined) {
+                if (!_that.oModel.getProperty("/LoggedUser")) {
+                  var param = [ {
+                    "key" : "details",
+                    "value" : {
+                      "USRID" : sessionStorage.medAppUID,
+                      "UERPW" : sessionStorage.medAppPWD
+                    }
+                  } ];
+                  var fnSuccess = function(oData) {
+                    _that.oModel.setProperty("/LoggedUser", oData.results);
+                  }
+                }
+                sap.ui.medApp.global.util.getLoginData(param, fnSuccess);
+              }
+
               // this.vendorDetail = [ this.oModel.getProperty(sPath) ];
               var fnSuccess = function(oData) {
                 _that.oModel.setProperty("/vendorsList", oData.results);
@@ -199,14 +213,14 @@ sap.ui
                 + this.paramValue.VINDEX;
             var _this = this;
             var fnSuccess = function(oData) {
-              this.getView().byId("monthCalenderView").setVisible(false);
-              this.getView().byId("weekCalenderView").setVisible(true);
-              oBookingBox.oParent.getItems()[0].getItems()[1].getItems()[1]
-                  .setSelected(false);
+              _this.getView().byId("monthCalenderView").setVisible(false);
+              _this.getView().byId("weekCalenderView").setVisible(true);
               oBookingBox.oParent.getItems()[0].getItems()[1].getItems()[0]
-                  .setSelected(true);
-              _this.oModel.getProperty(sPath + "/vendorsAvailableTime",
-                  oData.results);
+                  .setSelectedIndex(0);
+              var vendorTimeDetail = oData.results;
+              vendorTimeDetail[0].SPATH = sPath;
+              _this.oModel.setProperty(sPath + "/vendorsAvailableTime",
+                  vendorTimeDetail);
               _this.oView.setBusy(false);
             };
             this.loadListDetailFacade(sPath, selectedDate, fnSuccess);
@@ -235,7 +249,8 @@ sap.ui
             });
           },
           handleBookingTime : function(oEvt) {
-            sap.ui.medApp.global.util.handleBooking(oEvt, this.router);
+
+            sap.ui.medApp.global.util.handleBooking(oEvt.oSource, this.router);
           },
           getDateLabel : function(oValue) {
             if (oValue != null && oValue != undefined) {
