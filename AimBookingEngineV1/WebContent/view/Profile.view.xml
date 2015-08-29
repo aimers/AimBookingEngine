@@ -10,12 +10,12 @@
 					<core:Title text="Person" />
 					<c:Label text="Name"></c:Label>
 					<l:HorizontalLayout>
-						<c:TextField width="30%" value="{PRFIX}" />
-						<c:TextField width="100%" value="{FRNAM}" />
-						<c:TextField value="{LTNAM}" width="100%" />
+						<c:TextField width="30%" value="{PRFIX}" placeholder="Prefix"/>
+						<c:TextField width="100%" value="{FRNAM}" placeholder="First Name"/>
+						<c:TextField value="{LTNAM}" width="100%" placeholder="Last Name"/>
 					</l:HorizontalLayout>
 					<c:Label text="Date of Birth"></c:Label>
-					<c:DatePicker yyyymmdd="19990909" value="{URDOB}" />
+					<DatePicker value="{URDOB}" />
 					<c:Label text="Gender"></c:Label>
 					<c:RadioButtonGroup columns="2"
 						selectedIndex="{path:'GENDR',formatter:'sap.ui.medApp.global.globalFormatter.getBooleanToNum'}">

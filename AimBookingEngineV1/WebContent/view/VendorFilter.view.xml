@@ -3,20 +3,21 @@
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="false">
 		<content>
-		  <!--  <VBox width="90%" height="5%" alignItems="End">
-		    <Button text="Apply" press="handleFilter" class="buttonDesign"/>
-		  </VBox>-->
+			<!-- <VBox width="90%" height="5%" alignItems="End"> <Button text="Apply" 
+				press="handleFilter" class="buttonDesign"/> </VBox> -->
 			<VBox width="90%" class="appointment" height="20%">
 				<Label text="{i18n>APPOINTMENT_DAY}" class="filterLabel" />
-				<HBox  class="weekDayFilter" items="{/filterDays}">
+				<HBox class="weekDayFilter" items="{/filterDays}">
 					<ToggleButton text="{day}" pressed="{selected}" press="handleDayChange"></ToggleButton>
 				</HBox>
 			</VBox>
-			<VBox height="20%" class="appointment" items="{/filterTime}">
-				<Label text="{i18n>SELECT_TIME}" class="filterLabel"></Label>
-				<c:RangeSlider max="1440" min="0" value="{startTime}" value2="{endTime}"
-					totalUnits="3" smallStepWidth="1" stepLabels="true" labels="00:00, 12:00, 24:00"
-					class="filterLabel" change="handleDayChange"></c:RangeSlider>
+			<VBox height="20%" class="appointment" >
+				<Label text="Select Time" class="filterLabel"></Label>
+				<VBox items="{/filterTime}">
+					<c:RangeSlider max="1440" min="0" value="{startTime}"
+						value2="{endTime}" totalUnits="3" smallStepWidth="1" stepLabels="true"
+						labels="00:00, 12:00, 24:00" class="filterLabel" change="handleDayChange"></c:RangeSlider>
+				</VBox>
 			</VBox>
 			<VBox width="100%" height="50%">
 				<SearchField liveChange="onSearch" width="100%" height="10%" />
@@ -25,17 +26,17 @@
 					growingThreshold="4" growingScrollToLoad="true" class="filterCategoryList">
 					<items>
 						<StandardListItem title="{DESCR}"
-							iconDensityAware="false" iconInset="false" selected="{selected}"/>
+							iconDensityAware="false" iconInset="false" selected="{selected}" />
 					</items>
 				</List>
 			</VBox>
 		</content>
 		<footer>
-		   <Bar>
-		      <contentRight>
-		       <Button icon="sap-icon://filter" press="handleFilter"/>
-		      </contentRight>
-		   </Bar>
+			<Bar>
+				<contentRight>
+					<Button icon="sap-icon://filter" press="handleFilter" />
+				</contentRight>
+			</Bar>
 		</footer>
 	</Page>
 </core:View>

@@ -22,12 +22,17 @@ sap.ui
           _handleRouteMatched : function(evt) {
             this.parameter = evt.getParameter("arguments");
             if (evt.getParameter("name") === "_loginPage") {
-              if (sap.ui.medApp.global.util._mainModel) {
-                this.oModel = sap.ui.medApp.global.util._mainModel;
+              if (sessionStorage.medAppUID != undefined
+                  && sessionStorage.medAppPWD != undefined) {
+                this._oRouter.navTo('_homeTiles');
               } else {
-                this.oModel = new sap.ui.model.json.JSONModel();
+                if (sap.ui.medApp.global.util._mainModel) {
+                  this.oModel = sap.ui.medApp.global.util._mainModel;
+                } else {
+                  this.oModel = new sap.ui.model.json.JSONModel();
+                }
+                this.getView().setModel(this.oModel);
               }
-              this.getView().setModel(this.oModel);
             }
           },
           /*
@@ -42,6 +47,7 @@ sap.ui
           },
           handleLogin : function() {
             var _this = this;
+            this.oView.setBusy(true);
             var username = this.oView.byId("usrNme").getValue();
             var password = this.oView.byId("pswd").getValue();
             var param = [ {
@@ -51,27 +57,31 @@ sap.ui
                 "UERPW" : password
               }
             } ];
-            var oData = sap.ui.medApp.global.util.getLoginData(param);
-            if (!oData.results.USRID) {
-              this.oView.byId("MessageBox").setVisible(true);
-              this.oView.byId("MessageBox").setText(
-                  "Email/Password is incorrect");
-            } else {
-              this.oView.byId("MessageBox").setVisible(false);
-              sessionStorage.setItem("medAppUID", oData.results.USRID);
-              sessionStorage.setItem("medAppPWD", oData.results.UERPW);
-              this.oModel.setProperty("/LoggedUser", oData.results);
-              if (this.parameter.flagID == 2) {
-                this._oRouter.navTo("ConfirmBooking", {
-                  "UID" : sessionStorage.medAppUID
-                });
+            var fnSuccess = function(oData) {
+              if (!oData.results.USRID) {
+                _this.oView.byId("MessageBox").setVisible(true);
+                _this.oView.byId("MessageBox").setText(
+                    "Email/Password is incorrect");
               } else {
-                var fav = this.handleFovoriteUsers(oData.results);
-                if (fav) {
-                  this._oRouter.navTo('_homeTiles');
+                _this.oView.byId("MessageBox").setVisible(false);
+                sessionStorage.setItem("medAppUID", oData.results.USRID);
+                sessionStorage.setItem("medAppPWD", oData.results.UERPW);
+                _this.oModel.setProperty("/LoggedUser", oData.results);
+                if (_this.parameter.flagID == 2) {
+                  _this._oRouter.navTo("ConfirmBooking", {
+                    "UID" : sessionStorage.medAppUID
+                  });
+                } else {
+                  var fav = _this.handleFovoriteUsers(oData.results);
+                  if (fav) {
+                    _this._oRouter.navTo('_homeTiles');
+                  }
                 }
               }
-            }
+              _this.oView.setBusy(false);
+            };
+            sap.ui.medApp.global.util.getLoginData(param, fnSuccess);
+
           },
           handleFovoriteUsers : function(uData) {
             var aUserIds = [];
@@ -96,6 +106,7 @@ sap.ui
           },
           handleRegister : function() {
             var _this = this;
+            this.oView.setBusy(true);
             var username = this.oView.byId("usrNme").getValue();
             if (!this.validateEmail(username)) {
               this.oView.byId("MessageBox").setVisible(true);
@@ -117,25 +128,30 @@ sap.ui
                 "DSPNM" : ""
               }
             } ];
-            var oData = sap.ui.medApp.global.util.getRegisterData(param);
-            if (!oData.results.USRID) {
-              this.oView.byId("MessageBox").setVisible(true);
-              this.oView.byId("MessageBox")
-                  .setText("User cannot be registered");
-              return false;
-            } else {
-              this.oView.byId("MessageBox").setVisible(false);
-              sessionStorage.setItem("medAppUID", oData.results.USRID);
-              sessionStorage.setItem("medAppPWD", oData.results.UERPW);
-              this.oModel.setProperty("/LoggedUser", oData.results);
-              if (this.parameter.flagID == 2) {
-                this._oRouter.navTo("ConfirmBooking", {
-                  "UID" : sessionStorage.medAppUID
-                });
+            var fnSuccess = function(oData) {
+              if (!oData.results.USRID) {
+                _this.oView.byId("MessageBox").setVisible(true);
+                _this.oView.byId("MessageBox").setText(
+                    "User cannot be registered");
+                return false;
               } else {
-                this._oRouter.navTo('_homeTiles');
+                _this.oView.byId("MessageBox").setVisible(false);
+                sessionStorage.setItem("medAppUID", oData.results.USRID);
+                sessionStorage.setItem("medAppPWD", oData.results.UERPW);
+                _this.oModel.setProperty("/LoggedUser", oData.results);
+                if (this.parameter.flagID == 2) {
+                  _this._oRouter.navTo("ConfirmBooking", {
+                    "UID" : sessionStorage.medAppUID
+                  });
+                } else {
+                  _this._oRouter.navTo('_homeTiles');
+                }
+                _this.oView.setBusy(true);
               }
-            }
+            };
+            var oData = sap.ui.medApp.global.util.getRegisterData(param,
+                fnSuccess);
+
           },
           validateEmail : function(email) {
             var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;

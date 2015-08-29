@@ -20,28 +20,32 @@ sap.ui
             this.bus = sap.ui.getCore().getEventBus();
           },
           _handleRouteMatched : function(evt) {
+            this.getView().byId("VendorsList").setBusy(true);
             this.paramValue = evt.getParameter("arguments");
             // JT FIX for refresh from home button
             if (evt.getParameter("name") === "VendorListDetail") {
-              this.getView().byId("VendorsList").setBusy(true);
+
               this.oIndexItem = [];
+              var that = this;
+              this.oModel = sap.ui.medApp.global.util.getVendorModel();
               if (this.paramValue.FILTER != 0) {
-                this.oModel = sap.ui.medApp.global.util
-                    .getVendorFilterModel(this.paramValue);
+                var fnSuccess = function(oData) {
+                  that.oModel.setProperty("/vendorsList", oData.results);
+                  that.getView().byId("VendorsList").setBusy(false);
+                }
+                sap.ui.medApp.global.util.loadVendorFILTERData(this.paramValue,
+                    fnSuccess);
+
               } else {
-                this.oModel = sap.ui.medApp.global.util
-                    .getVendorModel(this.paramValue);
+                var fnSuccess = function(oData) {
+                  that.oModel.setProperty("/vendorsList", oData.results);
+                  that.getView().byId("VendorsList").setBusy(false);
+                }
+                sap.ui.medApp.global.util.loadVendorData(this.paramValue,
+                    fnSuccess);
               }
               this.oView.setModel(this.oModel);
-              this.getView().byId("VendorsList").setBusy(false);
-            } else if (evt.getParameter("name") === "_homeTiles") {
-              // JT: TODO Check: Reset Model for next refresh
-              this.oIndexItem = [];
-              this.oModel = sap.ui.medApp.global.util
-                  .getVendorModel(this.paramValue);
-              this.oView.setModel(this.oModel);
             }
-
           },
           getImageUrl : function(oValue) {
             if (oValue != null && oValue != undefined) {
@@ -116,7 +120,7 @@ sap.ui
             }
             oEvent.oSource.setBusy(false);
           },
-          loadVendorCalendorTime : function(sPath, d) {
+          loadVendorCalendorTime : function(sPath, d, fnSuccess) {
             // var iPathIndex = sPath.split("/")[2];
             var deviceModel = sap.ui.getCore().getModel("device");
             var UserData = this.oModel.getProperty(sPath);
@@ -155,11 +159,9 @@ sap.ui
               "key" : "ENDATE",
               "value" : endData
             } ]
-            this._vendorListServiceFacade.getRecords(null, null, sPath
+            this._vendorListServiceFacade.getRecords(fnSuccess, null, sPath
                 + "/vendorsAvailableTime", "getVendorRuleDetail", param);
-            var vendorTimeDetail = this.oModel.getProperty(sPath
-                + "/vendorsAvailableTime/");
-            vendorTimeDetail[0].SPATH = sPath;
+
           },
           handleCancelBooking : function(oFlagIndex) {
             var bookingBox = this.getView().byId("VendorsList").getItems()[oFlagIndex]
@@ -188,32 +190,38 @@ sap.ui
             var that = this;
             var _oSource = oEvent.oSource;
             this.oView.setBusy(true);
-            setTimeout(
-                function() {
-                  if (_oSource.getSelectedIndex() == 0) {
+            if (_oSource.getSelectedIndex() == 0) {
+              var oIndex = _oSource.getButtons()[_oSource.getSelectedIndex()]
+                  .getGroupName();
+              var oItemSelected = that.getView().byId("VendorsList").getItems()[oIndex]
+                  .getContent()[0];
+              var oBookingBox = oItemSelected.getContent();
+              var oCalendar = oBookingBox[0].getContent()[0].setVisible(false);
+              var sPath = oCalendar.getBindingContext().getPath();
+              var fnSuccess = function(oData) {
 
-                    var oIndex = _oSource.getButtons()[_oSource
-                        .getSelectedIndex()].getGroupName();
-                    var oItemSelected = that.getView().byId("VendorsList")
-                        .getItems()[oIndex].getContent()[0];
-                    var oBookingBox = oItemSelected.getContent();
-                    var oCalendar = oBookingBox[0].getContent()[0]
-                        .setVisible(false);
-                    var sPath = oCalendar.getBindingContext().getPath();
-                    that.loadVendorCalendorTime(sPath, new Date());
-                    oBookingBox[0].getContent()[1].setVisible(true);
-                  } else {
-                    var oIndex = _oSource.getButtons()[_oSource
-                        .getSelectedIndex()].getGroupName();
-                    var oItemSelected = this.getView().byId("VendorsList")
-                        .getItems()[oIndex].getContent()[0];
-                    var oBookingBox = oItemSelected.getContent();
-                    var oCalendar = oBookingBox[0].getContent()[0]
-                        .setVisible(true);
-                    oBookingBox[0].getContent()[1].setVisible(false);
-                  }
-                  that.oView.setBusy(false);
-                }, 2000);
+                oBookingBox[0].getContent()[1].setVisible(true);
+                that.oModel.setProperty(sPath + "/vendorsAvailableTime/",
+                    oData.results);
+                that.oModel.getProperty(sPath + "/vendorsAvailableTime/");
+
+                var vendorTimeDetail = that.oModel.getProperty(sPath
+                    + "/vendorsAvailableTime/");
+                vendorTimeDetail[0].SPATH = sPath;
+                that.oView.setBusy(false);
+              }
+              that.loadVendorCalendorTime(sPath, new Date(), fnSuccess);
+
+            } else {
+              var oIndex = _oSource.getButtons()[_oSource.getSelectedIndex()]
+                  .getGroupName();
+              var oItemSelected = this.getView().byId("VendorsList").getItems()[oIndex]
+                  .getContent()[0];
+              var oBookingBox = oItemSelected.getContent();
+              var oCalendar = oBookingBox[0].getContent()[0].setVisible(true);
+              oBookingBox[0].getContent()[1].setVisible(false);
+              that.oView.setBusy(false);
+            }
           },
           handleWeekCalender : function(oEvent) {
             var oBookingBox = oEvent.oSource.oParent;
@@ -265,17 +273,22 @@ sap.ui
             });
           },
           handleAddFavorite : function(oEvent) {
+            var flag = oEvent.oSource.getPressed();
             if (sessionStorage.medAppUID != undefined) {
-              var flag;
+              this.oView.setBusy(true);
+              var _this = this;
               var sPath = oEvent.oSource.getBindingContext().getPath();
+              var fnSuccess = function(oData) {
+                if (flag) {
+                  sap.m.MessageToast.show("Added to your favorite");
+                } else {
+                  sap.m.MessageToast.show("Removed from your favorite");
+                }
+                _this.oView.setBusy(false);
+              };
               var vendorData = this.oModel.getProperty(sPath);
-              var flag = sap.ui.medApp.global.util
-                  .setFavorite(vendorData.USRID);
-              if (flag) {
-                sap.m.MessageToast.show("Added to your favorite");
-              } else {
-                sap.m.MessageToast.show("Removed from your favorite");
-              }
+              sap.ui.medApp.global.util
+                  .setFavorite(vendorData.USRID, fnSuccess);
             } else {
               this._oRouter.navTo('_loginPage', {
                 flagID : 0

@@ -23,29 +23,21 @@
 
             _get : function(sServicePath, sModelPath, sMeasurePath, fnSuccess,
                 fnError, fnGetData) {
-              $.sap.log.debug("services.BaseServiceFacade->_get");
-              var _this = this;
-              var _fnSuccess = function(oData) {
-                var oPostProcessedData = {};
-                if (fnGetData) {
-                  oPostProcessedData = fnGetData(oData);
-                } else {
-                  oPostProcessedData = oData;
-                }
-                _this.oModel.setProperty(sModelPath, oPostProcessedData);
-                if (sMeasurePath) {
-                  _this.oModel.setProperty(sMeasurePath,
-                      oPostProcessedData[sMeasurePath.slice(1)]);
-                }
-
-                if (fnSuccess) {
-                  fnSuccess(oData);
-                }
-              };
+              /*
+               * $.sap.log.debug("services.BaseServiceFacade->_get"); var _this =
+               * this; var _fnSuccess = function(oData) { var oPostProcessedData =
+               * {}; if (fnGetData) { oPostProcessedData = fnGetData(oData); }
+               * else { oPostProcessedData = oData; }
+               * _this.oModel.setProperty(sModelPath, oPostProcessedData); if
+               * (sMeasurePath) { _this.oModel.setProperty(sMeasurePath,
+               * oPostProcessedData[sMeasurePath.slice(1)]); }
+               * 
+               * if (fnSuccess) { fnSuccess(oData); } };
+               */
               // _executeAjax : function(sServicePath, fnSuccess, fnError,
               // sRequetstType, oPayload,
               // bNoAbort, fnBeforeSend)
-              this._executeAjax(sServicePath, _fnSuccess, fnError, "GET", null,
+              this._executeAjax(sServicePath, fnSuccess, fnError, "GET", null,
                   true, null);
             },
 
@@ -90,12 +82,8 @@
               if (oPayload !== null) {
                 sPayload = JSON.stringify(oPayload);
               }
-
-              $.sap.log.debug("Requesting service path '" + sServicePath + "'");
               var sAjaxUrl = sServicePath;
-              that = this;
-              $.sap.log.info("the request type is " + sRequetstType
-                  + " and json payload is" + sPayload);
+              var that = this;
               this._mRequestsByServicePathCache[sServicePath] = oAjax = $
                   .ajax(
                       {// store
@@ -114,20 +102,8 @@
                         data : sPayload,
                         dataType : "json",
                         beforeSend : fnBeforeSend,
-                        async : false,
-                        success : function(oData, textStatus, jqXHR) {
-                          $.sap.log
-                              .debug("Success: The server send the following response: "
-                                  + JSON.stringify(oData));
-
-                          // Call nested function
-                          if (fnSuccess) {
-                            fnSuccess(oData);
-                          }
-
-                          // Reset request cache
-                          that._mRequestsByServicePathCache[sServicePath] = null;
-                        },
+                        async : true,
+                        success : fnSuccess,
                         error : function(XMLHttpRequest, textStatus,
                             errorThrown) {
                           if (textStatus == 'abort') {

@@ -22,19 +22,35 @@ sap.ui
           _handleRouteMatched : function(evt) {
             this.parameter = evt.getParameter("arguments");
             if (evt.getParameter("name") === "_profile") {
-              if (sap.ui.medApp.global.util._mainModel) {
-                this.oModel = sap.ui.medApp.global.util._mainModel;
-                var userData = this.oModel.getProperty("/LoggedUser");
-                var address;
-                /*
-                 * if (!userData.Address.length) { address = { 'USRID' : "",
-                 * 'PRIMR' : "", 'STREET' : "", 'LNDMK' : "", 'LOCLT' : "",
-                 * 'CTYID' : "", 'CTYNM' : "", 'PINCD' : "", 'LONGT' : "",
-                 * 'LATIT' : "" }; userData.Address.push(address); }
-                 */
-                this.oModel.setProperty("/LoggedUser", [ userData ]);
-              } else {
-                this.oModel = new sap.ui.model.json.JSONModel();
+              this.oModel = sap.ui.medApp.global.util.getMainModel();
+              if (sessionStorage.medAppUID != undefined) {
+                var _this = this;
+                if (_this.oModel.getProperty("/LoggedUser")) {
+                  var userData = this.oModel.getProperty("/LoggedUser");
+                  var address;
+                  /*
+                   * if (!userData.Address.length) { address = { 'USRID' : "",
+                   * 'PRIMR' : "", 'STREET' : "", 'LNDMK' : "", 'LOCLT' : "",
+                   * 'CTYID' : "", 'CTYNM' : "", 'PINCD' : "", 'LONGT' : "",
+                   * 'LATIT' : "" }; userData.Address.push(address); }
+                   */
+                  this.oModel.setProperty("/LoggedUser", [ userData ]);
+                  this.oView.setBusy(false);
+                } else {
+                  var param = [ {
+                    "key" : "details",
+                    "value" : {
+                      "USRID" : sessionStorage.medAppUID,
+                      "UERPW" : sessionStorage.medAppPWD
+                    }
+                  } ];
+                  var fnSuccess = function(oData) {
+                    _this.oModel.setProperty("/LoggedUser", [ oData.results ]);
+                    _this.oView.setBusy(false);
+                  }
+                  sap.ui.medApp.global.util.getLoginData(param, fnSuccess);
+                }
+
               }
               this.getView().setModel(this.oModel);
             }
@@ -49,103 +65,7 @@ sap.ui
             });
 
           },
-          handleLogin : function() {
-            var _this = this;
-            var username = this.oView.byId("usrNme").getValue();
-            var password = this.oView.byId("pswd").getValue();
-            var param = [ {
-              "key" : "details",
-              "value" : {
-                "USRNM" : username,
-                "UERPW" : password
-              }
-            } ];
-            var oData = sap.ui.medApp.global.util.getLoginData(param);
-            if (!oData.results.USRID) {
-              this.oView.byId("MessageBox").setVisible(true);
-              this.oView.byId("MessageBox").setText(
-                  "Email/Password is incorrect");
-            } else {
-              this.oView.byId("MessageBox").setVisible(false);
-              sessionStorage.setItem("medAppUID", oData.results.USRID);
-              sessionStorage.setItem("medAppPWD", oData.results.UERPW);
-              this.oModel.setProperty("/LoggedUser", oData.results);
-              var fav = this.handleFovoriteUsers(oData.results);
-              if (fav) {
-                if (this.parameter.flagID == 2) {
-                  this._oRouter.navTo("ConfirmBooking", {
-                    "UID" : sessionStorage.medAppUID
-                  });
-                } else {
-                  this._oRouter.navTo('_homeTiles');
-                }
-              }
-            }
-          },
-          handleFovoriteUsers : function(uData) {
-            var aUserIds = [];
-            if (uData.Characteristics) {
-              for (var i = 0; i < uData.Characteristics.length; i++) {
-                if (uData.Characteristics[i].CHRID == 11) {
-                  aUserIds.push(uData.Characteristics[i].VALUE);
-                }
-              }
-              if (aUserIds.length > 0) {
-                this._oRouter.navTo("VendorListDetail", {
-                  ENTID : "1",
-                  ETYID : "1",
-                  ETCID : "1",
-                  UID : uData.USRID,
-                  FILTER : aUserIds.toString()
-                });
-                return false;
-              }
-            }
-            return true;
-          },
-          handleRegister : function() {
-            var _this = this;
-            var username = this.oView.byId("usrNme").getValue();
-            if (!this.validateEmail(username)) {
-              this.oView.byId("MessageBox").setVisible(true);
-              this.oView.byId("MessageBox")
-                  .setText("Enter valid Email Address");
-              return false;
-            }
-            var param = [ {
-              "key" : "details",
-              "value" : {
-                "USRNM" : username,
-                "UTYID" : "2",
-                "PRFIX" : "",
-                "TITLE" : "",
-                "FRNAM" : "",
-                "LTNAM" : "",
-                "URDOB" : "1900/01/01",
-                "GENDR" : "2",
-                "DSPNM" : ""
-              }
-            } ];
-            var oData = sap.ui.medApp.global.util.getRegisterData(param);
-            if (!oData.results.USRID) {
-              this.oView.byId("MessageBox").setVisible(true);
-              this.oView.byId("MessageBox")
-                  .setText("User cannot be registered");
-              return false;
-            } else {
-              this.oView.byId("MessageBox").setVisible(false);
-              sessionStorage.setItem("medAppUID", oData.results.USRID);
-              sessionStorage.setItem("medAppPWD", oData.results.UERPW);
-              this.oModel.setProperty("/LoggedUser", oData.results);
-              if (this.parameter.flagID == 2) {
-                this._oRouter.navTo("ConfirmBooking", {
-                  "UID" : sessionStorage.medAppUID
-                });
-              } else {
-                this._oRouter.navTo('_homeTiles');
-              }
-            }
-          },
+
           validateEmail : function(email) {
             var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
             return re.test(email);

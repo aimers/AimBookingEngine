@@ -51,6 +51,7 @@ sap.ui.controller("sap.ui.medApp.view.App", {
       this.getView().byId('myShell').removeAllContent();
       this.getView().byId('myShell').addContent(app);
     }
+
   },
   onAfterRendering : function() {
 

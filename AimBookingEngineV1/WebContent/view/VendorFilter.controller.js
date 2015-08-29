@@ -10,24 +10,43 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
   onInit : function() {
     this.router = sap.ui.core.UIComponent.getRouterFor(this);
     this.router.attachRoutePatternMatched(this._handleRouteMatched, this);
+    this.oView.setBusy(true);
   },
 
   _handleRouteMatched : function(evt) {
     this.paramValue = evt.getParameter("arguments");
-
     this.oModel = sap.ui.medApp.global.util.getMainModel();
+    var _this = this;
     if (this.paramValue.ENTID !== undefined) {
       var selectedKeys = this.paramValue.ENTID.split(",");
       for (var i = 0; i < selectedKeys.length; i++) {
         selectedKeys[i] = parseInt(selectedKeys[i]);
       }
       var vendorCat = this.oModel.getProperty("/vendorsCategory");
-      for (var i = 0; i < vendorCat.length; i++) {
-        if (jQuery.inArray(vendorCat[i].ENTID, selectedKeys) != -1) {
-          vendorCat[i].selected = true;
-        } else {
-          vendorCat[i].selected = false;
+      if (vendorCat == undefined) {
+        var fnSuccess = function(oData) {
+          // do what you need here
+          vendorCat = oData.results;
+          for (var i = 0; i < vendorCat.length; i++) {
+            if (jQuery.inArray(vendorCat[i].ENTID, selectedKeys) != -1) {
+              vendorCat[i].selected = true;
+            } else {
+              vendorCat[i].selected = false;
+            }
+          }
+          _this.oModel.setProperty("/vendorsCategory", vendorCat);
+          _this.oView.setBusy(false);
         }
+        sap.ui.medApp.global.util.loadListCategory(fnSuccess);
+      } else {
+        for (var i = 0; i < vendorCat.length; i++) {
+          if (jQuery.inArray(vendorCat[i].ENTID, selectedKeys) != -1) {
+            vendorCat[i].selected = true;
+          } else {
+            vendorCat[i].selected = false;
+          }
+        }
+        _this.oModel.setProperty("/vendorsCategory", vendorCat);
       }
       if (!this.oModel.getProperty("/filterDays")) {
         var filterDays = [ {
@@ -61,10 +80,8 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
         } ];
         this.oModel.setProperty("/filterTime", filterTime);
       }
-
-      this.oModel.setProperty("/vendorsCategory", vendorCat);
       this.oView.setModel(this.oModel);
-
+      this.oView.setBusy(false);
     }
   },
 

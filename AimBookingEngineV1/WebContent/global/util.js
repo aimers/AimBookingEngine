@@ -2,6 +2,7 @@ jQuery.sap.declare("sap.ui.medApp.global.util");
 jQuery.sap.require("sap.ui.medApp.service.vendorListServiceFacade");
 sap.ui.medApp.global.util = {
   getHomeModel : function(_oRouter) {
+    var that = this;
     if (!this._mainModel) {
       this._mainModel = new sap.ui.model.json.JSONModel();
       if (sessionStorage.medAppUID != undefined
@@ -13,8 +14,10 @@ sap.ui.medApp.global.util = {
             "UERPW" : sessionStorage.medAppPWD
           }
         } ];
-        var oData = this.getLoginData(param);
-        this._mainModel.setProperty("/LoggedUser", oData.results);
+        var fnSuccess = function(oData) {
+          that._mainModel.setProperty("/LoggedUser", oData.results);
+        }
+        this.getLoginData(param, fnSuccess);
       }
     }
     return this._mainModel;
@@ -23,11 +26,11 @@ sap.ui.medApp.global.util = {
     if (!this._mainModel) {
       this._mainModel = this.getHomeModel();
     }
-    this.loadListCategory();
-    this.loadAddress();
+    // this.loadListCategory();
+    // this.loadAddress();
     return this._mainModel;
   },
-  loadListCategory : function(facade) {
+  loadListCategory : function(fnSuccess) {
     this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
         this._mainModel);
     param = [ {
@@ -37,22 +40,22 @@ sap.ui.medApp.global.util = {
       "key" : "UID",
       "value" : "1"
     } ]
-    this._vendorListServiceFacade.getRecords(null, null, "/vendorsCategory",
-        "getVendorCategory", param);
+    this._vendorListServiceFacade.getRecords(fnSuccess, null,
+        "/vendorsCategory", "getVendorCategory", param);
   },
-  loadAddress : function(facade) {
+  loadAddress : function(fnSuccess) {
     this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
         this._mainModel);
     param = [];
-    this._vendorListServiceFacade.getRecords(null, null, "/vendorsAddress",
-        "getUniqueAddress", param);
+    this._vendorListServiceFacade.getRecords(fnSuccess, null,
+        "/vendorsAddress", "getUniqueAddress", param);
 
   },
   getVendorModel : function(paramValue) {
     if (!this._mainModel) {
       this._mainModel = this.getHomeModel();
     }
-    this.loadVendorData(paramValue);
+    // this.loadVendorData(paramValue);
     return this._mainModel;
   },
   getVendorFilterModel : function(paramValue) {
@@ -62,7 +65,7 @@ sap.ui.medApp.global.util = {
     this.loadVendorFILTERData(paramValue);
     return this._mainModel;
   },
-  loadVendorData : function(paramValue) {
+  loadVendorData : function(paramValue, fnSuccess) {
     this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
         this._mainModel);
     var param = [ {
@@ -81,11 +84,11 @@ sap.ui.medApp.global.util = {
       "key" : "ENTID",
       "value" : paramValue.ENTID
     } ]
-    this._vendorListServiceFacade.getRecords(null, null, "/vendorsList",
+    this._vendorListServiceFacade.getRecords(fnSuccess, null, "/vendorsList",
         "getVendorData", param);
 
   },
-  loadVendorFILTERData : function(paramValue) {
+  loadVendorFILTERData : function(paramValue, fnSuccess) {
     this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
         this._mainModel);
     var param = [ {
@@ -107,20 +110,18 @@ sap.ui.medApp.global.util = {
       "key" : "filters",
       "value" : '{"USRID" = "' + paramValue.FILTER + '"}'
     } ]
-    this._vendorListServiceFacade.getRecords(null, null, "/vendorsList",
+    this._vendorListServiceFacade.getRecords(fnSuccess, null, "/vendorsList",
         "getVendorData", param);
 
   },
   getHistoryModel : function(paramValue) {
+    var that = this;
     if (!this._mainModel) {
       this._mainModel = this.getHomeModel();
     }
-    if (sessionStorage.medAppUID != undefined) {
-      this.loadBookingHistory();
-    }
     return this._mainModel;
   },
-  loadBookingHistory : function() {
+  loadBookingHistory : function(fnSuccess) {
     this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
         this._mainModel);
     var userData = this._mainModel.getProperty("/LoggedUser");
@@ -131,7 +132,7 @@ sap.ui.medApp.global.util = {
         "CUTID" : userData.UTYID
       }
     } ];
-    this._vendorListServiceFacade.getRecords(null, null, "/BookingList",
+    this._vendorListServiceFacade.getRecords(fnSuccess, null, "/BookingList",
         "getBookingHistory", param);
   },
   distance : function(lat1, lon1, lat2, lon2, unit) {
@@ -155,8 +156,8 @@ sap.ui.medApp.global.util = {
     return dist
   },
   handleBooking : function(oEvent, oRouter) {
-    var sTime = oEvent.getText();
-    var sContextPath = oEvent.oParent.getBindingContext().getPath();
+    var sTime = oEvent.oSource.getText();
+    var sContextPath = oEvent.oSource.oParent.getBindingContext().getPath();
     var vendorIndexPath;
     var modelData = this._mainModel.getProperty(sContextPath);
     var vendorIndexPath = "/" + sContextPath.split("/")[1] + "/"
@@ -180,33 +181,24 @@ sap.ui.medApp.global.util = {
       });
     }
   },
-  getLoginData : function(param, args) {
+  getLoginData : function(param, fnSuccess) {
     // var _oRouter = sap.ui.core.UIComponent.getRouterFor(_this);
     var _this = this;
     var bool;
     this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
         this._mainModel);
-    var fnSuccess = function(oData) {
-      bool = oData;
-    };
     this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
         "loginUser");
-    return bool;
   },
-  getRegisterData : function(param, args) {
+  getRegisterData : function(param, fnSuccess) {
     // var _oRouter = sap.ui.core.UIComponent.getRouterFor(_this);
     var _this = this;
-    var bool;
     this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
         this._mainModel);
-    var fnSuccess = function(oData) {
-      bool = oData;
-    };
     this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
         "registerUser");
-    return bool;
   },
-  setFavorite : function(userId) {
+  setFavorite : function(userId, fnSuccess) {
     var value = -1;
     var oData;
     var bool;
@@ -249,13 +241,8 @@ sap.ui.medApp.global.util = {
       "key" : "details",
       "value" : userData
     } ];
-
-    var fnSuccess = function(oData) {
-
-    };
     this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
         "updateUser");
-    return bool;
   },
   userUpdate : function() {
     var userData = this._mainModel.getProperty("/LoggedUser");
@@ -277,7 +264,11 @@ sap.ui.medApp.global.util = {
     this._vendorListServiceFacade.updateParameters(param, fnSuccess, fnError,
         "updateUser");
   },
-  cancelBooking : function(boomingData) {
+  cancelBooking : function(boomingData, fnSuccess, fnError) {
+    if (!this._vendorListServiceFacade) {
+      this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+          this._mainModel);
+    }
     var param = [ {
       "key" : "details",
       "value" : {
@@ -292,13 +283,6 @@ sap.ui.medApp.global.util = {
         "VSEML" : boomingData.VERNM,
       }
     } ];
-
-    var fnSuccess = function(oData) {
-      sap.m.MessageToast.show("Booking has been cancelled");
-    };
-    fnError = function() {
-      sap.m.MessageToast.show("Booking cannot be cancelled");
-    }
     this._vendorListServiceFacade.updateParameters(param, fnSuccess, fnError,
         "cancelBooking");
   },

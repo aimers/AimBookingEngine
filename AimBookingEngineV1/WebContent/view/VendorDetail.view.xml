@@ -10,9 +10,11 @@
 						<VBox width="100%" class="vendorItems" items="{/vendorsDetail}">
 							<HBox width="100%">
 								<VBox width="49%">
-									<VBox justifyContent="Center" class="vendorAddress">
+									<HBox justifyContent="Start" class="vendorAddress">
+										<ToggleButton press="handleAddFavorite" icon="sap-icon://favorite"
+											pressed="{path:'USRID', formatter:'sap.ui.medApp.global.globalFormatter.checkFavorite'}"></ToggleButton>
 										<Label text="{PRFIX}{DSPNM}" />
-									</VBox>
+									</HBox>
 									<!-- <HBox alignItems="Center" class="vendorAddress"> <Text text="{uqnm} 
 										, {clnm}" /> </HBox> -->
 									<HBox alignItems="Center" class="vendorAddress" items="{Address}">
@@ -77,9 +79,17 @@
 								<Label text="Select Date"></Label>
 							</HBox>
 							<HBox width="50%" justifyContent="End">
-								<RadioButton text="Weekly" select="changeToOneWeek" id="radioWeekly"/>
-								<RadioButton text="Monthly" select="changeToOneMonth"
-									id="radioMonthly"/>
+								<RadioButtonGroup class="sapUiMediumMarginBottom"
+									selectedIndex="1" select="changeToOneWeek" columns="3"
+									id="radioWeekly">
+									<buttons>
+										<RadioButton text="Weekly" />
+										<RadioButton text="Monthly" />
+									</buttons>
+								</RadioButtonGroup>
+								<!-- </RadioButtonGroup> <RadioButton text="Weekly" select="changeToOneWeek" 
+									id="radioWeekly"/> <RadioButton text="Monthly" select="changeToOneMonth" 
+									id="radioMonthly"/> -->
 							</HBox>
 						</HBox>
 						<VBox id="monthCalenderView" width="99%">
@@ -87,10 +97,9 @@
 								select="handleWeekCalender">
 							</me:Calendar>
 						</VBox>
-						<HBox alignItems="Start" justifyContent="SpaceAround"
-							class="weekCalenderView" id="weekCalenderView"
-							>
-							
+						<HBox alignItems="Start" justifyContent="SpaceAround" class="weekCalenderView"
+							id="weekCalenderView">
+
 						</HBox>
 					</VBox>
 				</content>

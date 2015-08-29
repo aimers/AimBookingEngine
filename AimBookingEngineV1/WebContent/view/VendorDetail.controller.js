@@ -21,19 +21,27 @@ sap.ui
           _handleRouteMatched : function(evt) {
             this.paramValue = evt.getParameter("arguments");
             if (evt.getParameter("name") === "_VendorDetail") {
-              this.getView().byId("monthCalenderView").setBusy(true);
+              this.oView.setBusy(true);
               var sPath = "/" + this.paramValue.VPATH + "/"
                   + this.paramValue.VINDEX;
               if (!this.oModel) {
                 this.oModel = sap.ui.medApp.global.util
                     .getVendorModel(this.paramValue);
-                // this.vendorDetail = [ this.oModel.getProperty(sPath) ];
-                this.oModel.setProperty("/vendorsDetail", [ this.oModel
-                    .getProperty(sPath) ]);
-                this.oView.setModel(this.oModel);
               }
-              this.setAggregation(sPath);
-              this.getView().byId("monthCalenderView").setBusy(false);
+              this.oModel = sap.ui.medApp.global.util
+                  .getVendorModel(this.paramValue);
+              var _that = this;
+              // this.vendorDetail = [ this.oModel.getProperty(sPath) ];
+              var fnSuccess = function(oData) {
+                _that.oModel.setProperty("/vendorsList", oData.results);
+                _that.oModel.setProperty("/vendorsDetail", [ _that.oModel
+                    .getProperty(sPath) ]);
+                _that.oView.setModel(_that.oModel);
+                _that.setAggregation(sPath);
+                _that.getView().setBusy(false);
+              };
+              sap.ui.medApp.global.util.loadVendorData(this.paramValue,
+                  fnSuccess);
             }
           },
           setAggregation : function(sPath) {
@@ -75,10 +83,9 @@ sap.ui
                 + "/vendorsAvailableTime", oTemplate);
             weekCalender.setVisible(false);
             this.getView().byId("monthCalenderView").setVisible(true);
-            this.getView().byId("radioWeekly").setSelected(false);
-            this.getView().byId("radioMonthly").setSelected(true);
+            this.getView().byId("radioWeekly").setSelectedIndex(1);
           },
-          loadListDetailFacade : function(sPath, d) {
+          loadListDetailFacade : function(sPath, d, fnSuccess) {
             var deviceModel = sap.ui.getCore().getModel("device");
             var UserData = this.oModel.getProperty(sPath);
             this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
@@ -116,11 +123,9 @@ sap.ui
               "key" : "ENDATE",
               "value" : endData
             } ]
-            this._vendorListServiceFacade.getRecords(null, null, sPath
+            this._vendorListServiceFacade.getRecords(fnSuccess, null, sPath
                 + "/vendorsAvailableTime", "getVendorRuleDetail", param);
-            var vendorTimeDetail = this.oModel.getProperty(sPath
-                + "/vendorsAvailableTime");
-            vendorTimeDetail[0].SPATH = sPath;
+
           },
           getImageUrl : function(oValue) {
             if (oValue != null && oValue != undefined) {
@@ -137,30 +142,74 @@ sap.ui
             this._oRouter.myNavBack();
           },
           changeToOneWeek : function(oEvent) {
-            var sPath = "/" + this.paramValue.VPATH + "/"
-                + this.paramValue.VINDEX;
-            this.loadListDetailFacade(sPath, new Date());
-            this.getView().byId("monthCalenderView").setVisible(false);
-            this.getView().byId("weekCalenderView").setVisible(true);
+            this.oView.setBusy(true);
+            var _oSource = oEvent.oSource;
+            var _this = this;
+            if (_oSource.getSelectedIndex() == 0) {
+              var sPath = "/" + this.paramValue.VPATH + "/"
+                  + this.paramValue.VINDEX;
+              var fnSuccess = function(oData) {
+                _this.getView().byId("monthCalenderView").setVisible(false);
+                _this.getView().byId("weekCalenderView").setVisible(true);
+
+                var vendorTimeDetail = oData.results;
+                vendorTimeDetail[0].SPATH = sPath;
+                _this.oModel.setProperty(sPath + "/vendorsAvailableTime",
+                    vendorTimeDetail);
+                _this.oView.setBusy(false);
+              }
+              this.loadListDetailFacade(sPath, new Date(), fnSuccess);
+
+            } else {
+              this.getView().byId("monthCalenderView").setVisible(true);
+              this.getView().byId("weekCalenderView").setVisible(false);
+              this.oView.setBusy(false);
+            }
           },
-          changeToOneMonth : function(oEvent) {
-            this.getView().byId("monthCalenderView").setVisible(true);
-            this.getView().byId("weekCalenderView").setVisible(false);
+          handleAddFavorite : function(oEvent) {
+            var flag = oEvent.oSource.getPressed();
+            if (sessionStorage.medAppUID != undefined) {
+              this.oView.setBusy(true);
+              var _this = this;
+              var sPath = oEvent.oSource.getBindingContext().getPath();
+              var fnSuccess = function(oData) {
+                if (flag) {
+                  sap.m.MessageToast.show("Added to your favorite");
+                } else {
+                  sap.m.MessageToast.show("Removed from your favorite");
+                }
+                _this.oView.setBusy(false);
+              };
+              var vendorData = this.oModel.getProperty(sPath);
+              sap.ui.medApp.global.util
+                  .setFavorite(vendorData.USRID, fnSuccess);
+            } else {
+              this._oRouter.navTo('_loginPage', {
+                flagID : 0
+              });
+            }
           },
           handleWeekCalender : function(oEvent) {
+            this.oView.setBusy(true);
             var oBookingBox = oEvent.oSource.oParent;
             var selectedDate = oEvent.oSource.getSelectedDates()[0]
                 .getStartDate();
             var oBookingBox = oEvent.oSource.oParent;
             var sPath = "/" + this.paramValue.VPATH + "/"
                 + this.paramValue.VINDEX;
-            this.loadListDetailFacade(sPath, selectedDate);
-            this.getView().byId("monthCalenderView").setVisible(false);
-            this.getView().byId("weekCalenderView").setVisible(true);
-            oBookingBox.oParent.getItems()[0].getItems()[1].getItems()[1]
-                .setSelected(false);
-            oBookingBox.oParent.getItems()[0].getItems()[1].getItems()[0]
-                .setSelected(true);
+            var _this = this;
+            var fnSuccess = function(oData) {
+              this.getView().byId("monthCalenderView").setVisible(false);
+              this.getView().byId("weekCalenderView").setVisible(true);
+              oBookingBox.oParent.getItems()[0].getItems()[1].getItems()[1]
+                  .setSelected(false);
+              oBookingBox.oParent.getItems()[0].getItems()[1].getItems()[0]
+                  .setSelected(true);
+              _this.oModel.getProperty(sPath + "/vendorsAvailableTime",
+                  oData.results);
+              _this.oView.setBusy(false);
+            };
+            this.loadListDetailFacade(sPath, selectedDate, fnSuccess);
           },
           handleSelectDialogPress : function(oEvent) {
             if (!this._oDialog) {

@@ -34,52 +34,50 @@ sap.ui
           },
           handleConfirmBooking : function(oEvent) {
             var _oSource = oEvent.oSource;
-            oEvent.oSource.setBusy(true);
+            this.oView.setBusy(true);
 
             var _this = this;
-            setTimeout(
-                function() {
-                  var bookingdata = _this.oModel.getProperty("/bookingdata");
-                  var vendorData = _this.oModel
-                      .getProperty(bookingdata[0].IPATH);
-                  var bookingdate = bookingdata[0].bookDate;
-                  var month = _this.getMonth(bookingdate.split(" ")[1]);
-                  var date = bookingdate.split(" ")[2];
-                  var year = bookingdate.split(" ")[5];
-                  var my_date = year + "/" + month + "/" + date + " 00:00:00";
-                  var bostm = bookingdata[0].bookTime.split("-")[0] + ":00";
-                  var BOETM = bookingdata[0].bookTime.split("-")[1] + ":00";
-                  var userData = _this.oModel.getProperty("/LoggedUser");
-                  var param = [ {
-                    "key" : "details",
-                    "value" : {
-                      "VSUID" : vendorData.USRID.toString(),
-                      "VUTID" : "2",
-                      "CUSID" : userData.USRID.toString(),
-                      "CUTID" : userData.UTYID.toString(),
-                      "CUEML" : userData.USRNM.toString(),
-                      "ETYID" : vendorData.Rules[0].ETYID.toString(),
-                      "ETCID" : vendorData.Rules[0].ETCID.toString(),
-                      "ENTID" : vendorData.Rules[0].ENTID.toString(),
-                      "RULID" : vendorData.Rules[0].RULID.toString(),
-                      "VSEML" : vendorData.USRNM,
-                      "BDTIM" : my_date,
-                      "BTIMZ" : bookingdate.split(" ")[4],
-                      "BOSTM" : bostm,
-                      "BOETM" : BOETM,
-                      "RTYPE" : "0"
-                    }
-                  } ];
-                  var fnSuccess = function(oData) {
-                    sap.m.MessageToast.show("Your booking has been confirmed");
-                    _this._oRouter.navTo('_homeTiles');
-                  };
-                  _this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
-                      _this.oModel);
-                  _this._vendorListServiceFacade.updateParameters(param,
-                      fnSuccess, null, "book");
-                  _oSource.setBusy(false);
-                }, 2000);
+
+            var bookingdata = _this.oModel.getProperty("/bookingdata");
+            var vendorData = _this.oModel.getProperty(bookingdata[0].IPATH);
+            var bookingdate = bookingdata[0].bookDate;
+            var month = _this.getMonth(bookingdate.split(" ")[1]);
+            var date = bookingdate.split(" ")[2];
+            var year = bookingdate.split(" ")[5];
+            var my_date = year + "/" + month + "/" + date + " 00:00:00";
+            var bostm = bookingdata[0].bookTime.split("-")[0] + ":00";
+            var BOETM = bookingdata[0].bookTime.split("-")[1] + ":00";
+            var userData = _this.oModel.getProperty("/LoggedUser");
+            var param = [ {
+              "key" : "details",
+              "value" : {
+                "VSUID" : vendorData.USRID.toString(),
+                "VUTID" : "2",
+                "CUSID" : userData.USRID.toString(),
+                "CUTID" : userData.UTYID.toString(),
+                "CUEML" : userData.USRNM.toString(),
+                "ETYID" : vendorData.Rules[0].ETYID.toString(),
+                "ETCID" : vendorData.Rules[0].ETCID.toString(),
+                "ENTID" : vendorData.Rules[0].ENTID.toString(),
+                "RULID" : vendorData.Rules[0].RULID.toString(),
+                "VSEML" : vendorData.USRNM,
+                "BDTIM" : my_date,
+                "BTIMZ" : bookingdate.split(" ")[4],
+                "BOSTM" : bostm,
+                "BOETM" : BOETM,
+                "RTYPE" : "0"
+              }
+            } ];
+            var fnSuccess = function(oData) {
+              sap.m.MessageToast.show("Your booking has been confirmed");
+              _this.oView.setBusy(false);
+              _this._oRouter.navTo('_homeTiles');
+            };
+            _this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+                _this.oModel);
+            _this._vendorListServiceFacade.updateParameters(param, fnSuccess,
+                null, "book");
+
           },
           getMonth : function(monthStr) {
             return new Date(monthStr + '-1-01').getMonth() + 1

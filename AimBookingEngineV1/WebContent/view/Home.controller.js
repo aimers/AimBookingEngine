@@ -18,19 +18,31 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
   },
   _handleRouteMatched : function(oEvent) {
     var scope = oEvent.getParameter("config").name;
+    this.parameter = oEvent.getParameter("arguments");
     if (scope === "_homeTiles") {
-      var _that = this;
-      setTimeout(function() {
-        // do what you need here
-        _that.oModel = sap.ui.medApp.global.util.getMainModel();
-        _that.getView().setModel(this.oModel);
-        _that._getTileIcons();
-        _that.getAddressSuggestions();
-        _that.oView.setBusy(false);
-      }, 2000);
 
+      var _that = this;
+      _that.oModel = sap.ui.medApp.global.util.getMainModel();
+      var fnSuccess = function(oData) {
+        // do what you need here
+        _that.oModel.setProperty("/vendorsCategory", oData.results);
+        _that.getAddress();
+
+      }
+      sap.ui.medApp.global.util.loadListCategory(fnSuccess);
+      this.getView().setModel(this.oModel);
     }
     // 
+  },
+  getAddress : function(oEvent) {
+    var _that = this;
+    var fnSuccess = function(oData) {
+      _that.oModel.setProperty("/vendorsAddress", oData.results);
+      _that._getTileIcons();
+      _that.getAddressSuggestions();
+      _that.oView.setBusy(false);
+    }
+    sap.ui.medApp.global.util.loadListCategory(fnSuccess);
   },
   getAddressSuggestions : function() {
     var vendorData = this.oModel.getProperty("/vendorsAddress");
@@ -95,34 +107,31 @@ sap.ui.controller("sap.ui.medApp.view.Home", {
   handleSearchKeyword : function(evt) {
     this.oView.byId("homePageContent").setBusy(true);
     var _that = this;
-    setTimeout(function() {
-      // do what you need here
-      var medAppUID;
+    // do what you need here
+    var medAppUID;
 
-      if (sessionStorage.medAppUID) {
-        medAppUID = sessionStorage.medAppUID
-      } else {
-        medAppUID = "1";
-        var addressBar = _that.oView.byId("multiInput2");
-      }
-      // open the loading dialog
-      var searchBar = _that.oView.byId("homeSearchBar");
-      var keys = searchBar.getSelectedKeys().join();
-      if (keys != "") {
-        _that._oRouter.navTo("VendorListDetail", {
-          ENTID : keys,
-          ETYID : "1",
-          ETCID : "1",
-          UID : medAppUID,
-          FILTER : "0"
-        });
-      } else {
-        sap.m.MessageToast.show("Please select category");
-        // return false; // TODO
-      }
-      _that.oView.byId("homePageContent").setBusy(false);
-    }, 2000);
-
+    if (sessionStorage.medAppUID) {
+      medAppUID = sessionStorage.medAppUID
+    } else {
+      medAppUID = "1";
+      var addressBar = _that.oView.byId("multiInput2");
+    }
+    // open the loading dialog
+    var searchBar = _that.oView.byId("homeSearchBar");
+    var keys = searchBar.getSelectedKeys().join();
+    if (keys != "") {
+      _that._oRouter.navTo("VendorListDetail", {
+        ENTID : keys,
+        ETYID : "1",
+        ETCID : "1",
+        UID : medAppUID,
+        FILTER : "0"
+      });
+    } else {
+      sap.m.MessageToast.show("Please select category");
+      // return false; // TODO
+    }
+    _that.oView.byId("homePageContent").setBusy(false);
   },
   /*
    * handleSelectionChange : function(oEvent) { var selectedItems =
