@@ -7,7 +7,7 @@
 				class="spaceAround">
 				<Image width="2rem" height="2rem" class="spaceLeft"
 					src="assets/img/location.png" densityAware="false" press="getGeoLocation" />
-				<Input class="inputLocation" id="multiInput2" 
+				<Input class="inputLocation" id="multiInput2" change= "handleAddessLocation"
 				  placeholder="Landmark, Locality , City .."
 					showSuggestion="true" suggestionItems="{/suggestAddress}" suggestionItemSelected="setLocationParam">
 					<suggestionItems>

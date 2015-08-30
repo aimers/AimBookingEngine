@@ -41,8 +41,8 @@ sap.ui
                   var fnSuccess = function(oData) {
                     _that.oModel.setProperty("/LoggedUser", oData.results);
                   }
+                  sap.ui.medApp.global.util.getLoginData(param, fnSuccess);
                 }
-                sap.ui.medApp.global.util.getLoginData(param, fnSuccess);
               }
 
               // this.vendorDetail = [ this.oModel.getProperty(sPath) ];

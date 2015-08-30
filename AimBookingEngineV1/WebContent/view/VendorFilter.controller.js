@@ -124,7 +124,7 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
       UID : this.paramValue.UID,
       ENTID : this.paramValue.ENTID,
       ETCID : this.paramValue.ETCID,
-      FILTER : this.paramValue.FILTER
+      FILTER : 0
     });
   },
   onSearch : function(oEvt) {

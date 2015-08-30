@@ -139,7 +139,7 @@ sap.ui
                 sessionStorage.setItem("medAppUID", oData.results.USRID);
                 sessionStorage.setItem("medAppPWD", oData.results.UERPW);
                 _this.oModel.setProperty("/LoggedUser", oData.results);
-                if (this.parameter.flagID == 2) {
+                if (_this.parameter.flagID == 2) {
                   _this._oRouter.navTo("ConfirmBooking", {
                     "UID" : sessionStorage.medAppUID
                   });

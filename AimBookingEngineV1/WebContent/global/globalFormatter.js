@@ -27,11 +27,16 @@ sap.ui.medApp.global.globalFormatter = {
       var longt1 = medApp.global.config.user.Address.LONGT;
       var dist = sap.ui.medApp.global.util.distance(latt, longt, longt1, latt1,
           "K");
-      if (Math.round(dist)) {
-        return true;
+      if (latt1 || longt1) {
+        if (Math.round(dist)) {
+          return true;
+        } else {
+          return false;
+        }
       } else {
         return false;
       }
+
     }
   },
   checkImage : function(oValue) {

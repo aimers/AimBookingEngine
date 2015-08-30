@@ -2,7 +2,7 @@
 	xmlns="sap.m" controllerName="sap.ui.medApp.view.VendorListDetail"
 	xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page class="mainPage" id="mainPage" showNavButton="{device>/isPhone}"
-		navButtonPress="doNavBack"
+		navButtonPress="doNavBack" 
 		title="{path:'/vendorsList',formatter: 'sap.ui.medApp.global.globalFormatter.getListCount'} results found">
 		<content>
 			<List items="{/vendorsList}" id="VendorsList" class="VendorsList"
