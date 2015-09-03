@@ -28,27 +28,7 @@ sap.ui
               this.oIndexItem = [];
               var that = this;
               this.oModel = sap.ui.medApp.global.util.getVendorModel();
-              if (sessionStorage.medAppUID != undefined
-                  && that.oModel.getProperty("/LoggedUser") == undefined) {
-
-                if (!that.oModel.getProperty("/LoggedUser")) {
-                  var param = [ {
-                    "key" : "details",
-                    "value" : {
-                      "USRID" : sessionStorage.medAppUID,
-                      "UERPW" : sessionStorage.medAppPWD
-                    }
-                  } ];
-                  var fnSuccess = function(oData) {
-                    that.oModel.setProperty("/LoggedUser", oData.results);
-                    that.setVendorsList();
-                  }
-                }
-                sap.ui.medApp.global.util.getLoginData(param, fnSuccess);
-              } else {
-                that.setVendorsList();
-              }
-
+              this.setVendorsList();
               this.oView.setModel(this.oModel);
             }
           },
@@ -96,7 +76,7 @@ sap.ui
               oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1]
                   .getItems()[0].getButtons()[1].setGroupName(oFlagIndexItem);
               var sPath = oEvent.oSource.oParent.getBindingContext().getPath();
-              var oLinkTemplate = new sap.m.Link({
+              var oLinkTemplate1 = new sap.m.Link({
                 press : [ oController.handleBookingTime, oController ]
               })
                   .bindProperty('text', {
@@ -114,6 +94,87 @@ sap.ui
                       {
                         path : 'STATUS',
                         formatter : sap.ui.medApp.global.globalFormatter.getBookingStatus
+                      })
+                  .bindProperty(
+                      "visible",
+                      {
+                        path : 'START',
+                        formatter : sap.ui.medApp.global.globalFormatter.getBookingTimeMorning
+                      });
+              var oLinkTemplate2 = new sap.m.Link({
+                press : [ oController.handleBookingTime, oController ]
+              })
+                  .bindProperty('text', {
+                    parts : [ {
+                      path : "START",
+                    // formatter : oController.getCorrectTime()
+                    }, {
+                      path : "END",
+                    // formatter : oController.getCorrectTime()
+                    } ],
+                    formatter : sap.ui.medApp.global.util.getCorrectTime
+                  })
+                  .bindProperty(
+                      "enabled",
+                      {
+                        path : 'STATUS',
+                        formatter : sap.ui.medApp.global.globalFormatter.getBookingStatus
+                      })
+                  .bindProperty(
+                      "visible",
+                      {
+                        path : 'START',
+                        formatter : sap.ui.medApp.global.globalFormatter.getBookingTimeAfternoon
+                      });
+              var oLinkTemplate3 = new sap.m.Link({
+                press : [ oController.handleBookingTime, oController ]
+              })
+                  .bindProperty('text', {
+                    parts : [ {
+                      path : "START",
+                    // formatter : oController.getCorrectTime()
+                    }, {
+                      path : "END",
+                    // formatter : oController.getCorrectTime()
+                    } ],
+                    formatter : sap.ui.medApp.global.util.getCorrectTime
+                  })
+                  .bindProperty(
+                      "enabled",
+                      {
+                        path : 'STATUS',
+                        formatter : sap.ui.medApp.global.globalFormatter.getBookingStatus
+                      })
+                  .bindProperty(
+                      "visible",
+                      {
+                        path : 'START',
+                        formatter : sap.ui.medApp.global.globalFormatter.getBookingTimeEvening
+                      });
+              var oLinkTemplate4 = new sap.m.Link({
+                press : [ oController.handleBookingTime, oController ]
+              })
+                  .bindProperty('text', {
+                    parts : [ {
+                      path : "START",
+                    // formatter : oController.getCorrectTime()
+                    }, {
+                      path : "END",
+                    // formatter : oController.getCorrectTime()
+                    } ],
+                    formatter : sap.ui.medApp.global.util.getCorrectTime
+                  })
+                  .bindProperty(
+                      "enabled",
+                      {
+                        path : 'STATUS',
+                        formatter : sap.ui.medApp.global.globalFormatter.getBookingStatus
+                      })
+                  .bindProperty(
+                      "visible",
+                      {
+                        path : 'START',
+                        formatter : sap.ui.medApp.global.globalFormatter.getBookingTimeNight
                       });
               var oTemplate = new sap.m.VBox(
                   {
@@ -126,19 +187,56 @@ sap.ui
                                     text : {
                                       path : 'Date',
                                       formatter : sap.ui.medApp.global.util.getDateLabel
+                                    },
+                                    visible : {
+                                      path : 'DayEndTime',
+                                      formatter : sap.ui.medApp.global.globalFormatter.getLabelDisplayWrite
                                     }
                                   }) ]
                             }).addStyleClass("CalenderDate"),
                         new sap.m.VBox({}).addStyleClass("CalenderTime")
                             .bindAggregation("items", "TimeSlots",
-                                oLinkTemplate) ],
+                                oLinkTemplate1) ],
                     visible : {
                       path : 'Date',
                       formatter : sap.ui.medApp.global.util.handleFilterDays
                     }
                   }).addStyleClass("daySchedule");
-              oBookingBox.getContent()[1].bindAggregation("items", sPath
-                  + "/vendorsAvailableTime", oTemplate);
+              var oTemplate2 = new sap.m.VBox({
+                renderType : "Div",
+                items : [ new sap.m.VBox({}).addStyleClass("CalenderTime")
+                    .bindAggregation("items", "TimeSlots", oLinkTemplate2) ],
+                visible : {
+                  path : 'Date',
+                  formatter : sap.ui.medApp.global.util.handleFilterDays
+                }
+              }).addStyleClass("daySchedule");
+              var oTemplate3 = new sap.m.VBox({
+                renderType : "Div",
+                items : [ new sap.m.VBox({}).addStyleClass("CalenderTime")
+                    .bindAggregation("items", "TimeSlots", oLinkTemplate3) ],
+                visible : {
+                  path : 'Date',
+                  formatter : sap.ui.medApp.global.util.handleFilterDays
+                }
+              }).addStyleClass("daySchedule");
+              var oTemplate4 = new sap.m.VBox({
+                renderType : "Div",
+                items : [ new sap.m.VBox({}).addStyleClass("CalenderTime")
+                    .bindAggregation("items", "TimeSlots", oLinkTemplate4) ],
+                visible : {
+                  path : 'Date',
+                  formatter : sap.ui.medApp.global.util.handleFilterDays
+                }
+              }).addStyleClass("daySchedule");
+              oBookingBox.getContent()[1].getItems()[0].bindAggregation(
+                  "items", sPath + "/vendorsAvailableTime", oTemplate);
+              oBookingBox.getContent()[1].getItems()[1].bindAggregation(
+                  "items", sPath + "/vendorsAvailableTime", oTemplate2);
+              oBookingBox.getContent()[1].getItems()[2].bindAggregation(
+                  "items", sPath + "/vendorsAvailableTime", oTemplate3);
+              oBookingBox.getContent()[1].getItems()[3].bindAggregation(
+                  "items", sPath + "/vendorsAvailableTime", oTemplate4);
               oItemSelected.addContent(oBookingBox);
               oItemSelected.setExpanded(true);
             }

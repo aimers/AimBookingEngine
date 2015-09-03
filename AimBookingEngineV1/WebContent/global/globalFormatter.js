@@ -123,5 +123,62 @@ sap.ui.medApp.global.globalFormatter = {
         return 1;
       }
     }
-  }
+  },
+  getBookingButton : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      if (oValue < 3) {
+        return "Book Appointment";
+      } else {
+        return "Call";
+      }
+    }
+  },
+  getBookingTimeMorning : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+
+      if (oValue.split(":")[0] < 12 && oValue.split(":")[0] > 3) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  getBookingTimeAfternoon : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+
+      if (oValue.split(":")[0] < 16 && oValue.split(":")[0] > 12) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  getBookingTimeEvening : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+
+      if (oValue.split(":")[0] > 16 && oValue.split(":")[0] < 20) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  getBookingTimeNight : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+
+      if ((oValue.split(":")[0] < 24 && oValue.split(":")[0] > 20)
+          || (oValue.split(":")[0] < 3 && oValue.split(":")[0] >= 0)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  getLabelDisplayWrite : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      return true;
+    } else {
+      return false;
+    }
+  },
 }

@@ -4,7 +4,7 @@ medApp.global.config = {};
 medApp.global.config.applicationMode = true;
 
 medApp.global.config.development = {
-  base : "http://localhost:8080/AimBookingEngineV1/",
+  base : "http://bookingdemo.aimersinfosoft.com/",
   endPoints : {
     vendorData : "assets/data/",
     vendorDataList : "assets/data/vendorsData.json",
@@ -17,7 +17,7 @@ medApp.global.config.development = {
 };
 
 medApp.global.config.production = {
-  base : "http://localhost:8080/AimBookingEngineV1/",
+  base : "http://bookingdemo.aimersinfosoft.com/",
   endPoints : {
     vendorData : "MasterServlet?AimAction=",
     vendorDataList : "assets/data/vendorsData.json",
@@ -29,8 +29,8 @@ medApp.global.config.production = {
 };
 medApp.global.config.user = {
   Address : {
-    LATIT : undefined,
-    LONGT : undefined
+    LATIT : 12.9715742,
+    LONGT : 77.6806213
   }
 };
 

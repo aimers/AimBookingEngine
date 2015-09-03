@@ -279,8 +279,6 @@
 }
 
 .CalenderTime {
-	overflow-y: scroll;
-	max-height: 312px;
 	padding: 0.25rem;
 }
 
@@ -363,4 +361,29 @@
 .editableForm .sapUiFormResLayout {
 	max-width: 1000px;
 	margin: 0 auto;
+}
+.vendorRuleSelect .sapMSlt{
+	height : 1.5rem;
+}
+.vendorRuleSelect .sapMSlt>.sapMSltLabel {
+	line-height : 1.375;
+}
+.vendorRuleSelect .sapMSltArrow {
+	line-height:1.5rem;
+	height:1.5rem;
+}
+.mainShell .sapUiUfdShellHeadEnd {
+	max-width:450px;
+} 
+.MorningSlot {
+	background-color: #D1F7F6;
+}
+.AfternoonSlot {
+  background-color: #FDF5B4;
+}
+.EveningSlot {
+  background-color: #B9DEE8;
+}
+.NightSlot {
+  background-color: #9AA7AB;
 }
