@@ -319,11 +319,6 @@
 	width: 99%;
 }
 
-.detailPanel .sapMTB-Transparent-CTX .sapMText, .detailPanel .sapMTB-Transparent-CTX .sapMLabel
-	{
-	font-size: 0.9rem;
-}
-
 .editableForm .buttonDesign .sapMBtnInner {
 	margin-left: 0;
 }
@@ -362,10 +357,10 @@
 	max-width: 1000px;
 	margin: 0 auto;
 }
-.vendorRuleSelect .sapMSlt{
+.vendorRuleSelect.sapMSlt{
 	height : 1.5rem;
 }
-.vendorRuleSelect .sapMSlt>.sapMSltLabel {
+.vendorRuleSelect.sapMSlt>.sapMSltLabel {
 	line-height : 1.375;
 }
 .vendorRuleSelect .sapMSltArrow {
@@ -386,4 +381,7 @@
 }
 .NightSlot {
   background-color: #9AA7AB;
+}
+.CallBox.sapMText{
+	font-size:1.2rem;
 }

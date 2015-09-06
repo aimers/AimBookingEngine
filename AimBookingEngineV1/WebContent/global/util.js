@@ -5,20 +5,6 @@ sap.ui.medApp.global.util = {
     var that = this;
     if (!this._mainModel) {
       this._mainModel = new sap.ui.model.json.JSONModel();
-      if (sessionStorage.medAppUID != undefined
-          && sessionStorage.medAppPWD != undefined) {
-        var param = [ {
-          "key" : "details",
-          "value" : {
-            "USRID" : sessionStorage.medAppUID,
-            "UERPW" : sessionStorage.medAppPWD
-          }
-        } ];
-        var fnSuccess = function(oData) {
-          that._mainModel.setProperty("/LoggedUser", oData.results);
-        }
-        this.getLoginData(param, fnSuccess);
-      }
     }
     return this._mainModel;
   },
@@ -155,7 +141,7 @@ sap.ui.medApp.global.util = {
     }
     return dist
   },
-  handleBooking : function(_source, oRouter) {
+  handleBooking : function(_source, oRouter, oRuleSelected) {
     var sTime = _source.getText();
     var sContextPath = _source.oParent.getBindingContext().getPath();
     var vendorIndexPath;
@@ -168,7 +154,8 @@ sap.ui.medApp.global.util = {
       bookTime : sTime,
       bookDate : sDate,
       IPATH : vendorIndexPath,
-      DSPNM : vendordata.DSPNM
+      DSPNM : vendordata.DSPNM,
+      RULEID : oRuleSelected
     } ];
     this._mainModel.setProperty("/bookingdata", BookingData);
     if (!sessionStorage.medAppUID) {

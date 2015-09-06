@@ -5,10 +5,10 @@
 			<Bar>
 				<contentMiddle>
 					<HBox width="98%">
-						<HBox width="50%" justifyContent="Start">
+						<HBox width="30%" justifyContent="Start">
 							<Label text="Select Date"></Label>
 						</HBox>
-						<HBox width="50%" justifyContent="Start">
+						<HBox width="70%" justifyContent="Start">
 							<RadioButtonGroup class="sapUiMediumMarginBottom" selectedIndex="1" select="changeToOneWeek"
 							columns="3">
 								<buttons>

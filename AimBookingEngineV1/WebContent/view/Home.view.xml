@@ -9,7 +9,7 @@
 					src="assets/img/location.png" densityAware="false" press="getGeoLocation" />
 				<Input class="inputLocation" id="multiInput2" change= "handleAddessLocation"
 				  placeholder="Landmark, Locality , City .."
-					showSuggestion="true" suggestionItems="{/suggestAddress}" suggestionItemSelected="setLocationParam">
+					showSuggestion="true" suggestionItems="{/suggestAddress}">
 					<suggestionItems>
 						<core:Item key="{LATIT},{LONGT}" text="{ADDR}" />
 					</suggestionItems>

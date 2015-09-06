@@ -69,7 +69,7 @@ sap.ui
                 } ];
                 var fnSuccess = function(oData) {
                   that.oModel.setProperty("/LoggedUser", oData.results);
-                  if (oData.results.Address !== undefined) {
+                  if (oData.results !== undefined) {
                     if (oData.results.Address.length) {
                       medApp.global.config.user.Address.LATIT = oData.results.Address[0].LATIT;
                       medApp.global.config.user.Address.LONGT = oData.results.Address[0].LONGT;

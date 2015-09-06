@@ -181,4 +181,13 @@ sap.ui.medApp.global.globalFormatter = {
       return false;
     }
   },
+  getCallNumber : function(oArray) {
+    if (oArray != null && oArray != undefined) {
+      for (var i = 0; i < oArray.length; i++) {
+        if (oArray[i].DESCR == "Landline") {
+          return oArray[i].VALUE;
+        }
+      }
+    }
+  }
 }

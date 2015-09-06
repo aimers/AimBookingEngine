@@ -158,7 +158,7 @@ sap.ui
             }
           },
           getGeoLocation : function() {
-            this.oView.byId("multiInput2").setBusy(true);
+            this.oView.setBusy(true);
             var _this = this;
             var display_user_location = function display_user_location(
                 user_position) {
@@ -221,15 +221,17 @@ sap.ui
                         } else {
                           console.log("Geocoding failed: " + status);
                         }
-                        _this.oView.byId("multiInput2").setBusy(false);
+                        _this.oView.setBusy(false);
                       });
             }
           },
           setLocationParam : function(oEvent) {
+            this.oView.setBusy(true);
             var parameters = oEvent.getParameters().selectedItem.getKey();
             medApp.global.config.user.Address.LATIT = parameters.split(",")[0];
             medApp.global.config.user.Address.LONGT = parameters.split(",")[1];
             this.bUpdateAddress = true;
+            this.oView.setBusy(false);
           },
           handleAddessLocation : function(oEvent) {
             if (!this.bUpdateAddress) {
