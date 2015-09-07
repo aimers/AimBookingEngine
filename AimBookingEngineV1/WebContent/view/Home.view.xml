@@ -43,7 +43,7 @@
 				<Text text="Download App" />
 				<Text class="spaceLeft" text="|" />
 				<Image width="40px" height="40px" class="spaceLeft"
-					src="assets/img/1434895655_android.png" densityAware="false" />
+					src="assets/img/1434895655_android.png" densityAware="false" press="openAndroidApp" />
 			</HBox>
 		</VBox>
 	</VBox>

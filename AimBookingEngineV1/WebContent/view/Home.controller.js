@@ -240,6 +240,10 @@ sap.ui
               this.bUpdateAddress = false;
             }
 
+          },
+          openAndroidApp: function(oEvent){
+        	  var win = window.open("https://drive.google.com/open?id=0BxTx-wJhNQh1fkYwR2VVV3phb2g3Q2NDSk5kdjh1OGdsM1RsS2poYlJPaWo2ZEI4bEV4N0E", '_blank'); 
+        	  win.focus(); 
           }
         /**
          * Similar to onAfterRendering, but this hook is invoked before the
