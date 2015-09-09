@@ -114,15 +114,21 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
   handleFilter : function(oEvent) {
     var vendorCat = this.oModel.getProperty("/vendorsCategory");
     var selectedKeys = [];
+    var select;
     for (var i = 0; i < vendorCat.length; i++) {
       if (vendorCat[i].selected) {
         selectedKeys.push(vendorCat[i].ENTID);
       }
     }
+    if (selectedKeys.join() == "") {
+      select = "0";
+    } else {
+      select = selectedKeys.join();
+    }
     this.router.navTo("VendorListDetail", {
-      ETYID : selectedKeys.join(),
+      ETYID : this.paramValue.ENTID,
       UID : this.paramValue.UID,
-      ENTID : this.paramValue.ENTID,
+      ENTID : select,
       ETCID : this.paramValue.ETCID,
       FILTER : 0
     });

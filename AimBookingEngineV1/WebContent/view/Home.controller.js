@@ -211,8 +211,8 @@ sap.ui
                             LAT : results[0].geometry.location.G,
                             LOG : results[0].geometry.location.K
                           } ];
-                          medApp.global.config.user.Address.LATIT = results[0].geometry.location.G;
-                          medApp.global.config.user.Address.LONGT = results[0].geometry.location.K;
+                          sessionStorage.LATIT = results[0].geometry.location.G;
+                          sessionStorage.LONGT = results[0].geometry.location.K;
                           _this.oModel.setProperty("/GeoLocation", oDataNew);
                           _this.oView.byId("multiInput2").setValue(
                               oDataNew[0].LANDMARK + "," + oDataNew[0].LOCALITY
@@ -228,8 +228,8 @@ sap.ui
           setLocationParam : function(oEvent) {
             this.oView.setBusy(true);
             var parameters = oEvent.getParameters().selectedItem.getKey();
-            medApp.global.config.user.Address.LATIT = parameters.split(",")[0];
-            medApp.global.config.user.Address.LONGT = parameters.split(",")[1];
+            sessionStorage.LATIT = parameters.split(",")[0];
+            sessionStorage.LONGT = parameters.split(",")[1];
             this.bUpdateAddress = true;
             this.oView.setBusy(false);
           },
@@ -241,9 +241,12 @@ sap.ui
             }
 
           },
-          openAndroidApp: function(oEvent){
-        	  var win = window.open("https://drive.google.com/open?id=0BxTx-wJhNQh1fkYwR2VVV3phb2g3Q2NDSk5kdjh1OGdsM1RsS2poYlJPaWo2ZEI4bEV4N0E", '_blank'); 
-        	  win.focus(); 
+          openAndroidApp : function(oEvent) {
+            var win = window
+                .open(
+                    "https://drive.google.com/open?id=0BxTx-wJhNQh1fkYwR2VVV3phb2g3Q2NDSk5kdjh1OGdsM1RsS2poYlJPaWo2ZEI4bEV4N0E",
+                    '_blank');
+            win.focus();
           }
         /**
          * Similar to onAfterRendering, but this hook is invoked before the

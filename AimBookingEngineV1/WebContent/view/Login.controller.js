@@ -69,8 +69,8 @@ sap.ui
                 _this.oModel.setProperty("/LoggedUser", oData.results);
                 if (oData.results.Address !== undefined) {
                   if (oData.results.Address.length) {
-                    medApp.global.config.user.Address.LATIT = oData.results.Address[0].LATIT;
-                    medApp.global.config.user.Address.LONGT = oData.results.Address[0].LONGT;
+                    sessionStorage.LATIT = oData.results.Address[0].LATIT;
+                    sessionStorage.LONGT = oData.results.Address[0].LONGT;
                   }
                 }
                 if (_this.parameter.flagID == 2) {

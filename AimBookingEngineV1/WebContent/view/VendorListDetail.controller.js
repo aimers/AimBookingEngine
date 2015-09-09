@@ -29,14 +29,37 @@ sap.ui
               var that = this;
               this.oModel = sap.ui.medApp.global.util.getVendorModel();
               this.setVendorsList();
+              // this.getDistanceForAllVendor();
               this.oView.setModel(this.oModel);
             }
+          },
+          getDistanceForAllVendor : function(results) {
+            if (sessionStorage.LATIT != undefined
+                && sessionStorage.LONGT != undefined) {
+              for (var i = 0; i < results.length; i++) {
+                if (results[i].Address) {
+                  if (results[i].Address.length > 0) {
+                    if (results[i].Address[0].LATIT
+                        && results[i].Address[0].LONGT) {
+                      var latt = results[i].Address[0].LATIT;
+                      var longt = results[i].Address[0].LONGT;
+                      var dist = sap.ui.medApp.global.util.distance(latt,
+                          longt, "K");
+                      results[i].Address[0].distance = Math.round(dist);
+                    }
+                  }
+                }
+              }
+            }
+            return results;
           },
           setVendorsList : function() {
             var that = this;
             if (this.paramValue.FILTER != 0) {
               var fnSuccess = function(oData) {
-                that.oModel.setProperty("/vendorsList", oData.results);
+
+                that.oModel.setProperty("/vendorsList", that
+                    .getDistanceForAllVendor(oData.results));
                 that.getView().byId("VendorsList").setBusy(false);
               }
               sap.ui.medApp.global.util.loadVendorFILTERData(this.paramValue,
@@ -44,7 +67,8 @@ sap.ui
 
             } else {
               var fnSuccess = function(oData) {
-                that.oModel.setProperty("/vendorsList", oData.results);
+                that.oModel.setProperty("/vendorsList", that
+                    .getDistanceForAllVendor(oData.results));
                 that.getView().byId("VendorsList").setBusy(false);
               }
               sap.ui.medApp.global.util.loadVendorData(this.paramValue,
@@ -61,8 +85,8 @@ sap.ui
             oEvent.oSource.setBusy(true);
 
             var oController = this;
-            var buttonId = oEvent.oSource.getId();
-            var oFlagIndexItem = buttonId.slice(-1);
+            var oFlagIndexItem = oEvent.oSource.getBindingContext().getPath()
+                .split("/")[2];
             var oFlag = jQuery.inArray(oFlagIndexItem, this.oIndexItem) + 1;
 
             if (oFlag) {

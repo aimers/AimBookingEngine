@@ -11,10 +11,7 @@ sap.ui.medApp.global.globalFormatter = {
     if (oArray != null && oArray != undefined) {
       var latt = oArray[0].LATIT;
       var longt = oArray[0].LONGT;
-      var latt1 = medApp.global.config.user.Address.LATIT;
-      var longt1 = medApp.global.config.user.Address.LONGT;
-      var dist = sap.ui.medApp.global.util.distance(latt, longt, longt1, latt1,
-          "K");
+      var dist = sap.ui.medApp.global.util.distance(latt, longt, "K");
       return Math.round(dist);
       ;
     }
@@ -23,8 +20,8 @@ sap.ui.medApp.global.globalFormatter = {
     if (oArray != null && oArray != undefined) {
       var latt = oArray[0].LATIT;
       var longt = oArray[0].LONGT;
-      var latt1 = medApp.global.config.user.Address.LATIT;
-      var longt1 = medApp.global.config.user.Address.LONGT;
+      var latt1 = sessionStorage.LATIT;
+      var longt1 = sessionStorage.LONGT;
       var dist = sap.ui.medApp.global.util.distance(latt, longt, longt1, latt1,
           "K");
       if (latt1 || longt1) {

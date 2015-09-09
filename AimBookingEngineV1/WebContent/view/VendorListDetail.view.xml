@@ -37,12 +37,13 @@
 											<HBox width="49%" justifyContent="End" alignItems="End">
 												<VBox justifyContent="Center" alignItems="End">
 													<HBox alignItems="Center" class="vendorRecommend"
-														justifyContent="End"
+														justifyContent="Start" 
 														visible="{path:'Address', formatter: 'sap.ui.medApp.global.globalFormatter.getDistanceFlag'}">
 														<Image src="assets/img/Location-Pointer.png" width="70%"
 															densityAware="false" />
+														<HBox items="{Address}" >
 														<Text
-															text="{path:'Address', formatter: 'sap.ui.medApp.global.globalFormatter.getDistance'} KMs away" />
+                              text="{path:'distance'} KMs away" visible="{path:'distance', formatter: 'sap.ui.medApp.global.globalFormatter.getLabelDisplayWrite'}"/></HBox>														
 													</HBox>
 													<Button text="{i18n>VENDOR_DETAIL}" class="buttonDesign"
 														press="handleDetailNav" />
