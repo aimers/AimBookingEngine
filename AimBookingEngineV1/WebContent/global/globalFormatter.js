@@ -142,7 +142,6 @@ sap.ui.medApp.global.globalFormatter = {
   },
   getBookingTimeAfternoon : function(oValue) {
     if (oValue != null && oValue != undefined) {
-
       if (oValue.split(":")[0] < 16 && oValue.split(":")[0] > 12) {
         return true;
       } else {

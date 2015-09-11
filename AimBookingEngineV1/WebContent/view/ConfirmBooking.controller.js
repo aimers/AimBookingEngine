@@ -37,7 +37,8 @@ sap.ui
             this.oView.setBusy(true);
 
             var _this = this;
-
+            var selectedType = this.oView.byId("SelectRule").getSelectedKey();
+            var BookingComment = this.oView.byId("BookingComment").getValue();
             var bookingdata = _this.oModel.getProperty("/bookingdata");
             var vendorData = _this.oModel.getProperty(bookingdata[0].IPATH);
             var bookingdate = bookingdata[0].bookDate;
@@ -45,8 +46,8 @@ sap.ui
             var date = bookingdate.split(" ")[2];
             var year = bookingdate.split(" ")[5];
             var my_date = year + "/" + month + "/" + date + " 00:00:00";
-            var bostm = bookingdata[0].bookTime.split("-")[0] + ":00";
-            var BOETM = bookingdata[0].bookTime.split("-")[1] + ":00";
+            var bostm = bookingdata[0].bookTime.split("-")[0];
+            var BOETM = bookingdata[0].bookTime.split("-")[1];
             var userData = _this.oModel.getProperty("/LoggedUser");
             var param = [ {
               "key" : "details",
@@ -65,7 +66,9 @@ sap.ui
                 "BTIMZ" : bookingdate.split(" ")[4],
                 "BOSTM" : bostm,
                 "BOETM" : BOETM,
-                "RTYPE" : "0"
+                "RTYPE" : "0",
+                "BTYPE" : selectedType,
+                "BNOTE" : BookingComment
               }
             } ];
             var fnSuccess = function(oData) {

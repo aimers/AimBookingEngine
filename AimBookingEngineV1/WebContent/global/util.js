@@ -142,7 +142,9 @@ sap.ui.medApp.global.util = {
     return dist
   },
   handleBooking : function(_source, oRouter, oRuleSelected) {
-    var sTime = _source.getText();
+    var timedata = this._mainModel.getProperty(_source.getBindingContext()
+        .getPath());
+    var sTime = timedata.START + "-" + timedata.END;
     var sContextPath = _source.oParent.getBindingContext().getPath();
     var vendorIndexPath;
     var modelData = this._mainModel.getProperty(sContextPath);
@@ -279,24 +281,18 @@ sap.ui.medApp.global.util = {
     }
     return this.MessageToast;
   },
-  getCorrectTime : function(oValue, oValue1) {
-    if (oValue != null && oValue != undefined && oValue1 != null
-        && oValue1 != undefined) {
+  getCorrectTime : function(oValue) {
+    if (oValue != null && oValue != undefined) {
       var splitValue = oValue.split(":");
-      var splitValue1 = oValue1.split(":");
       if (sap.ui.medApp.global.util._mainModel.getProperty("/filterTime")) {
         var time = sap.ui.medApp.global.util._mainModel
             .getProperty("/filterTime");
         var starttime = parseInt(time[0].startTime / 60);
-        var endtime = parseInt(time[0].endTime / 60);
-        if (starttime <= parseInt(splitValue[0])
-            && endtime >= parseInt(splitValue[0])) {
-          return splitValue[0] + ":" + splitValue[1] + "-" + splitValue1[0]
-              + ":" + splitValue1[1];
+        if (starttime <= parseInt(splitValue[0])) {
+          return splitValue[0] + ":" + splitValue[1];
         }
       } else {
-        return splitValue[0] + ":" + splitValue[1] + "-" + splitValue1[0] + ":"
-            + splitValue1[1];
+        return splitValue[0] + ":" + splitValue[1];
       }
     }
   },

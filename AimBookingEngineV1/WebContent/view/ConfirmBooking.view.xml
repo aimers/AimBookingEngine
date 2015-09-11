@@ -16,6 +16,14 @@
 							<Text text="{bookTime}" />
 							<Label text="Booking Date" />
 							<Text text="{bookDate}" />
+							<Label text="Booking Type" />
+							<Select selectedKey="1" class="vendorRuleSelect" 
+								id="SelectRule">
+								<core:Item key="1" text="General" />
+								<core:Item key="2" text="Emergency" />
+							</Select>
+							<Label text="Comments" />
+              <TextArea id="BookingComment" cols ="5" height="50px" value="Enter description"/>
 							<Button text="Confirm" class="buttonDesign" press="handleConfirmBooking" />
 						</f:content>
 					</f:SimpleForm>

@@ -24,13 +24,13 @@
 		<content>
 			<me:Calendar width="100%" class="monthCalender" select="handleWeekCalender">
 			</me:Calendar>
-			<VBox visible="false" alignItems="Stretch" justifyContent="Start"
+			<IconTabBar visible="false" width="100%"
 				class="weekCalenderView">
-				<HBox alignItems="Start" justifyContent="SpaceAround" class="MorningSlot"></HBox>
+				<!--  <HBox alignItems="Start" justifyContent="SpaceAround" class="MorningSlot"></HBox>
 				<HBox alignItems="Start" justifyContent="SpaceAround" class="AfternoonSlot"></HBox>
 				<HBox alignItems="Start" justifyContent="SpaceAround" class="EveningSlot"></HBox>
-				<HBox alignItems="Start" justifyContent="SpaceAround" class="NightSlot"></HBox>
-			</VBox>
+				<HBox alignItems="Start" justifyContent="SpaceAround" class="NightSlot"></HBox>-->
+			</IconTabBar>
 		</content>
 	</Page>
 </core:FragmentDefinition>

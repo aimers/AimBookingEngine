@@ -85,13 +85,9 @@
 								select="handleWeekCalender">
 							</me:Calendar>
 						</VBox>
-						<VBox visible="false" alignItems="Stretch" justifyContent="Start"
+						<IconTabBar visible="false" 
 							class="weekCalenderView" id="weekCalenderView">
-							<HBox alignItems="Start" justifyContent="SpaceAround" class="MorningSlot"></HBox>
-							<HBox alignItems="Start" justifyContent="SpaceAround" class="AfternoonSlot"></HBox>
-							<HBox alignItems="Start" justifyContent="SpaceAround" class="EveningSlot"></HBox>
-							<HBox alignItems="Start" justifyContent="SpaceAround" class="NightSlot"></HBox>
-						</VBox>
+						</IconTabBar>
             <HBox alignItems = "Center"   justifyContent = "SpaceAround" id="callBox" visible="false">
               <Button icon="sap-icon://outgoing-call"></Button>
               <Text class="CallBox"></Text>
