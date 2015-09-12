@@ -34,7 +34,6 @@ public class RuleCommand extends aimCommand {
 		}else if(aimAction.equals("deleteRule")){
 			return deleteRule(myInfo, dbcon);
 		}
-		
 		return new JSONObject();
 
 	}

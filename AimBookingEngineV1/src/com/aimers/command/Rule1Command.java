@@ -269,9 +269,7 @@ public class Rule1Command extends aimCommand {
 			detailsJSON.put("CRTBY", detailsJSON.get("USRID"));
 			detailsJSON.put("CHNDT", dateFormat.format(date)+"");
 			detailsJSON.put("CHNBY", detailsJSON.get("USRID"));
-			if(!detailsJSON.has("UERPW")){
-				detailsJSON.put("UERPW", detailsJSON.get("USRID").hashCode()+"");
-			}
+			
 			String query = "UPDATE `vtrdt`"
 					+ " SET  "
 					+ " `ENTID` = '"+detailsJSON.get("ENTID")+ "', " 
