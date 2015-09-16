@@ -92,13 +92,13 @@ sap.ui
             if (oFlag) {
               this.handleCancelBooking(oFlagIndexItem);
             } else {
-              var oRuleSelected = oEvent.oSource.oParent.getItems()[0]
-                  .getSelectedKey();
-              this.oRuleSelected = oRuleSelected;
+              //var oRuleSelected = oEvent.oSource.oParent.getItems()[0]
+                //  .getSelectedKey();
+              this.oRuleSelected = 1;//oRuleSelected
               var oItemSelected = this.getView().byId("VendorsList").getItems()[oFlagIndexItem]
                   .getContent()[0];
               var sPath = oEvent.oSource.oParent.getBindingContext().getPath();
-              if (oRuleSelected <= 2) {
+              if (this.oRuleSelected <= 2) {
 
                 this.oIndexItem[this.oIndexItem.length] = oFlagIndexItem;
                 var oBookingBox = sap.ui.xmlfragment(
