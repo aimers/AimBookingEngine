@@ -1,50 +1,71 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="sap.ui.medApp.view.Home"
-	xmlns:html="http://www.w3.org/1999/xhtml">
-	<VBox width="100%" height="100%" alignItems="Center">
-		<VBox height="100%" alignItems="Center" class="homePageContent" id="homePageContent">
-			<HBox justifyContent="Center" alignItems="Center" width="100%"
-				class="spaceAround">
-				<Image width="2rem" height="2rem" class="spaceLeft"
-					src="assets/img/location.png" densityAware="false" press="getGeoLocation" />
-				<Input class="inputLocation" id="multiInput2" change= "handleAddessLocation"
-				  placeholder="Landmark, Locality , City .."
-					showSuggestion="true" suggestionItems="{/suggestAddress}">
-					<suggestionItems>
-						<core:Item key="{LATIT},{LONGT}" text="{ADDR}" />
-					</suggestionItems>
-				</Input>
-			</HBox>
-			<HBox justifyContent="Center" alignItems="Center" width="100%">
-				<MultiComboBox id="homeSearchBar" class="inputLocation"
-					selectionChange="handleSelectionChange" width="100%" maxWidth="280px"
-					items="{path: '/vendorsCategory', sorter: { path: 'DESCR' }}">
-					<core:Item key="{ENTID}" text="{DESCR}" />
-				</MultiComboBox>
-				<Button class="buttonDesign" text="{i18n>SEARCH}" press="handleSearchKeyword" />
-			</HBox>
-			<VBox justifyContent="Center" alignItems="Center"
-				class="homeContent spaceAround">
-				<l:Grid width="100%" class="sapUiSmallMarginTop" content="{/vendorsTileCategory}"
-					vSpacing="2" hSpacing="2">
+	xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	controllerName="sap.ui.medApp.view.Home">
+	<Page showHeader="false">
+		<content>
+			<VBox width="100%" alignItems="Center" class="sapUiLargeMarginTop">
+				<l:Grid defaultSpan="L12 M12 S12" width="30rem">
 					<l:content>
-						<VBox alignItems="Center">
-							<Image press="getVendorList" src="assets/img/tiles/{SICON}"
-								useMap="{ENTID}" densityAware="false" class="homeTileIcons" />
-							<Text text="{DESCR}" class="homeTileText" />
-							<layoutData>
-								<l:GridData span="L4 M4 S4" />
-							</layoutData>
-						</VBox>
+						<f:SimpleForm id="homePageContent" minWidth="400"
+							maxContainerCols="1" editable="true" layout="ResponsiveGridLayout"
+
+							columnsL="1" columnsM="1" class="editableForm">
+							<f:content>
+								<Image width="2rem" height="2rem" src="assets/img/location.png"
+									densityAware="false" press="getGeoLocation">
+									<layoutData>
+										<l:GridData span="L2 M2 S2" />
+									</layoutData>
+								</Image>
+								<Input id="multiInput2" placeholder="Landmark, Locality , City .."
+									showSuggestion="true" suggestionItems="{/suggestAddress}">
+									<suggestionItems>
+										<core:Item key="{LATIT},{LONGT}" text="{ADDR}" />
+									</suggestionItems>
+									<layoutData>
+										<l:GridData span="L10 M10 S10" />
+									</layoutData>
+								</Input>
+								<MultiComboBox id="homeSearchBar" selectionChange="handleSelectionChange"
+									width="100%" maxWidth="280px"
+									items="{path: '/vendorsCategory', sorter: { path: 'DESCR' }}">
+									<core:Item key="{ENTID}" text="{DESCR}" />
+									<layoutData>
+										<l:GridData span="L9 M9 S9" />
+									</layoutData>
+								</MultiComboBox>
+								<Button text="{i18n>SEARCH}" press="handleSearchKeyword">
+									<layoutData>
+										<l:GridData span="L3 M3 S3" />
+									</layoutData>
+								</Button>
+								<HBox class="sapUiSmallMarginTop">
+									<l:Grid width="auto" defaultSpan="L12 M12 S12"
+										content="{/vendorsTileCategory}">
+										<l:content>
+											<VBox alignItems="Center">
+												<Image press="getVendorList" src="assets/img/tiles/{SICON}"
+												class="sapUiSmallMarginTop"	useMap="{ENTID}" densityAware="false" />
+												<Text text="{DESCR}" />
+												<layoutData>
+													<l:GridData span="L4 M4 S4" />
+												</layoutData>
+											</VBox>
+										</l:content>
+									</l:Grid>
+								</HBox>
+							</f:content>
+						</f:SimpleForm>
 					</l:content>
 				</l:Grid>
+				<HBox justifyContent="Center" alignItems="Center" width="100%">
+					<Text text="Download App" />
+					<Text class="spaceLeft" text="|" />
+					<Image width="40px" height="40px" class="spaceLeft"
+						src="assets/img/1434895655_android.png" densityAware="false"
+						press="openAndroidApp" />
+				</HBox>
 			</VBox>
-			<HBox justifyContent="Center" alignItems="Center" width="100%">
-				<Text text="Download App" />
-				<Text class="spaceLeft" text="|" />
-				<Image width="40px" height="40px" class="spaceLeft"
-					src="assets/img/1434895655_android.png" densityAware="false" press="openAndroidApp" />
-			</HBox>
-		</VBox>
-	</VBox>
+		</content>
+	</Page>
 </core:View>

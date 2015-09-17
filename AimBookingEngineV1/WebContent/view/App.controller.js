@@ -47,8 +47,9 @@ sap.ui.controller("sap.ui.medApp.view.App", {
     if (this.getView().byId('myShell').getContent()[0] === undefined
         || this.getView().byId('myShell').getContent()[0].getId() !== app
             .getId()) {
-      this.getView().byId('myShell').removeAllContent();
-      this.getView().byId('myShell').addContent(app);
+      //this.getView().byId('myShell').removeAllHeadItems();
+      //this.getView().byId('myShell').removeAllHeadEndItems();
+      this.getView().byId('mShell').setApp(app);
     }
 
     var that = this;

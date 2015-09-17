@@ -1,35 +1,46 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" xmlns:c="sap.ui.commons" controllerName="sap.ui.medApp.view.VendorFilter"
+	xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:c="sap.ui.commons" controllerName="sap.ui.medApp.view.VendorFilter"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page showHeader="false">
+	<Page showHeader="true" title="Modify Search">
 		<content>
-			<!-- <VBox width="90%" height="5%" alignItems="End"> <Button text="Apply" 
-				press="handleFilter" class="buttonDesign"/> </VBox> -->
-			<VBox width="90%" class="appointment" height="20%">
-				<Label text="{i18n>APPOINTMENT_DAY}" class="filterLabel" />
-				<HBox class="weekDayFilter" items="{/filterDays}">
-					<ToggleButton text="{day}" pressed="{selected}" press="handleDayChange"></ToggleButton>
-				</HBox>
-			</VBox>
-			<VBox height="20%" class="appointment" >
-				<Label text="Select Time" class="filterLabel"></Label>
-				<VBox items="{/filterTime}">
-					<c:RangeSlider max="1440" min="0" value="{startTime}"
-						value2="{endTime}" totalUnits="3" smallStepWidth="1" stepLabels="true"
-						labels="00:00, 12:00, 24:00" class="filterLabel" change="handleDayChange"></c:RangeSlider>
-				</VBox>
-			</VBox>
-			<VBox width="100%" height="50%">
-				<SearchField liveChange="onSearch" width="100%" height="10%" />
-				<List id="idList" items="{/vendorsCategory}" selectionChange="onSelectionChange"
-					mode="MultiSelect" includeItemInSelection="true" growing="true"
-					growingThreshold="4" growingScrollToLoad="true" class="filterCategoryList">
-					<items>
-						<StandardListItem title="{DESCR}"
-							iconDensityAware="false" iconInset="false" selected="{selected}" />
-					</items>
-				</List>
-			</VBox>
+
+			<l:Grid defaultSpan="L12 M12 S12" width="auto">
+				<l:content>
+					<f:SimpleForm id="vendorFilterForm" minWidth="400"
+						maxContainerCols="1" editable="true" layout="ResponsiveGridLayout"
+
+						columnsL="1" columnsM="1" class="editableForm">
+						<f:content>
+							<Label text="Days" class="sapUiMediumMarginTop greenTitle"></Label>
+							<HBox class="sapUiSmallMarginTop" items="{/filterDays}">
+								<ToggleButton text="{day}" pressed="{selected}"
+									press="handleDayChange"></ToggleButton>
+							</HBox>
+							<Label text="Select Time" class="sapUiMediumMarginTop greenTitle"></Label>
+							<VBox items="{/filterTime}" class="sapUiSmallMarginTop">
+								<c:RangeSlider max="1440" min="0" value="{startTime}"
+									value2="{endTime}" totalUnits="3" smallStepWidth="1"
+									stepLabels="true" labels="00:00, 12:00, 24:00" class="filterLabel"
+									change="handleDayChange"></c:RangeSlider>
+							</VBox>
+							<VBox width="100%" height="50%">
+								<SearchField liveChange="onSearch" width="100%"
+									  />
+								<List id="idList" items="{/vendorsCategory}"
+									selectionChange="onSelectionChange" mode="MultiSelect"
+									includeItemInSelection="true" growing="true" growingThreshold="4"
+									growingScrollToLoad="true" class="filterCategoryList">
+									<items>
+										<StandardListItem title="{DESCR}"
+											iconDensityAware="false" iconInset="false" selected="{selected}" />
+									</items>
+								</List>
+							</VBox>
+						</f:content>
+					</f:SimpleForm>
+				</l:content>
+			</l:Grid>
 		</content>
 		<footer>
 			<Bar>

@@ -9,60 +9,65 @@
 				mode="None">
 				<items>
 					<CustomListItem type="Inactive">
-						<Panel expandable="true" expanded="false">
+						<Panel expandable="true" expanded="false" >
 							<headerToolbar>
-								<Toolbar height="5rem">
-									<VBox width="100%" class="vendorItems">
-										<HBox width="100%">
-											<VBox width="49%">
-												<HBox class="vendorAddress">
-													<ToggleButton press="handleAddFavorite" icon="sap-icon://favorite"
-														pressed="{path:'USRID', formatter:'sap.ui.medApp.global.globalFormatter.checkFavorite'}"></ToggleButton>
-													<Label text="{PRFIX}{DSPNM}" />
-												</HBox>
-												<!-- <HBox alignItems="Center" class="vendorAddress"> <Text text="{uqnm} 
-													, {clnm}" /> </HBox> -->
-												<HBox alignItems="Center" class="vendorAddress" items="{Address}">
-													<Text text="{LOCLT} , {CTYNM}" />
-												</HBox>
-												<HBox alignItems="Center" items="{Characteristics}"
-													class="imgLabelBox">
-													<Image
-														src="{path:'VALUE', formatter:'sap.ui.medApp.global.globalFormatter.getVendorImageUrl'}"
-														densityAware="false" press="handleSelectDialogPress"
-														width="40px" height="30px"
-														visible="{path:'CHRID', formatter:'sap.ui.medApp.global.globalFormatter.checkImage'}" />
-												</HBox>
-											</VBox>
-											<HBox width="49%" justifyContent="End" alignItems="End">
-												<VBox justifyContent="Center" alignItems="End">
-													<HBox alignItems="Center" class="vendorRecommend"
-														justifyContent="Start" 
-														visible="{path:'Address', formatter: 'sap.ui.medApp.global.globalFormatter.getDistanceFlag'}">
-														<Image src="assets/img/Location-Pointer.png" width="70%"
-															densityAware="false" />
-														<HBox items="{Address}" >
-														<Text
-                              text="{path:'distance'} KMs away" visible="{path:'distance', formatter: 'sap.ui.medApp.global.globalFormatter.getLabelDisplayWrite'}"/></HBox>														
-													</HBox>
-													<Button text="{i18n>VENDOR_DETAIL}" class="buttonDesign"
-														press="handleDetailNav" />
-												</VBox>
-												<VBox justifyContent="Center" alignItems="End">
+								<Toolbar height="7rem">
+									<l:Grid defaultSpan="L12 M12 S12" class="fullwidth sapUiSmallMarginTop">
+										<l:content>
+											<ObjectHeader iconDensityAware="false" iconAlt="{PRFIX}{DSPNM}"
+												title="{PRFIX}{DSPNM}" number="{path:'Address/distance'}"
+												numberUnit="KMs away">
+												<attributes>
+													<ObjectAttribute text="{Address/0/LOCLT} , {Address/0/CTYNM}" />
+												</attributes>
+												<layoutData>
+													<l:GridData span="L4 M12 S12" />
+												</layoutData>
+											</ObjectHeader>
 
-													<Select selectedKey="1" class="vendorRuleSelect">
-														<core:Item key="1" text="Auto Approval" />
-														<core:Item key="2" text="Manual Approval" />
-														<core:Item key="3" text="Call" />
-													</Select>
-													<Button text="Book Appointment" class="buttonDesign"
-														press="handleBookAppointment" />
+											<HBox items="{Characteristics}" class="sapUiSmallMarginTop">
+												<Image
+													src="{path:'VALUE', formatter:'sap.ui.medApp.global.globalFormatter.getVendorImageUrl'}"
+													densityAware="false" press="handleSelectDialogPress" width="40px"
+													height="30px"
 
-												</VBox>
-
+													visible="{path:'CHRID', formatter:'sap.ui.medApp.global.globalFormatter.checkImage'}" />
+												<layoutData>
+													<l:GridData span="L4 M6 S12" />
+												</layoutData>
 											</HBox>
-										</HBox>
-									</VBox>
+											<VBox justifyContent="End" alignItems="End">
+												<ToggleButton press="handleAddFavorite" icon="sap-icon://favorite"
+													pressed="{path:'USRID', formatter:'sap.ui.medApp.global.globalFormatter.checkFavorite'}"></ToggleButton>
+												<HBox>
+													<Button text="{i18n>VENDOR_DETAIL}" press="handleDetailNav" />
+													<Button text="Book Appointment" press="handleBookAppointment" />
+												</HBox>
+												<layoutData>
+													<l:GridData span="L4 M6 S12" />
+												</layoutData>
+											</VBox>
+										</l:content>
+									</l:Grid>
+
+
+
+
+
+
+
+
+
+
+
+									<!-- <HBox width="49%" justifyContent="End" alignItems="End"> <VBox 
+										justifyContent="Center" alignItems="End"> <HBox alignItems="Center" class="vendorRecommend" 
+										justifyContent="Start" visible="{path:'Address', formatter: 'sap.ui.medApp.global.globalFormatter.getDistanceFlag'}"> 
+										<Image src="assets/img/Location-Pointer.png" width="70%" densityAware="false" 
+										/> <HBox items="{Address}"> <Text text="{path:'distance'} KMs away" visible="{path:'distance', 
+										formatter: 'sap.ui.medApp.global.globalFormatter.getLabelDisplayWrite'}" 
+										/> </HBox> </HBox> </VBox> </HBox> -->
+
 								</Toolbar>
 							</headerToolbar>
 						</Panel>
