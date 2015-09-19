@@ -19,8 +19,17 @@ public class MasterServlet
 		String current="";
 	public void init(){
 		System.out.println("Inside INIT method");
-
 		try{
+			  
+			 new NotificationBatch().startTask();
+		}
+		catch(Exception ex){
+			System.out.println(""+ex);
+		}
+		
+	        // TODO Auto-generated constructor stub
+		try{
+			  
 			dbcon.Connect("MYSQL");
 		}
 		catch(Exception ex){
