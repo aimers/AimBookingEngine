@@ -112,7 +112,7 @@ sap.ui
            * Handle Press Tile
            */
           handleSearchKeyword : function(evt) {
-            this.oView.byId("homePageContent").setBusy(true);
+            this.oView.setBusy(true);
             var _that = this;
             // do what you need here
             var medAppUID;
@@ -138,7 +138,7 @@ sap.ui
               sap.m.MessageToast.show("Please select category");
               // return false; // TODO
             }
-            _that.oView.byId("homePageContent").setBusy(false);
+            _that.oView.setBusy(false);
           },
           /*
            * handleSelectionChange : function(oEvent) { var selectedItems =

@@ -11,6 +11,7 @@ sap.ui
           },
 
           onRouteMatched : function(oEvent) {
+            this.parameter = oEvent.getParameter("arguments");
             if (oEvent.getParameter("name") === "signup") {
               if (sap.ui.medApp.global.util._mainModel) {
                 this.oModel = sap.ui.medApp.global.util._mainModel;
@@ -70,7 +71,7 @@ sap.ui
 
                   _this.oView.byId("MessageBox").setText(
                       "User cannot be registered");
-                  sap.ui.medApp.global.busyDialog.close();
+                  this.oView.setBusy(false);
                 } else {
                   _this.oView.byId("MessageBox").setText("");
                   sessionStorage.setItem("medAppUID", oData.results.USRID);
@@ -135,7 +136,7 @@ sap.ui
                   }
                 }
               };
-              sap.ui.medApp.global.busyDialog.open();
+              this.oView.setBusy(true);
               sap.ui.medApp.global.util.getRegisterData(param, fnSuccess);
             }
           },
