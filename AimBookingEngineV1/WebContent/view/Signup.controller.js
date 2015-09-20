@@ -126,14 +126,27 @@ sap.ui
                                 .getProperty("/LoggedUser/USRID"),
                             "VALUE" : vEngine.RegisteredId.toString()
                           } ]);
+                  _this.oModel.setProperty("/vendorsList/0/Rules", []);
 
-                  if (_this.parameter.flagID == 2) {
-                    _this._oRouter.navTo("ConfirmBooking", {
-                      "UID" : sessionStorage.medAppUID
-                    });
-                  } else {
-                    _this._oRouter.navTo('_homeTiles');
-                  }
+                  _this.oModel.setProperty("/vendorsList/0/FRNAM", oFname
+                      .getValue().toString().trim());
+                  _this.oModel.setProperty("/vendorsList/0/LTNAM", oLname
+                      .getValue().toString().trim());
+                  _this.oModel.setProperty("/vendorsList/0/DSPNM", oFname
+                      .getValue().toString().trim()
+                      + " " + oLname.getValue().toString().trim());
+                  var fnSuccess = function(oData) {
+                    _this.oView.setBusy(false);
+                    if (_this.parameter.flagID == 2) {
+                      _this._oRouter.navTo("ConfirmBooking", {
+                        "UID" : sessionStorage.medAppUID
+                      });
+                    } else {
+                      _this._oRouter.navTo('_homeTiles');
+                    }
+                  };
+                  sap.ui.medApp.global.util.updateUserDetails(fnSuccess);
+
                 }
               };
               this.oView.setBusy(true);

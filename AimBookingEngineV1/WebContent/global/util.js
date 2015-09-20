@@ -253,6 +253,22 @@ sap.ui.medApp.global.util = {
     this._vendorListServiceFacade.updateParameters(param, fnSuccess, fnError,
         "updateUser");
   },
+  updateUserDetails : function(fnSuccess) {
+
+    // this._mainModel.setProperty("/vendorsList/0/Entities", this._mainModel
+    // .getProperty("/vendorsCategory"));
+
+    var userData = this._mainModel.getProperty("/LoggedUser");
+
+    param = [ {
+      "key" : "details",
+      "value" : userData
+    } ];
+    this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+        this._mainModel);
+    this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
+        "updateUser");
+  },
   cancelBooking : function(boomingData, fnSuccess, fnError) {
     if (!this._vendorListServiceFacade) {
       this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(

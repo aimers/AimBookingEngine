@@ -60,7 +60,7 @@ sap.ui
                 "ETYID" : vendorData.Rules[0].ETYID.toString(),
                 "ETCID" : vendorData.Rules[0].ETCID.toString(),
                 "ENTID" : vendorData.Rules[0].ENTID.toString(),
-                "RULID" : bookingdata[0].RULEID,
+                "RULID" : bookingdata[0].RULEID.toString(),
                 "VSEML" : vendorData.USRNM,
                 "BDTIM" : my_date,
                 "BTIMZ" : bookingdate.split(" ")[4],
