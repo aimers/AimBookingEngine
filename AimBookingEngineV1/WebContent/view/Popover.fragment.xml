@@ -6,7 +6,7 @@
 				pages="{/ImageCarousal/Characteristics}">
 				<pages>
 					<Image
-						src="{path:'VALUE', formatter:'sap.ui.medApp.global.globalFormatter.getVendorImageUrl'}"
+						src="{path:'VALUE'}"
 						class="clinicImages" densityAware="false"
 						visible="{path:'CHRID', formatter:'sap.ui.medApp.global.globalFormatter.checkImage'}" />
 				</pages>
@@ -16,5 +16,4 @@
 			<Button text="Close" press="HandleCloseDialog"></Button>
 		</beginButton>
 	</Dialog>
-
 </core:FragmentDefinition>
