@@ -34,7 +34,6 @@ sap.ui
               oUsrNm1.setValueState(sap.ui.core.ValueState.None);
               oPswd.setValueState(sap.ui.core.ValueState.None);
               oCpwd.setValueState(sap.ui.core.ValueState.None);
-              oSpeciality.setSelectedItem(oSpeciality.getFirstItem());
             }
 
           },
