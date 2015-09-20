@@ -4,23 +4,32 @@
 	<Page class="mainPage" id="mainPage" showNavButton="true"
 		navButtonPress="navToListPage">
 		<content>
-			<Panel class="detailPanel" expandable="true" expanded="true">
+			<Panel class="detailPanel VendorsList" expandable="true"
+				expanded="true">
 				<headerToolbar>
-					<Toolbar height="5rem">
+					<Toolbar height="10rem">
 						<VBox width="100%" class="vendorItems" items="{/vendorsDetail}">
 							<HBox width="100%">
 								<VBox width="49%">
-									<HBox justifyContent="Start" class="vendorAddress">
+									<HBox justifyContent="Start" class="vendorAddress"
+										alignItems="Center">
 										<ToggleButton press="handleAddFavorite" icon="sap-icon://favorite"
 											pressed="{path:'USRID', formatter:'sap.ui.medApp.global.globalFormatter.checkFavorite'}"></ToggleButton>
-										<Label text="{PRFIX}{DSPNM}" />
+										<Label text="{PRFIX}{DSPNM}" class="vendorAddressLocal" />
 									</HBox>
-									<!-- <HBox alignItems="Center" class="vendorAddress"> <Text text="{uqnm} 
-										, {clnm}" /> </HBox> -->
-									<HBox alignItems="Center" class="vendorAddress" items="{Address}">
-										<Text text="{LOCLT} , {CTYID}" />
+									<HBox alignItems="Center" class="vendorAddressLocal"
+										items="{Address}">
+										<Text text="{LOCLT} , {CTYNM}" />
 									</HBox>
-									<HBox alignItems="Center" items="{Characteristics}" class="imgLabelBox">
+									<HBox width="50%" alignItems="Center" class="vendorRecommend"
+										justifyContent="Start"
+										visible="{path:'Address', formatter: 'sap.ui.medApp.global.globalFormatter.getDistanceFlag'}">
+										<Button icon="sap-icon://functional-location" press="handleLocation" />
+										<Text
+											text="{path:'Address', formatter: 'sap.ui.medApp.global.globalFormatter.getDistance'} KMs away" />
+									</HBox>
+									<HBox alignItems="Center" items="{Characteristics}"
+										class="imgLabelBox vendorAddressLocal">
 										<Image
 											src="{path:'VALUE', formatter:'sap.ui.medApp.global.globalFormatter.getVendorImageUrl'}"
 											densityAware="false" press="handleSelectDialogPress" width="40px"
@@ -29,32 +38,28 @@
 									</HBox>
 								</VBox>
 								<VBox width="49%">
-									<HBox width="100%" justifyContent="End">
-
-										<HBox width="50%" alignItems="Center" class="vendorRecommend"
-											justifyContent="End"
-											visible="{path:'Address', formatter: 'sap.ui.medApp.global.globalFormatter.getDistanceFlag'}">
-											<Image src="assets/img/Location-Pointer.png" width="70%"
-												densityAware="false" />
-											<Text
-												text="{path:'Address', formatter: 'sap.ui.medApp.global.globalFormatter.getDistance'} KMs away" />
-										</HBox>
-										<HBox width="50%" alignItems="Center" class="vendorRecommend"
-											justifyContent="End">
-											<Select selectedKey="1" class="vendorRuleSelect" change ="handleRuleSelection" id="SelectRule">
-												<core:Item key="1" text="Auto Approval" />
-												<core:Item key="2" text="Manual Approval" />
-												<core:Item key="3" text="Call" />
-											</Select>
+									<HBox width="100%" justifyContent="End" items="{Characteristics}">
+										<Image densityAware="false"
+											src="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorSocialUrl'}"
+											visible="{path:'REGXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorSocial'}" />
+									</HBox>
+									<HBox justifyContent="End" items="{Characteristics}">
+										<HBox alignItems="Center"
+											visible="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorPhoneIcon'}">
+											<Button
+												icon="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorPhoneIcon'}" />
+											<Label text="{path:'VALUE'}" />
 										</HBox>
 									</HBox>
-
-									<HBox justifyContent="End">
-										<HBox width="60%" justifyContent="End" items="{Address}">
-											<Link text="Get Location" href="http://maps.google.com/?q={LONGT},{LATIT}"
-												target="_blank" emphasized="true"></Link>
+									<VBox justifyContent="Center" alignItems="End"
+										items="{Characteristics}">
+										<HBox height="1.5rem" alignItems="Center"
+											visible="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorEmailIcon'}">
+											<Button
+												icon="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorEmailIcon'}" />
+											<Label text="{path:'VALUE'}" />
 										</HBox>
-									</HBox>
+									</VBox>
 								</VBox>
 							</HBox>
 						</VBox>
@@ -63,21 +68,8 @@
 				<content>
 					<VBox>
 						<HBox width="98%">
-							<HBox width="50%" justifyContent="Start">
-								<Label text="Select Date"></Label>
-							</HBox>
-							<HBox width="50%" justifyContent="End">
-								<RadioButtonGroup class="sapUiMediumMarginBottom"
-									selectedIndex="1" select="changeToOneWeek" columns="3"
-									id="radioWeekly">
-									<buttons>
-										<RadioButton text="Weekly" />
-										<RadioButton text="Monthly" />
-									</buttons>
-								</RadioButtonGroup>
-								<!-- </RadioButtonGroup> <RadioButton text="Weekly" select="changeToOneWeek" 
-									id="radioWeekly"/> <RadioButton text="Monthly" select="changeToOneMonth" 
-									id="radioMonthly"/> -->
+							<HBox justifyContent="Start">
+								<DatePicker change="handleWeekCalender" />
 							</HBox>
 						</HBox>
 						<VBox id="monthCalenderView" width="99%">
@@ -85,13 +77,14 @@
 								select="handleWeekCalender">
 							</me:Calendar>
 						</VBox>
-						<IconTabBar visible="false" 
-							class="weekCalenderView" id="weekCalenderView">
+						<IconTabBar visible="false" class="weekCalenderView"
+							id="weekCalenderView">
 						</IconTabBar>
-            <HBox alignItems = "Center"   justifyContent = "SpaceAround" id="callBox" visible="false">
-              <Button icon="sap-icon://outgoing-call"></Button>
-              <Text class="CallBox"></Text>
-            </HBox>
+						<HBox alignItems="Center" justifyContent="SpaceAround" id="callBox"
+							visible="false">
+							<Button icon="sap-icon://outgoing-call"></Button>
+							<Text class="CallBox"></Text>
+						</HBox>
 					</VBox>
 				</content>
 			</Panel>

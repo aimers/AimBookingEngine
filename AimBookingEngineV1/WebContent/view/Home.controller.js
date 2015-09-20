@@ -208,11 +208,11 @@ sap.ui
                             LANDMARK : lndmrk,
                             LOCALITY : locly,
                             CITY : city,
-                            LAT : results[0].geometry.location.G,
-                            LOG : results[0].geometry.location.K
+                            LAT : results[0].geometry.location.H,
+                            LOG : results[0].geometry.location.L
                           } ];
-                          sessionStorage.LATIT = results[0].geometry.location.G;
-                          sessionStorage.LONGT = results[0].geometry.location.K;
+                          sessionStorage.LATIT = results[0].geometry.location.H;
+                          sessionStorage.LONGT = results[0].geometry.location.L;
                           _this.oModel.setProperty("/GeoLocation", oDataNew);
                           _this.oView.byId("multiInput2").setValue(
                               oDataNew[0].LANDMARK + "," + oDataNew[0].LOCALITY

@@ -39,7 +39,7 @@ sap.ui.controller("sap.ui.medApp.view.App", {
   _handleRouteMatched : function(oEvent) {
     this.oModel = sap.ui.medApp.global.util.getHomeModel();
     var scope = oEvent.getParameter("config").name;
-    var fullWidthRoutes = [ "_homeTiles", "_loginPage", "_Signup",
+    var fullWidthRoutes = [ "_homeTiles", "_loginPage", "signup",
         "ConfirmBooking", "_history", "_profile" ];
     var bIsFullWidthRoute = (jQuery.inArray(scope, fullWidthRoutes) >= 0);
     var bIsHomeRoute = (scope === "_homeTiles");
@@ -47,8 +47,8 @@ sap.ui.controller("sap.ui.medApp.view.App", {
     if (this.getView().byId('myShell').getContent()[0] === undefined
         || this.getView().byId('myShell').getContent()[0].getId() !== app
             .getId()) {
-      //this.getView().byId('myShell').removeAllHeadItems();
-      //this.getView().byId('myShell').removeAllHeadEndItems();
+      // this.getView().byId('myShell').removeAllHeadItems();
+      // this.getView().byId('myShell').removeAllHeadEndItems();
       this.getView().byId('mShell').setApp(app);
     }
 

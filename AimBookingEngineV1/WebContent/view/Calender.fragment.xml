@@ -3,33 +3,21 @@
 	<Page showHeader="false" class="bookingBox" enableScrolling="false">
 		<subHeader>
 			<Bar>
-				<contentMiddle>
-					<HBox width="98%">
-						<HBox width="30%" justifyContent="Start">
-							<Label text="Select Date"></Label>
-						</HBox>
-						<HBox width="70%" justifyContent="Start">
-							<RadioButtonGroup class="sapUiMediumMarginBottom" selectedIndex="1" select="changeToOneWeek"
-							columns="3">
-								<buttons>
-									<RadioButton text="Weekly"  />
-									<RadioButton text="Monthly" />
-								</buttons>
-							</RadioButtonGroup>
-						</HBox>
+				<contentLeft>
+					<DatePicker change="handleWeekCalender" />
+				</contentLeft>
+				<contentRight>
+					<HBox justifyContent="End" alignItems="Center">
+						<Button icon="sap-icon://phone" densityAware="false" />
+						<Text />
 					</HBox>
-				</contentMiddle>
+				</contentRight>
 			</Bar>
 		</subHeader>
 		<content>
-			<me:Calendar width="100%" class="monthCalender" select="handleWeekCalender">
-			</me:Calendar>
-			<IconTabBar visible="false" width="100%"
-				class="weekCalenderView">
-				<!--  <HBox alignItems="Start" justifyContent="SpaceAround" class="MorningSlot"></HBox>
-				<HBox alignItems="Start" justifyContent="SpaceAround" class="AfternoonSlot"></HBox>
-				<HBox alignItems="Start" justifyContent="SpaceAround" class="EveningSlot"></HBox>
-				<HBox alignItems="Start" justifyContent="SpaceAround" class="NightSlot"></HBox>-->
+			<!-- <me:Calendar width="100%" class="monthCalender" select="handleWeekCalender"> 
+				</me:Calendar> -->
+			<IconTabBar width="100%" class="weekCalenderView">
 			</IconTabBar>
 		</content>
 	</Page>

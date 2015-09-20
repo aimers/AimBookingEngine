@@ -82,7 +82,7 @@ sap.ui
             }
           },
           handleBookAppointment : function(oEvent) {
-            oEvent.oSource.setBusy(true);
+            this.oView.setBusy(true);
 
             var oController = this;
             var oFlagIndexItem = oEvent.oSource.getBindingContext().getPath()
@@ -91,10 +91,12 @@ sap.ui
 
             if (oFlag) {
               this.handleCancelBooking(oFlagIndexItem);
+              this.oView.setBusy(false);
             } else {
-              //var oRuleSelected = oEvent.oSource.oParent.getItems()[0]
-                //  .getSelectedKey();
-              this.oRuleSelected = 1;//oRuleSelected
+              if (this.oIndexItem.length > 0) {
+                this.handleCancelBooking(this.oIndexItem[0]);
+              }
+              this.oRuleSelected = 1;// oRuleSelected
               var oItemSelected = this.getView().byId("VendorsList").getItems()[oFlagIndexItem]
                   .getContent()[0];
               var sPath = oEvent.oSource.oParent.getBindingContext().getPath();
@@ -103,12 +105,7 @@ sap.ui
                 this.oIndexItem[this.oIndexItem.length] = oFlagIndexItem;
                 var oBookingBox = sap.ui.xmlfragment(
                     "sap.ui.medApp.view.Calender", this);
-                oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1]
-                    .getItems()[0].getButtons()[0].setGroupName(oFlagIndexItem);
-                oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1]
-                    .getItems()[0].getButtons()[1].setGroupName(oFlagIndexItem);
-
-                var oLinkTemplate1 = new sap.m.Link({
+                var oLinkTemplate1 = new sap.m.Button({
                   press : [ oController.handleBookingTime, oController ],
                   layoutData : new sap.ui.layout.GridData({
                     span : "L1 M3 S5"
@@ -123,14 +120,8 @@ sap.ui
                         {
                           path : 'STATUS',
                           formatter : sap.ui.medApp.global.globalFormatter.getBookingStatus
-                        })
-                    .bindProperty(
-                        "visible",
-                        {
-                          path : 'START',
-                          formatter : sap.ui.medApp.global.globalFormatter.getBookingTimeMorning
-                        });
-                var oLinkTemplate2 = new sap.m.Link({
+                        }).addStyleClass("LinkButton");
+                var oLinkTemplate2 = new sap.m.Button({
                   press : [ oController.handleBookingTime, oController ],
                   layoutData : new sap.ui.layout.GridData({
                     span : "L1 M3 S5"
@@ -146,14 +137,8 @@ sap.ui
                         {
                           path : 'STATUS',
                           formatter : sap.ui.medApp.global.globalFormatter.getBookingStatus
-                        })
-                    .bindProperty(
-                        "visible",
-                        {
-                          path : 'START',
-                          formatter : sap.ui.medApp.global.globalFormatter.getBookingTimeAfternoon
-                        });
-                var oLinkTemplate3 = new sap.m.Link({
+                        }).addStyleClass("LinkButton");
+                var oLinkTemplate3 = new sap.m.Button({
                   press : [ oController.handleBookingTime, oController ],
                   layoutData : new sap.ui.layout.GridData({
                     span : "L1 M3 S5"
@@ -168,14 +153,8 @@ sap.ui
                         {
                           path : 'STATUS',
                           formatter : sap.ui.medApp.global.globalFormatter.getBookingStatus
-                        })
-                    .bindProperty(
-                        "visible",
-                        {
-                          path : 'START',
-                          formatter : sap.ui.medApp.global.globalFormatter.getBookingTimeEvening
-                        });
-                var oLinkTemplate4 = new sap.m.Link({
+                        }).addStyleClass("LinkButton");
+                var oLinkTemplate4 = new sap.m.Button({
                   press : [ oController.handleBookingTime, oController ],
                   layoutData : new sap.ui.layout.GridData({
                     span : "L1 M3 S5"
@@ -190,112 +169,87 @@ sap.ui
                         {
                           path : 'STATUS',
                           formatter : sap.ui.medApp.global.globalFormatter.getBookingStatus
-                        })
-                    .bindProperty(
-                        "visible",
-                        {
-                          path : 'START',
-                          formatter : sap.ui.medApp.global.globalFormatter.getBookingTimeNight
-                        });
+                        }).addStyleClass("LinkButton");
 
                 var newTemplate = new sap.m.IconTabFilter({
                   text : {
                     path : 'Date',
                     formatter : sap.ui.medApp.global.util.getDateLabel
                   },
-                  content : new sap.m.VBox(
-                      {
-                        items : [
-                            new sap.m.VBox({
-                              width : "100%",
-                              items : [ new sap.m.Label({
-                                text : "Morning"
-                              }) ]
-                            }).addStyleClass("MorningSlot"),
-                            new sap.ui.layout.Grid({
-                              hSpacing : 0,
-                              vSpacing : 1,
-                              content : {
-                                path : "TimeSlots",
-                                template : oLinkTemplate1
-                              }
-                            }),
-                            new sap.m.VBox({
-                              width : "100%",
-                              items : [ new sap.m.Label({
-                                text : "Afternoon"
-                              }) ]
-                            }).addStyleClass("AfternoonSlot"),
-                            new sap.ui.layout.Grid({
-                              hSpacing : 1,
-                              vSpacing : 1,
-                              content : {
-                                path : "TimeSlots",
-                                template : oLinkTemplate2
-                              }
-                            }),
-                            new sap.m.VBox({
-                              width : "100%",
-                              items : [ new sap.m.Label({
-                                text : "Evening"
-                              }) ]
-                            }).addStyleClass("EveningSlot"),
-                            new sap.ui.layout.Grid({
-                              hSpacing : 1,
-                              vSpacing : 1,
-                              content : {
-                                path : "TimeSlots",
-                                template : oLinkTemplate3
-                              }
-                            }),
-                            new sap.m.VBox({
-                              width : "100%",
-                              items : [ new sap.m.Label({
-                                text : "Night"
-                              }) ]
-                            }).addStyleClass("NightSlot"),
-                            new sap.ui.layout.Grid({
-                              hSpacing : 1,
-                              vSpacing : 1
-                            }).bindAggregation("content", "TimeSlots",
-                                oLinkTemplate4) ]
-                      })
+                  content : new sap.m.VBox({
+                    items : [
+                        new sap.m.VBox({
+                          width : "100%",
+                          items : [ new sap.m.Label({
+                            text : "Morning"
+                          }) ]
+                        }).addStyleClass("MorningSlot"),
+                        new sap.ui.layout.Grid({
+                          hSpacing : 0,
+                          vSpacing : 1,
+                          content : {
+                            path : "TimeSlotsMorning",
+                            template : oLinkTemplate1
+                          }
+                        }),
+                        new sap.m.VBox({
+                          width : "100%",
+                          items : [ new sap.m.Label({
+                            text : "Afternoon"
+                          }) ]
+                        }).addStyleClass("AfternoonSlot"),
+                        new sap.ui.layout.Grid({
+                          hSpacing : 1,
+                          vSpacing : 1,
+                          content : {
+                            path : "TimeSlotsAfterNoon",
+                            template : oLinkTemplate2
+                          }
+                        }),
+                        new sap.m.VBox({
+                          width : "100%",
+                          items : [ new sap.m.Label({
+                            text : "Evening"
+                          }) ]
+                        }).addStyleClass("EveningSlot"),
+                        new sap.ui.layout.Grid({
+                          hSpacing : 1,
+                          vSpacing : 1,
+                          content : {
+                            path : "TimeSlotsEvening",
+                            template : oLinkTemplate3
+                          }
+                        }),
+                        new sap.m.VBox({
+                          width : "100%",
+                          items : [ new sap.m.Label({
+                            text : "Night"
+                          }) ]
+                        }).addStyleClass("NightSlot"),
+                        new sap.ui.layout.Grid({
+                          hSpacing : 1,
+                          vSpacing : 1
+                        }).bindAggregation("content", "TimeSlotsNight",
+                            oLinkTemplate4) ]
+                  })
                 });
-                oBookingBox.getContent()[1].bindAggregation("items", sPath
+                oController.ShowOneWeek(oFlagIndexItem, sPath);
+                oBookingBox.getSubHeader().getContentLeft()[0]
+                    .setDateValue(new Date());
+                oBookingBox.getSubHeader().getContentRight()[0].getItems()[1]
+                    .bindProperty(
+                        "text",
+                        {
+                          path : sPath + "/Characteristics",
+                          formatter : sap.ui.medApp.global.globalFormatter.getCallNumber
+                        });
+                oBookingBox.getContent()[0].bindAggregation("items", sPath
                     + "/vendorsAvailableTime", newTemplate);
-                /*
-                 * oBookingBox.getContent()[1].getItems()[1].bindAggregation(
-                 * "items", sPath + "/vendorsAvailableTime", oTemplate2);
-                 * oBookingBox.getContent()[1].getItems()[2].bindAggregation(
-                 * "items", sPath + "/vendorsAvailableTime", oTemplate3);
-                 * oBookingBox.getContent()[1].getItems()[3].bindAggregation(
-                 * "items", sPath + "/vendorsAvailableTime", oTemplate4);
-                 */
                 oItemSelected.addContent(oBookingBox);
-              } else {
-                var bookingBox = new sap.m.HBox(
-                    {
-                      alignItems : "Center",
-                      justifyContent : "SpaceAround",
-                      items : [
-                          new sap.m.Button({
-                            icon : "sap-icon://outgoing-call"
-                          }),
-                          new sap.m.Text()
-                              .addStyleClass("CallBox")
-                              .bindProperty(
-                                  "text",
-                                  {
-                                    path : sPath + "/Characteristics",
-                                    formatter : sap.ui.medApp.global.globalFormatter.getCallNumber
-                                  }) ]
-                    });
-                oItemSelected.addContent(bookingBox);
-
               }
               oItemSelected.setExpanded(true);
             }
-            oEvent.oSource.setBusy(false);
+
           },
           loadVendorCalendorTime : function(sPath, d, fnSuccess) {
             // var iPathIndex = sPath.split("/")[2];
@@ -363,59 +317,35 @@ sap.ui
               FILTER : this.paramValue.FILTER
             });
           },
-          changeToOneWeek : function(oEvent) {
+          ShowOneWeek : function(oIndex, sPath) {
             var that = this;
-            var _oSource = oEvent.oSource;
             this.oView.setBusy(true);
-            if (_oSource.getSelectedIndex() == 0) {
-              var oIndex = _oSource.getButtons()[_oSource.getSelectedIndex()]
-                  .getGroupName();
-              var oItemSelected = that.getView().byId("VendorsList").getItems()[oIndex]
-                  .getContent()[0];
-              var oBookingBox = oItemSelected.getContent();
-              var oCalendar = oBookingBox[0].getContent()[0].setVisible(false);
-              var sPath = oCalendar.getBindingContext().getPath();
-              var fnSuccess = function(oData) {
+            var fnSuccess = function(oData) {
+              var updatedData = sap.ui.medApp.global.util
+                  .getTimeSlot(oData.results);
+              that.oModel.setProperty(sPath + "/vendorsAvailableTime/",
+                  updatedData);
+              that.oModel.getProperty(sPath + "/vendorsAvailableTime/");
 
-                oBookingBox[0].getContent()[1].setVisible(true);
-                that.oModel.setProperty(sPath + "/vendorsAvailableTime/",
-                    oData.results);
-                that.oModel.getProperty(sPath + "/vendorsAvailableTime/");
-
-                var vendorTimeDetail = that.oModel.getProperty(sPath
-                    + "/vendorsAvailableTime/");
-                vendorTimeDetail[0].SPATH = sPath;
-                that.oView.setBusy(false);
-              }
-              that.loadVendorCalendorTime(sPath, new Date(), fnSuccess);
-
-            } else {
-              var oIndex = _oSource.getButtons()[_oSource.getSelectedIndex()]
-                  .getGroupName();
-              var oItemSelected = this.getView().byId("VendorsList").getItems()[oIndex]
-                  .getContent()[0];
-              var oBookingBox = oItemSelected.getContent();
-              var oCalendar = oBookingBox[0].getContent()[0].setVisible(true);
-              oBookingBox[0].getContent()[1].setVisible(false);
+              var vendorTimeDetail = that.oModel.getProperty(sPath
+                  + "/vendorsAvailableTime/");
+              vendorTimeDetail[0].SPATH = sPath;
               that.oView.setBusy(false);
             }
+            that.loadVendorCalendorTime(sPath, new Date(), fnSuccess);
           },
           handleWeekCalender : function(oEvent) {
             this.oView.setBusy(true);
             var _source = oEvent.oSource;
             var oBookingBox = oEvent.oSource.oParent;
-            var selectedDate = oEvent.oSource.getSelectedDates()[0]
-                .getStartDate();
-            var oBookingBox = oEvent.oSource.oParent;
+            var selectedDate = oEvent.oSource.getDateValue();
             var sPath = oEvent.oSource.oParent.getBindingContext().getPath();
             var that = this;
-            oBookingBox.getContent()[0].setVisible(false);
             var fnSuccess = function(oData) {
-              oBookingBox.getContent()[1].setVisible(true);
-              oBookingBox.getSubHeader().getContentMiddle()[0].getItems()[1]
-                  .getItems()[0].setSelectedIndex(0);
+              var updatedData = sap.ui.medApp.global.util
+                  .getTimeSlot(oData.results);
               that.oModel.setProperty(sPath + "/vendorsAvailableTime/",
-                  oData.results);
+                  updatedData);
               that.oModel.getProperty(sPath + "/vendorsAvailableTime/");
 
               var vendorTimeDetail = that.oModel.getProperty(sPath
@@ -424,10 +354,6 @@ sap.ui
               that.oView.setBusy(false);
             }
             this.loadVendorCalendorTime(sPath, selectedDate, fnSuccess);
-
-          },
-          changeToOneMonth : function(oEvent) {
-
           },
           handleSelectDialogPress : function(oEvent) {
             if (!this._oDialog) {

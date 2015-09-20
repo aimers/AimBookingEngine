@@ -185,5 +185,62 @@ sap.ui.medApp.global.globalFormatter = {
         }
       }
     }
+  },
+  checkVendorSocial : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      if (oValue == "url") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  getVendorSocialUrl : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      if (oValue == "Facebook") {
+        return "assets/img/facebook.png";
+      }
+      if (oValue == "Twitter") {
+        return "assets/img/twitter.png";
+      }
+      if (oValue == "Google+") {
+        return "assets/img/googleplus.png";
+      }
+    }
+  },
+  getVendorPhoneIcon : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      if (oValue == "Landline") {
+        return "sap-icon://phone";
+      }
+      if (oValue == "Mobile") {
+        return "sap-icon://iphone";
+      }
+    }
+  },
+  getVendorEmailIcon : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      if (oValue == "Personal Email" || oValue == "Business Email") {
+        return "sap-icon://email";
+      }
+    }
+  },
+  checkVendorPhoneIcon : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      if (oValue == "Landline" || oValue == "Mobile") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  checkVendorEmailIcon : function(oValue) {
+    if (oValue != null && oValue != undefined) {
+      if (oValue == "Personal Email" || oValue == "Business Email") {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 }

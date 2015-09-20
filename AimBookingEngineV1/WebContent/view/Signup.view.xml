@@ -1,0 +1,77 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns="sap.m" controllerName="sap.ui.medApp.view.Signup" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Login" showHeader="false">
+		<content>
+			<VBox width="100%" alignItems="Center">
+				<l:Grid defaultSpan="L12 M12 S12" width="auto">
+					<f:SimpleForm minWidth="400" maxContainerCols="1"
+						editable="true" layout="ResponsiveGridLayout" title="Sign Up"
+						columnsL="1" columnsM="1" class="editableForm">
+						<f:content>
+							<Text id="MessageBox" class="errormessage">
+								<layoutData>
+									<l:GridData span="L12 M12 S12" />
+								</layoutData>
+							</Text>
+							<Label text="First Name *" />
+							<Input id="fname" valueStateText="First name is required">
+								<layoutData>
+									<l:GridData span="L12 M12 S12" />
+								</layoutData>
+							</Input>
+							<Label text="Last Name *" />
+							<Input id="lname" valueStateText="Last name is required">
+								<layoutData>
+									<l:GridData span="L12 M12 S12" />
+								</layoutData>
+							</Input>
+							<Label text="Email" />
+							<Input id="usrNme" valueStateText="Invalid email id">
+								<layoutData>
+									<l:GridData span="L12 M12 S12" />
+								</layoutData>
+							</Input>
+							<Label text="Mobile *" />
+							<Select enabled="false">
+								<core:Item text="+91"></core:Item>
+								<layoutData>
+									<l:GridData span="L3 M3 S3" />
+								</layoutData>
+							</Select>
+							<Input id="usrNme1" placeholder="Mobile as username"
+								valueStateText="Invalid username">
+								<layoutData>
+									<l:GridData span="L9 M9 S9" />
+								</layoutData>
+							</Input>
+							<Label text="Password *" />
+							<Input type="Password" id="pswd" valueStateText="Invalid Password">
+								<layoutData>
+									<l:GridData span="L12 M12 S12" />
+								</layoutData>
+							</Input>
+							<Label text="Confirm Password *" />
+							<Input type="Password" id="cpswd" valueStateText="Invalid Confirm Password">
+								<layoutData>
+									<l:GridData span="L12 M12 S12" />
+								</layoutData>
+							</Input>
+							<Button class="sapUiMediumMarginTop" text="Sign Up" type="Emphasized"
+								press="handleRegister">
+								<layoutData>
+									<l:GridData span="L12 M12 S12" />
+								</layoutData>
+							</Button>
+							<Button text="Cancel" press="handleCancel">
+								<layoutData>
+									<l:GridData span="L12 M12 S12" />
+								</layoutData>
+							</Button>
+						</f:content>
+					</f:SimpleForm>
+				</l:Grid>
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>

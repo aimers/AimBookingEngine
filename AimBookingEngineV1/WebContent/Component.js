@@ -25,8 +25,8 @@ sap.ui.core.UIComponent
                     targetControl : "idAppControl", // Target Control Id
                   },
                   {
-                    pattern : "signup", // patern matching
-                    name : "_Signup", // router name
+                    pattern : "signup/{flagID}", // patern matching
+                    name : "signup", // router name
                     view : "Signup", // View of the _DealsList Router
                     targetAggregation : "pages",
                     targetControl : "idAppControl", // Target Control Id

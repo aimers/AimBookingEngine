@@ -15,7 +15,7 @@
 							<Label text="Days" class="sapUiMediumMarginTop greenTitle"></Label>
 							<HBox class="sapUiSmallMarginTop" items="{/filterDays}">
 								<ToggleButton text="{day}" pressed="{selected}"
-									press="handleDayChange"></ToggleButton>
+									press="handleDayChange" class="toggleButton"></ToggleButton>
 							</HBox>
 							<Label text="Select Time" class="sapUiMediumMarginTop greenTitle"></Label>
 							<VBox items="{/filterTime}" class="sapUiSmallMarginTop">
@@ -29,8 +29,7 @@
 									  />
 								<List id="idList" items="{/vendorsCategory}"
 									selectionChange="onSelectionChange" mode="MultiSelect"
-									includeItemInSelection="true" growing="true" growingThreshold="4"
-									growingScrollToLoad="true" class="filterCategoryList">
+									includeItemInSelection="true" growing="true"  class="filterCategoryList">
 									<items>
 										<StandardListItem title="{DESCR}"
 											iconDensityAware="false" iconInset="false" selected="{selected}" />

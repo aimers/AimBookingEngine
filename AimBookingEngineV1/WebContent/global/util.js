@@ -316,5 +316,40 @@ sap.ui.medApp.global.util = {
       }
       return splitValue[0] + " " + splitValue[1] + " " + splitValue[2];
     }
+  },
+  getTimeSlot : function(results) {
+
+    for (var j = 0; j < results.length; j++) {
+      if (results[j].TimeSlots) {
+        var TimesSlots = results[j].TimeSlots;
+        var morningSlots = [];
+        var AfternoonSlots = [];
+        var eveningSlots = [];
+        var nightSlots = [];
+        for (var i = 0; i < TimesSlots.length; i++) {
+          if (TimesSlots[i].START.split(":")[0] < 12
+              && TimesSlots[i].START.split(":")[0] > 3) {
+            morningSlots.push(TimesSlots[i]);
+          } else if (TimesSlots[i].START.split(":")[0] < 16
+              && TimesSlots[i].START.split(":")[0] > 12) {
+            AfternoonSlots.push(TimesSlots[i]);
+          } else if (TimesSlots[i].START.split(":")[0] > 16
+              && TimesSlots[i].START.split(":")[0] < 20) {
+            eveningSlots.push(TimesSlots[i]);
+          } else if ((TimesSlots[i].START.split(":")[0] < 24 && TimesSlots[i].START
+              .split(":")[0] > 20)
+              || (TimesSlots[i].START.split(":")[0] < 3 && TimesSlots[i].START
+                  .split(":")[0] >= 0)) {
+            nightSlots.push(TimesSlots[i]);
+          }
+        }
+        results[j].TimeSlotsMorning = morningSlots;
+        results[j].TimeSlotsAfterNoon = AfternoonSlots;
+        results[j].TimeSlotsEvening = eveningSlots;
+        results[j].TimeSlotsNight = nightSlots;
+      }
+    }
+
+    return results;
   }
 }

@@ -4,15 +4,14 @@
 	<Page showHeader="false">
 		<content>
 			<VBox width="100%" alignItems="Center" class="sapUiLargeMarginTop">
-				<l:Grid defaultSpan="L12 M12 S12" width="30rem">
+				<l:Grid defaultSpan="L12 M12 S12" width="29rem">
 					<l:content>
 						<f:SimpleForm id="homePageContent" minWidth="400"
 							maxContainerCols="1" editable="true" layout="ResponsiveGridLayout"
-
 							columnsL="1" columnsM="1" class="editableForm">
 							<f:content>
 								<Image width="2rem" height="2rem" src="assets/img/location.png"
-									densityAware="false" press="getGeoLocation">
+									densityAware="false" press="getGeoLocation" class="spaceLeft">
 									<layoutData>
 										<l:GridData span="L2 M2 S2" />
 									</layoutData>
@@ -39,21 +38,22 @@
 										<l:GridData span="L3 M3 S3" />
 									</layoutData>
 								</Button>
-								<HBox class="sapUiSmallMarginTop">
-									<l:Grid width="auto" defaultSpan="L12 M12 S12"
-										content="{/vendorsTileCategory}">
+								<VBox justifyContent="Center" alignItems="Center"
+									class="homeContent spaceAround">
+									<l:Grid width="100%" class="sapUiSmallMarginTop"
+										content="{/vendorsTileCategory}" vSpacing="2" hSpacing="2">
 										<l:content>
 											<VBox alignItems="Center">
 												<Image press="getVendorList" src="assets/img/tiles/{SICON}"
-												class="sapUiSmallMarginTop"	useMap="{ENTID}" densityAware="false" />
-												<Text text="{DESCR}" />
+													useMap="{ENTID}" densityAware="false" class="homeTileIcons" />
+												<Text text="{DESCR}" class="homeTileText" />
 												<layoutData>
 													<l:GridData span="L4 M4 S4" />
 												</layoutData>
 											</VBox>
 										</l:content>
 									</l:Grid>
-								</HBox>
+								</VBox>
 							</f:content>
 						</f:SimpleForm>
 					</l:content>

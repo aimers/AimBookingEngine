@@ -356,9 +356,10 @@ sap.ui
             });
           },
           handleBookingTime : function(oEvt) {
-            var selectBoxRule = this.oView.byId("SelectRule").getSelectedKey();
+            // var selectBoxRule =
+            // this.oView.byId("SelectRule").getSelectedKey();
             sap.ui.medApp.global.util.handleBooking(oEvt.oSource, this.router,
-                selectBoxRule);
+                1);
           },
           getDateLabel : function(oValue) {
             if (oValue != null && oValue != undefined) {
@@ -389,5 +390,15 @@ sap.ui
               this.getView().byId("weekCalenderView").setVisible(false);
               this.getView().byId("callBox").setVisible(false);
             }
+          },
+          handleLocation : function(oEvent) {
+            var oBindingPath = oEvent.oSource.oParent.getBindingContext()
+                .getPath();
+            var locationData = this.oModel.getProperty(oBindingPath
+                + "/Address");
+            var win = window
+                .open("http://maps.google.com/?q=" + locationData[0].LONGT
+                    + "," + locationData[0].LATIT, '_blank');
+            win.focus();
           }
         });
