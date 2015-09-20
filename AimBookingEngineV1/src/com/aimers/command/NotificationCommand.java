@@ -34,22 +34,58 @@ public class NotificationCommand extends aimCommand {
 		if(aimAction.equals("notify")){
 			return notify(myInfo, dbcon);
 		}if(aimAction.equals("notifyAllAppointments")){
-			return notify(myInfo, dbcon);
+			return notifyAll(myInfo, dbcon);
 		}
 		return new JSONObject();
 
 	}
 
+	private JSONArray notify(HashMap myInfo, ConnectionManager dbcon) {
+		ResultSet rs=null;
+		try{
+			String details 	=  myInfo.get("details")+"";
+			JSONObject detailsJSON 	= new JSONObject(details);
+			String message = detailsJSON.get("MESSAGE")+"";
+			String query = "select * FROM `uchmt`"
+					+ " where `USRID` = '"+detailsJSON.get("USRID")+"' and "
+							+ " `CHRID` = '12' ";		//Registration ID
+			System.out.println(query);
+			rs=dbcon.stm.executeQuery(query);
+			JSONArray userRegDetail = Convertor.convertToJSON(rs);
+			
+			for(int rIndex=0; rIndex<userRegDetail.length(); rIndex++){
+				String regId = ( (JSONObject) userRegDetail.get(rIndex)).get("VALUE")+"";
+				try{
+					sendNotification(regId, message);
+				}catch(Exception ex){
+					
+				}
+				
+			}
+			
+			return userRegDetail;
+
+		}
+		catch(Exception ex){
+			System.out.println("Error from USER usermaster Command "+ex +"==dbcon=="+dbcon);
+			//return null;
+		}
+		return null;
+
+		
+	}
 
 
-private JSONArray notify(HashMap myInfo, ConnectionManager dbcon) {
+
+
+private JSONArray notifyAll(HashMap myInfo, ConnectionManager dbcon) {
 	ResultSet rs=null;
 	try{
 		String details 	=  myInfo.get("details")+"";
 		JSONObject detailsJSON 	= new JSONObject(details);
-		String message = detailsJSON.get("MESSAGE")+"";
+		String message = "Booking Alert";
 		String query = "select * FROM `uchmt`"
-				+ " where `USRID` = '"+detailsJSON.get("USRID")+"' and "
+				+ " where  "
 						+ " `CHRID` = '12' ";		//Registration ID
 		System.out.println(query);
 		rs=dbcon.stm.executeQuery(query);
