@@ -81,7 +81,7 @@ sap.ui
                   // Code to register device Id to User
                   // *************************************
                   var oChar = _this.oModel
-                      .getProperty("/vendorsList/0/Characteristics");
+                      .getProperty("/LoggedUser/0/Characteristics");
                   var bFound = false;
                   if (oChar) {
                     for (c in oChar) {
@@ -109,7 +109,7 @@ sap.ui
                       }
                     }
                   } else {
-                    _this.oModel.setProperty("/vendorsList/0/Characteristics",
+                    _this.oModel.setProperty("/LoggedUser/0/Characteristics",
                         []);
                   }
                   if (!bFound) {

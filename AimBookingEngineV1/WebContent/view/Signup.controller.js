@@ -77,9 +77,7 @@ sap.ui
                   sessionStorage.setItem("medAppUID", oData.results.USRID);
                   sessionStorage.setItem("medAppPWD", oData.results.UERPW);
                   _this.oModel.setProperty("/LoggedUser", oData.results);
-                  _this.oModel.setProperty("/vendorsList", []);
-                  _this.oModel.setProperty("/vendorsList/0", oData.results);
-                  _this.oModel.setProperty("/vendorsList/0/Address", [ {
+                  _this.oModel.setProperty("/LoggedUser/0/Address", [ {
                     CTYID : "",
                     CTYNM : "",
                     LATIT : "0",
@@ -91,48 +89,41 @@ sap.ui
                     STREET : "",
                     USRID : oData.results.USRID
                   } ]);
-                  _this.oModel.setProperty("/vendorsList/0/Characteristics",
-                      [
-                          {
-                            "CHRID" : "4",
-                            "DESCR" : "Personal Email",
-                            "LNTXT" : "Personal Email",
-                            "MDTEXT" : "Personal Email",
-                            "REGXT" : "email",
-                            "SRTXT" : "Personal Email",
-                            "USRID" : _this.oModel
-                                .getProperty("/LoggedUser/USRID"),
-                            "VALUE" : username.toString()
-                          },
-                          {
-                            "CHRID" : "7",
-                            "DESCR" : "Mobile",
-                            "LNTXT" : "Mobile",
-                            "MDTEXT" : "Mobile",
-                            "REGXT" : "mobile",
-                            "SRTXT" : "Mobile",
-                            "USRID" : _this.oModel
-                                .getProperty("/LoggedUser/USRID"),
-                            "VALUE" : mobile.toString()
-                          },
-                          {
-                            "CHRID" : "12",
-                            "DESCR" : "Device Registration Id",
-                            "LNTXT" : "Device Registration Id",
-                            "MDTEXT" : "Device Reg Id",
-                            "REGXT" : "regid",
-                            "SRTXT" : "Dev Reg Id",
-                            "USRID" : _this.oModel
-                                .getProperty("/LoggedUser/USRID"),
-                            "VALUE" : vEngine.RegisteredId.toString()
-                          } ]);
-                  _this.oModel.setProperty("/vendorsList/0/Rules", []);
+                  _this.oModel.setProperty("/LoggedUser/0/Characteristics", [ {
+                    "CHRID" : "4",
+                    "DESCR" : "Personal Email",
+                    "LNTXT" : "Personal Email",
+                    "MDTEXT" : "Personal Email",
+                    "REGXT" : "email",
+                    "SRTXT" : "Personal Email",
+                    "USRID" : _this.oModel.getProperty("/LoggedUser/USRID"),
+                    "VALUE" : username.toString()
+                  }, {
+                    "CHRID" : "7",
+                    "DESCR" : "Mobile",
+                    "LNTXT" : "Mobile",
+                    "MDTEXT" : "Mobile",
+                    "REGXT" : "mobile",
+                    "SRTXT" : "Mobile",
+                    "USRID" : _this.oModel.getProperty("/LoggedUser/USRID"),
+                    "VALUE" : mobile.toString()
+                  }, {
+                    "CHRID" : "12",
+                    "DESCR" : "Device Registration Id",
+                    "LNTXT" : "Device Registration Id",
+                    "MDTEXT" : "Device Reg Id",
+                    "REGXT" : "regid",
+                    "SRTXT" : "Dev Reg Id",
+                    "USRID" : _this.oModel.getProperty("/LoggedUser/USRID"),
+                    "VALUE" : vEngine.RegisteredId.toString()
+                  } ]);
+                  _this.oModel.setProperty("/LoggedUser/0/Rules", []);
 
-                  _this.oModel.setProperty("/vendorsList/0/FRNAM", oFname
+                  _this.oModel.setProperty("/LoggedUser/0/FRNAM", oFname
                       .getValue().toString().trim());
-                  _this.oModel.setProperty("/vendorsList/0/LTNAM", oLname
+                  _this.oModel.setProperty("/LoggedUser/0/LTNAM", oLname
                       .getValue().toString().trim());
-                  _this.oModel.setProperty("/vendorsList/0/DSPNM", oFname
+                  _this.oModel.setProperty("/LoggedUser/0/DSPNM", oFname
                       .getValue().toString().trim()
                       + " " + oLname.getValue().toString().trim());
                   var fnSuccess = function(oData) {
