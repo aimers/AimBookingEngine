@@ -51,7 +51,7 @@ public class NotificationBatch extends TimerTask {
     public static void startTask(){
     	NotificationBatch task = new NotificationBatch();
         Timer timer = new Timer();  
-        timer.schedule(task,getTomorrowMorning9AM(),ONCE_PER_DAY);// 1000*60*60*24
+        timer.schedule(task,getTomorrowMorning9AM(), 1000*60*60*1);//ONCE_PER_DAY);// 1000*60*60*24
     }
     public static void main(String args[]){
         startTask();
