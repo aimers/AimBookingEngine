@@ -219,7 +219,7 @@ sap.ui
           },
           signupPress : function(oEvent) {
             this._oRouter.navTo("signup", {
-              "flagID" : 2
+              "flagID" : this.parameter.flagID
             });
           },
         /**
