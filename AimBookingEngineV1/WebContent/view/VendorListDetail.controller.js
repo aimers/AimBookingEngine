@@ -361,6 +361,16 @@ sap.ui
                   this);
             }
             var sPath = oEvent.oSource.oParent.getBindingContext().getPath();
+            var vendorData = this.oModel.getProperty(sPath);
+            var carousalData = [];
+            if (vendorData.Characteristics) {
+              for (var i = 0; i < vendorData.Characteristics.length; i++) {
+                if (vendorData.Characteristics[i].LNTXT == "Image") {
+                  carousalData.push(vendorData.Characteristics[i]);
+                }
+              }
+            }
+            this.oModel.setProperty("/ImageCarousal", carousalData);
             this.oModel.setProperty("/ImageCarousal", this.oModel
                 .getProperty(sPath));
             this._oDialog.setModel(this.oModel);

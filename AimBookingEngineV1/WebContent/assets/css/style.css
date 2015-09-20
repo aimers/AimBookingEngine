@@ -1,19 +1,25 @@
 @media only screen and (max-width: 640px) {
-	.vendorAddressLocal .sapMText {
+	.vendorAddressLocal .sapMText, .sapMTB-Transparent-CTX .vendorAddressLocal .sapMText {
 		font-size: 0.8rem;
 	}
-	.sapMTB-Transparent-CTX  .vendorAddressLocal.sapMLabel,  .sapMTB-Transparent-CTX .vendorRecommend .sapMText {
+	.sapMTB-Transparent-CTX  .vendorAddressLocal.sapMLabel,  .sapMTB-Transparent-CTX .vendorRecommend .sapMText, .sapMTB-Transparent-CTX .vendorAddressLocal .sapMLabel {
 		font-size: 0.9rem;
+	}
+	.sapMTB-Transparent-CTX .vendorAddressLocal .sapMLabel {
+	font-size: 0.8rem;
 	}
 }
 
 @media only screen and (min-width: 640px) {
-	.vendorAddressLocal .sapMText {
+	.vendorAddressLocal .sapMText, .sapMTB-Transparent-CTX .vendorAddressLocal .sapMText {
 		font-size: 0.9rem;
 	}
 	.sapMTB-Transparent-CTX  .vendorAddressLocal.sapMLabel, .sapMTB-Transparent-CTX .vendorRecommend .sapMText {
 		font-size: 1rem;
 	}
+	 .sapMTB-Transparent-CTX .vendorAddressLocal .sapMLabel {
+  font-size: 1rem;
+  }
 }
 
 .sapUiUfdShellHeadEnd>.sapUiUfdShellIco>img, .sapUiUfdShellHeadBegin>.sapUiUfdShellIco>img

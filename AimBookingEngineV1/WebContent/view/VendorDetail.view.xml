@@ -31,7 +31,7 @@
 									<HBox alignItems="Center" items="{Characteristics}"
 										class="imgLabelBox vendorAddressLocal">
 										<Image
-											src="{path:'VALUE', formatter:'sap.ui.medApp.global.globalFormatter.getVendorImageUrl'}"
+											src="{path:'VALUE'}"
 											densityAware="false" press="handleSelectDialogPress" width="40px"
 											height="30px"
 											visible="{path:'CHRID', formatter:'sap.ui.medApp.global.globalFormatter.checkImage'}" />
@@ -43,8 +43,8 @@
 											src="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorSocialUrl'}"
 											visible="{path:'REGXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorSocial'}" />
 									</HBox>
-									<HBox justifyContent="End" items="{Characteristics}">
-										<HBox alignItems="Center"
+									<HBox justifyContent="End" items="{Characteristics}" >
+										<HBox alignItems="Center" class="vendorAddressLocal"
 											visible="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorPhoneIcon'}">
 											<Button
 												icon="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorPhoneIcon'}" />
@@ -53,7 +53,7 @@
 									</HBox>
 									<VBox justifyContent="Center" alignItems="End"
 										items="{Characteristics}">
-										<HBox height="1.5rem" alignItems="Center"
+										<HBox height="1.5rem" alignItems="Center" class="vendorAddressLocal"
 											visible="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorEmailIcon'}">
 											<Button
 												icon="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorEmailIcon'}" />
@@ -67,24 +67,12 @@
 				</headerToolbar>
 				<content>
 					<VBox>
-						<HBox width="98%">
-							<HBox justifyContent="Start">
-								<DatePicker change="handleWeekCalender" />
-							</HBox>
+						<HBox justifyContent="Start">
+							<DatePicker change="handleWeekCalender" id="DatePicker"/>
 						</HBox>
-						<VBox id="monthCalenderView" width="99%">
-							<me:Calendar width="100%" class="monthCalender"
-								select="handleWeekCalender">
-							</me:Calendar>
-						</VBox>
-						<IconTabBar visible="false" class="weekCalenderView"
+						<IconTabBar class="weekCalenderView"
 							id="weekCalenderView">
 						</IconTabBar>
-						<HBox alignItems="Center" justifyContent="SpaceAround" id="callBox"
-							visible="false">
-							<Button icon="sap-icon://outgoing-call"></Button>
-							<Text class="CallBox"></Text>
-						</HBox>
 					</VBox>
 				</content>
 			</Panel>

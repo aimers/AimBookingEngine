@@ -76,8 +76,8 @@ sap.ui
                   _this.oView.byId("MessageBox").setText("");
                   sessionStorage.setItem("medAppUID", oData.results.USRID);
                   sessionStorage.setItem("medAppPWD", oData.results.UERPW);
-                  _this.oModel.setProperty("/LoggedUser", oData.results);
-                  _this.oModel.setProperty("/LoggedUser/0/Address", [ {
+
+                  oData.results.Address = [ {
                     CTYID : "",
                     CTYNM : "",
                     LATIT : "0",
@@ -88,8 +88,8 @@ sap.ui
                     PRIMR : true,
                     STREET : "",
                     USRID : oData.results.USRID
-                  } ]);
-                  _this.oModel.setProperty("/LoggedUser/0/Characteristics", [ {
+                  } ];
+                  oData.results.Characteristics = [ {
                     "CHRID" : "4",
                     "DESCR" : "Personal Email",
                     "LNTXT" : "Personal Email",
@@ -105,7 +105,7 @@ sap.ui
                     "MDTEXT" : "Mobile",
                     "REGXT" : "mobile",
                     "SRTXT" : "Mobile",
-                    "USRID" : _this.oModel.getProperty("/LoggedUser/USRID"),
+                    "USRID" : oData.results.USRID,
                     "VALUE" : mobile.toString()
                   }, {
                     "CHRID" : "12",
@@ -114,18 +114,15 @@ sap.ui
                     "MDTEXT" : "Device Reg Id",
                     "REGXT" : "regid",
                     "SRTXT" : "Dev Reg Id",
-                    "USRID" : _this.oModel.getProperty("/LoggedUser/USRID"),
+                    "USRID" : oData.results.USRID,
                     "VALUE" : vEngine.RegisteredId.toString()
-                  } ]);
-                  _this.oModel.setProperty("/LoggedUser/0/Rules", []);
-
-                  _this.oModel.setProperty("/LoggedUser/0/FRNAM", oFname
-                      .getValue().toString().trim());
-                  _this.oModel.setProperty("/LoggedUser/0/LTNAM", oLname
-                      .getValue().toString().trim());
-                  _this.oModel.setProperty("/LoggedUser/0/DSPNM", oFname
-                      .getValue().toString().trim()
-                      + " " + oLname.getValue().toString().trim());
+                  } ];
+                  oData.results.Rules = [];
+                  oData.results.FRNAM = oFname.getValue().toString().trim();
+                  oData.results.LTNAM = oLname.getValue().toString().trim();
+                  oData.results.DSPNM = oFname.getValue().toString().trim()
+                      + " " + oLname.getValue().toString().trim();
+                  _this.oModel.setProperty("/LoggedUser", oData.results);
                   var fnSuccess = function(oData) {
                     _this.oView.setBusy(false);
                     if (_this.parameter.flagID == 2) {

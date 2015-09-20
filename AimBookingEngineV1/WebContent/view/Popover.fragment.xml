@@ -3,12 +3,11 @@
 	<Dialog showHeader="false" contentWidth="50%" contentHeight="50%">
 		<content>
 			<Carousel class="sapUiContentPadding" width="70%"
-				pages="{/ImageCarousal/Characteristics}">
+				pages="{/}">
 				<pages>
 					<Image
 						src="{path:'VALUE'}"
-						class="clinicImages" densityAware="false"
-						visible="{path:'CHRID', formatter:'sap.ui.medApp.global.globalFormatter.checkImage'}" />
+						class="clinicImages" densityAware="false" />
 				</pages>
 			</Carousel>
 		</content>

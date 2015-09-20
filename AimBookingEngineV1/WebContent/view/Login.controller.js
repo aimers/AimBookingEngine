@@ -74,69 +74,53 @@ sap.ui
                     sessionStorage.LONGT = oData.results.Address[0].LONGT;
                   }
                 }
-                var fnSuccess1 = function() {
-                  sap.ui.medApp.global.busyDialog.close();
-                  $("#medApp--myShell-header-hdr-end").css("display", "block");
 
-                  // Code to register device Id to User
-                  // *************************************
-                  var oChar = _this.oModel
-                      .getProperty("/LoggedUser/0/Characteristics");
-                  var bFound = false;
-                  if (oChar) {
-                    for (c in oChar) {
-                      if (oChar[c].CHRID == 12) {
-                        bFound = true;
-                        if (oChar[c].VALUE != vEngine.RegisteredId) {
-                          oChar[c].VALUE = vEngine.RegisteredId;
-                          var fnSuccess2 = function() {
-                            if (_this.parameter.flagID == 2) {
-                              _this._oRouter.navTo("ConfirmBooking", {
-                                "UID" : sessionStorage.medAppUID
-                              });
-                            } else {
-                              var fav = _this
-                                  .handleFovoriteUsers(oData.results);
-                              if (fav) {
-                                _this._oRouter.navTo('_homeTiles');
-                              }
+                // Code to register device Id to User
+                // *************************************
+                var oChar = oData.results.Characteristics;
+                var bFound = false;
+                if (oChar) {
+                  for (c in oChar) {
+                    if (oChar[c].CHRID == 12) {
+                      bFound = true;
+                      if (oChar[c].VALUE != vEngine.RegisteredId) {
+                        oChar[c].VALUE = vEngine.RegisteredId;
+                        var fnSuccess2 = function() {
+                          _this.oView.setBusy(false);
+                          $("#medApp--myShell-header-hdr-end").css("display",
+                              "block");
+                          if (_this.parameter.flagID == 2) {
+                            _this._oRouter.navTo("ConfirmBooking", {
+                              "UID" : sessionStorage.medAppUID
+                            });
+                          } else {
+                            var fav = _this.handleFovoriteUsers(oData.results);
+                            if (fav) {
+                              _this._oRouter.navTo('_homeTiles');
                             }
                           }
-                          sap.ui.medApp.global.util
-                              .updateUserDetails(fnSuccess2);
-                          break;
-                        }
+                        };
+                        sap.ui.medApp.global.util.updateUserDetails(fnSuccess2);
+                        break;
                       }
                     }
-                  } else {
-                    _this.oModel.setProperty("/LoggedUser/0/Characteristics",
-                        []);
                   }
-                  if (!bFound) {
-                    oChar.push({
-                      "CHRID" : "12",
-                      "DESCR" : "Device Registration Id",
-                      "LNTXT" : "Device Registration Id",
-                      "MDTEXT" : "Device Reg Id",
-                      "REGXT" : "regid",
-                      "SRTXT" : "Dev Reg Id",
-                      "USRID" : _this.oModel.getProperty("/LoggedUser/USRID"),
-                      "VALUE" : vEngine.RegisteredId.toString()
-                    });
-                    var fnSuccess3 = function() {
-                      if (_this.parameter.flagID == 2) {
-                        _this._oRouter.navTo("ConfirmBooking", {
-                          "UID" : sessionStorage.medAppUID
-                        });
-                      } else {
-                        var fav = _this.handleFovoriteUsers(oData.results);
-                        if (fav) {
-                          _this._oRouter.navTo('_homeTiles');
-                        }
-                      }
-                    }
-                    sap.ui.medApp.global.util.updateUserDetails(fnSuccess3);
-                  } else {
+                } else {
+                  oData.results.Characteristics = [];
+                  _this.oModel.setProperty("/LoggedUser", oData.results);
+                }
+                if (!bFound) {
+                  oChar.push({
+                    "CHRID" : "12",
+                    "DESCR" : "Device Registration Id",
+                    "LNTXT" : "Device Registration Id",
+                    "MDTEXT" : "Device Reg Id",
+                    "REGXT" : "regid",
+                    "SRTXT" : "Dev Reg Id",
+                    "USRID" : oData.results.USRID,
+                    "VALUE" : vEngine.RegisteredId.toString()
+                  });
+                  var fnSuccess3 = function() {
                     if (_this.parameter.flagID == 2) {
                       _this._oRouter.navTo("ConfirmBooking", {
                         "UID" : sessionStorage.medAppUID
@@ -148,44 +132,40 @@ sap.ui
                       }
                     }
                   }
-
-                };
-                param = {
-                  "USRID" : _this.oModel.getProperty("/LoggedUser/USRID")
-                };
-                sap.ui.medApp.global.util.loadVendorFILTERData(param,
-                    fnSuccess1);
-              }
-            };
-            var fnSuccess = function(oData) {
-              if (!oData.results.USRID) {
-                _this.oView.byId("MessageBox").setVisible(true);
-                _this.oView.byId("MessageBox").setText(
-                    "Email/Password is incorrect");
-              } else {
-                _this.oView.byId("MessageBox").setVisible(false);
-                sessionStorage.setItem("medAppUID", oData.results.USRID);
-                sessionStorage.setItem("medAppPWD", oData.results.UERPW);
-                _this.oModel.setProperty("/LoggedUser", oData.results);
-                if (oData.results.Address !== undefined) {
-                  if (oData.results.Address.length) {
-                    sessionStorage.LATIT = oData.results.Address[0].LATIT;
-                    sessionStorage.LONGT = oData.results.Address[0].LONGT;
-                  }
-                }
-                if (_this.parameter.flagID == 2) {
-                  _this._oRouter.navTo("ConfirmBooking", {
-                    "UID" : sessionStorage.medAppUID
-                  });
+                  sap.ui.medApp.global.util.updateUserDetails(fnSuccess3);
                 } else {
-                  var fav = _this.handleFovoriteUsers(oData.results);
-                  if (fav) {
-                    _this._oRouter.navTo('_homeTiles');
+                  if (_this.parameter.flagID == 2) {
+                    _this._oRouter.navTo("ConfirmBooking", {
+                      "UID" : sessionStorage.medAppUID
+                    });
+                  } else {
+                    var fav = _this.handleFovoriteUsers(oData.results);
+                    if (fav) {
+                      _this._oRouter.navTo('_homeTiles');
+                    }
                   }
                 }
               }
-              _this.oView.setBusy(false);
             };
+            /*
+             * var fnSuccess = function(oData) { if (!oData.results.USRID) {
+             * _this.oView.byId("MessageBox").setVisible(true);
+             * _this.oView.byId("MessageBox").setText( "Email/Password is
+             * incorrect"); } else {
+             * _this.oView.byId("MessageBox").setVisible(false);
+             * sessionStorage.setItem("medAppUID", oData.results.USRID);
+             * sessionStorage.setItem("medAppPWD", oData.results.UERPW);
+             * _this.oModel.setProperty("/LoggedUser", oData.results); if
+             * (oData.results.Address !== undefined) { if
+             * (oData.results.Address.length) { sessionStorage.LATIT =
+             * oData.results.Address[0].LATIT; sessionStorage.LONGT =
+             * oData.results.Address[0].LONGT; } } if (_this.parameter.flagID ==
+             * 2) { _this._oRouter.navTo("ConfirmBooking", { "UID" :
+             * sessionStorage.medAppUID }); } else { var fav =
+             * _this.handleFovoriteUsers(oData.results); if (fav) {
+             * _this._oRouter.navTo('_homeTiles'); } } }
+             * _this.oView.setBusy(false); };
+             */
             sap.ui.medApp.global.util.getLoginData(param, fnSuccess);
 
           },
