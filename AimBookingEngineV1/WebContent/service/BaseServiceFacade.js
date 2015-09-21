@@ -126,7 +126,7 @@
                               fnError(XMLHttpRequest, textStatus, errorThrown);
                             }
                           }
-
+                          sap.ui.medApp.global.busyDialog.close();
                           // Reset request cache
                           that._mRequestsByServicePathCache[sServicePath] = null;
                         }

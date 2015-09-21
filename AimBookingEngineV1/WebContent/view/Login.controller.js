@@ -47,7 +47,7 @@ sap.ui
           },
           handleLogin : function() {
             var _this = this;
-            this.oView.setBusy(true);
+            sap.ui.medApp.global.busyDialog.open();
             var username = this.oView.byId("usrNme").getValue();
             var password = this.oView.byId("pswd").getValue();
             var param = [ {
@@ -86,7 +86,7 @@ sap.ui
                       if (oChar[c].VALUE != vEngine.RegisteredId) {
                         oChar[c].VALUE = vEngine.RegisteredId;
                         var fnSuccess2 = function() {
-                          _this.oView.setBusy(false);
+                          sap.ui.medApp.global.busyDialog.close();
                           $("#medApp--myShell-header-hdr-end").css("display",
                               "block");
                           if (_this.parameter.flagID == 2) {
@@ -166,6 +166,7 @@ sap.ui
              * _this._oRouter.navTo('_homeTiles'); } } }
              * _this.oView.setBusy(false); };
              */
+            sap.ui.medApp.global.busyDialog.close();
             sap.ui.medApp.global.util.getLoginData(param, fnSuccess);
 
           },

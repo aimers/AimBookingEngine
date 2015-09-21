@@ -92,6 +92,7 @@ sap.ui.core.UIComponent
             jQuery.sap.require("sap.ui.core.routing.Router");
             jQuery.sap.require("sap.ui.medApp.global.util");
             jQuery.sap.require("sap.ui.medApp.global.globalFormatter");
+            jQuery.sap.require("sap.ui.medApp.global.busyDialog");
             // 1.a Loading MyRouter
 
             jQuery.sap.require("sap.ui.medApp.MyRouter");

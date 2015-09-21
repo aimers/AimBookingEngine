@@ -29,6 +29,11 @@ sap.ui
 
               var _that = this;
               _that.oModel = sap.ui.medApp.global.util.getMainModel();
+              var successMsg = _that.oModel.getProperty("/SuccessMessage");
+              if (successMsg) {
+                sap.m.MessageToast.show(successMsg.msg);
+                _that.oModel.setProperty("SuccessMessage", {});
+              }
               var fnSuccess = function(oData) {
                 // do what you need here
                 _that.oModel.setProperty("/vendorsCategory", oData.results);
@@ -158,7 +163,7 @@ sap.ui
             }
           },
           getGeoLocation : function() {
-            this.oView.setBusy(true);
+            sap.ui.medApp.global.busyDialog.open();
             var _this = this;
             var display_user_location = function display_user_location(
                 user_position) {
@@ -169,6 +174,7 @@ sap.ui
             };
             var error_response = function(error) {
               console.log(error);
+              sap.ui.medApp.global.busyDialog.close();
             };
             navigator.geolocation.getCurrentPosition(display_user_location,
                 error_response);
@@ -221,7 +227,7 @@ sap.ui
                         } else {
                           console.log("Geocoding failed: " + status);
                         }
-                        _this.oView.setBusy(false);
+                        sap.ui.medApp.global.busyDialog.close();
                       });
             }
           },

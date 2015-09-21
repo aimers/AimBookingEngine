@@ -24,7 +24,7 @@
 							</Select>
 							<Label text="Comments" />
               <TextArea id="BookingComment" cols ="5" height="50px" value="Enter description"/>
-							<Button text="Confirm" class="buttonDesign" press="handleConfirmBooking" />
+							<Button text="Confirm" type="Emphasized" class="buttonDesign" press="handleConfirmBooking" />
 						</f:content>
 					</f:SimpleForm>
 				</l:Grid>

@@ -71,7 +71,7 @@ sap.ui
 
                   _this.oView.byId("MessageBox").setText(
                       "User cannot be registered");
-                  _this.oView.setBusy(false);
+
                 } else {
                   _this.oView.byId("MessageBox").setText("");
                   sessionStorage.setItem("medAppUID", oData.results.USRID);
@@ -124,7 +124,7 @@ sap.ui
                       + " " + oLname.getValue().toString().trim();
                   _this.oModel.setProperty("/LoggedUser", oData.results);
                   var fnSuccess = function(oData) {
-                    _this.oView.setBusy(false);
+                    sap.ui.medApp.global.busyDialog.close();
                     if (_this.parameter.flagID == 2) {
                       _this._oRouter.navTo("ConfirmBooking", {
                         "UID" : sessionStorage.medAppUID
@@ -136,8 +136,9 @@ sap.ui
                   sap.ui.medApp.global.util.updateUserDetails(fnSuccess);
 
                 }
+                sap.ui.medApp.global.busyDialog.close();
               };
-              this.oView.setBusy(true);
+              sap.ui.medApp.global.busyDialog.open();
               sap.ui.medApp.global.util.getRegisterData(param, fnSuccess);
             }
           },

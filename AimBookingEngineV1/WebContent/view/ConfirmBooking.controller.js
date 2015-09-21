@@ -34,7 +34,7 @@ sap.ui
           },
           handleConfirmBooking : function(oEvent) {
             var _oSource = oEvent.oSource;
-            this.oView.setBusy(true);
+            sap.ui.medApp.global.busyDialog.open();
 
             var _this = this;
             var selectedType = this.oView.byId("SelectRule").getSelectedKey();
@@ -72,8 +72,11 @@ sap.ui
               }
             } ];
             var fnSuccess = function(oData) {
-              sap.m.MessageToast.show("Your booking has been confirmed");
-              _this.oView.setBusy(false);
+
+              sap.ui.medApp.global.busyDialog.close();
+              _this.oModel.setProperty("/SuccessMessage", {
+                msg : "Your booking has been confirmed"
+              });
               _this._oRouter.navTo('_homeTiles');
             };
             _this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(

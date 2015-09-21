@@ -12,13 +12,13 @@
 						emptySpanM="4" columnsL="1" columnsM="1" class="editableForm">
 						<f:content>
 							<Text id="MessageBox" class="messageBox" visible="false" />
-							<Label text="Email Address" />
+							<Label text="Username" />
 							<Input id="usrNme" />
 							<Label text="Password" />
 							<Input id="pswd" type="Password">
 							</Input>
 							<Label />
-							<Button text="Login" class="buttonDesign" press="handleLogin" />
+							<Button text="Login" type="Emphasized" class="buttonDesign" press="handleLogin" />
 							<Button text="Sign Up" class="buttonDesign" press="signupPress">
 								<layoutData>
 									<l:GridData span="L2 M4 S6" />

@@ -307,7 +307,14 @@ sap.ui
                 }
               }
             }
+            var oTemplate = new sap.m.Image({
+              src : "{value}",
+              densityAware : false
+            }).addStyleClass("clinicImages").bindProperty("src", "VALUE");
+            this._oDialog.getContent()[0].bindAggregation("pages",
+                "/ImageCarousal", oTemplate);
             this.oModel.setProperty("/ImageCarousal", carousalData);
+
             this._oDialog.setModel(this.oModel);
             this._oDialog.open();
           },

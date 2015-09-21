@@ -68,6 +68,7 @@ sap.ui.controller("sap.ui.medApp.view.BookingHistory", {
     var sPath = oEvent.oSource.getBindingContext().getPath();
     var bookingData = this.oModel.getProperty(sPath);
     var fnSuccess = function(oData) {
+      _this.getBookingHistory();
       sap.m.MessageToast.show("Booking has been cancelled");
       _this.oView.setBusy(false);
     };

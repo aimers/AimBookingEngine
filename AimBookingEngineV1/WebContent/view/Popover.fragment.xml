@@ -3,12 +3,8 @@
 	<Dialog showHeader="false" contentWidth="50%" contentHeight="50%">
 		<content>
 			<Carousel class="sapUiContentPadding" width="70%"
-				pages="{/}">
-				<pages>
-					<Image
-						src="{path:'VALUE'}"
-						class="clinicImages" densityAware="false" />
-				</pages>
+				>
+				
 			</Carousel>
 		</content>
 		<beginButton>
