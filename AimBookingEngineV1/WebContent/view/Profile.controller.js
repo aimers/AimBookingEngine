@@ -27,14 +27,8 @@ sap.ui
                 var _this = this;
                 if (_this.oModel.getProperty("/LoggedUser")) {
                   var userData = this.oModel.getProperty("/LoggedUser");
-                  var address;
-                  /*
-                   * if (!userData.Address.length) { address = { 'USRID' : "",
-                   * 'PRIMR' : "", 'STREET' : "", 'LNDMK' : "", 'LOCLT' : "",
-                   * 'CTYID' : "", 'CTYNM' : "", 'PINCD' : "", 'LONGT' : "",
-                   * 'LATIT' : "" }; userData.Address.push(address); }
-                   */
-                  this.oModel.setProperty("/LoggedUser", [ userData ]);
+                  userData = _this.updateProfileData(userData);
+                  this.oModel.setProperty("/LoggedUserProfile", [ userData ]);
                   this.oView.setBusy(false);
                 } else {
                   var param = [ {
@@ -45,15 +39,112 @@ sap.ui
                     }
                   } ];
                   var fnSuccess = function(oData) {
-                    _this.oModel.setProperty("/LoggedUser", [ oData.results ]);
+                    var userData = _this.updateProfileData(oData.results);
+                    _this.oModel
+                        .setProperty("/LoggedUserProfile", [ userData ]);
+                    _this.oModel.setProperty("/LoggedUser", userData);
                     _this.oView.setBusy(false);
                   }
                   sap.ui.medApp.global.util.getLoginData(param, fnSuccess);
                 }
 
               }
+              sap.ui.medApp.global.busyDialog.close();
               this.getView().setModel(this.oModel);
             }
+          },
+          updateProfileData : function(userData) {
+            var address;
+
+            if (!userData.Address) {
+              userData.Address = [];
+              address = {
+                'USRID' : "",
+                'PRIMR' : "",
+                'STREET' : "",
+                'LNDMK' : "",
+                'LOCLT' : "",
+                'CTYID' : "",
+                'CTYNM' : "",
+                'PINCD' : "",
+                'LONGT' : "",
+                'LATIT' : ""
+              };
+              userData.Address.push(address);
+            } else {
+              if (!userData.Address.length) {
+                address = {
+                  'USRID' : "",
+                  'PRIMR' : "",
+                  'STREET' : "",
+                  'LNDMK' : "",
+                  'LOCLT' : "",
+                  'CTYID' : "",
+                  'CTYNM' : "",
+                  'PINCD' : "",
+                  'LONGT' : "",
+                  'LATIT' : ""
+                };
+                userData.Address.push(address);
+              }
+            }
+
+            if (userData.Characteristics) {
+              var flagcharPhone = false;
+              var flagcharBEmail = false;
+              var flagcharPEmail = false;
+              for (var i = 0; i < userData.Characteristics.length; i++) {
+                if (userData.Characteristics[i].CHRID == 6) {
+                  flagcharPhone = true;
+                }
+                if (userData.Characteristics[i].CHRID == 5) {
+                  flagcharBEmail = true;
+                }
+                if (userData.Characteristics[i].CHRID == 4) {
+                  flagcharPEmail = true;
+                }
+              }
+              if (!flagcharPhone) {
+                var phoneData = {
+                  "REGXT" : "phone",
+                  "SRTXT" : "Phone",
+                  "CHRID" : 6,
+                  "USRID" : userData.USRID,
+                  "VALUE" : "",
+                  "LNTXT" : "Landline",
+                  "MDTEXT" : "Landline",
+                  "DESCR" : "Landline"
+                }
+                userData.Characteristics.push(phoneData);
+              }
+              if (!flagcharBEmail) {
+                var phoneData = {
+                  "REGXT" : "email",
+                  "SRTXT" : "email",
+                  "CHRID" : 5,
+                  "USRID" : userData.USRID,
+                  "VALUE" : "",
+                  "LNTXT" : "Business Email",
+                  "MDTEXT" : "Business Email",
+                  "DESCR" : "Business Email"
+                }
+                userData.Characteristics.push(phoneData);
+              }
+              if (!flagcharPEmail) {
+                var phoneData = {
+                  "REGXT" : "email",
+                  "SRTXT" : "email",
+                  "CHRID" : 4,
+                  "USRID" : userData.USRID,
+                  "VALUE" : "",
+                  "LNTXT" : "Personal Email",
+                  "MDTEXT" : "Personal Email",
+                  "DESCR" : "Personal Email"
+                }
+                userData.Characteristics.push(phoneData);
+              }
+            }
+            return userData;
           },
           /*
            * Handle Press Tile
@@ -94,15 +185,62 @@ sap.ui
               return false;
             }
           },
-          getMobileNumber : function(chrid, value) {
+          handleBEmail : function(chrid) {
+            if (chrid == 5) {
+              return true;
+            } else {
+              return false;
+            }
+          },
+          handlePEmail : function(chrid) {
+            if (chrid == 4) {
+              return true;
+            } else {
+              return false;
+            }
+          },
+          getBEmail : function(chrid, value) {
             if (chrid != null && chrid != undefined) {
-              if (chrid == 7) {
+              if (chrid == 5) {
+                return value;
+              }
+            }
+          },
+          getPEmail : function(chrid, value) {
+            if (chrid != null && chrid != undefined) {
+              if (chrid == 4) {
                 return value;
               }
             }
           },
           handleUpdateUser : function() {
-            sap.ui.medApp.global.util.userUpdate();
+            var userData = this.oModel.getProperty("/LoggedUserProfile");
+            var oSelectedGndr = this.oView.byId("userGendr").getSelectedIndex();
+            if (oSelectedGndr) {
+              userData[0].GENDR = false;
+            } else {
+              userData[0].GENDR = true;
+            }
+            for (var i = 0; i < userData[0].Characteristics.length; i++) {
+              if (userData[0].Characteristics[i].CHRID == 6) {
+                userData[0].Characteristics[i].VALUE = this.oView.byId(
+                    "phoneNUmber").getValue();
+              }
+              if (userData[0].Characteristics[i].CHRID == 5) {
+                userData[0].Characteristics[i].VALUE = this.oView.byId(
+                    "BusinessEmail").getValue();
+              }
+              if (userData[0].Characteristics[i].CHRID == 4) {
+                userData[0].Characteristics[i].VALUE = this.oView.byId(
+                    "PersonalEmail").getValue();
+              }
+            }
+            sap.ui.medApp.global.util.userUpdate(userData);
+          },
+          setGender : function(oEvent) {
+
+            var selectedIndex = oEvent.oSource.getSelectedIndex();
+            this.oView.byId("userGendr").setSelectedIndex(selectedIndex);
           }
         /**
          * Similar to onAfterRendering, but this hook is invoked before the

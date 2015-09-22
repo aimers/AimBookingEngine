@@ -15,7 +15,6 @@ sap.ui.controller("sap.ui.medApp.view.App", {
     this.fullWidthApp = new sap.m.App("idAppControl", {
       defaultTransitionName : "slide"
     });
-
     this.splitApp = new sap.m.SplitApp("idSplitAppControl", {
       mode : "PopoverMode",
       defaultTransitionNameDetail : "slide"
@@ -138,6 +137,7 @@ sap.ui.controller("sap.ui.medApp.view.App", {
   },
 
   handleProfile : function(evt) {
+    sap.ui.medApp.global.busyDialog.open();
     this._oRouter.navTo('_profile');
   },
   logout : function(evt) {

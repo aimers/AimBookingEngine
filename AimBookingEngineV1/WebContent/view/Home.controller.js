@@ -32,7 +32,7 @@ sap.ui
               var successMsg = _that.oModel.getProperty("/SuccessMessage");
               if (successMsg) {
                 sap.m.MessageToast.show(successMsg.msg);
-                _that.oModel.setProperty("SuccessMessage", {});
+                _that.oModel.setProperty("/SuccessMessage", undefined);
               }
               var fnSuccess = function(oData) {
                 // do what you need here

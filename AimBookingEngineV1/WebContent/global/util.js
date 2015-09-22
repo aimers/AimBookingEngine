@@ -233,8 +233,8 @@ sap.ui.medApp.global.util = {
     this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
         "updateUser");
   },
-  userUpdate : function() {
-    var userData = this._mainModel.getProperty("/LoggedUser");
+  userUpdate : function(userData) {
+
     this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
         this._mainModel);
     var param = [ {
