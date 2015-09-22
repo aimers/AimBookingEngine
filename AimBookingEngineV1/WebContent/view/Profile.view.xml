@@ -2,7 +2,7 @@
 	xmlns="sap.m" xmlns:l="sap.ui.layout" controllerName="sap.ui.medApp.view.Profile"
 	xmlns:f="sap.ui.layout.form" xmlns:c="sap.ui.commons" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showNavButton="true" navButtonPress="navToBack" title="Update profile"
-		content="{/LoggedUser}">
+		content="{/LoggedUserProfile}">
 		<content>
 			<f:SimpleForm id="SimpleFormChange354" maxContainerCols="2"
 				editable="true" class="editableForm">
@@ -10,15 +10,16 @@
 					<core:Title text="Person" />
 					<c:Label text="Name"></c:Label>
 					<l:HorizontalLayout>
-						<c:TextField width="30%" value="{PRFIX}" placeholder="Prefix"/>
-						<c:TextField width="100%" value="{FRNAM}" placeholder="First Name"/>
-						<c:TextField value="{LTNAM}" width="100%" placeholder="Last Name"/>
+						<c:TextField width="30%" value="{PRFIX}" placeholder="Prefix" />
+						<c:TextField width="100%" value="{FRNAM}" placeholder="First Name" />
+						<c:TextField value="{LTNAM}" width="100%" placeholder="Last Name" />
 					</l:HorizontalLayout>
 					<c:Label text="Date of Birth"></c:Label>
-					<DatePicker value="{URDOB}" />
+					<DatePicker value="{URDOB}" valueFormat="yyyy-MM-dd" />
 					<c:Label text="Gender"></c:Label>
 					<c:RadioButtonGroup columns="2"
-						selectedIndex="{path:'GENDR',formatter:'sap.ui.medApp.global.globalFormatter.getBooleanToNum'}">
+						selectedIndex="{path:'GENDR',formatter:'sap.ui.medApp.global.globalFormatter.getBooleanToNum'}"
+						id="userGendr" select="setGender">
 						<c:items>
 							<core:Item text="male"></core:Item>
 							<core:Item text="female"></core:Item>
@@ -34,28 +35,34 @@
 					<c:Label text="Country"></c:Label>
 					<c:TextField value="India" />
 					<core:Title text="Contact" />
-					<c:Label text="Phone"></c:Label>
+					<c:Label text="Mobile Number"></c:Label>
+          <c:TextField value="{USRNM}" enabled="false" />
+					<c:Label text="Lanline Phone"></c:Label>
 					<l:HorizontalLayout content="{Characteristics}">
 						<c:TextField
 							value="{parts:[{path: 'CHRID'}, {path :'VALUE'}], formatter: '.getPhoneNumber'}"
-							visible="{path:'CHRID', formatter:'.handlePhoneNumber'}" />
+							visible="{path:'CHRID', formatter:'.handlePhoneNumber'}" id="phoneNUmber"/>
 					</l:HorizontalLayout>
-					<c:Label text="Mobile"></c:Label>
+					<c:Label text="Business Email"></c:Label>
 					<l:HorizontalLayout content="{Characteristics}">
 						<c:TextField
-							value="{parts:[{path: 'CHRID'}, {path :'VALUE'}], formatter: '.getMobileNumber'}"
-							visible="{path:'CHRID', formatter:'.handleMobileNumber'}" />
+							value="{parts:[{path: 'CHRID'}, {path :'VALUE'}], formatter: '.getBEmail'}"
+							visible="{path:'CHRID', formatter:'.handleBEmail'}" id="BusinessEmail"/>
 					</l:HorizontalLayout>
-
-					<c:Label text="Email"></c:Label>
-					<c:TextField value="{USRNM}" enabled="false" />
+					<c:Label text="Personal Email"></c:Label>
+					<l:HorizontalLayout content="{Characteristics}">
+						<c:TextField
+							value="{parts:[{path: 'CHRID'}, {path :'VALUE'}], formatter: '.getPEmail'}"
+							visible="{path:'CHRID', formatter:'.handlePEmail'}" id="PersonalEmail"/>
+					</l:HorizontalLayout>
 					<core:Title text="Password" />
 					<c:Label text="Confirm Password"></c:Label>
-					<c:PasswordField value="{UERPW}" type="password"/>
+					<c:PasswordField value="{UERPW}" type="password" />
 					<c:Label text="Re-Confirm Password"></c:Label>
-					<c:PasswordField value="{UERPW}" type="password"/>
+					<c:PasswordField value="{UERPW}" type="password" />
 					<c:Label text=""></c:Label>
-					<Button text="Update" class="buttonDesign" width="auto" press="handleUpdateUser"/>
+					<Button text="Update" class="buttonDesign" width="auto"
+						press="handleUpdateUser" />
 				</f:content>
 			</f:SimpleForm>
 		</content>
