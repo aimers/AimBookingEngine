@@ -53,12 +53,11 @@ sap.ui
               this.getView().setModel(this.oModel);
             }
           },
-          updateProfileData : function(userData) {
-            var address;
+          updateProfileData : function(userDataNEW) {
 
-            if (!userData.Address) {
-              userData.Address = [];
-              address = {
+            if (!userDataNEW.Address) {
+              userDataNEW.Address = [];
+              var address = {
                 'USRID' : "",
                 'PRIMR' : "",
                 'STREET' : "",
@@ -67,13 +66,13 @@ sap.ui
                 'CTYID' : "",
                 'CTYNM' : "",
                 'PINCD' : "",
-                'LONGT' : "",
-                'LATIT' : ""
+                'LONGT' : 0.8,
+                'LATIT' : 0.8
               };
-              userData.Address.push(address);
+              userDataNEW.Address.push(address);
             } else {
-              if (!userData.Address.length) {
-                address = {
+              if (!userDataNEW.Address.length) {
+                var address = {
                   'USRID' : "",
                   'PRIMR' : "",
                   'STREET' : "",
@@ -82,13 +81,13 @@ sap.ui
                   'CTYID' : "",
                   'CTYNM' : "",
                   'PINCD' : "",
-                  'LONGT' : "",
-                  'LATIT' : ""
+                  'LONGT' : 0.8,
+                  'LATIT' : 0.8
                 };
-                userData.Address.push(address);
+                userDataNEW.Address.push(address);
               }
             }
-
+            var userData = userDataNEW;
             if (userData.Characteristics) {
               var flagcharPhone = false;
               var flagcharBEmail = false;
@@ -96,12 +95,15 @@ sap.ui
               for (var i = 0; i < userData.Characteristics.length; i++) {
                 if (userData.Characteristics[i].CHRID == 6) {
                   flagcharPhone = true;
+                  userData.Phone = userData.Characteristics[i].VALUE;
                 }
                 if (userData.Characteristics[i].CHRID == 5) {
                   flagcharBEmail = true;
+                  userData.BEmail = userData.Characteristics[i].VALUE;
                 }
                 if (userData.Characteristics[i].CHRID == 4) {
                   flagcharPEmail = true;
+                  userData.PEmail = userData.Characteristics[i].VALUE;
                 }
               }
               if (!flagcharPhone) {
@@ -115,7 +117,8 @@ sap.ui
                   "MDTEXT" : "Landline",
                   "DESCR" : "Landline"
                 }
-                userData.Characteristics.push(phoneData);
+                userDataNEW.Characteristics.push(phoneData);
+                userData.Phone = "";
               }
               if (!flagcharBEmail) {
                 var phoneData = {
@@ -128,7 +131,8 @@ sap.ui
                   "MDTEXT" : "Business Email",
                   "DESCR" : "Business Email"
                 }
-                userData.Characteristics.push(phoneData);
+                userDataNEW.Characteristics.push(phoneData);
+                userData.BEmail = "";
               }
               if (!flagcharPEmail) {
                 var phoneData = {
@@ -141,7 +145,8 @@ sap.ui
                   "MDTEXT" : "Personal Email",
                   "DESCR" : "Personal Email"
                 }
-                userData.Characteristics.push(phoneData);
+                userDataNEW.Characteristics.push(phoneData);
+                userData.PEmail = "";
               }
             }
             return userData;
@@ -215,27 +220,25 @@ sap.ui
           },
           handleUpdateUser : function() {
             var userData = this.oModel.getProperty("/LoggedUserProfile");
+            var userDataOriginal = this.oModel.getProperty("/LoggedUser");
             var oSelectedGndr = this.oView.byId("userGendr").getSelectedIndex();
             if (oSelectedGndr) {
-              userData[0].GENDR = false;
+              userDataOriginal.GENDR = 2;
             } else {
-              userData[0].GENDR = true;
+              userDataOriginal.GENDR = 1;
             }
-            for (var i = 0; i < userData[0].Characteristics.length; i++) {
-              if (userData[0].Characteristics[i].CHRID == 6) {
-                userData[0].Characteristics[i].VALUE = this.oView.byId(
-                    "phoneNUmber").getValue();
+            for (var i = 0; i < userDataOriginal.Characteristics.length; i++) {
+              if (userDataOriginal.Characteristics[i].CHRID == 6) {
+                userDataOriginal.Characteristics[i].VALUE = userData[0].Phone;
               }
-              if (userData[0].Characteristics[i].CHRID == 5) {
-                userData[0].Characteristics[i].VALUE = this.oView.byId(
-                    "BusinessEmail").getValue();
+              if (userDataOriginal.Characteristics[i].CHRID == 5) {
+                userDataOriginal.Characteristics[i].VALUE = userData[0].BEmail;
               }
-              if (userData[0].Characteristics[i].CHRID == 4) {
-                userData[0].Characteristics[i].VALUE = this.oView.byId(
-                    "PersonalEmail").getValue();
+              if (userDataOriginal.Characteristics[i].CHRID == 4) {
+                userDataOriginal.Characteristics[i].VALUE = userData[0].PEmail;
               }
             }
-            sap.ui.medApp.global.util.userUpdate(userData);
+            sap.ui.medApp.global.util.userUpdate(userDataOriginal);
           },
           setGender : function(oEvent) {
 

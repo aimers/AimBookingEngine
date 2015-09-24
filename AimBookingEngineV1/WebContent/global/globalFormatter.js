@@ -114,7 +114,7 @@ sap.ui.medApp.global.globalFormatter = {
   },
   getBooleanToNum : function(oValue) {
     if (oValue != null && oValue != undefined) {
-      if (oValue) {
+      if (oValue == 1) {
         return 0;
       } else {
         return 1;

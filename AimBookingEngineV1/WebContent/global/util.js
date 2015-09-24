@@ -239,7 +239,7 @@ sap.ui.medApp.global.util = {
         this._mainModel);
     var param = [ {
       "key" : "details",
-      "value" : userData[0]
+      "value" : userData
     } ];
 
     var fnSuccess = function(oData) {

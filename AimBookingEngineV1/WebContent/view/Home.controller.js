@@ -17,7 +17,7 @@ sap.ui
             // getting Router
             this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             this.router = sap.ui.core.UIComponent.getRouterFor(this);
-
+            this.getGeoLocation();
             this.router.attachRoutePatternMatched(this._handleRouteMatched,
                 this);
           },
@@ -163,7 +163,7 @@ sap.ui
             }
           },
           getGeoLocation : function() {
-            sap.ui.medApp.global.busyDialog.open();
+            // sap.ui.medApp.global.busyDialog.open();
             var _this = this;
             var display_user_location = function display_user_location(
                 user_position) {
@@ -174,7 +174,7 @@ sap.ui
             };
             var error_response = function(error) {
               console.log(error);
-              sap.ui.medApp.global.busyDialog.close();
+              // sap.ui.medApp.global.busyDialog.close();
             };
             navigator.geolocation.getCurrentPosition(display_user_location,
                 error_response);

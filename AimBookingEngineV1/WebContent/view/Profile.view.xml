@@ -38,23 +38,11 @@
 					<c:Label text="Mobile Number"></c:Label>
           <c:TextField value="{USRNM}" enabled="false" />
 					<c:Label text="Lanline Phone"></c:Label>
-					<l:HorizontalLayout content="{Characteristics}">
-						<c:TextField
-							value="{parts:[{path: 'CHRID'}, {path :'VALUE'}], formatter: '.getPhoneNumber'}"
-							visible="{path:'CHRID', formatter:'.handlePhoneNumber'}" id="phoneNUmber"/>
-					</l:HorizontalLayout>
+					<c:TextField value="{Phone}"  />
 					<c:Label text="Business Email"></c:Label>
-					<l:HorizontalLayout content="{Characteristics}">
-						<c:TextField
-							value="{parts:[{path: 'CHRID'}, {path :'VALUE'}], formatter: '.getBEmail'}"
-							visible="{path:'CHRID', formatter:'.handleBEmail'}" id="BusinessEmail"/>
-					</l:HorizontalLayout>
+					<c:TextField value="{BEmail}"  />
 					<c:Label text="Personal Email"></c:Label>
-					<l:HorizontalLayout content="{Characteristics}">
-						<c:TextField
-							value="{parts:[{path: 'CHRID'}, {path :'VALUE'}], formatter: '.getPEmail'}"
-							visible="{path:'CHRID', formatter:'.handlePEmail'}" id="PersonalEmail"/>
-					</l:HorizontalLayout>
+					<c:TextField value="{PEmail}"  />
 					<core:Title text="Password" />
 					<c:Label text="Confirm Password"></c:Label>
 					<c:PasswordField value="{UERPW}" type="password" />

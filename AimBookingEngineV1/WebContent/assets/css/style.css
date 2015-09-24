@@ -543,3 +543,8 @@ svg.sapMBusySvg {
 .toggleButton .sapMBtnInner.sapMBtnPaddingLeft , .toggleButton .sapMBtnInner.sapMBtnPaddingRight {
 	padding-left:0.32rem;
 }
+.sapUiFormEdit .sapMText.homeTileText{
+	line-height:12px;
+	height:24px;
+	min-height:1rem;
+}
