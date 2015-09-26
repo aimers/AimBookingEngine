@@ -43,6 +43,12 @@ sap.ui
                     _this.oModel
                         .setProperty("/LoggedUserProfile", [ userData ]);
                     _this.oModel.setProperty("/LoggedUser", userData);
+                    if (!_this.oModel.getProperty("/City")) {
+                      var fnSuccess = function(oData) {
+                        _this.oModel.setProperty("/City", oData.results)
+                      };
+                      sap.ui.medApp.global.util.getAllCities(fnSuccess);
+                    }
                     _this.oView.setBusy(false);
                   }
                   sap.ui.medApp.global.util.getLoginData(param, fnSuccess);

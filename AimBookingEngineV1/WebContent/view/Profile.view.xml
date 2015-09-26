@@ -31,7 +31,9 @@
 					<c:TextField value="{Address/0/LOCLT}" />
 					<c:Label text="Zipcode/ City"></c:Label>
 					<c:TextField value="{Address/0/PINCD}" />
-					<c:TextField value="{Address/0/CTYNM}" />
+					<c:ComboBox items="{/City}" selectedKey="{Address/0/CTYID}">
+					  <core:ListItem text="{CTYNM}" key="{CTYID}"></core:ListItem>
+					</c:ComboBox>
 					<c:Label text="Country"></c:Label>
 					<c:TextField value="India" />
 					<core:Title text="Contact" />

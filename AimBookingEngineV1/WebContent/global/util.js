@@ -367,5 +367,12 @@ sap.ui.medApp.global.util = {
     }
 
     return results;
-  }
+  },
+  getAllCities : function(fnSuccess) {
+    var param = [ {} ];
+    this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+        this._mainModel);
+    this._vendorListServiceFacade.getRecords(fnSuccess, null, "/City",
+        "getAllCities", param);
+  },
 }
