@@ -269,6 +269,14 @@ sap.ui.medApp.global.util = {
     this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
         "updateUser");
   },
+  updatePassword : function(param, fnSuccess) {
+    if (!this._vendorListServiceFacade) {
+      this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(
+          this._mainModel);
+    }
+    this._vendorListServiceFacade.updateParameters(param, fnSuccess, null,
+        "updatePassword");
+  },
   cancelBooking : function(boomingData, fnSuccess, fnError) {
     if (!this._vendorListServiceFacade) {
       this._vendorListServiceFacade = new sap.ui.medApp.service.vendorListServiceFacade(

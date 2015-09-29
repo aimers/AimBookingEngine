@@ -39,7 +39,7 @@ sap.ui.controller("sap.ui.medApp.view.App", {
     this.oModel = sap.ui.medApp.global.util.getHomeModel();
     var scope = oEvent.getParameter("config").name;
     var fullWidthRoutes = [ "_homeTiles", "_loginPage", "signup",
-        "ConfirmBooking", "_history", "_profile" ];
+        "ConfirmBooking", "_history", "_profile", "_forgot" ];
     var bIsFullWidthRoute = (jQuery.inArray(scope, fullWidthRoutes) >= 0);
     var bIsHomeRoute = (scope === "_homeTiles");
     var app = (bIsFullWidthRoute) ? this.fullWidthApp : this.splitApp;

@@ -143,7 +143,10 @@ sap.ui
             }
           },
           handleCancel : function() {
-            sap.ui.core.UIComponent.getRouterFor(this).navTo("login");
+            var _this = this;
+            this._oRouter.navTo('_loginPage', {
+              flagID : _this.parameter.flagID
+            });
           },
           // _validateInputs
           // ******************************************

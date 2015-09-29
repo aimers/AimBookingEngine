@@ -12,6 +12,7 @@ sap.ui
            * @memberOf view.Home
            */
           onInit : function() {
+            sap.ui.medApp.global.busyDialog.open();
             // getting Router
             this._oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             this.router = sap.ui.core.UIComponent.getRouterFor(this);
@@ -22,6 +23,7 @@ sap.ui
           _handleRouteMatched : function(evt) {
             this.parameter = evt.getParameter("arguments");
             if (evt.getParameter("name") === "_loginPage") {
+              sap.ui.medApp.global.busyDialog.open();
               if (sessionStorage.medAppUID != undefined
                   && sessionStorage.medAppPWD != undefined) {
                 this._oRouter.navTo('_homeTiles');
@@ -31,8 +33,14 @@ sap.ui
                 } else {
                   this.oModel = new sap.ui.model.json.JSONModel();
                 }
+                var successMsg = this.oModel.getProperty("/SuccessMessage");
+                if (successMsg) {
+                  sap.m.MessageToast.show(successMsg.msg);
+                  this.oModel.setProperty("/SuccessMessage", undefined);
+                }
                 this.getView().setModel(this.oModel);
               }
+              sap.ui.medApp.global.busyDialog.close();
             }
           },
           /*
@@ -147,25 +155,6 @@ sap.ui
                 }
               }
             };
-            /*
-             * var fnSuccess = function(oData) { if (!oData.results.USRID) {
-             * _this.oView.byId("MessageBox").setVisible(true);
-             * _this.oView.byId("MessageBox").setText( "Email/Password is
-             * incorrect"); } else {
-             * _this.oView.byId("MessageBox").setVisible(false);
-             * sessionStorage.setItem("medAppUID", oData.results.USRID);
-             * sessionStorage.setItem("medAppPWD", oData.results.UERPW);
-             * _this.oModel.setProperty("/LoggedUser", oData.results); if
-             * (oData.results.Address !== undefined) { if
-             * (oData.results.Address.length) { sessionStorage.LATIT =
-             * oData.results.Address[0].LATIT; sessionStorage.LONGT =
-             * oData.results.Address[0].LONGT; } } if (_this.parameter.flagID ==
-             * 2) { _this._oRouter.navTo("ConfirmBooking", { "UID" :
-             * sessionStorage.medAppUID }); } else { var fav =
-             * _this.handleFovoriteUsers(oData.results); if (fav) {
-             * _this._oRouter.navTo('_homeTiles'); } } }
-             * _this.oView.setBusy(false); };
-             */
             sap.ui.medApp.global.busyDialog.close();
             sap.ui.medApp.global.util.getLoginData(param, fnSuccess);
 
@@ -203,6 +192,11 @@ sap.ui
               "flagID" : this.parameter.flagID
             });
           },
+          handleForgotPassword : function() {
+            this._oRouter.navTo("_forgot", {
+              "flagID" : this.parameter.flagID
+            });
+          }
         /**
          * Similar to onAfterRendering, but this hook is invoked before the
          * controller's View is re-rendered (NOT before the first rendering!

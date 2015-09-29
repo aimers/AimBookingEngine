@@ -79,6 +79,12 @@ sap.ui.core.UIComponent
                     view : "Profile", // View of the _DealsList Router
                     targetAggregation : "pages",
                     targetControl : "idAppControl", // Target Control Id
+                  }, {
+                    pattern : "forgotpassword/{flagID}", // patern matching
+                    name : "_forgot", // router name
+                    view : "ForgotPassword", // View of the _DealsList Router
+                    targetAggregation : "pages",
+                    targetControl : "idAppControl", // Target Control Id
                   } ]
             }
           },
