@@ -28,7 +28,7 @@
 								</layoutData>
 							</HBox>
 							<HBox alignItems="Center" class="vendorAddressLocal" items="{Address}">
-								<Text text="{LOCLT} {LNDMK}, {CTYNM} India {PINCD}" />
+								<Text text="{LOCLT} {LNDMK} {CTYNM} India {PINCD}" />
 								<layoutData>
 									<l:GridData span="L12 M12 S12" />
 								</layoutData>
