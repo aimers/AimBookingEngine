@@ -12,7 +12,8 @@
 								alignItems="Center">
 								<ToggleButton press="handleAddFavorite" icon="sap-icon://favorite"
 									pressed="{path:'USRID', formatter:'sap.ui.medApp.global.globalFormatter.checkFavorite'}"></ToggleButton>
-								<Label text="{PRFIX}{DSPNM}" class="vendorAddressLocal" design="Bold"/>
+								<Label text="{PRFIX}{DSPNM}" class="vendorAddressLocal"
+									design="Bold" />
 								<layoutData>
 									<l:GridData span="L6 M6 S6" />
 								</layoutData>
@@ -21,8 +22,10 @@
 								justifyContent="End"
 								visible="{path:'Address', formatter: 'sap.ui.medApp.global.globalFormatter.getDistanceFlag'}">
 								<Button icon="sap-icon://functional-location" press="handleLocation" />
-								<Text
-									text="{path:'Address', formatter: 'sap.ui.medApp.global.globalFormatter.getDistance'} KMs away" />
+								<HBox items="{Address}">
+									<Text text="{path:'distance'} KMs away"
+										visible="{path:'distance', formatter: 'sap.ui.medApp.global.globalFormatter.getLabelDisplayWrite'}" />
+								</HBox>
 								<layoutData>
 									<l:GridData span="L6 M6 S6" />
 								</layoutData>
@@ -34,50 +37,51 @@
 								</layoutData>
 							</HBox>
 							<HBox alignItems="Center" items="{Characteristics}"
-                class="imgLabelBox vendorAddressLocal">
-                <Image src="{path:'VALUE'}" densityAware="false"
-                  press="handleSelectDialogPress" width="40px" height="30px"
-                  visible="{path:'CHRID', formatter:'sap.ui.medApp.global.globalFormatter.checkImage'}" />
-                  <layoutData>
-                  <l:GridData span="L7 M7 S7" />
-                </layoutData>
-              </HBox>
-              <HBox width="100%" justifyContent="End" items="{Characteristics}">
-                <Image densityAware="false"
-                  src="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorSocialUrl'}"
-                  visible="{path:'REGXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorSocial'}" />
-                  <layoutData>
-                  <l:GridData span="L5 M5 S5" />
-                </layoutData>
-              </HBox>
-              <HBox justifyContent="Start" items="{Characteristics}">
-                <HBox alignItems="Center" class="vendorAddressLocal"
-                  visible="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorPhoneIcon'}">
-                  <Button
-                    icon="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorPhoneIcon'}" />
-                  <Label text="{path:'VALUE'}" />
-                </HBox>
-                <layoutData>
-                  <l:GridData span="L12 M12 S12" />
-                </layoutData>
-              </HBox>
-              <VBox justifyContent="Center" alignItems="Start" items="{Characteristics}">
-                <HBox height="1.5rem" alignItems="Center" class="vendorAddressLocal"
-                  visible="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorEmailIcon'}">
-                  <Button
-                    icon="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorEmailIcon'}" />
-                  <Label text="{path:'VALUE'}" />
-                </HBox>
-                <layoutData>
-                  <l:GridData span="L12 M12 S12" />
-                </layoutData>
-              </VBox>
+								class="imgLabelBox vendorAddressLocal">
+								<Image src="{path:'VALUE'}" densityAware="false"
+									press="handleSelectDialogPress" width="40px" height="30px"
+									visible="{path:'CHRID', formatter:'sap.ui.medApp.global.globalFormatter.checkImage'}" />
+								<layoutData>
+									<l:GridData span="L7 M7 S7" />
+								</layoutData>
+							</HBox>
+							<HBox width="100%" justifyContent="End" items="{Characteristics}">
+								<Image densityAware="false"
+									src="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorSocialUrl'}"
+									visible="{path:'REGXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorSocial'}" />
+								<layoutData>
+									<l:GridData span="L5 M5 S5" />
+								</layoutData>
+							</HBox>
+							<HBox justifyContent="Start" items="{Characteristics}">
+								<HBox alignItems="Center" class="vendorAddressLocal"
+									visible="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorPhoneIcon'}">
+									<Button
+										icon="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorPhoneIcon'}" />
+									<Label text="{path:'VALUE'}" />
+								</HBox>
+								<layoutData>
+									<l:GridData span="L12 M12 S12" />
+								</layoutData>
+							</HBox>
+							<VBox justifyContent="Center" alignItems="Start" items="{Characteristics}">
+								<HBox height="1.5rem" alignItems="Center" class="vendorAddressLocal"
+									visible="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.checkVendorEmailIcon'}">
+									<Button
+										icon="{path:'LNTXT', formatter:'sap.ui.medApp.global.globalFormatter.getVendorEmailIcon'}" />
+									<Label text="{path:'VALUE'}" />
+								</HBox>
+								<layoutData>
+									<l:GridData span="L12 M12 S12" />
+								</layoutData>
+							</VBox>
 						</l:content>
 					</l:Grid>
 				</VBox>
 				<VBox>
 					<HBox justifyContent="Start">
-						<DatePicker change="handleWeekCalender" id="DatePicker" class="DatePicker"/>
+						<DatePicker change="handleWeekCalender" id="DatePicker"
+							class="DatePicker" />
 					</HBox>
 					<IconTabBar class="weekCalenderView" id="weekCalenderView">
 					</IconTabBar>
