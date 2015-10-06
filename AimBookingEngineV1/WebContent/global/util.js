@@ -121,7 +121,7 @@ sap.ui.medApp.global.util = {
     this._vendorListServiceFacade.getRecords(fnSuccess, null, "/BookingList",
         "getBookingHistory", param);
   },
-  distance : function(lat1, lon1, lat2, lon2, unit) {
+  distance : function(lat1, lon1, unit) {
     var radlat1 = Math.PI * lat1 / 180
     var radlat2 = Math.PI * Number(sessionStorage.LATIT) / 180
     var radlon1 = Math.PI * lon1 / 180
