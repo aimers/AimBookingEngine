@@ -27,12 +27,12 @@
 							<VBox width="100%" height="50%">
 								<SearchField liveChange="onSearch" width="100%"
 									  />
-								<List id="idList" items="{/vendorsCategory}"
+								<List id="idList" 
 									selectionChange="onSelectionChange" mode="MultiSelect"
 									includeItemInSelection="true" growing="true"  class="filterCategoryList">
 									<items>
-										<StandardListItem title="{DESCR}"
-											iconDensityAware="false" iconInset="false" selected="{selected}" />
+										<!--  <StandardListItem title="{DESCR}"
+											iconDensityAware="false" iconInset="false" selected="{selected}" />-->
 									</items>
 								</List>
 							</VBox>

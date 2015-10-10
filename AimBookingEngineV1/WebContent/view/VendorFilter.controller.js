@@ -17,12 +17,13 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
     this.paramValue = evt.getParameter("arguments");
     this.oModel = sap.ui.medApp.global.util.getMainModel();
     var _this = this;
+    var vendorCat = this.oModel.getProperty("/vendorsCategory");
     if (this.paramValue.ENTID !== undefined) {
       var selectedKeys = this.paramValue.ENTID.split(",");
       for (var i = 0; i < selectedKeys.length; i++) {
         selectedKeys[i] = parseInt(selectedKeys[i]);
       }
-      var vendorCat = this.oModel.getProperty("/vendorsCategory");
+      
       if (vendorCat == undefined) {
         var fnSuccess = function(oData) {
           // do what you need here
@@ -39,6 +40,8 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
         }
         sap.ui.medApp.global.util.loadListCategory(fnSuccess);
       } else {
+    	
+    	var vandorsCategory = [];
         for (var i = 0; i < vendorCat.length; i++) {
           if (jQuery.inArray(vendorCat[i].ENTID, selectedKeys) != -1) {
             vendorCat[i].selected = true;
@@ -46,7 +49,7 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
             vendorCat[i].selected = false;
           }
         }
-        _this.oModel.setProperty("/vendorsCategory", vendorCat);
+        this.oView.setBusy(false);
       }
       if (!this.oModel.getProperty("/filterDays")) {
         var filterDays = [ {
@@ -80,6 +83,13 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
         } ];
         this.oModel.setProperty("/filterTime", filterTime);
       }
+      var oTemplate = new sap.m.StandardListItem({
+    	  title:"{DESCR}",
+    	  iconDensityAware : false,
+    	  iconInset : false,
+    	  selected : "{selected}"
+      });
+      this.oView.byId("idList").bindAggregation("items","/vendorsCategory", oTemplate);
       this.oView.setModel(this.oModel);
       this.oView.setBusy(false);
     }
@@ -126,7 +136,7 @@ sap.ui.controller("sap.ui.medApp.view.VendorFilter", {
       select = selectedKeys.join();
     }
     this.router.navTo("VendorListDetail", {
-      ETYID : this.paramValue.ENTID,
+      ETYID : this.paramValue.ETYID,
       UID : this.paramValue.UID,
       ENTID : select,
       ETCID : this.paramValue.ETCID,

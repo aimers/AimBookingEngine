@@ -217,8 +217,8 @@ sap.ui
                             LAT : results[0].geometry.location.H,
                             LOG : results[0].geometry.location.L
                           } ];
-                          sessionStorage.LATIT = results[0].geometry.location.H;
-                          sessionStorage.LONGT = results[0].geometry.location.L;
+                          sessionStorage.LATIT = results[0].geometry.location.lat();
+                          sessionStorage.LONGT = results[0].geometry.location.lng();
                           _this.oModel.setProperty("/GeoLocation", oDataNew);
                           _this.oView.byId("multiInput2").setValue(
                               oDataNew[0].LANDMARK + "," + oDataNew[0].LOCALITY
