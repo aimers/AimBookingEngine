@@ -17,7 +17,7 @@
 									</layoutData>
 								</Image>
 								<Input id="multiInput2" placeholder="Landmark, Locality , City .."
-									showSuggestion="true" suggestionItems="{/suggestAddress}">
+									showSuggestion="true" suggestionItems="{/suggestAddress}" change="handleAddessLocation">
 									<suggestionItems>
 										<core:Item key="{LATIT},{LONGT}" text="{ADDR}" />
 									</suggestionItems>
