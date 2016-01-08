@@ -352,16 +352,16 @@ sap.ui.medApp.global.util = {
         var nightSlots = [];
         for (var i = 0; i < TimesSlots.length; i++) {
           if (TimesSlots[i].START.split(":")[0] < 12
-              && TimesSlots[i].START.split(":")[0] > 3) {
+              && TimesSlots[i].START.split(":")[0] >= 3) {
             morningSlots.push(TimesSlots[i]);
           } else if (TimesSlots[i].START.split(":")[0] < 16
-              && TimesSlots[i].START.split(":")[0] > 12) {
+              && TimesSlots[i].START.split(":")[0] >= 12) {
             AfternoonSlots.push(TimesSlots[i]);
-          } else if (TimesSlots[i].START.split(":")[0] > 16
+          } else if (TimesSlots[i].START.split(":")[0] >= 16
               && TimesSlots[i].START.split(":")[0] < 20) {
             eveningSlots.push(TimesSlots[i]);
           } else if ((TimesSlots[i].START.split(":")[0] < 24 && TimesSlots[i].START
-              .split(":")[0] > 20)
+              .split(":")[0] >= 20)
               || (TimesSlots[i].START.split(":")[0] < 3 && TimesSlots[i].START
                   .split(":")[0] >= 0)) {
             nightSlots.push(TimesSlots[i]);
